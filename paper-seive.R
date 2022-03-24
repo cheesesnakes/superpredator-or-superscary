@@ -39,5 +39,41 @@ keywords <- str_trim(keywords) #removing white spaces
 
 key_freq <- data.frame(table(keywords))
 
+## Filtering keywords based on relevance
 
-keywords[!grep("cond*", keywords, ignore.case = T)]
+## regex string
+
+flter <- "cond*|trauma*|amygdala|disorder|aquisition|cort*|startle|antici*|anxi*|therap*|neuro*|phobias|nucle*|extin*|mem*|acquisition"
+
+papers_1%>% # testing
+  filter(grepl("acquisition", Keywords.Plus, ignore.case = T))%>%
+  select(Article.Title)
+
+## filtering and plotting
+
+filt_key_freq <- key_freq%>%
+  filter(Freq > 2,
+         !grepl(flter, keywords, ignore.case = T))
+
+filt_key_freq%>%
+  ggplot(aes(reorder(keywords, Freq), Freq))+
+  geom_col()+
+  coord_flip()+
+  scale_x_discrete(guide = guide_axis(n.dodge = 3))
+
+## creating vector of keywords
+
+filtered_keys <- as.character(filt_key_freq$keywords)
+
+## turning vector into regex string
+
+filtered_keys <- paste(filtered_keys, sep = "|", collapse = "|")
+
+## filtering papers baased on final keyword list
+
+papers_1_filtered <- papers_1%>%
+  filter(grepl(filtered_keys, Keywords.Plus, ignore.case = T))
+
+## writing output to csv
+
+write.csv(papers_1_filtered, file = "review_search_1_filtered.csv")

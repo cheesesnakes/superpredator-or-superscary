@@ -52,6 +52,52 @@ data <- data.frame(refs = refs,
                    treat.n = rpois(N, 10),
                    cnt.n = rpois(N, 10))
 
+## Simulating hypothesis
+
+hyps <- function(treat, resp){
+  
+  if(treat == "Fishing"){
+    
+    if(resp == "Bite rate"){
+      
+      treat.effect = rnorm(1, 1,0.5)
+      
+    }else if(resp == "Foraging area"){
+      
+      treat.effect = rnorm(1, -1,0.5)
+      
+    }else{
+      
+      treat.effect = rnorm(1, 1,0.5)
+    }
+    
+  }else{
+    
+    if(resp == "Bite rate"){
+      
+      treat.effect = rnorm(1, -1,0.5)
+    
+      }else if(resp == "Foraging area"){
+      
+        treat.effect = rnorm(1, 1,0.5)
+    }else{
+      
+      treat.effect = rnorm(1, 0.5,0.5)
+    }
+    
+  }
+  
+  return(treat.effect)
+  
+}
+
+## adding hypothesis to data frame
+
+library(purrr)
+
+data <- data%>%
+  mutate(treat.effect = map2_dbl(treatment, response, ~hyps(.x, .y)))
+
 ## calculating cohen's d
 
 library(tidyr)
@@ -101,6 +147,8 @@ ggplot(data = analysed, aes(response, mean.effect, col = treatment, shape = trea
   scale_color_discrete(name = "Treatment")+
   scale_shape(name = "Treatment")+
   labs(x = "Response", y = "Mean effect ± 95% CI")+
-  theme_minimal()+
+  theme_bw()+
   theme(text = element_text(size = 20),
         legend.position = "top")
+
+ggsave("fig3.png", height = 8, width = 8)

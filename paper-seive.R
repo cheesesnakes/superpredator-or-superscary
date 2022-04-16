@@ -2,7 +2,7 @@
 
 ## data from WOS database
 
-papers_1 <- read.csv("review_search_1.csv") #data from first search string
+papers_1 <- read.csv("search_1.csv") #data from first search string
 
 str(papers_1)
 
@@ -50,6 +50,8 @@ papers_1%>% # testing
   select(Article.Title)
 
 ## filtering and plotting
+
+library(ggplot2)
 
 filt_key_freq <- key_freq%>%
   filter(Freq > 2,

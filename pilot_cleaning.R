@@ -1,4 +1,4 @@
-papers <- read.csv("scope_3.csv")
+papers <- read.csv("scope_final.csv")
 
 ## Clean data ----
 

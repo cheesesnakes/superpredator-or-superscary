@@ -57,6 +57,12 @@ data <- data%>%
 
 # data summary - transformed
 
+## sample size
+
+data%>%
+  group_by(vars, treatment)%>%
+  summarise(n = n())
+
 ## means
 
 data%>%

@@ -4,7 +4,9 @@
 
 ## import data from WOS -----
 
-papers <- read.csv("scope_final.csv")
+setwd("C:/Users/shony/Nextcloud/Work/PhD/Thesis/review/Analysis/scoping-lit")
+
+papers <- read.csv("scope_3.csv")
 
 summary(papers)
 

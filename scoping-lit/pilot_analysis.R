@@ -1,5 +1,7 @@
 # analysing pilot data for intitial screening
 
+setwd("C:/Users/shony/Nextcloud/Work/PhD/Thesis/review/Analysis/scoping-lit")
+
 pilot <- read.csv("pilot_1_rev.csv")
 
 ## cleaning --------
@@ -189,7 +191,8 @@ pops%>%
   coord_flip()+
   labs(x = "Population Studied", y = "No. of studies")
   
-  
+ggsave(last_plot(), filename = "fig_4.png", height = 6, width = 8)
+
 ## interventions
 
 ### merging exposure and interventions
@@ -212,6 +215,8 @@ exposure%>%
   coord_flip()+
   labs(x = "Exposure treatment", y = "No. of studies")
 
+ggsave(last_plot(), filename = "fig_1.png", height = 6, width = 8)
+
 ## controls
 
 pilot <- pilot%>%
@@ -226,6 +231,8 @@ controls%>%
   coord_flip()+
   labs(x = "Control", y = "No. of studies")
 
+ggsave(last_plot(), filename = "fig_2.png", height = 6, width = 8)
+
 ## outcomes
 
 pilot <- pilot%>%
@@ -239,6 +246,8 @@ outcomes%>%
   geom_col()+
   coord_flip()+
   labs(x = "Outcomes", y = "No. of studies")
+
+ggsave(last_plot(), filename = "fig_3.png", height = 6, width = 8)
 
 ## export for full text screening
 

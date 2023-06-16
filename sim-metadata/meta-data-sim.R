@@ -12,7 +12,7 @@ authors <- c("foo",  "bar", "baz") # list of authors
 
 year <- seq(1995, 2021, 1) # list of years
 
-N <- 50 # number of studies found
+N <- 100 # number of studies found
 
 refs <- vector(length = N) # vec of study refs
 
@@ -42,7 +42,7 @@ responses <- sample(effect, N, replace = T)
 
 ## combine as data frame
 
-data <- data.frame(refs = refs,
+data <- data.frame(refs = sample(refs, 50),
                    treatment = treats,
                    response = responses,
                    treat.effect = rnorm(N),
@@ -152,7 +152,7 @@ analysed <- data%>%
 library(ggplot2)
 
 ggplot(data = analysed, aes(response, mean.effect, col = treatment, shape = treatment))+
-  geom_pointrange(aes(ymin = lower, ymax = upper), position = position_dodge(width = 0.5), size = 1)+
+  geom_pointrange(aes(ymin = lower, ymax = upper), position = position_dodge(width = 0.5), size = 1, col = "white")+
   geom_hline(yintercept = 0, size = 1, lty = 2)+
   scale_color_discrete(name = "Treatment")+
   scale_shape(name = "Treatment")+
@@ -283,7 +283,7 @@ analysed_2 <- data_2%>%
 library(ggplot2)
 
 ggplot(data = analysed_2, aes(trophic, mean.effect, col = system, shape = system))+
-  geom_pointrange(aes(ymin = lower, ymax = upper), position = position_dodge(width = 0.5), size = 1)+
+  geom_pointrange(aes(ymin = lower, ymax = upper), position = position_dodge(width = 0.5), size = 1, col = "white")+
   geom_hline(yintercept = 0, size = 1, lty = 2)+
   scale_color_discrete(name = "Ecosystem")+
   scale_shape(name = "Ecosystem")+
@@ -293,4 +293,4 @@ ggplot(data = analysed_2, aes(trophic, mean.effect, col = system, shape = system
         legend.position = "top")+
   facet_wrap(~response)  
 
-ggsave("fig4.png", height = 8, width = 8)
+ggsave("fig4.png", height = 10, width = 10)

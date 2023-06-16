@@ -58,30 +58,39 @@ library(ggplot2)
 
 ggplot(papers, aes(Publication.Year))+
   geom_bar(col = "black")+
+  labs(x = "Publication Year", y = "Count")+
   theme_bw()+
   theme(text = element_text(size = 20))
 
+ggsave(last_plot(),  filename = "years.png", height = 4, width = 6)
 ### Article type
 
 ggplot(papers, aes(Document.Type))+
   geom_bar(col = "black")+
-  scale_x_discrete(guide = guide_axis(n.dodge = 2))+
+  labs(x = "Document Type", y = "Count")+
+  coord_flip()+
   theme_bw()+
   theme(text = element_text(size = 20))
+
+ggsave(last_plot(),  filename = "type.png", height = 4, width = 6)
 
 ### Language
 
 ggplot(papers, aes(Language))+
   geom_bar(col = "black")+
-  scale_x_discrete(guide = guide_axis(n.dodge = 2))+
+  labs(x = "Language", y = "Count")+
+  coord_flip()+
   theme_bw()+
   theme(text = element_text(size = 20))
 
+
+ggsave(last_plot(),  filename = "lang.png", height = 4, width = 6)
+
 ## sub-sampling ----
 
-sample <- 1:100
+#sample <- 1:100
 
-papers <- papers[sample,]
+#papers <- papers[sample,]
 
 ## Analyse  keywords -----
 
@@ -145,7 +154,7 @@ kw_in_freq <- data.frame(table(keys_in))
 
 ### word cloud
 
-wordcloud(words = kw_in_freq$keys_in, freq = kw_freq$Freq, colors = brewer.pal(8, "Dark2"), min.freq = 5, max.words = 500, scale = c(1,1))
+wordcloud(words = kw_in_freq$keys_in, freq = kw_in_freq$Freq, colors = brewer.pal(8, "Dark2"), min.freq = 5, max.words = 500)
 
 ## Analyse titles ----
 
@@ -169,13 +178,17 @@ title_words <- tolower(title_words)
 
 title_words <- str_trim(title_words)
 
-## Removing articles and conjugations
-
-title_words <- title_words[!grepl("a|and|of|the|they're|their|because|for|on|in|to|but|by|not|is|between|stud*|from|with|effect*|diff*", title_words, ignore.case = T)]
 
 ## Frequency
 
 title_freq <- data.frame(table(title_words))
+
+## removing stop words
+
+library(tidytext)
+
+title_freq <- title_freq%>%
+  anti_join(stop_words, by = c("title_words" = "word"))
 
 ## Word Cloud
 
@@ -207,13 +220,14 @@ abs_words <- tolower(abs_words)
 
 abs_words <- str_trim(abs_words)
 
-## Removing articles and conjugations
-
-abs_words <- abs_words[!grepl("a|and|of|the|they're|their|because|for|on|in|to|but|by|not|is|between|stud*|from|with|effect*|diff*|*ed|wh*|we|our*|or|be|such|did|it*|result|(c)", abs_words, ignore.case = T)]
-
 ## Frequency
 
 abs_freq <- data.frame(table(abs_words))
+
+## removing stop words
+
+abs_freq <- abs_freq%>%
+  anti_join(stop_words, by = c("abs_words" = "word"))
 
 ## Word Cloud
 
@@ -240,13 +254,14 @@ abs_in <- str_trim(abs_in) #removing white spaces
 
 abs_in <- tolower(abs_in)
 
-## Removing articles and conjugations
-
-abs_in <- abs_in[!grepl("a|and|of|the|they're|their|because|for|on|in|to|but|by|not|is|between|stud*|from|with|effect*|diff*|*ed|wh*|we|our*|or|be|such|did|it*|result|(c)", abs_in, ignore.case = T)]
-
 ### frequency
 
 abs_in_freq <- data.frame(table(abs_in))
+
+## removing stop words
+
+abs_in_freq <- abs_in_freq%>%
+  anti_join(stop_words, by = c("abs_in" = "word"))
 
 ### word cloud
 

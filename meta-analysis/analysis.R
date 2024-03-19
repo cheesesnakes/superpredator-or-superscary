@@ -72,7 +72,14 @@ data_cor <- data_cor %>%
     # upper and lower ci for se 
     mutate(
         upper = (ifelse(var.unit == "se", mean + se*1.96, upper)),
-        lower = (ifelse(var.unit == "se", mean - se*1.96, lower))) 
+        lower = (ifelse(var.unit == "se", mean - se*1.96, lower)))%>%
+    # replace NA multiplier with 1
+    mutate(multiplier = ifelse(is.na(multiplier), 1, multiplier))%>%
+    # apply multiplier to mean, upper and lower 
+    mutate(
+        mean = mean*multiplier,
+        upper = upper*multiplier,
+        lower = lower*multiplier)
 
 # plot effect size and confidence intervals
 

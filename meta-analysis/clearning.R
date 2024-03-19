@@ -54,18 +54,28 @@ colnames(data)
 data <-
     data %>%
     select(cite.key, study_type, sampling, sampling_time, pop_cn, pop_sn, exposure, control, outcome, treatment,
-    mean, mean.unit, var, var.unit, multiplier, n, remarks)
+    group, mean, mean.unit, var, var.unit, multiplier, n, remarks)
 
 # rename outcome feeding to foragin
 
 data <- data %>%
     mutate(outcome = ifelse(outcome == "feeding", "foraging", outcome))
 
+## total number of studies in meta analysis
+
+n_studies <- data %>% 
+    select(cite.key) %>% 
+    distinct() %>% 
+    nrow()
+
+n_studies
+
 # print and then remove NA outcome
 
 (data %>%
     filter(is.na(outcome))
-)$cite.key #verify and fix <----------------------------------------------
+)$cite.key #reviews and studies without data or excluded from meta analysis
+
 
 data <- data %>%
     filter(!is.na(outcome))
@@ -89,8 +99,8 @@ data <- data %>%
 library(purrr)
 
 
-#data <- data %>%
- #   mutate(cite.key = as.character(cite.key)) %>%
+data <- data %>%
+    mutate(cite.key = as.character(cite.key)) %>%
     # choose the first five letters and the last four 
-  #  mutate(cite.key = str_sub(cite.key, 1, 5) %>% paste(str_sub(cite.key, -4, -1), sep = "_"))
+    mutate(cite.key = str_sub(cite.key, 1, 5) %>% paste(str_sub(cite.key, -4, -1), sep = "_"))
 

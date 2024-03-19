@@ -18,7 +18,7 @@ summary(data)
 
 # summaries --------------------------------------------
 
-## number of studies
+## total number of studies in meta analysis
 
 n_studies <- data %>% 
     select(cite.key) %>% 
@@ -95,26 +95,133 @@ ggplot(data = data_cor, aes(x = mean, y = reorder(pop_cn, mean), col = cite.key)
     legend.position = "top")+
     facet_wrap(~outcome)
 
-ggsave("effect_size_ci.png", width = 16, height = 10, dpi = 300)
+ggsave("es_cor.png", width = 16, height = 10, dpi = 300)
 
+# Playback studies --------------------------------------------
+
+data_pb <- data %>%
+    filter(study_type == "playback")%>%
+    select(cite.key, pop_cn, treatment, group, outcome, mean, mean.unit, var, var.unit, n, remarks)%>%
+    #remove negative control
+    filter(treatment != "negative control")%>%
+    # rename postive control to control
+    mutate(treatment = ifelse(treatment == "positive control", "control", treatment))%>%
+    # rename treatment to treatment if not control
+    mutate(treatment = ifelse(treatment != "control", "treatment", treatment))
+ 
+# format var data for ci
+
+data_pb <- data_pb %>%
+    mutate(
+        se = as.numeric(ifelse(var.unit == "se", var, NA)),
+        var = str_split(var, "/"),
+        upper = as.numeric(sapply(var, function(x) x[1])),
+        lower = as.numeric(sapply(var, function(x) x[2])))%>%
+    # convert ci to se 
+    mutate(
+        upper = (ifelse(var.unit == "se", se, (upper - mean)/1.96)),
+        lower = (ifelse(var.unit == "se", se, (lower-mean)/1.96)))%>%
+    # take mean of lower and upper
+    mutate(se = abs(upper + lower)/2)%>%
+    select(cite.key, pop_cn, group, treatment, outcome, mean, se, n, remarks)
+
+# pivot data
+
+data_pb <- data_pb%>%
+    group_by(cite.key, pop_cn, outcome, remarks)%>%
+    pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
+    ungroup()
+# calculate standarised mean difference
+
+data_pb <- data_pb%>%
+    # correct types
+    mutate(
+        mean_treatment = as.numeric(as.character(mean_treatment)),
+        mean_control = as.numeric(as.character(mean_control)),
+        se_treatment = as.numeric(as.character(se_treatment)),
+        se_control = as.numeric(as.character(se_control)),
+        n_treatment = as.numeric(as.character(n_treatment)),
+        n_control = as.numeric(as.character(n_control)))%>%
+    mutate(
+        smd = (mean_treatment - mean_control)/sqrt(se_treatment^2 + se_control^2),
+        upper = smd + 1.96*sqrt(se_treatment^2 + se_control^2),
+        lower = smd - 1.96*sqrt(se_treatment^2 + se_control^2))
+
+# plot effect size and confidence intervals
+
+ggplot(data = data_pb, aes(y = smd, x = reorder(group, smd), col = pop_cn))+
+    geom_point(size = 2, position = position_dodge(preserve = "single"))+
+    geom_errorbar(aes(ymax = upper, ymin = lower), width = 0.05)+
+    geom_hline(yintercept = 0, linetype = "dashed")+
+    labs(title = "Standardised mean difference and confidence intervals")+
+    xlab("Standardised mean difference")+
+    ylab("Population")+
+    theme_bw()+
+    theme(text = element_text(size = 20),
+    legend.position = "top")+
+    coord_flip()+
+    facet_wrap(~outcome)
+
+ggsave("es_pb.png", width = 16, height = 10, dpi = 300)
+
+# BACI studies --------------------------------------------
+
+data_baci <- data %>%
+    filter(study_type == "BACI")%>%
+    select(cite.key, pop_cn, group, treatment, outcome, mean, mean.unit, var, var.unit, n, remarks)%>%
+    # set mean, var, and n as numeric
+    mutate(
+        mean = as.numeric(mean),
+        var = as.numeric(var),
+        n = as.numeric(n))%>%
+    # rename before treatment to control and after treatmen to treatment
+    mutate(treatment = ifelse(treatment == "before treatment", "control", treatment),
+    treatment = ifelse(treatment == "after treatment", "treatment", treatment))%>%
+    # calculate standard error from var where var.unit = sd
+    mutate(var = ifelse(var.unit == "sd", var/sqrt(n), var))
+
+# spread mean and var, n for treatment and control
+
+data_baci <- data_baci%>%
+    group_by(cite.key, group, outcome)%>%
+    pivot_wider(names_from = treatment, values_from = c(mean, var, n))%>%
+    ungroup()
+
+# calculate standarised mean difference
+
+data_baci <- data_baci%>%
+    # correct types
+    mutate(
+        mean_treatment = as.numeric(as.character(mean_treatment)),
+        mean_control = as.numeric(as.character(mean_control)),
+        var_treatment = as.numeric(as.character(var_treatment)),
+        var_control = as.numeric(as.character(var_control)),
+        n_treatment = as.numeric(as.character(n_treatment)),
+        n_control = as.numeric(as.character(n_control)))%>%
+    mutate(
+        smd = (mean_treatment - mean_control)/sqrt(var_treatment^2 + var_control^2),
+        upper = smd + 1.96*sqrt(var_treatment^2 + var_control^2),
+        lower = smd - 1.96*sqrt(var_treatment^2 + var_control^2))
 
 # Treatment - control studies --------------------------------------------
 
 data_tc <- data %>%
     filter(study_type == "treatment-control")%>%
-    select(cite.key, pop_cn, treatment, outcome, mean, mean.unit, var, var.unit, n, remarks)%>%
+    select(cite.key, group, pop_cn, treatment, outcome, mean, mean.unit, var, var.unit, n, remarks)%>%
     mutate(treatment = ifelse(treatment == "control", "control", "treatment"))
 
 # spread mean and var for treatment and control
 
 data_tc <- data_tc%>%
-    group_by(cite.key, pop_cn, outcome, remarks)%>%
+    group_by(cite.key, group, pop_cn, outcome)%>%
     pivot_wider(names_from = treatment, values_from = c(mean, var, n))%>%
     ungroup()
 
 #  calculate standarised mean difference
 
 data_tc <- data_tc%>%
+    # remove non - standard units (not se)
+    filter(var.unit == "se")%>%
     # correct types
     mutate(
         mean_treatment = as.numeric(as.character(mean_treatment)),
@@ -128,6 +235,19 @@ data_tc <- data_tc%>%
         se = sqrt((n_treatment + n_control)/(n_treatment*n_control) + smd^2/(2*(n_treatment + n_control - 2))),
         upper = smd + se*1.96,
         lower = smd - se*1.96)
+
+# add studies from play back group = human
+
+data_tc <- data_tc%>%
+    bind_rows(data_pb%>%
+    filter(group == "human" & outcome != "latency" )%>%
+    select(cite.key, group, pop_cn, outcome, smd, upper, lower))
+
+# add studies from baci
+
+data_tc <- data_tc%>%
+    bind_rows(data_baci%>%
+    select(cite.key, group, pop_cn, outcome, smd, upper, lower))
 
 # plot effect size and confidence intervals
 
@@ -143,40 +263,4 @@ ggplot(data = data_tc, aes(x = smd, y = reorder(pop_cn, smd), col = cite.key))+
     legend.position = "top")+
     facet_wrap(~outcome)
 
-ggsave("smd_ci.png", width = 16, height = 10, dpi = 300)
-
-# Playback studies --------------------------------------------
-
-data_pb <- data %>%
-    filter(study_type == "playback")%>%
-    select(cite.key, pop_cn, treatment, outcome, mean, mean.unit, var, var.unit, n, remarks)
-+
-# format var data for ci
-
-data_pb <- data_pb %>%
-    mutate(
-        se = as.numeric(ifelse(var.unit == "se", var, NA)),
-        var = str_split(var, "/"),
-        upper = as.numeric(sapply(var, function(x) x[1])),
-        lower = as.numeric(sapply(var, function(x) x[2])))%>%
-    # convert ci to se 
-    mutate(
-        upper = (ifelse(var.unit == "se", se, (upper - mean)/1.96)),
-        lower = (ifelse(var.unit == "se", se, (lower-mean)/1.96)))%>%
-    # take mean of lower and upper
-    mutate(se = abs(upper + lower)/2)%>%
-    select(cite.key, pop_cn, treatment, outcome, mean, se, n, remarks)
-
-
-# pivot data
-
-data_pb <- data_pb%>%
-    group_by(cite.key, pop_cn, outcome, remarks)%>%
-    pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
-    ungroup()
-
-# BACI studies --------------------------------------------
-
-data_baci <- data %>%
-    filter(study_type == "BACI")%>%
-    select(cite.key, pop_cn, treatment, outcome, mean, mean.unit, var, var.unit, n, remarks)
+ggsave("es_tc.png", width = 16, height = 10, dpi = 300)

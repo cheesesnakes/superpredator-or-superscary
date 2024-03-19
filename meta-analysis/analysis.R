@@ -207,7 +207,7 @@ data_baci <- data_baci%>%
 
 data_tc <- data %>%
     filter(study_type == "treatment-control")%>%
-    select(cite.key, group, pop_cn, treatment, outcome, mean, mean.unit, var, var.unit, n, remarks)%>%
+    select(cite.key, group, pop_cn, treatment, outcome, multiplier, mean, mean.unit, var, var.unit, n, remarks)%>%
     mutate(treatment = ifelse(treatment == "control", "control", "treatment"))
 
 # spread mean and var for treatment and control
@@ -234,7 +234,12 @@ data_tc <- data_tc%>%
         smd = (mean_treatment - mean_control)/sqrt(((n_treatment - 1)*var_treatment*var_treatment + (n_control - 1)*var_control*var_control)/(n_treatment + n_control - 2)),
         se = sqrt((n_treatment + n_control)/(n_treatment*n_control) + smd^2/(2*(n_treatment + n_control - 2))),
         upper = smd + se*1.96,
-        lower = smd - se*1.96)
+        lower = smd - se*1.96)%>%
+    # correction for foraging rates
+    mutate(smd = ifelse(!is.na(multiplier), smd*multiplier, smd),
+    upper = ifelse(!is.na(multiplier), upper*multiplier, upper),
+    lower = ifelse(!is.na(multiplier), lower*multiplier, lower))
+    
 
 # add studies from play back group = human
 

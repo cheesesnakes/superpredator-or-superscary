@@ -16,6 +16,21 @@ colnames(data)
 head(data)
 summary(data)
 
+# add information about species
+
+pop <- read.csv("./data/populations.csv")
+
+data <- data %>%
+    left_join(pop, by = "pop_cn")%>%
+    rename(pop_sn = pop_sn.y)%>%
+    mutate(pop_sn = ifelse(is.na(pop_sn), pop_sn.x, pop_sn))%>%
+    select(-pop_sn.x)%>%
+    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
+
+# make trophic level as factor
+
+data <- data %>%
+    mutate(trophic_level = as.factor(trophic_level))
 # summaries --------------------------------------------
 
 ## total number of studies in meta analysis
@@ -38,8 +53,8 @@ print(n_datapoints)
 ## removing FID and GUD studies due lack of data
 
 data <- data %>% 
-    filter(outcome != "FID" & outcome != "GUD")%>%
-    filter(pop_cn !="")
+    filter(outcome != "FID" & outcome != "GUD")
+#    filter(pop_cn !="")
 
 # studies by type - table
 
@@ -47,7 +62,7 @@ table(data$study_type)
 
 ## number of datapoints per population, sorted
 
-ggplot(data, aes(x = reorder(pop_cn, pop_cn, FUN = length))) +
+ggplot(data, aes(x = reorder(pop_sn, pop_sn, FUN = length))) +
     geom_bar() +
     labs(title = "Number of datapoints per population")+
     xlab("Population")+
@@ -84,7 +99,7 @@ data_cor <- data_cor %>%
 
 # plot effect size and confidence intervals
 
-ggplot(data = data_cor, aes(x = mean, y = reorder(pop_cn, mean), col = cite.key))+
+ggplot(data = data_cor, aes(x = mean, y = reorder(pop_sn, mean), col = cite.key))+
     geom_point(size = 2)+
     geom_errorbarh(aes(xmax = upper, xmin = lower), height = 0.05)+
     geom_vline(xintercept = 0, linetype = "dashed")+
@@ -94,9 +109,11 @@ ggplot(data = data_cor, aes(x = mean, y = reorder(pop_cn, mean), col = cite.key)
     theme_bw()+
     theme(text = element_text(size = 20),
     legend.position = "top")+
-    facet_wrap(~outcome, scales = "free_x")
+    facet_grid(outcome~trophic_level, scales = "free")+
+    # italicise x axis
+    theme(axis.text.y = element_text(face = "italic"))
 
-ggsave("es_cor.png", width = 24, height = 10, dpi = 300)
+ggsave("es_cor.png", width = 16, height = 15, dpi = 300)
 
 # Playback studies --------------------------------------------
 
@@ -161,7 +178,10 @@ ggplot(data = data_pb, aes(y = smd, x = reorder(group, smd), col = pop_cn))+
     theme(text = element_text(size = 20),
     legend.position = "top")+
     coord_flip()+
-    facet_wrap(~outcome)
+    facet_wrap(~outcome, scales = "free_x")+
+    # italicise x axis
+    theme(axis.text.y = element_text(face = "italic"))
+
 
 ggsave("es_pb.png", width = 24, height = 10, dpi = 300)
 
@@ -264,9 +284,15 @@ data_tc <- data_tc%>%
     bind_rows(data_baci%>%
     select(cite.key, group, pop_cn, outcome, smd, upper, lower))
 
+# add species information
+
+data_tc <-  data_tc %>%
+    left_join(pop, by = "pop_cn")%>%
+    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
+
 # plot effect size and confidence intervals
 
-ggplot(data = data_tc, aes(x = smd, y = reorder(pop_cn, smd), col = cite.key))+
+ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = cite.key))+
     geom_point(size = 2)+
     geom_errorbarh(aes(xmax = upper, xmin = lower), height = 0.05)+
     geom_vline(xintercept = 0, linetype = "dashed")+
@@ -277,7 +303,9 @@ ggplot(data = data_tc, aes(x = smd, y = reorder(pop_cn, smd), col = cite.key))+
     #remove legend
     legend.position = "none"
     )+
-    facet_wrap(~outcome, scales = "free")
+    facet_grid(trophic_level~outcome, scales = "free")+
+    # italicise x axis
+    theme(axis.text.y = element_text(face = "italic"))
 
 ggsave("es_tc.png", width = 16, height = 10, dpi = 300)
 
@@ -292,6 +320,12 @@ data_tc_ci <- data_tc_ci%>%
     mutate(lower = ifelse(is.na(upper), mean - lower, lower),
     upper = ifelse(is.na(upper), mean + (mean - lower), upper))
 
+# add species information
+
+data_tc_ci <-  data_tc_ci %>%
+    left_join(pop, by = "pop_cn")%>%
+    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
+
 # plot 
 
 ggplot(data = data_tc_ci, aes(y = mean, x = treatment, col = cite.key))+
@@ -304,6 +338,9 @@ ggplot(data = data_tc_ci, aes(y = mean, x = treatment, col = cite.key))+
     coord_flip()+
     theme(text = element_text(size = 20),
     legend.position = "none")+
-    facet_grid(outcome~pop_cn, scales = "free_x")
+    facet_grid(outcome~pop_sn, scales = "free_x")+
+    # italicise facet column
+    theme(strip.text.x = element_text(face = "italic"))
+    
 
-ggsave("es_tc_ci.png", width = 32, height = 10, dpi = 300)
+ggsave("es_tc_ci.png", width = 12, height = 4.5, dpi = 300)

@@ -1,4 +1,4 @@
-setwd("./meta-analysis")
+#setwd("./meta-analysis")
 
 library(stringr)
 library(dplyr)

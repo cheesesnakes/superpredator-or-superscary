@@ -103,17 +103,16 @@ ggplot(data = data_cor, aes(x = mean, y = reorder(pop_sn, mean), col = cite.key)
     geom_point(size = 2)+
     geom_errorbarh(aes(xmax = upper, xmin = lower), height = 0.05)+
     geom_vline(xintercept = 0, linetype = "dashed")+
-    labs(title = "Effect size and confidence intervals")+
     xlab("Effect size")+
     ylab("Population")+
     theme_bw()+
     theme(text = element_text(size = 20),
-    legend.position = "top")+
-    facet_grid(outcome~trophic_level, scales = "free")+
+    legend.position = "none")+
+    facet_grid(trophic_level~outcome, scales = "free")+
     # italicise x axis
     theme(axis.text.y = element_text(face = "italic"))
 
-ggsave("es_cor.png", width = 16, height = 15, dpi = 300)
+ggsave("es_cor.png", width = 12, height = 6, dpi = 300)
 
 # Playback studies --------------------------------------------
 
@@ -307,7 +306,7 @@ ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = cite.key))+
     # italicise x axis
     theme(axis.text.y = element_text(face = "italic"))
 
-ggsave("es_tc.png", width = 16, height = 10, dpi = 300)
+ggsave("es_tc.png", width = 16, height = 9, dpi = 300)
 
 # treatment - control studies that report confidence intervals
 

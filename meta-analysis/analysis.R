@@ -110,8 +110,7 @@ ggplot(data = data_cor, aes(x = mean, y = reorder(pop_sn, mean), col = cite.key)
     legend.position = "none")+
     facet_grid(trophic_level~outcome, scales = "free")+
     # italicise x axis
-    theme(axis.text.y = element_text(face = "italic"))+
-    scale_color_brewer(palette = "Set1")
+    theme(axis.text.y = element_text(face = "italic"))
 
 ggsave("es_cor.png", width = 12, height = 6, dpi = 300)
 
@@ -305,8 +304,7 @@ ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = cite.key))+
     )+
     facet_grid(trophic_level~outcome, scales = "free")+
     # italicise x axis
-    theme(axis.text.y = element_text(face = "italic"))+
-    scale_color_brewer(palette = "Set1")
+    theme(axis.text.y = element_text(face = "italic"))
 
 ggsave("es_tc.png", width = 16, height = 9, dpi = 300)
 

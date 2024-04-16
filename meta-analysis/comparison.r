@@ -1,3 +1,4 @@
+library(viridis, help, pos = 2, lib.loc = NULL)
 
 # Comparison across hunting, non-hunting disturbance and natural predators --------------------------------------------
 
@@ -38,19 +39,35 @@ data_comp <- data_comp%>%
 data_comp <- data_comp%>%
     mutate(exposure = ifelse(exposure != "hunting" & exposure != "non-hunting disturbance", "natural predator", exposure))
 
+# filter out natural predator
+
+data_comp <- data_comp%>%
+    filter(exposure != "natural predator")
+
+# add species data
+
+data_comp <- data_comp%>%
+    left_join(pop, by = c("pop_cn"))%>%
+    mutate(trophic_level = as.factor(trophic_level))
+
 #plotting
 
 data_comp %>%
     filter(outcome != "latency")%>%
-    ggplot(aes(x = reorder(cite.key, smd), y = smd, col = group))+
+    ggplot(aes(x = reorder(pop_sn, smd), y = smd, col = trophic_level))+
     geom_point()+
     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.2)+
     geom_hline(yintercept = 0, linetype = "dashed")+
     labs(x = "Exposure", y = "Standardised mean difference")+
-    facet_grid(outcome~exposure, scales = "free_x")+
+    facet_grid(outcome~exposure, scales = "free")+
     theme_bw()+
-    theme(legend.position = "none")+
-    coord_flip()
+    theme(legend.position = "top")+
+    coord_flip()+
+    # set legend title
+    scale_color_brewer(name = "Trophic level", palette = "Set1")+
+    # italicise x-axis labels
+    theme(axis.text.y = element_text(face = "italic"))
 
-ggsave("es_comp.png", width = 16, height = 10, dpi = 300)
+
+ggsave("es_comp.png", width = 6, height = 7, dpi = 300)
     

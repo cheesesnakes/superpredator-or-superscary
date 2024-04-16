@@ -1,4 +1,6 @@
 {
     "r.lsp.enabled": false,
-    "r.lsp.diagnostics": false
+    "r.lsp.diagnostics": false,
+    "r.bracketedPaste": true,
+    "r.rterm.linux": "/home/cheesesnakes/.local/bin/radian"
 }

@@ -38,7 +38,8 @@ print(n_datapoints)
 ## removing FID and GUD studies due lack of data
 
 data <- data %>% 
-    filter(outcome != "FID" & outcome != "GUD")
+    filter(outcome != "FID" & outcome != "GUD")%>%
+    filter(pop_cn !="")
 
 # studies by type - table
 
@@ -93,9 +94,9 @@ ggplot(data = data_cor, aes(x = mean, y = reorder(pop_cn, mean), col = cite.key)
     theme_bw()+
     theme(text = element_text(size = 20),
     legend.position = "top")+
-    facet_wrap(~outcome)
+    facet_wrap(~outcome, scales = "free_x")
 
-ggsave("es_cor.png", width = 16, height = 10, dpi = 300)
+ggsave("es_cor.png", width = 24, height = 10, dpi = 300)
 
 # Playback studies --------------------------------------------
 
@@ -162,7 +163,7 @@ ggplot(data = data_pb, aes(y = smd, x = reorder(group, smd), col = pop_cn))+
     coord_flip()+
     facet_wrap(~outcome)
 
-ggsave("es_pb.png", width = 16, height = 10, dpi = 300)
+ggsave("es_pb.png", width = 24, height = 10, dpi = 300)
 
 # BACI studies --------------------------------------------
 
@@ -208,7 +209,16 @@ data_baci <- data_baci%>%
 data_tc <- data %>%
     filter(study_type == "treatment-control")%>%
     select(cite.key, group, pop_cn, treatment, outcome, multiplier, mean, mean.unit, var, var.unit, n, remarks)%>%
-    mutate(treatment = ifelse(treatment == "control", "control", "treatment"))
+    # make n numeric
+    mutate(n = as.numeric(n))%>%
+    mutate(treatment = ifelse(treatment == "control", "control", "treatment"))%>%
+    # convert standard deviation to standard error
+    mutate(var = ifelse(var.unit == "sd", as.numeric(var)/sqrt(n), var))
+
+# filter studies that report confidence intervals
+
+data_tc_ci <- data_tc%>%
+    filter(var.unit == "ci")
 
 # spread mean and var for treatment and control
 
@@ -221,7 +231,7 @@ data_tc <- data_tc%>%
 
 data_tc <- data_tc%>%
     # remove non - standard units (not se)
-    filter(var.unit == "se")%>%
+    filter(var.unit == "se" | var.unit == "sd")%>%
     # correct types
     mutate(
         mean_treatment = as.numeric(as.character(mean_treatment)),
@@ -260,12 +270,40 @@ ggplot(data = data_tc, aes(x = smd, y = reorder(pop_cn, smd), col = cite.key))+
     geom_point(size = 2)+
     geom_errorbarh(aes(xmax = upper, xmin = lower), height = 0.05)+
     geom_vline(xintercept = 0, linetype = "dashed")+
-    labs(title = "Standardised mean difference and confidence intervals")+
     xlab("Standardised mean difference")+
     ylab("Population")+
     theme_bw()+
     theme(text = element_text(size = 20),
-    legend.position = "top")+
-    facet_wrap(~outcome)
+    #remove legend
+    legend.position = "none"
+    )+
+    facet_wrap(~outcome, scales = "free")
 
 ggsave("es_tc.png", width = 16, height = 10, dpi = 300)
+
+# treatment - control studies that report confidence intervals
+
+data_tc_ci <- data_tc_ci%>%
+    # split var into upper and lower
+    mutate(var = str_split(var, "/"),
+    lower = as.numeric(sapply(var, function(x) x[1])),
+    upper = as.numeric(sapply(var, function(x) x[2])))%>%
+    # calculate uppper and lower when upper is NA
+    mutate(lower = ifelse(is.na(upper), mean - lower, lower),
+    upper = ifelse(is.na(upper), mean + (mean - lower), upper))
+
+# plot 
+
+ggplot(data = data_tc_ci, aes(y = mean, x = treatment, col = cite.key))+
+    geom_point(size = 2)+
+    geom_errorbar(aes(ymax = upper, ymin = lower), width = 0.05)+
+    geom_vline(xintercept = 0, linetype = "dashed")+
+    xlab("Effect size")+
+    ylab("Population")+
+    theme_bw()+
+    coord_flip()+
+    theme(text = element_text(size = 20),
+    legend.position = "none")+
+    facet_grid(outcome~pop_cn, scales = "free_x")
+
+ggsave("es_tc_ci.png", width = 32, height = 10, dpi = 300)

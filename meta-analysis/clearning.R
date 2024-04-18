@@ -35,17 +35,24 @@ data <- meta %>% left_join(effect, by = "cite.key")
 colnames(data) <- tolower(colnames(data))
 
 # merge pop_cn.x and pop_cn.y, where pop_cn.y is NA
+library(stringr)
 
 data <- data%>%
     mutate(pop_cn.y = as.character(pop_cn.y))%>%
     mutate(pop_cn = ifelse(pop_cn.y != "" | !is.na(pop_cn.y), pop_cn.y, pop_cn.x),
     pop_cn =  ifelse(pop_cn.x == "Multispecies", pop_cn.y, pop_cn.x)) %>%
-    select(-pop_cn.x, -pop_cn.y)
+    select(-pop_cn.x, -pop_cn.y)%>%
+    # str_trim
+    mutate(cite.key = str_trim(cite.key),
+            group = str_trim(group),
+            pop_cn = str_trim(pop_cn),
+            mean.unit = str_trim(mean.unit))
 
 # select outcome from effect onluy
 
 data <- data %>% select(-outcome.x)%>%
-    rename(outcome = outcome.y)
+    rename(outcome = outcome.y)%>%
+    mutate(outcome = str_trim(outcome))
 
 head(data)
 summary(data)

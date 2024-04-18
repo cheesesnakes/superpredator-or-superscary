@@ -25,7 +25,8 @@ data <- data %>%
     rename(pop_sn = pop_sn.y)%>%
     mutate(pop_sn = ifelse(is.na(pop_sn), pop_sn.x, pop_sn))%>%
     select(-pop_sn.x)%>%
-    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
+    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))%>%
+    filter(var.unit != "credible interval")
 
 # make trophic level as factor
 
@@ -81,7 +82,13 @@ data_cor <- data %>%
 
 data_cor <- data_cor %>%
     mutate(var = str_split(var, "/"),
-        upper = as.numeric(sapply(var, function(x) x[1])))%>%
+        upper = as.numeric(sapply(var, function(x) x[1])),
+        lower = as.numeric(sapply(var, function(x) x[2])))%>%
+    # calulate lower for se and sd
+    mutate(lower = ifelse(var.unit == "se", -(1.96*upper)+mean, 
+                            ifelse(var.unit == "sd", -(1.96*upper/sqrt(n))+mean, lower)),
+            upper = ifelse(var.unit == "se", (1.96*upper)+mean, 
+                            ifelse(var.unit == "sd", (1.96*upper/sqrt(n))+mean, upper)))%>%
     # convert vars to standard dev
     mutate(sd = ifelse(var.unit == "se", as.numeric(upper)*sqrt(n), 
                     ifelse(var.unit == "sd", as.numeric(upper), 
@@ -90,12 +97,13 @@ data_cor <- data_cor %>%
     mutate(multiplier = ifelse(is.na(multiplier), 1, multiplier))%>%
     # apply multiplier to mean, upper and lower 
     mutate(
-        mean = mean*multiplier)
+        mean = mean*multiplier,
+        upper = upper*multiplier,
+        lower = lower*multiplier)
 
 # convert regression coefficient to smd
 
 library(esc)
-library(purrr)
 
 data_cor_smd <- data.frame(esc_B(study = data_cor$cite.key, b = data_cor$mean, sdy = data_cor$sd, grp1n = data_cor$n, grp2n = data_cor$n)
 )
@@ -103,7 +111,7 @@ data_cor_smd <- data.frame(esc_B(study = data_cor$cite.key, b = data_cor$mean, s
 data_cor_smd <- data_cor_smd%>%
     rename(cite.key = study)%>%
     left_join(data_cor, by = c("cite.key"))%>%
-    select(cite.key, es, ci.lo, ci.hi, pop_cn, pop_sn, exposure, group, control, outcome, n, functional_group, trophic_level)%>%
+    select(cite.key, es, ci.lo, ci.hi, pop_cn, pop_sn, exposure, treatment, group, control, outcome, n, functional_group, trophic_level)%>%
     distinct(cite.key, es, group, outcome, .keep_all = T)%>%
     rename(smd = es,
             upper = ci.hi,
@@ -179,7 +187,7 @@ data_pb <- data_pb%>%
 # plot effect size and confidence intervals
 
 ggplot(data = data_pb, aes(y = smd, x = reorder(group, smd), col = pop_cn))+
-    geom_point(size = 2, position = position_dodge(preserve = "single"))+
+    geom_point(size = 2)+
     geom_errorbar(aes(ymax = upper, ymin = lower), width = 0.05)+
     geom_hline(yintercept = 0, linetype = "dashed")+
     labs(title = "Standardised mean difference and confidence intervals")+
@@ -243,40 +251,52 @@ data_tc <- data %>%
     # make n numeric
     mutate(n = as.numeric(n))%>%
     mutate(treatment = ifelse(treatment == "control", "control", "treatment"))%>%
+    # split var into upper and lower
+    mutate(var = str_split(var, "/"))%>%
     # convert standard deviation to standard error
-    mutate(var = ifelse(var.unit == "sd", as.numeric(var)/sqrt(n), var))
+    mutate(se = ifelse(var.unit == "sd", 
+                        as.numeric(sapply(var, function(x) x[1]))/sqrt(n), 
+                            ifelse(var.unit == "ci", 
+                                    as.numeric(sapply(var, function(x) x[1]))*1.96,  
+                                        as.numeric(sapply(var, function(x) x[1])))))
 
-# filter studies that report confidence intervals
-
-data_tc_ci <- data_tc%>%
-    filter(var.unit == "ci")
+data_tc <- data_tc%>%
+    filter(var.unit != "range")%>%
+    select(cite.key, group, pop_cn, outcome, treatment, mean, mean.unit, multiplier, se, n)%>%
+    distinct()%>%
+    # set types
+    mutate(mean =  as.numeric(mean),
+            se = as.numeric(se),
+            n = as.numeric(n))
 
 # spread mean and var for treatment and control
 
 data_tc <- data_tc%>%
-    group_by(cite.key, group, pop_cn, outcome)%>%
-    pivot_wider(names_from = treatment, values_from = c(mean, var, n))%>%
+    group_by(cite.key, pop_cn, group, outcome, mean.unit)%>%
+    pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
     ungroup()
 
 #  calculate standarised mean difference
 
 data_tc <- data_tc%>%
     # remove non - standard units (not se)
-    filter(var.unit == "se" | var.unit == "sd")%>%
     # correct types
     mutate(
         mean_treatment = as.numeric(as.character(mean_treatment)),
         mean_control = as.numeric(as.character(mean_control)),
-        var_treatment = as.numeric(as.character(var_treatment)),
-        var_control = as.numeric(as.character(var_control)),
+        var_treatment = se_treatment,
+        var_control = se_control,
         n_treatment = as.numeric(as.character(n_treatment)),
-        n_control = as.numeric(as.character(n_control)))%>%
+        n_control = as.numeric(as.character(n_control)))
+
+data_tc <- data_tc%>%
     mutate(
         smd = (mean_treatment - mean_control)/sqrt(((n_treatment - 1)*var_treatment*var_treatment + (n_control - 1)*var_control*var_control)/(n_treatment + n_control - 2)),
         se = sqrt((n_treatment + n_control)/(n_treatment*n_control) + smd^2/(2*(n_treatment + n_control - 2))),
         upper = smd + se*1.96,
-        lower = smd - se*1.96)%>%
+        lower = smd - se*1.96)
     # correction for foraging rates
+data_tc <- data_tc%>%
     mutate(smd = ifelse(!is.na(multiplier), smd*multiplier, smd),
     upper = ifelse(!is.na(multiplier), upper*multiplier, upper),
     lower = ifelse(!is.na(multiplier), lower*multiplier, lower))
@@ -304,12 +324,27 @@ data_tc <-  data_tc %>%
 data_tc <- data_tc%>%
     select(cite.key, smd, upper, lower, pop_cn, pop_sn, group, outcome, functional_group, trophic_level)
 
+
 data_tc$trophic_level <- as.factor(data_tc$trophic_level)
-    
+
+# add observational studies
+
 data_tc <- full_join(data_tc, data_cor_smd)
+
+# fix giordano mouse
+
+data_tc <- data_tc%>%
+    mutate(smd = ifelse(pop_cn == "Mouse" & is.na(smd), 0, smd),
+            upper = ifelse(pop_cn == "Mouse" & is.na(upper), 0, upper),
+            lower = ifelse(pop_cn == "Mouse" & is.na(lower), 0, lower))
 
 write.csv(data_tc, "data_tc.csv", row.names = F)
 
+# rename movement metrics
+
+data_tc <- data_tc%>%
+    mutate(outcome = ifelse(outcome == "displacement" | outcome == "movement rate" | outcome == "home range",
+                            "movement", outcome))
 # plot effect size and confidence intervals
 
 ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_level))+
@@ -320,49 +355,11 @@ ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_leve
     ylab("Population")+
     theme_bw()+
     theme(text = element_text(size = 20),
-    #remove legend
-    legend.position = "none"
+    legend.position = "top"
     )+
-    facet_wrap(~outcome, scales = "free")+
+    facet_wrap(~outcome, scales = "free_x")+
     # italicise x axis
-    theme(axis.text.y = element_text(face = "italic"))
+    theme(axis.text.y = element_text(face = "italic"))+
+    scale_color_brewer(name = "Trophic Level", palette = "Set1")
 
-ggsave("es_tc.png", width = 16, height = 9, dpi = 300)
-
-# treatment - control studies that report confidence intervals
-
-data_tc_ci <- data_tc_ci%>%
-    # split var into upper and lower
-    mutate(var = str_split(var, "/"),
-    lower = as.numeric(sapply(var, function(x) x[1])),
-    upper = as.numeric(sapply(var, function(x) x[2])))%>%
-    # calculate uppper and lower when upper is NA
-    mutate(lower = ifelse(is.na(upper), mean - lower, lower),
-    upper = ifelse(is.na(upper), mean + (mean - lower), upper))
-
-# add species information
-
-data_tc_ci <-  data_tc_ci %>%
-    left_join(pop, by = "pop_cn")%>%
-    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
-
-# plot 
-
-ggplot(data = data_tc_ci, aes(y = mean, x = treatment, col = cite.key))+
-    geom_point(size = 2)+
-    geom_errorbar(aes(ymax = upper, ymin = lower), width = 0.05)+
-    geom_vline(xintercept = 0, linetype = "dashed")+
-    xlab("Effect size")+
-    ylab("Population")+
-    theme_bw()+
-    coord_flip()+
-    theme(text = element_text(size = 20),
-    legend.position = "none")+
-    facet_grid(outcome~pop_sn, scales = "free_x")+
-    # italicise facet column
-    theme(strip.text.x = element_text(face = "italic"))+
-    scale_color_brewer(palette = "Set1")
-    
-
-ggsave("es_tc_ci.png", width = 12, height = 4.5, dpi = 300)
-
+ggsave("es_tc.png", width = 16, height = 8, dpi = 300)

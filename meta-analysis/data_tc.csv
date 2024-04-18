@@ -1,80 +1,92 @@
-"cite.key","smd","upper","lower","pop_cn","pop_sn","group","outcome","functional_group","trophic_level","exposure","control","n"
-"smith_2017",-1.92045493453009,-1.02129570250885,-2.81961416655133,"Puma","Puma concolor","","foraging","carnivore","3",NA,NA,NA
-"sever_2011",6.32019287312707,7.13114836056237,5.50923738569177,"Eurasian Coot","Fulica atra","","vigilance","herbivore","1",NA,NA,NA
-"sever_2011",10.6075467316994,11.8933852440505,9.32170821934823,"Eurasian Coot","Fulica atra","","vigilance","herbivore","1",NA,NA,NA
-"sever_2011",2.72136092289118,3.18094037654381,2.26178146923855,"Eurasian Coot","Fulica atra","","foraging","herbivore","1",NA,NA,NA
-"proff_2009",8.54449453571398,10.8940878351327,6.19490123629525,"Elk","Cervus elaphus","forested area","displacement","herbivore","1",NA,NA,NA
-"proff_2009",31.6209126771603,39.9338018659408,23.3080234883798,"Elk","Cervus elaphus","grassland","displacement","herbivore","1",NA,NA,NA
-"proff_2009",12.4049359678343,15.7318787788916,9.07799315677704,"Elk","Cervus elaphus","hills","displacement","herbivore","1",NA,NA,NA
-"podgo_2013",-6.35460378136973,-4.5312393517124,-8.17796821102706,"Wild Boar","Sus scofra","","home range","herbivore","1",NA,NA,NA
-"podgo_2013",4.63647852937006,6.23423254152897,3.03872451721116,"Wild Boar","Sus scofra","","displacement","herbivore","1",NA,NA,NA
-"pecor_2016",-3.82247573631501,-3.57315597148068,-4.07179550114935,"Fallow Deer","Dama dama","","foraging","herbivore","1",NA,NA,NA
-"pecor_2016",2.77998235368364,2.98787469090208,2.57209001646521,"Fallow Deer","Dama dama","","vigilance","herbivore","1",NA,NA,NA
-"pangl_2010",-3.83997138746124,-2.77673906320072,-4.90320371172176,"Spotted Hyena","Crocuta crocuta","","vigilance","carnivore","3",NA,NA,NA
-"murch_2016",-0.910945507695315,-0.191112554535545,-1.63077846085508,"Western Sandpiper","Calidris mauri","","foraging","insectivore","1",NA,NA,NA
-"murch_2016",-0.870219255933847,-0.15287220997329,-1.5875663018944,"Western Sandpiper","Calidris mauri","","vigilance","insectivore","1",NA,NA,NA
-"murch_2016",-0.526598166231298,0.326181911835854,-1.37937824429845,"Semipalmated Plover","Charadrius semipalmatus","","foraging","herbivore","1",NA,NA,NA
-"murch_2016",1.90849532652572,2.88323433114561,0.933756321905834,"Semipalmated Plover","Charadrius semipalmatus","","vigilance","herbivore","1",NA,NA,NA
-"matso_2005",NA,NA,NA,"Impala","Aepyceros melampus","Humani","vigilance","herbivore","1",NA,NA,NA
-"matso_2005",NA,NA,NA,"Impala","Aepyceros melampus","Senuko","vigilance","herbivore","1",NA,NA,NA
-"matso_2005",NA,NA,NA,"Impala","Aepyceros melampus","Humani","vigilance","herbivore","1",NA,NA,NA
-"matso_2005",NA,NA,NA,"Impala","Aepyceros melampus","Senuko","vigilance","herbivore","1",NA,NA,NA
-"lopes_2021",NA,NA,NA,"Capybaras","Hydrochoerus hydrochaeris","","home range","herbivore","1",NA,NA,NA
-"lopes_2021",NA,NA,NA,"Capybaras","Hydrochoerus hydrochaeris","","home range","herbivore","1",NA,NA,NA
-"loehr_2005",2.56879319556126,3.35753609202196,1.78005029910055,"Thinhorn Sheep","Ovis dalli","","vigilance","herbivore","1",NA,NA,NA
-"loehr_2005",3.55008125584147,4.49041830622215,2.60974420546079,"Thinhorn Sheep","Ovis dalli","","foraging","herbivore","1",NA,NA,NA
-"liVig_2015",318.371276236229,340.918556306232,295.823996166225,"Hooded Crane","Grys monacha","","foraging","insectivore","2",NA,NA,NA
-"liVig_2015",70.2574258186589,75.2372662819996,65.2775853553183,"Hooded Crane","Grys monacha","","vigilance","insectivore","2",NA,NA,NA
-"liCol_2016",-12.4970425110653,-10.419747120544,-14.5743379015865,"Hooded Crane","Grys monacha","","vigilance","insectivore","2",NA,NA,NA
-"jayak_2008",17.8402639465264,19.656200687971,16.0243272050818,"Red Deer","Cervus elephus","Treatment_1","vigilance","herbivore","1",NA,NA,NA
-"jayak_2008",29.1643269368523,33.0939258473027,25.2347280264019,"Red Deer","Cervus elephus","Treatment_2","vigilance","herbivore","1",NA,NA,NA
-"jayak_2008",-3.29551316148197,-2.85982252344348,-3.73120379952046,"Red Deer","Cervus elephus","Treatment_1","foraging","herbivore","1",NA,NA,NA
-"jayak_2008",-7.31189046419742,-6.18704415394755,-8.43673677444729,"Red Deer","Cervus elephus","Treatment_2","foraging","herbivore","1",NA,NA,NA
-"gavin_2006",-2.42535625036333,-2.09419707019819,-2.75651543052847,"Pronghorn Antelope","Antilocapra americana","","foraging","herbivore","1",NA,NA,NA
-"gavin_2006",3.11126983722081,3.4851803200644,2.73735935437722,"Pronghorn Antelope","Antilocapra americana","","vigilance","herbivore","1",NA,NA,NA
-"ferna_2000",44.9194202836373,55.037539225731,34.8013013415435,"Blackbird","Turdus merula","Moro","vigilance","omnivore","1",NA,NA,NA
-"ferna_2000",32.0387696177723,39.2685802776623,24.8089589578823,"Blackbird","Turdus merula","Oeste","vigilance","omnivore","1",NA,NA,NA
-"ferna_2000",47.3761543394987,58.0456308224875,36.7066778565098,"Blackbird","Turdus merula","Retiro","vigilance","omnivore","1",NA,NA,NA
-"ferna_2000",-21.503488089145,-16.6293457894275,-26.3776303888624,"Blackbird","Turdus merula","Moro","foraging","omnivore","1",NA,NA,NA
-"ferna_2000",-20,-15.4609354082123,-24.5390645917877,"Blackbird","Turdus merula","Oeste","foraging","omnivore","1",NA,NA,NA
-"ferna_2000",-21.3368155872849,-16.4998392845599,-26.1737918900098,"Blackbird","Turdus merula","Retiro","foraging","omnivore","1",NA,NA,NA
-"ciuti_2012",-7.63351056285547,-7.05029935153433,-8.21672177417661,"Elk","Cervus elaphus","","foraging","herbivore","1",NA,NA,NA
-"benha_2008",5.36153592572127,6.26522738660852,4.45784446483402,"Roe Deer","Capreolus capreolus","","vigilance","herbivore","1",NA,NA,NA
-"benev_2019",7.41103963389598,5.34223176138619,9.47984750640577,"Dusky Damselfish","Stegastes fuscus","scuba diver","foraging","herbivore","1",NA,NA,NA
-"benev_2019",4.92640626894742,3.45090649802686,6.40190603986798,"Dusky Damselfish","Stegastes fuscus","snorkeler","foraging","herbivore","1",NA,NA,NA
-"barri_2012",3.85333665054049,4.67819794024815,3.02847536083283,"Lesser Rhea","Rhea pennata pennata","","vigilance","herbivore","1",NA,NA,NA
-"barri_2012",-2.57831915082476,-1.91932034174368,-3.23731795990584,"Lesser Rhea","Rhea pennata pennata","","foraging","herbivore","1",NA,NA,NA
-"clinc_2016",-0.637708987646837,20.876806670392,-22.1522246456857,"Badger","Meles meles","human","foraging","omnivore","2",NA,NA,NA
-"clinc_2016",-0.388473057066371,11.2159353259577,-11.9928814400905,"Badger","Meles meles","human","vigilance","omnivore","2",NA,NA,NA
-"bhard_2022",-11.6229661908904,-11.6101501852724,-11.6357821965084,"Moose","Alces alces","human","vigilance","herbivore","1",NA,NA,NA
-"bhard_2022",-8.08393852946754,-8.02914345669635,-8.13873360223873,"Moose","Alces alces","human","foraging","herbivore","1",NA,NA,NA
-"rodeB_2006",-4.62097501588478,4.28623609400239,-13.528186125772,"Brown Bear","ursus arctos","salt marsh/male","foraging","omnivore","3",NA,NA,NA
-"rodeB_2006",-2.61516299109229,11.6248672199676,-16.8551932021522,"Brown Bear","ursus arctos","salt marsh","foraging","omnivore","3",NA,NA,NA
-"rodeB_2006",4.066034323822,8.88645600230315,-0.754387354659145,"Brown Bear","ursus arctos","river","foraging","omnivore","3",NA,NA,NA
-"monte_2020",-1.32582521472478,-1.10407652814468,-1.54757390130488,"Whale Shark","Rhincodon typus","","foraging","herbivore","1",NA,NA,NA
-"monte_2020",1.84210526315789,2.58690526315789,1.09730526315789,"Whale Shark","Rhincodon typus","","vigilance","herbivore","1",NA,NA,NA
-"uchidaHabituationSensitizationLongterm2021",NA,NA,NA,"Yellowbellied Marmot","Marmota flaviventris","","vigilance","herbivore","1","nonhunting disturbance","vigilance time",NA
-"sonnichsenBehaviouralResponsesEuropean2013",NA,NA,NA,"Roe Deer","Capreolus capreolus","","vigilance","herbivore","1","hunting/natural predator","negative control",NA
-"shannonRoadTrafficNoise2014",NA,NA,NA,"Prairie Dog","Cynomus ludovicianus","","foraging","herbivore","1","passive interaction/playback experiment","negative control",NA
-"shannonRoadTrafficNoise2014",NA,NA,NA,"Prairie Dog","Cynomus ludovicianus","","vigilance","herbivore","1","passive interaction/playback experiment","negative control",NA
-"reimersVigilanceFrightBehaviour2011",NA,NA,NA,"Svalbard Reindeer","Rangifer tarandus platyrhynchus","","vigilance","herbivore","1","hunting/nonhunting disturbance","negative control",NA
-"peksaDaytimeActivityBudget2018",0.0681184703307422,0.299169418515613,-0.162932477854128,"Tatra Chamois","Rupicapra rupicapra tatrica","","vigilance","herbivore","1","nonhunting disturbance","none",144
-"liQuantifyingHumanDisturbance2011",NA,NA,NA,"Yellowbellied Marmot","Marmota flaviventris","","vigilance","herbivore","1","nonhunting disturbance","none",NA
-"liQuantifyingHumanDisturbance2011",NA,NA,NA,"Yellowbellied Marmot","Marmota flaviventris","","foraging","herbivore","1","nonhunting disturbance","none",NA
-"lesmerisesRefugePredationRisk2017",NA,NA,NA,"Gaspesie Caribou","Rangifer tarandus caribou","","foraging","herbivore","1","nonhunting disturbance/passive interactions","none",NA
-"lesmerisesRefugePredationRisk2017",NA,NA,NA,"Gaspesie Caribou","Rangifer tarandus caribou","","vigilance","herbivore","1","nonhunting disturbance/passive interactions","none",NA
-"grignolioEffectsHuntingHounds2011",2.06100230037389,2.41287380912211,1.70913079162566,"Roe Deer","Capreolus capreolus","stalking","home range","herbivore","1","non-hunting disturbance","-",95
-"grignolioEffectsHuntingHounds2011",2.06100230037389,2.41287380912211,1.70913079162566,"Roe Deer","Capreolus capreolus","hunting with houds","home range","herbivore","1","non-hunting disturbance","-",86
-"grignolioEffectsHuntingHounds2011",2.12075662970373,2.49433552267726,1.7471777367302,"Roe Deer","Capreolus capreolus","stalking","home range","herbivore","1","non-hunting disturbance","-",95
-"grignolioEffectsHuntingHounds2011",2.12075662970373,2.49433552267726,1.7471777367302,"Roe Deer","Capreolus capreolus","hunting with houds","home range","herbivore","1","non-hunting disturbance","-",86
-"crosmaryVulnerabilityPredationWater2012",NA,NA,NA,"Impala","Aepyceros melampus","","vigilance","herbivore","1","hunting","negative control",NA
-"cristinavallinoBehaviouralResponsesHuman2019",-0.256843961125618,-0.0325663072528112,-0.481121614998425,"Alpine Chough","Pyrrhocorax graculus","","foraging",NA,"1","non-hunting disturbance","negative control",154
-"chen-krausHumanLemurCoexistenceMultipleUse2022",0.358769186092285,0.750009829663134,-0.0324714574785647,"Verreaux’s Sifaka","Propicthecus verreauxi","","vigilance","herbivore","1","nonhunting disturbance/passive interactions","none",51
-"chen-krausHumanLemurCoexistenceMultipleUse2022",0.358769186092285,0.750009829663134,-0.0324714574785647,"Verreaux’s Sifaka","Propicthecus verreauxi","","foraging","herbivore","1","nonhunting disturbance/passive interactions","none",51
-"chen-krausHumanLemurCoexistenceMultipleUse2022",-0.120046415060535,0.268433720281013,-0.508526550402082,"Verreaux’s Sifaka","Propicthecus verreauxi","","vigilance","herbivore","1","nonhunting disturbance/passive interactions","none",51
-"chen-krausHumanLemurCoexistenceMultipleUse2022",-0.120046415060535,0.268433720281013,-0.508526550402082,"Verreaux’s Sifaka","Propicthecus verreauxi","","foraging","herbivore","1","nonhunting disturbance/passive interactions","none",51
-"cappaEffectsRoadsBehaviour2017",-0.668964635466742,-0.451785388041348,-0.886143882892136,"Guanco","Lama guanicoe","","vigilance","herbivore","1","passive interaction","none",172
-"cappaEffectsRoadsBehaviour2017",-0.668964635466742,-0.451785388041348,-0.886143882892136,"Guanco","Lama guanicoe","","foraging","herbivore","1","passive interaction","none",182
-"cappaEffectsRoadsBehaviour2017",0.0764163469157101,0.281951371748672,-0.129118677917252,"Guanco","Lama guanicoe","","vigilance","herbivore","1","passive interaction","none",172
-"cappaEffectsRoadsBehaviour2017",0.0764163469157101,0.281951371748672,-0.129118677917252,"Guanco","Lama guanicoe","","foraging","herbivore","1","passive interaction","none",182
-"camillewardPredictorsVigilanceAmerican1997",0.373035083444059,0.785254879145672,-0.0391847122575535,"American Crow","Corvus branchyrhynchos","","vigilance","omnivore","2","non-hunting disturbance","none",46
+"cite.key","smd","upper","lower","pop_cn","pop_sn","group","outcome","functional_group","trophic_level","exposure","treatment","control","n"
+"smithFearHumanSuper2017",-1.92045493453009,-1.02129570250885,-2.81961416655133,"Puma","Puma concolor","","foraging","carnivore","3",NA,NA,NA,NA
+"shannonBehavioralResponsesAssociated2014",-0.173076959547217,-0.275685773688058,-0.0704681454063757,"Pronghorn","Antilocapra americana","","foraging","herbivore","1",NA,NA,NA,NA
+"shannonBehavioralResponsesAssociated2014",-0.101272673572159,-0.165877216056758,-0.0366681310875607,"Elk","Cervus elaphus","","foraging","herbivore","1",NA,NA,NA,NA
+"severcanEffectsFlockSize2011",6.32019287312708,7.13114836056238,5.50923738569178,"Eurasian Coot","Fulica atra","","vigilance","herbivore","1",NA,NA,NA,NA
+"severcanEffectsFlockSize2011",10.6075467316993,11.8933852440505,9.3217082193482,"Eurasian Coot","Fulica atra","","vigilance","herbivore","1",NA,NA,NA,NA
+"severcanEffectsFlockSize2011",2.72136092289117,3.18094037654381,2.26178146923854,"Eurasian Coot","Fulica atra","","foraging","herbivore","1",NA,NA,NA,NA
+"proffittContrastingEffectsWolves2009",8.54449453571399,10.8940878351327,6.19490123629526,"Elk","Cervus elaphus","forested area","displacement","herbivore","1",NA,NA,NA,NA
+"proffittContrastingEffectsWolves2009",31.6209126771603,39.9338018659408,23.3080234883798,"Elk","Cervus elaphus","grassland","displacement","herbivore","1",NA,NA,NA,NA
+"proffittContrastingEffectsWolves2009",12.4049359678343,15.7318787788916,9.07799315677704,"Elk","Cervus elaphus","hills","displacement","herbivore","1",NA,NA,NA,NA
+"podgorskiSpatiotemporalBehavioralPlasticity2013",-6.35460378136974,-4.5312393517124,-8.17796821102707,"Wild Boar","Sus scofra","","home range","herbivore","1",NA,NA,NA,NA
+"podgorskiSpatiotemporalBehavioralPlasticity2013",4.63647852937006,6.23423254152897,3.03872451721116,"Wild Boar","Sus scofra","","displacement","herbivore","1",NA,NA,NA,NA
+"pecorellaEffectsCullingVigilance2016",-3.82247573631501,-3.57315597148068,-4.07179550114935,"Fallow Deer","Dama dama","","foraging","herbivore","1",NA,NA,NA,NA
+"pecorellaEffectsCullingVigilance2016",2.77998235368364,2.98787469090208,2.57209001646521,"Fallow Deer","Dama dama","","vigilance","herbivore","1",NA,NA,NA,NA
+"pangleLethalNonlethalAnthropogenic2010",-3.83997138746124,-2.77673906320072,-4.90320371172176,"Spotted Hyena","Crocuta crocuta","","vigilance","carnivore","3",NA,NA,NA,NA
+"murchisonHumanActivityHabitat2016",-0.910945507695315,-0.191112554535545,-1.63077846085508,"Western Sandpiper","Calidris mauri","","foraging","insectivore","1",NA,NA,NA,NA
+"murchisonHumanActivityHabitat2016",-0.870219255933847,-0.15287220997329,-1.5875663018944,"Western Sandpiper","Calidris mauri","","vigilance","insectivore","1",NA,NA,NA,NA
+"murchisonHumanActivityHabitat2016",-0.526598166231298,0.326181911835854,-1.37937824429845,"Semipalmated Plover","Charadrius semipalmatus","","foraging","herbivore","1",NA,NA,NA,NA
+"murchisonHumanActivityHabitat2016",1.90849532652572,2.88323433114561,0.933756321905834,"Semipalmated Plover","Charadrius semipalmatus","","vigilance","herbivore","1",NA,NA,NA,NA
+"matsonFactorsAffectingVigilance2005",1.36492259803629,1.60587229697288,1.1239728990997,"Impala","Aepyceros melampus","","vigilance","herbivore","1",NA,NA,NA,NA
+"matsonFactorsAffectingVigilance2005",0.4113404858508,0.631539741081675,0.191141230619924,"Impala","Aepyceros melampus","","vigilance","herbivore","1",NA,NA,NA,NA
+"lopesHumanmodifiedLandscapesAlter2021",-3.64017692272218,-1.83691495754974,-5.44343888789463,"Capybaras","Hydrochoerus hydrochaeris","","home range","herbivore","1",NA,NA,NA,NA
+"loehrGenderAgeclassspecificReactions2005",2.56879319556126,3.35753609202196,1.78005029910055,"Thinhorn Sheep","Ovis dalli","","vigilance","herbivore","1",NA,NA,NA,NA
+"loehrGenderAgeclassspecificReactions2005",3.55008125584147,4.49041830622215,2.60974420546079,"Thinhorn Sheep","Ovis dalli","","foraging","herbivore","1",NA,NA,NA,NA
+"liVigilanceActivityTimeBudget2015",318.371276236228,340.918556306232,295.823996166225,"Hooded Crane","Grys monacha","","foraging","insectivore","2",NA,NA,NA,NA
+"liVigilanceActivityTimeBudget2015",70.2574258186591,75.2372662819998,65.2775853553184,"Hooded Crane","Grys monacha","","vigilance","insectivore","2",NA,NA,NA,NA
+"liCollectiveVigilanceWintering2016",-12.4970425110653,-10.419747120544,-14.5743379015865,"Hooded Crane","Grys monacha","","vigilance","insectivore","2",NA,NA,NA,NA
+"jayakodyRedDeerCervus2008",17.8402639465264,19.656200687971,16.0243272050818,"Red Deer","Cervus elephus","Treatment_1","vigilance","herbivore","1",NA,NA,NA,NA
+"jayakodyRedDeerCervus2008",29.1643269368523,33.0939258473027,25.2347280264019,"Red Deer","Cervus elephus","Treatment_2","vigilance","herbivore","1",NA,NA,NA,NA
+"jayakodyRedDeerCervus2008",-3.29551316148197,-2.85982252344348,-3.73120379952046,"Red Deer","Cervus elephus","Treatment_1","foraging","herbivore","1",NA,NA,NA,NA
+"jayakodyRedDeerCervus2008",-7.31189046419742,-6.18704415394755,-8.43673677444729,"Red Deer","Cervus elephus","Treatment_2","foraging","herbivore","1",NA,NA,NA,NA
+"giordanoPreyResponsesPredation2022",-0.289095777222765,0.178662369052975,-0.756853923498505,"Chipmunk","Tamias striatus","","foraging","herbivore","1",NA,NA,NA,NA
+"giordanoPreyResponsesPredation2022",1.0699507230576,1.63299848014488,0.506902965970323,"Mouse","Peromyscus leucopus","","foraging","herbivore","1",NA,NA,NA,NA
+"giordanoPreyResponsesPredation2022",1.12570778980235,1.62745226912888,0.623963310475823,"Chipmunk","Tamias striatus","","vigilance","herbivore","1",NA,NA,NA,NA
+"giordanoPreyResponsesPredation2022",0,0,0,"Mouse","Peromyscus leucopus","","vigilance","herbivore","1",NA,NA,NA,NA
+"gerte.olssonEffectsHuntingWillow1996",-0.158833128594524,0.272418283232268,-0.590084540421316,"Willow Grouse","Lagopus lagopus","","movement rate","herbivore","1",NA,NA,NA,NA
+"gerte.olssonEffectsHuntingWillow1996",-0.0587823276689553,0.371870054060074,-0.489434709397984,"Willow Grouse","Lagopus lagopus","","displacement","herbivore","1",NA,NA,NA,NA
+"gavinPronghornAntilocapraAmericana2006",-2.42535625036333,-2.09419707019819,-2.75651543052847,"Pronghorn Antelope","Antilocapra americana","","foraging","herbivore","1",NA,NA,NA,NA
+"gavinPronghornAntilocapraAmericana2006",3.11126983722081,3.4851803200644,2.73735935437722,"Pronghorn Antelope","Antilocapra americana","","vigilance","herbivore","1",NA,NA,NA,NA
+"fernandez-juricicEffectsHumanDisturbance2000",44.9194202836373,55.037539225731,34.8013013415435,"Blackbird","Turdus merula","Moro","vigilance","omnivore","1",NA,NA,NA,NA
+"fernandez-juricicEffectsHumanDisturbance2000",32.0387696177723,39.2685802776623,24.8089589578823,"Blackbird","Turdus merula","Oeste","vigilance","omnivore","1",NA,NA,NA,NA
+"fernandez-juricicEffectsHumanDisturbance2000",47.3761543394987,58.0456308224875,36.7066778565098,"Blackbird","Turdus merula","Retiro","vigilance","omnivore","1",NA,NA,NA,NA
+"fernandez-juricicEffectsHumanDisturbance2000",-21.503488089145,-16.6293457894275,-26.3776303888624,"Blackbird","Turdus merula","Moro","foraging","omnivore","1",NA,NA,NA,NA
+"fernandez-juricicEffectsHumanDisturbance2000",-20,-15.4609354082123,-24.5390645917877,"Blackbird","Turdus merula","Oeste","foraging","omnivore","1",NA,NA,NA,NA
+"fernandez-juricicEffectsHumanDisturbance2000",-21.3368155872849,-16.4998392845599,-26.1737918900098,"Blackbird","Turdus merula","Retiro","foraging","omnivore","1",NA,NA,NA,NA
+"ciutiEffectsHumansBehaviour2012",-7.63351056285547,-7.05029935153433,-8.21672177417661,"Elk","Cervus elaphus","","foraging","herbivore","1",NA,NA,NA,NA
+"benhaiemHuntingIncreasesVigilance2008",5.36153592572128,6.26522738660853,4.45784446483403,"Roe Deer","Capreolus capreolus","","vigilance","herbivore","1",NA,NA,NA,NA
+"benevidesFearinducedBehaviouralModifications2019",7.41103963389598,5.34223176138619,9.47984750640577,"Dusky Damselfish","Stegastes fuscus","scuba diver","foraging","herbivore","1",NA,NA,NA,NA
+"benevidesFearinducedBehaviouralModifications2019",4.92640626894742,3.45090649802686,6.40190603986798,"Dusky Damselfish","Stegastes fuscus","snorkeler","foraging","herbivore","1",NA,NA,NA,NA
+"barriEffectsGroupSize2012",3.85333665054049,4.67819794024815,3.02847536083283,"Lesser Rhea","Rhea pennata pennata","","vigilance","herbivore","1",NA,NA,NA,NA
+"barriEffectsGroupSize2012",-2.57831915082476,-1.91932034174368,-3.23731795990584,"Lesser Rhea","Rhea pennata pennata","","foraging","herbivore","1",NA,NA,NA,NA
+"clinchyFearHumanSuper2016",-0.637708987646837,20.876806670392,-22.1522246456857,"Badger","Meles meles","human","foraging","omnivore","2",NA,NA,NA,NA
+"clinchyFearHumanSuper2016",-0.388473057066371,11.2159353259577,-11.9928814400905,"Badger","Meles meles","human","vigilance","omnivore","2",NA,NA,NA,NA
+"bhardwajInducingFearUsing2022",-11.6229661908904,-11.6101501852724,-11.6357821965084,"Moose","Alces alces","human","vigilance","herbivore","1",NA,NA,NA,NA
+"bhardwajInducingFearUsing2022",-8.08393852946754,-8.02914345669635,-8.13873360223873,"Moose","Alces alces","human","foraging","herbivore","1",NA,NA,NA,NA
+"rodeBehavioralResponsesBrown2006",-4.62097501588478,4.28623609400239,-13.528186125772,"Brown Bear","ursus arctos","salt marsh/male","foraging","omnivore","3",NA,NA,NA,NA
+"rodeBehavioralResponsesBrown2006",-2.61516299109229,11.6248672199676,-16.8551932021522,"Brown Bear","ursus arctos","salt marsh","foraging","omnivore","3",NA,NA,NA,NA
+"rodeBehavioralResponsesBrown2006",4.066034323822,8.88645600230315,-0.754387354659145,"Brown Bear","ursus arctos","river","foraging","omnivore","3",NA,NA,NA,NA
+"montero-quintanaEcotourismImpactsBehaviour2020",-1.32582521472478,-1.10407652814468,-1.54757390130488,"Whale Shark","Rhincodon typus","","foraging","herbivore","1",NA,NA,NA,NA
+"montero-quintanaEcotourismImpactsBehaviour2020",1.84210526315789,2.58690526315789,1.09730526315789,"Whale Shark","Rhincodon typus","","vigilance","herbivore","1",NA,NA,NA,NA
+"uchidaHabituationSensitizationLongterm2021",-0.0881428767765935,0.0678591809315669,-0.244144934484754,"Yellowbellied Marmot","Marmota flaviventris","","vigilance","herbivore","1","nonhunting disturbance","control:disturbance","vigilance time",316
+"sonnichsenBehaviouralResponsesEuropean2013",0.15939376688247,0.458759705842848,-0.139972172077907,"Roe Deer","Capreolus capreolus","","vigilance","herbivore","1","hunting/natural predator","treatment:control","negative control",86
+"shannonRoadTrafficNoise2014",-0.338731750982404,0.285492131872395,-0.962955633837203,"Prairie Dog","Cynomus ludovicianus","","foraging","herbivore","1","passive interaction/playback experiment","control:treatment","negative control",20
+"shannonRoadTrafficNoise2014",-0.338731750982404,0.285492131872395,-0.962955633837203,"Prairie Dog","Cynomus ludovicianus","","vigilance","herbivore","1","passive interaction/playback experiment","control:treatment","negative control",20
+"shannonRoadTrafficNoise2014",0.527245401698436,1.15771694070766,-0.10322613731079,"Prairie Dog","Cynomus ludovicianus","","foraging","herbivore","1","passive interaction/playback experiment","control:treatment","negative control",20
+"shannonRoadTrafficNoise2014",0.527245401698436,1.15771694070766,-0.10322613731079,"Prairie Dog","Cynomus ludovicianus","","vigilance","herbivore","1","passive interaction/playback experiment","control:treatment","negative control",20
+"reimersVigilanceFrightBehaviour2011",-5.00783068623669,-4.67219697152758,-5.3434644009458,"Svalbard Reindeer","Rangifer tarandus platyrhynchus","","vigilance","herbivore","1","hunting/nonhunting disturbance","disturbance","negative control",282
+"reimersVigilanceFrightBehaviour2011",-0.758476999598001,-0.591394321229063,-0.925559677966939,"Svalbard Reindeer","Rangifer tarandus platyrhynchus","","vigilance","herbivore","1","hunting/nonhunting disturbance","disturbance","negative control",282
+"reimersVigilanceFrightBehaviour2011",0.0293616000889532,0.194429236937671,-0.135706036759764,"Svalbard Reindeer","Rangifer tarandus platyrhynchus","","vigilance","herbivore","1","hunting/nonhunting disturbance","disturbance","negative control",282
+"reimersVigilanceFrightBehaviour2011",0.0314279145794798,0.192818757228934,-0.129962928069975,"Svalbard Reindeer","Rangifer tarandus platyrhynchus","","vigilance","herbivore","1","hunting/nonhunting disturbance","disturbance","negative control",282
+"peksaDaytimeActivityBudget2018",0.024504952659661,0.255497592233771,-0.206487686914449,"Tatra Chamois","Rupicapra rupicapra tatrica","","vigilance","herbivore","1","nonhunting disturbance","disturbance","none",144
+"lesmerisesRefugePredationRisk2017",-0.00793183193977813,0.21051807223022,-0.226381736109776,"Gaspesie Caribou","Rangifer tarandus caribou","","foraging","herbivore","1","nonhunting disturbance/passive interactions","disturbance","none",161
+"lesmerisesRefugePredationRisk2017",-0.00793183193977813,0.21051807223022,-0.226381736109776,"Gaspesie Caribou","Rangifer tarandus caribou","","vigilance","herbivore","1","nonhunting disturbance/passive interactions","disturbance","none",161
+"lesmerisesRefugePredationRisk2017",-0.0753243156047659,0.143202179982468,-0.293850811192,"Gaspesie Caribou","Rangifer tarandus caribou","","foraging","herbivore","1","nonhunting disturbance/passive interactions","disturbance","none",161
+"lesmerisesRefugePredationRisk2017",-0.0753243156047659,0.143202179982468,-0.293850811192,"Gaspesie Caribou","Rangifer tarandus caribou","","vigilance","herbivore","1","nonhunting disturbance/passive interactions","disturbance","none",161
+"grignolioEffectsHuntingHounds2011",1.11365497495551,1.41928612977851,0.808023820132504,"Roe Deer","Capreolus capreolus","stalking","home range","herbivore","1","non-hunting disturbance","treatment","-",95
+"grignolioEffectsHuntingHounds2011",1.11365497495551,1.41928612977851,0.808023820132504,"Roe Deer","Capreolus capreolus","hunting with houds","home range","herbivore","1","non-hunting disturbance","treatment","-",86
+"grignolioEffectsHuntingHounds2011",1.09865613260125,1.41930448274781,0.778007782454691,"Roe Deer","Capreolus capreolus","stalking","home range","herbivore","1","non-hunting disturbance","treatment","-",95
+"grignolioEffectsHuntingHounds2011",1.09865613260125,1.41930448274781,0.778007782454691,"Roe Deer","Capreolus capreolus","hunting with houds","home range","herbivore","1","non-hunting disturbance","treatment","-",86
+"crosmaryVulnerabilityPredationWater2012",0.25368260388227,0.423995400282446,0.0833698074820951,"Impala","Aepyceros melampus","","vigilance","herbivore","1","hunting","Control:hunted","negative control",267
+"crosmaryVulnerabilityPredationWater2012",0.403686174967793,0.61594579020579,0.191426559729796,"Impala","Aepyceros melampus","","vigilance","herbivore","1","hunting","Control:hunted","negative control",267
+"crosmaryVulnerabilityPredationWater2012",0.810614103238642,1.20667891361101,0.414549292866279,"Impala","Aepyceros melampus","","vigilance","herbivore","1","hunting","Control:hunted","negative control",267
+"cristinavallinoBehaviouralResponsesHuman2019",-0.212353799665626,0.011633451511411,-0.436341050842664,"Alpine Chough","Pyrrhocorax graculus","","foraging",NA,"1","non-hunting disturbance","disturbance","negative control",154
+"chen-krausHumanLemurCoexistenceMultipleUse2022",0.358769186092285,0.750009829663134,-0.0324714574785647,"Verreaux’s Sifaka","Propicthecus verreauxi","","vigilance","herbivore","1","nonhunting disturbance/passive interactions","disturbance","none",51
+"chen-krausHumanLemurCoexistenceMultipleUse2022",0.358769186092285,0.750009829663134,-0.0324714574785647,"Verreaux’s Sifaka","Propicthecus verreauxi","","foraging","herbivore","1","nonhunting disturbance/passive interactions","disturbance","none",51
+"chen-krausHumanLemurCoexistenceMultipleUse2022",-0.120046415060535,0.268433720281013,-0.508526550402082,"Verreaux’s Sifaka","Propicthecus verreauxi","","vigilance","herbivore","1","nonhunting disturbance/passive interactions","disturbance","none",51
+"chen-krausHumanLemurCoexistenceMultipleUse2022",-0.120046415060535,0.268433720281013,-0.508526550402082,"Verreaux’s Sifaka","Propicthecus verreauxi","","foraging","herbivore","1","nonhunting disturbance/passive interactions","disturbance","none",51
+"cappaEffectsRoadsBehaviour2017",-0.668964635466742,-0.451785388041348,-0.886143882892136,"Guanco","Lama guanicoe","","vigilance","herbivore","1","passive interaction","distance to disturbance","none",172
+"cappaEffectsRoadsBehaviour2017",-0.668964635466742,-0.451785388041348,-0.886143882892136,"Guanco","Lama guanicoe","","foraging","herbivore","1","passive interaction","distance to disturbance","none",182
+"cappaEffectsRoadsBehaviour2017",0.0764163469157101,0.281951371748672,-0.129118677917252,"Guanco","Lama guanicoe","","vigilance","herbivore","1","passive interaction","distance to disturbance","none",172
+"cappaEffectsRoadsBehaviour2017",0.0764163469157101,0.281951371748672,-0.129118677917252,"Guanco","Lama guanicoe","","foraging","herbivore","1","passive interaction","distance to disturbance","none",182
+"camillewardPredictorsVigilanceAmerican1997",0.722729988237994,1.14454164081411,0.30091833566188,"American Crow","Corvus branchyrhynchos","","vigilance","omnivore","2","non-hunting disturbance","distance to disturbance","none",46

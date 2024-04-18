@@ -80,26 +80,38 @@ data_cor <- data %>%
 ## format var data for ci
 
 data_cor <- data_cor %>%
-    mutate(
-        se = as.numeric(ifelse(var.unit == "se", var, NA)),
-        var = str_split(var, "/"),
-        upper = as.numeric(sapply(var, function(x) x[1])),
-        lower = as.numeric(sapply(var, function(x) x[2])))%>%
-    # upper and lower ci for se 
-    mutate(
-        upper = (ifelse(var.unit == "se", mean + se*1.96, upper)),
-        lower = (ifelse(var.unit == "se", mean - se*1.96, lower)))%>%
+    mutate(var = str_split(var, "/"),
+        upper = as.numeric(sapply(var, function(x) x[1])))%>%
+    # convert vars to standard dev
+    mutate(sd = ifelse(var.unit == "se", as.numeric(upper)*sqrt(n), 
+                    ifelse(var.unit == "sd", as.numeric(upper), 
+                            ifelse(var.unit == "ci", upper*sqrt(n)/1.96, NA))))%>%
     # replace NA multiplier with 1
     mutate(multiplier = ifelse(is.na(multiplier), 1, multiplier))%>%
     # apply multiplier to mean, upper and lower 
     mutate(
-        mean = mean*multiplier,
-        upper = upper*multiplier,
-        lower = lower*multiplier)
+        mean = mean*multiplier)
+
+# convert regression coefficient to smd
+
+library(esc)
+library(purrr)
+
+data_cor_smd <- data.frame(esc_B(study = data_cor$cite.key, b = data_cor$mean, sdy = data_cor$sd, grp1n = data_cor$n, grp2n = data_cor$n)
+)
+
+data_cor_smd <- data_cor_smd%>%
+    rename(cite.key = study)%>%
+    left_join(data_cor, by = c("cite.key"))%>%
+    select(cite.key, es, ci.lo, ci.hi, pop_cn, pop_sn, exposure, group, control, outcome, n, functional_group, trophic_level)%>%
+    distinct(cite.key, es, group, outcome, .keep_all = T)%>%
+    rename(smd = es,
+            upper = ci.hi,
+            lower= ci.lo)
 
 # plot effect size and confidence intervals
 
-ggplot(data = data_cor, aes(x = mean, y = reorder(pop_sn, mean), col = cite.key))+
+ggplot(data = data_cor, aes(x = mean, y = reorder(pop_sn, mean), col = trophic_level))+
     geom_point(size = 2)+
     geom_errorbarh(aes(xmax = upper, xmin = lower), height = 0.05)+
     geom_vline(xintercept = 0, linetype = "dashed")+
@@ -108,7 +120,7 @@ ggplot(data = data_cor, aes(x = mean, y = reorder(pop_sn, mean), col = cite.key)
     theme_bw()+
     theme(text = element_text(size = 20),
     legend.position = "none")+
-    facet_grid(trophic_level~outcome, scales = "free")+
+    facet_wrap(~outcome, scales = "free_x")+
     # italicise x axis
     theme(axis.text.y = element_text(face = "italic"))
 
@@ -289,9 +301,18 @@ data_tc <-  data_tc %>%
     left_join(pop, by = "pop_cn")%>%
     mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
 
+data_tc <- data_tc%>%
+    select(cite.key, smd, upper, lower, pop_cn, pop_sn, group, outcome, functional_group, trophic_level)
+
+data_tc$trophic_level <- as.factor(data_tc$trophic_level)
+    
+data_tc <- full_join(data_tc, data_cor_smd)
+
+write.csv(data_tc, "data_tc.csv", row.names = F)
+
 # plot effect size and confidence intervals
 
-ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = cite.key))+
+ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_level))+
     geom_point(size = 2)+
     geom_errorbarh(aes(xmax = upper, xmin = lower), height = 0.05)+
     geom_vline(xintercept = 0, linetype = "dashed")+
@@ -302,7 +323,7 @@ ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = cite.key))+
     #remove legend
     legend.position = "none"
     )+
-    facet_grid(trophic_level~outcome, scales = "free")+
+    facet_wrap(~outcome, scales = "free")+
     # italicise x axis
     theme(axis.text.y = element_text(face = "italic"))
 

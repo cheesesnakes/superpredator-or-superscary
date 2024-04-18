@@ -96,12 +96,4 @@ library(stringr, help, pos = 2, lib.loc = NULL)
 data <- data %>%
     mutate(pop_cn = str_to_title(pop_cn))
 
-# fixing cite.keys
-library(purrr)
-
-
-data <- data %>%
-    mutate(cite.key = as.character(cite.key)) %>%
-    # choose the first five letters and the last four 
-    mutate(cite.key = str_sub(cite.key, 1, 5) %>% paste(str_sub(cite.key, -4, -1), sep = "_"))
 

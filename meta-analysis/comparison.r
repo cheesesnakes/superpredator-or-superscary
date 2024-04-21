@@ -108,21 +108,7 @@ print(comp_stat)
 
 # subgroup analysis
 
-metagen(
-            TE = smd,
-            seTE = se,
-            data = data_comp,
-            studlab = cite.key,
-            comb.fixed = FALSE,
-            comb.random = TRUE,
-            hakn = TRUE,
-            method.tau = "DL",
-            prediction = TRUE,
-            sm = "SMD",
-            title = "Effect of type of human activity on effect size",
-            subgroup = exposure
-
-        )
+meta_stat <- data.frame()
 
 for (i in unique(data_tc_smd$outcome)) {
  
@@ -141,8 +127,19 @@ for (i in unique(data_tc_smd$outcome)) {
             prediction = TRUE,
             sm = "SMD",
             title = paste("Effect of type of human activity on effect size for", i),
-            subgroup = exposure
+            subgroup = exposure,
+            method.ci = "z",
+            method.random.ci = "KR"
         )
+
+    stat_subg <- cbind(stat$TE.random.w, stat$upper.random.w, stat$lower.random.w)
+
+    stat_subg <- as.data.frame(stat_subg)%>%tibble::rownames_to_column("exposure")
+
+    stat_subg <- stat_subg%>%
+        mutate(outcome = i)
+
+    meta_stat <- rbind(meta_stat, stat_subg)
 
     print(stat)
 
@@ -152,9 +149,24 @@ for (i in unique(data_tc_smd$outcome)) {
 
 }
 
+meta_stat
+colnames(meta_stat) <- c("exposure", "E", "upper", "lower", "outcome")
+
+meta_stat%>%
+    mutate(exposure = factor(exposure, levels = c("Hunting", "Active Disturbance", "Passive Disturbance")))%>%
+    ggplot(aes(x = exposure, y = E, ymin = lower, ymax = upper, col = outcome))+
+    geom_pointrange(position = position_dodge(width = 0.5), size = 1, linewidth = 1)+
+    geom_hline(yintercept = 0, linetype = "dashed")+
+    labs(x = "Type of Human Activity", y = "Summary Effect (± 95% prediction interval)")+
+    theme_bw()+
+    theme(legend.position = "top")
+
+ggsave("es_meta_subgroup.png", width = 8, height = 8, dpi = 300)
+
 # difference between hunting and non-hunting
 
 comp_stat%>%
+    mutate(exposure = factor(exposure, levels = c("Hunting", "Active Disturbance", "Passive Disturbance")))%>%
     ggplot(aes(x = exposure, y = E, ymin = lower, ymax = upper, col = outcome, shape = outcome))+
     geom_pointrange(position = position_dodge(width = 0.5), size = 1, linewidth = 1)+
     geom_hline(yintercept = 0, linetype = "dashed")+
@@ -163,7 +175,19 @@ comp_stat%>%
     theme(legend.position = "top")+
     scale_color_brewer(name = "Outcome", palette = "Set1")+
     # remove shape legend
-    guides(shape = "none")+
-    scale_x_discrete(labels = c("Hunting", "Active disturbance", "Passive disturbance"))
+    guides(shape = "none")
 
 ggsave("es_diff.png", width = 8, height = 8, dpi = 300)
+
+# funnel plot
+
+ggplot(data_comp, aes(x = smd, y = 1/se, col = outcome, shape = exposure))+
+    geom_point(size = 2)+
+    geom_vline(xintercept = 0, linetype = "dashed")+
+    labs(x = "Effect size", y = "1/√variance")+
+    theme_bw()+
+    theme(legend.position = "top")+
+    scale_color_brewer(name = "Outcome", palette = "Set1")+
+    scale_shape_manual(values = c(1, 2, 3))
+
+ggsave("funnel.png", width = 8, height = 8, dpi = 300)

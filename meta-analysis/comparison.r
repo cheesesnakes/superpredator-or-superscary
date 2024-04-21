@@ -13,7 +13,7 @@ data_comp <- data_tc_smd%>%
            outcome = outcome.x,
            exposure = exposure.x)%>%
     mutate(exposure = ifelse(is.na(exposure), exposure.y, exposure))%>%
-    select(cite.key, group, exposure, treatment, pop_cn, outcome, smd, upper, lower)
+    select(cite.key, group, exposure, treatment, pop_cn, outcome, smd, se, upper, lower)
 
 # clearning exposure data
 
@@ -74,8 +74,6 @@ data_comp %>%
     # italicise x-axis labels
     theme(axis.text.y = element_text(face = "italic"))
     
-
-
 ggsave("es_comp.png", width = 8, height = 8, dpi = 300)
 
 # is hunting different from non-hunting?
@@ -107,6 +105,52 @@ comp_stat <- data_comp%>%
                 upper = E + 1.96*sqrt(var_E))
 
 print(comp_stat)
+
+# subgroup analysis
+
+metagen(
+            TE = smd,
+            seTE = se,
+            data = data_comp,
+            studlab = cite.key,
+            comb.fixed = FALSE,
+            comb.random = TRUE,
+            hakn = TRUE,
+            method.tau = "DL",
+            prediction = TRUE,
+            sm = "SMD",
+            title = "Effect of type of human activity on effect size",
+            subgroup = exposure
+
+        )
+
+for (i in unique(data_tc_smd$outcome)) {
+ 
+    data <- data_comp %>%
+        filter(outcome == i)
+
+    stat <- metagen(
+            TE = smd,
+            seTE = se,
+            data = data,
+            studlab = cite.key,
+            comb.fixed = FALSE,
+            comb.random = TRUE,
+            hakn = TRUE,
+            method.tau = "DL",
+            prediction = TRUE,
+            sm = "SMD",
+            title = paste("Effect of type of human activity on effect size for", i),
+            subgroup = exposure
+        )
+
+    print(stat)
+
+    # save forest plot
+
+    forest(stat, file = paste0("forest_", i, ".png"), width = 1000)
+
+}
 
 # difference between hunting and non-hunting
 

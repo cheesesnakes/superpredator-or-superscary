@@ -385,6 +385,10 @@ for (i in unique(data_tc_smd$outcome)) {
         )
 
     print(stat)
+
+    # save forest plot
+
+    forest(stat, file = paste0("meta_", i, ".png"), width = 1000)
 }
 
 ## using functions fro function.R

@@ -26,12 +26,13 @@ data <- data %>%
     mutate(pop_sn = ifelse(is.na(pop_sn), pop_sn.x, pop_sn))%>%
     select(-pop_sn.x)%>%
     mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))%>%
-    filter(var.unit != "credible interval")
-
+    filter(var.unit != "credible interval" )%>%
+    filter(var.unit != "interquantile")
 # make trophic level as factor
 
 data <- data %>%
     mutate(trophic_level = as.factor(trophic_level))
+
 # summaries --------------------------------------------
 
 ## total number of studies in meta analysis
@@ -76,7 +77,7 @@ ggplot(data, aes(x = reorder(pop_sn, pop_sn, FUN = length))) +
 # Corelational studies --------------------------------------------
 
 data_cor <- data %>%
-    filter(study_type == "correlational")
+    filter(study_type == "correlational" & mean.unit == "coefficient" | mean.unit == "odds")
 
 ## format var data for ci
 
@@ -111,8 +112,8 @@ data_cor_smd <- data.frame(esc_B(study = data_cor$cite.key, b = data_cor$mean, s
 data_cor_smd <- data_cor_smd%>%
     rename(cite.key = study)%>%
     left_join(data_cor, by = c("cite.key"))%>%
-    select(cite.key, es, ci.lo, ci.hi, pop_cn, pop_sn, exposure, treatment, group, control, outcome, n, functional_group, trophic_level)%>%
-    distinct(cite.key, es, group, outcome, .keep_all = T)%>%
+    select(cite.key, es, se, ci.lo, ci.hi, pop_cn, pop_sn, exposure, treatment, group, control, outcome, n, functional_group, trophic_level)%>%
+    distinct(cite.key, es, group, outcome, .keep_all = TRUE)%>%
     rename(smd = es,
             upper = ci.hi,
             lower= ci.lo)
@@ -182,7 +183,8 @@ data_pb <- data_pb%>%
     mutate(
         smd = (mean_treatment - mean_control)/sqrt(se_treatment^2 + se_control^2),
         upper = smd + 1.96*sqrt(se_treatment^2 + se_control^2),
-        lower = smd - 1.96*sqrt(se_treatment^2 + se_control^2))
+        lower = smd - 1.96*sqrt(se_treatment^2 + se_control^2),
+        se = sqrt(se_treatment^2 + se_control^2))
 
 # plot effect size and confidence intervals
 
@@ -241,13 +243,14 @@ data_baci <- data_baci%>%
     mutate(
         smd = (mean_treatment - mean_control)/sqrt(var_treatment^2 + var_control^2),
         upper = smd + 1.96*sqrt(var_treatment^2 + var_control^2),
-        lower = smd - 1.96*sqrt(var_treatment^2 + var_control^2))
+        lower = smd - 1.96*sqrt(var_treatment^2 + var_control^2),
+        se = sqrt(var_treatment^2 + var_control^2))
 
 # Treatment - control studies --------------------------------------------
 
 data_tc <- data %>%
-    filter(study_type == "treatment-control")%>%
-    select(cite.key, group, pop_cn, treatment, outcome, multiplier, mean, mean.unit, var, var.unit, n, remarks)%>%
+    filter(study_type == "treatment-control" | study_type == "correlational" & mean.unit != "coefficient")%>%
+    select(cite.key, group, pop_cn, exposure, treatment, outcome, multiplier, mean, mean.unit, var, var.unit, n, remarks)%>%
     # make n numeric
     mutate(n = as.numeric(n))%>%
     mutate(treatment = ifelse(treatment == "control", "control", "treatment"))%>%
@@ -257,12 +260,12 @@ data_tc <- data %>%
     mutate(se = ifelse(var.unit == "sd", 
                         as.numeric(sapply(var, function(x) x[1]))/sqrt(n), 
                             ifelse(var.unit == "ci", 
-                                    as.numeric(sapply(var, function(x) x[1]))*1.96,  
+                                    abs(as.numeric(sapply(var, function(x) x[1])) - mean )/1.96,  
                                         as.numeric(sapply(var, function(x) x[1])))))
 
 data_tc <- data_tc%>%
     filter(var.unit != "range")%>%
-    select(cite.key, group, pop_cn, outcome, treatment, mean, mean.unit, multiplier, se, n)%>%
+    select(cite.key, group, pop_cn, outcome, exposure, treatment, mean, mean.unit, multiplier, se, n)%>%
     distinct()%>%
     # set types
     mutate(mean =  as.numeric(mean),
@@ -272,7 +275,7 @@ data_tc <- data_tc%>%
 # spread mean and var for treatment and control
 
 data_tc <- data_tc%>%
-    group_by(cite.key, pop_cn, group, outcome, mean.unit)%>%
+    group_by(cite.key, pop_cn, group, exposure, outcome, mean.unit)%>%
     pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
     ungroup()
 
@@ -294,8 +297,10 @@ data_tc <- data_tc%>%
         smd = (mean_treatment - mean_control)/sqrt(((n_treatment - 1)*var_treatment*var_treatment + (n_control - 1)*var_control*var_control)/(n_treatment + n_control - 2)),
         se = sqrt((n_treatment + n_control)/(n_treatment*n_control) + smd^2/(2*(n_treatment + n_control - 2))),
         upper = smd + se*1.96,
-        lower = smd - se*1.96)
-    # correction for foraging rates
+        lower = smd - se*1.96,
+        var = se^2)
+
+# correction for foraging rates
 data_tc <- data_tc%>%
     mutate(smd = ifelse(!is.na(multiplier), smd*multiplier, smd),
     upper = ifelse(!is.na(multiplier), upper*multiplier, upper),
@@ -307,13 +312,13 @@ data_tc <- data_tc%>%
 data_tc <- data_tc%>%
     bind_rows(data_pb%>%
     filter(group == "human" & outcome != "latency" )%>%
-    select(cite.key, group, pop_cn, outcome, smd, upper, lower))
+    select(cite.key, group, pop_cn, outcome, smd, se, upper, lower))
 
 # add studies from baci
 
 data_tc <- data_tc%>%
     bind_rows(data_baci%>%
-    select(cite.key, group, pop_cn, outcome, smd, upper, lower))
+    select(cite.key, group, pop_cn, outcome, smd, se, upper, lower))
 
 # add species information
 
@@ -322,14 +327,19 @@ data_tc <-  data_tc %>%
     mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
 
 data_tc <- data_tc%>%
-    select(cite.key, smd, upper, lower, pop_cn, pop_sn, group, outcome, functional_group, trophic_level)
-
+    select(cite.key, smd, se, upper, lower, pop_cn, pop_sn, group, exposure, outcome, functional_group, trophic_level)
 
 data_tc$trophic_level <- as.factor(data_tc$trophic_level)
 
 # add observational studies
 
 data_tc <- full_join(data_tc, data_cor_smd)
+
+# rename movement metrics
+
+data_tc <- data_tc%>%
+    mutate(outcome = ifelse(outcome == "displacement" | outcome == "movement rate" | outcome == "home range",
+                            "movement", outcome))
 
 # fix giordano mouse
 
@@ -338,13 +348,50 @@ data_tc <- data_tc%>%
             upper = ifelse(pop_cn == "Mouse" & is.na(upper), 0, upper),
             lower = ifelse(pop_cn == "Mouse" & is.na(lower), 0, lower))
 
-write.csv(data_tc, "data_tc.csv", row.names = F)
-
-# rename movement metrics
+# make pop_sn capitalised
 
 data_tc <- data_tc%>%
-    mutate(outcome = ifelse(outcome == "displacement" | outcome == "movement rate" | outcome == "home range",
-                            "movement", outcome))
+    mutate(pop_sn = str_to_title(pop_sn))
+
+write.csv(data_tc, "data_tc.csv", row.names = F)
+
+
+# Is the effect significantly different from 0 across outcomes?
+
+source('funcs.R')
+
+stat_all <- data_tc%>%
+    mutate(weight = 1/se^2)%>%
+    drop_na(smd)%>%
+    ungroup()%>%
+    group_by(outcome)%>%
+    filter(upper != 0)%>%
+    mutate(Q = Q(weight, smd),
+              df = df(n()),
+              C = C(weight),
+              T_sq = T(Q, df, C),
+              I_sq = I_sq(Q, df),
+            weight_corrected = 1/(se^2 + T_sq)
+)%>%
+    summarise(Q = last(Q),
+                df = last(df),
+                T_sq = last(T_sq),
+                I_sq = last(I_sq),
+              E = summary_effect(weight_corrected, smd),
+              var_E = variance_summary_effect(weight_corrected),
+              R_sq = R_sq(Q, df, weight_corrected),
+              Z = Z(E, var_E), 
+              p_0 = p(Z),
+              p_q = pchisq(Q, df, lower.tail = F))
+
+
+# make and save table
+
+stat_all%>%
+    mutate(p_0 = ifelse(p_0 < 0.001, "<0.001", round(p_0, 3)),
+            p_q = ifelse(p_q < 0.001, "<0.001", round(p_q, 3)))
+
+
 # plot effect size and confidence intervals
 
 ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_level))+

@@ -10,8 +10,9 @@ meta <- meta %>%
 data_comp <- data_tc%>%
     left_join(meta, by = c("cite.key"))%>%
     rename(pop_cn = pop_cn.x,
-           outcome = outcome.x)%>%
-    select(cite.key, group, exposure, pop_cn, outcome, smd, upper, lower)
+           outcome = outcome.x,
+           exposure = exposure.x)%>%
+    select(cite.key, group, exposure, treatment, pop_cn, outcome, smd, upper, lower)
 
 # clearning exposure data
 
@@ -70,4 +71,35 @@ data_comp %>%
 
 
 ggsave("es_comp.png", width = 6, height = 7, dpi = 300)
-    
+
+# is hunting different from non-hunting?
+
+source("comparison.r")
+
+comp_stat <- data_comp%>%
+  mutate(se = abs((upper - smd)/1.96),
+          var = se^2,
+          weight = 1/var)%>%
+    group_by(exposure, outcome)%>%
+    filter(upper != 0)%>%
+    summarise(E = summary_effect(weight, smd),
+              var_E = variance_summary_effect(weight),
+              Q = Q(weight, smd, E),
+              df = df(n()),
+              C = C(weight),
+              T = T(Q, df, C),
+              I_sq = I_sq(Q, df),
+              R_sq = R_sq(Q, df, weight),
+              Z = Z(E, var_E), 
+              p = p(Z))
+comp_stat
+
+comp_stat%>%
+    select(exposure, outcome, E, var_E)%>%
+    group_by(outcome)%>%
+    mutate(exposure = ifelse(exposure == "hunting", "H", "NH"))%>%
+    pivot_wider(names_from = exposure, values_from = c(E, var_E))%>%
+    mutate(E_diff = E_H - E_NH ,
+           var_E_diff = var_E_H + var_E_NH)%>%
+    mutate(Z = E_diff / sqrt(var_E_diff),
+              p = p(Z))

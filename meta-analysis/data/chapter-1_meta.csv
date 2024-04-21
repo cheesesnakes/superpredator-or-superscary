@@ -27,7 +27,7 @@ matsonFactorsAffectingVigilance2005,treatment-control,FIS,300,hunting,impala,,vi
 montero-quintanaEcotourismImpactsBehaviour2020,BACI,scan,,active disturbance,Whale shark,Rhincodon typus,density/vigilance time/foraging time,negative control,
 murchisonHumanActivityHabitat2016,treatment-control,FIS,120,active disturbance,Multispecies,,foraging time/vigilance time,negative control,
 pangleLethalNonlethalAnthropogenic2010,treatment-control,FIS,600,hunting/nonhunting disturbance/natural predator playback,Spotted Hyena,,vigilance time/foraging time/vigilance rate/movement rate/habitat selection,positive control,
-pecorellaEffectsCullingVigilance2016,treatment-control,FIS,600,hunting,fallow deer,Dama dama,foraging time,negative control,
+pecorellaEffectsCullingVigilance2016,correlational,FIS,600,hunting,fallow deer,Dama dama,foraging time,negative control,
 peksaDaytimeActivityBudget2018,correlational,FIS,5802,passive disturbance,Tatra chamois,Rupicapra rupicapra tatrica,vigilance time,none,
 podgorskiSpatiotemporalBehavioralPlasticity2013,treatment-control,GPS,-,active disturbance,wild boar,Sus scofra,displacement/   range size,negative control,
 proffittContrastingEffectsWolves2009,treatment-control,GPS,-,hunting,elk,-,movement rate,none,
@@ -40,7 +40,7 @@ smithFearHumanSuper2017,treatment-control,FIS,900,human playback,Puma,Puma conco
 sonnichsenBehaviouralResponsesEuropean2013,correlational,FIS,,hunting/natural predator,roe deer,Capreolus capreolus,vigilance time/foraging time,negative control,
 uchidaHabituationSensitizationLongterm2021,correlational,FIS,120,active disturbance,yellowbellied marmot,Marmota flaviventer,vigilance time,none,study demonstrates habituation of animals to repeated exposure of non-threatening stimulus
 zhengDeterminantsVigilanceReintroduced2013,treatment-control,FIS,600,active disturbance,Pere David’s deer,Elaphurus davidianus,vigilance time,negative control,
-brosethDisturbanceEffectsHunting2010,treatment-control,GPS,-,hunting,willow ptarmigan,-,movement distance/ range size,negative control,
+brosethDisturbanceEffectsHunting2010,correlational,GPS,-,hunting,willow ptarmigan,-,movement distance/ range size,negative control,
 mccormickBoatNoiseImpacts2018,treatment-control,-,-,passive disturbance,Ward's Damsel fish,Pomocentrus wardi,displacement,negative control,
 brownEvaluatingIndirectEffects2020,treatment-control,-,-,hunting,Mule deer,-,movement rate/ range size,negative control,
 picardiMovementResponsesRoe2019,treatment-control,GPS,-,hunting,roe deer,Capreolus capreolus,movement rate/ range size,negative control,

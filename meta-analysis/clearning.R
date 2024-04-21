@@ -61,7 +61,7 @@ colnames(data)
 data <-
     data %>%
     select(cite.key, study_type, sampling, sampling_time, pop_cn, pop_sn, exposure, control, outcome, treatment,
-    group, mean, mean.unit, var, var.unit, multiplier, n, remarks)
+    group, mean, scale, mean.unit, var, lower, upper, var.unit, multiplier, n, remarks)
 
 # rename outcome feeding to foragin
 

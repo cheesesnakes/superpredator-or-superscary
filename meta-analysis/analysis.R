@@ -7,7 +7,7 @@ library(stringr)
 
 # import clean data
 
-source("clearning.R")
+source("conversions.R")
 
 
 # view data
@@ -25,9 +25,8 @@ data <- data %>%
     rename(pop_sn = pop_sn.y)%>%
     mutate(pop_sn = ifelse(is.na(pop_sn), pop_sn.x, pop_sn))%>%
     select(-pop_sn.x)%>%
-    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))%>%
-    filter(var.unit != "credible interval" )%>%
-    filter(var.unit != "interquantile")
+    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
+
 # make trophic level as factor
 
 data <- data %>%
@@ -82,18 +81,9 @@ data_cor <- data %>%
 ## format var data for ci
 
 data_cor <- data_cor %>%
-    mutate(var = str_split(var, "/"),
-        upper = as.numeric(sapply(var, function(x) x[1])),
-        lower = as.numeric(sapply(var, function(x) x[2])))%>%
-    # calulate lower for se and sd
-    mutate(lower = ifelse(var.unit == "se", -(1.96*upper)+mean, 
-                            ifelse(var.unit == "sd", -(1.96*upper/sqrt(n))+mean, lower)),
-            upper = ifelse(var.unit == "se", (1.96*upper)+mean, 
-                            ifelse(var.unit == "sd", (1.96*upper/sqrt(n))+mean, upper)))%>%
-    # convert vars to standard dev
-    mutate(sd = ifelse(var.unit == "se", as.numeric(upper)*sqrt(n), 
-                    ifelse(var.unit == "sd", as.numeric(upper), 
-                            ifelse(var.unit == "ci", upper*sqrt(n)/1.96, NA))))%>%
+    mutate(sd = sqrt(as.numeric(var)),
+        upper = sd*1.96 + mean,
+        lower = mean - sd*1.96)%>%
     # replace NA multiplier with 1
     mutate(multiplier = ifelse(is.na(multiplier), 1, multiplier))%>%
     # apply multiplier to mean, upper and lower 
@@ -113,7 +103,7 @@ data_cor_smd <- data_cor_smd%>%
     rename(cite.key = study)%>%
     left_join(data_cor, by = c("cite.key"))%>%
     select(cite.key, es, se, ci.lo, ci.hi, pop_cn, pop_sn, exposure, treatment, group, control, outcome, n, functional_group, trophic_level)%>%
-    distinct(cite.key, es, group, outcome, .keep_all = TRUE)%>%
+    distinct(cite.key, es, .keep_all = TRUE)%>%
     rename(smd = es,
             upper = ci.hi,
             lower= ci.lo)
@@ -139,11 +129,9 @@ ggsave("es_cor.png", width = 12, height = 6, dpi = 300)
 
 data_pb <- data %>%
     filter(study_type == "playback")%>%
-    select(cite.key, pop_cn, treatment, group, outcome, mean, mean.unit, var, var.unit, n, remarks)%>%
-    #remove negative control
-    filter(treatment != "negative control")%>%
+    select(cite.key, pop_cn, treatment, group, outcome, mean, var, n, remarks)%>%
     # rename postive control to control
-    mutate(treatment = ifelse(treatment == "positive control", "control", treatment))%>%
+    mutate(treatment = ifelse(treatment == "positive control" | treatment == "negative control" , "control", treatment))%>%
     # rename treatment to treatment if not control
     mutate(treatment = ifelse(treatment != "control", "treatment", treatment))
  
@@ -151,16 +139,7 @@ data_pb <- data %>%
 
 data_pb <- data_pb %>%
     mutate(
-        se = as.numeric(ifelse(var.unit == "se", var, NA)),
-        var = str_split(var, "/"),
-        upper = as.numeric(sapply(var, function(x) x[1])),
-        lower = as.numeric(sapply(var, function(x) x[2])))%>%
-    # convert ci to se 
-    mutate(
-        upper = (ifelse(var.unit == "se", se, (upper - mean)/1.96)),
-        lower = (ifelse(var.unit == "se", se, (lower-mean)/1.96)))%>%
-    # take mean of lower and upper
-    mutate(se = abs(upper + lower)/2)%>%
+        se = sqrt(as.numeric(var/n)))%>%
     select(cite.key, pop_cn, group, treatment, outcome, mean, se, n, remarks)
 
 # pivot data
@@ -169,26 +148,40 @@ data_pb <- data_pb%>%
     group_by(cite.key, pop_cn, outcome, remarks)%>%
     pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
     ungroup()
+
 # calculate standarised mean difference
 
-data_pb <- data_pb%>%
-    # correct types
-    mutate(
-        mean_treatment = as.numeric(as.character(mean_treatment)),
-        mean_control = as.numeric(as.character(mean_control)),
-        se_treatment = as.numeric(as.character(se_treatment)),
-        se_control = as.numeric(as.character(se_control)),
-        n_treatment = as.numeric(as.character(n_treatment)),
-        n_control = as.numeric(as.character(n_control)))%>%
-    mutate(
-        smd = (mean_treatment - mean_control)/sqrt(se_treatment^2 + se_control^2),
-        upper = smd + 1.96*sqrt(se_treatment^2 + se_control^2),
-        lower = smd - 1.96*sqrt(se_treatment^2 + se_control^2),
-        se = sqrt(se_treatment^2 + se_control^2))
+data_pb_smd <- data.frame(
+esc_mean_se(
+  grp1m = data_pb$mean_treatment,
+  grp1se = data_pb$se_treatment,
+  grp1n = data_pb$n_treatment,
+  grp2m = data_pb$mean_control,
+  grp2se = data_pb$se_control,
+  grp2n  = data_pb$n_control,
+  es.type = "d",
+  study = data_pb$cite.key
+)
+)
+
+# add covariates from data_pb and rename vars for join
+
+data_pb_smd <- data_pb_smd%>%
+    rename(cite.key = study)%>%
+    left_join(data_pb, by = c("cite.key"))%>%
+    select(cite.key, es, se, ci.lo, ci.hi, pop_cn, group, outcome)%>%
+    distinct(cite.key, es, .keep_all = TRUE)%>%
+    rename(smd = es,
+            upper = ci.hi,
+            lower= ci.lo)
+
+data_pb_smd$outcome <- as.factor(data_pb$outcome)
+
+data_pb_smd$group <- as.factor(data_pb$group)
 
 # plot effect size and confidence intervals
 
-ggplot(data = data_pb, aes(y = smd, x = reorder(group, smd), col = pop_cn))+
+ggplot(data = data_pb_smd, aes(y = smd, x = reorder(group, smd), col = pop_cn))+
     geom_point(size = 2)+
     geom_errorbar(aes(ymax = upper, ymin = lower), width = 0.05)+
     geom_hline(yintercept = 0, linetype = "dashed")+
@@ -210,7 +203,7 @@ ggsave("es_pb.png", width = 24, height = 10, dpi = 300)
 
 data_baci <- data %>%
     filter(study_type == "BACI")%>%
-    select(cite.key, pop_cn, group, treatment, outcome, mean, mean.unit, var, var.unit, n, remarks)%>%
+    select(cite.key, pop_cn, group, treatment, outcome, mean, var,  n, remarks)%>%
     # set mean, var, and n as numeric
     mutate(
         mean = as.numeric(mean),
@@ -218,53 +211,57 @@ data_baci <- data %>%
         n = as.numeric(n))%>%
     # rename before treatment to control and after treatmen to treatment
     mutate(treatment = ifelse(treatment == "before treatment", "control", treatment),
-    treatment = ifelse(treatment == "after treatment", "treatment", treatment))%>%
+    treatment = ifelse(treatment == "after treatment" | treatment == "active disturbance" , "treatment", treatment))%>%
     # calculate standard error from var where var.unit = sd
-    mutate(var = ifelse(var.unit == "sd", var/sqrt(n), var))
+    mutate(se = sqrt(var/n))%>%
+    select(-c(var))
 
 # spread mean and var, n for treatment and control
 
 data_baci <- data_baci%>%
     group_by(cite.key, group, outcome)%>%
-    pivot_wider(names_from = treatment, values_from = c(mean, var, n))%>%
+    pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
     ungroup()
 
 # calculate standarised mean difference
 
-data_baci <- data_baci%>%
-    # correct types
-    mutate(
-        mean_treatment = as.numeric(as.character(mean_treatment)),
-        mean_control = as.numeric(as.character(mean_control)),
-        var_treatment = as.numeric(as.character(var_treatment)),
-        var_control = as.numeric(as.character(var_control)),
-        n_treatment = as.numeric(as.character(n_treatment)),
-        n_control = as.numeric(as.character(n_control)))%>%
-    mutate(
-        smd = (mean_treatment - mean_control)/sqrt(var_treatment^2 + var_control^2),
-        upper = smd + 1.96*sqrt(var_treatment^2 + var_control^2),
-        lower = smd - 1.96*sqrt(var_treatment^2 + var_control^2),
-        se = sqrt(var_treatment^2 + var_control^2))
+data_baci_smd <- data.frame(
+esc_mean_se(
+  grp1m = data_baci$mean_treatment,
+  grp1se = data_baci$se_treatment,
+  grp1n = data_baci$n_treatment,
+  grp2m = data_baci$mean_control,
+  grp2se = data_baci$se_control,
+  grp2n  = data_baci$n_control,
+  es.type = "d",
+  study = data_baci$cite.key
+)
+)
+
+# add covariates from data_baci and rename vars for join
+
+data_baci_smd <- data_baci_smd%>%
+    rename(cite.key = study)%>%
+    left_join(data_baci, by = c("cite.key"))%>%
+    select(cite.key, es, se, ci.lo, ci.hi, pop_cn, group, outcome)%>%
+    distinct(cite.key, es, .keep_all = TRUE)%>%
+    rename(smd = es,
+            upper = ci.hi,
+            lower= ci.lo)
 
 # Treatment - control studies --------------------------------------------
 
 data_tc <- data %>%
-    filter(study_type == "treatment-control" | study_type == "correlational" & mean.unit != "coefficient")%>%
-    select(cite.key, group, pop_cn, exposure, treatment, outcome, multiplier, mean, mean.unit, var, var.unit, n, remarks)%>%
+    filter(study_type == "treatment-control"| study_type == "correlational")%>%
+    filter(mean.unit != "odds" & mean.unit != "coefficient")%>%
+    select(cite.key, group, pop_cn, exposure, treatment, outcome, multiplier, mean, mean.unit, var,  n, remarks)%>%
     # make n numeric
     mutate(n = as.numeric(n))%>%
     mutate(treatment = ifelse(treatment == "control", "control", "treatment"))%>%
-    # split var into upper and lower
-    mutate(var = str_split(var, "/"))%>%
     # convert standard deviation to standard error
-    mutate(se = ifelse(var.unit == "sd", 
-                        as.numeric(sapply(var, function(x) x[1]))/sqrt(n), 
-                            ifelse(var.unit == "ci", 
-                                    abs(as.numeric(sapply(var, function(x) x[1])) - mean )/1.96,  
-                                        as.numeric(sapply(var, function(x) x[1])))))
+    mutate(se = sqrt(var/n))
 
 data_tc <- data_tc%>%
-    filter(var.unit != "range")%>%
     select(cite.key, group, pop_cn, outcome, exposure, treatment, mean, mean.unit, multiplier, se, n)%>%
     distinct()%>%
     # set types
@@ -277,136 +274,167 @@ data_tc <- data_tc%>%
 data_tc <- data_tc%>%
     group_by(cite.key, pop_cn, group, exposure, outcome, mean.unit)%>%
     pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
-    ungroup()
+    ungroup()%>%
+    #correction for foraging rates
+    mutate(
+        mean_treatment = ifelse(!is.na(multiplier), mean_treatment*multiplier, mean_treatment),
+        mean_control = ifelse(!is.na(multiplier), mean_control*multiplier, mean_control),
+        se_treatment = ifelse(!is.na(multiplier), se_treatment*multiplier, se_treatment),
+        se_control = ifelse(!is.na(multiplier), se_control*multiplier, se_control))
 
 #  calculate standarised mean difference
 
-data_tc <- data_tc%>%
-    # remove non - standard units (not se)
-    # correct types
-    mutate(
-        mean_treatment = as.numeric(as.character(mean_treatment)),
-        mean_control = as.numeric(as.character(mean_control)),
-        var_treatment = se_treatment,
-        var_control = se_control,
-        n_treatment = as.numeric(as.character(n_treatment)),
-        n_control = as.numeric(as.character(n_control)))
+data_tc_smd <- data.frame(
+esc_mean_se(
+  grp1m = data_tc$mean_treatment,
+  grp1se = data_tc$se_treatment,
+  grp1n = data_tc$n_treatment,
+  grp2m = data_tc$mean_control,
+  grp2se = data_tc$se_control,
+  grp2n  = data_tc$n_control,
+  es.type = "d",
+  study = data_tc$cite.key
+)
+)
 
-data_tc <- data_tc%>%
-    mutate(
-        smd = (mean_treatment - mean_control)/sqrt(((n_treatment - 1)*var_treatment*var_treatment + (n_control - 1)*var_control*var_control)/(n_treatment + n_control - 2)),
-        se = sqrt((n_treatment + n_control)/(n_treatment*n_control) + smd^2/(2*(n_treatment + n_control - 2))),
-        upper = smd + se*1.96,
-        lower = smd - se*1.96,
-        var = se^2)
+# add covariates from data_tc and rename vars for join
 
-# correction for foraging rates
-data_tc <- data_tc%>%
-    mutate(smd = ifelse(!is.na(multiplier), smd*multiplier, smd),
-    upper = ifelse(!is.na(multiplier), upper*multiplier, upper),
-    lower = ifelse(!is.na(multiplier), lower*multiplier, lower))
-    
+data_tc_smd <- data_tc_smd%>%
+    rename(cite.key = study)%>%
+    left_join(data_tc, by = c("cite.key"))%>%
+    select(cite.key, es, se, ci.lo, ci.hi, pop_cn, group, exposure, outcome)%>%
+    distinct(cite.key, es, .keep_all = TRUE)%>%
+    rename(smd = es,
+            upper = ci.hi,
+            lower= ci.lo)
 
 # add studies from play back group = human
 
-data_tc <- data_tc%>%
-    bind_rows(data_pb%>%
+data_tc_smd <- data_tc_smd%>%
+    bind_rows(data_pb_smd%>%
     filter(group == "human" & outcome != "latency" )%>%
     select(cite.key, group, pop_cn, outcome, smd, se, upper, lower))
 
 # add studies from baci
 
-data_tc <- data_tc%>%
-    bind_rows(data_baci%>%
+data_tc_smd <- data_tc_smd%>%
+    bind_rows(data_baci_smd%>%
     select(cite.key, group, pop_cn, outcome, smd, se, upper, lower))
 
 # add species information
 
-data_tc <-  data_tc %>%
+data_tc_smd <-  data_tc_smd %>%
     left_join(pop, by = "pop_cn")%>%
     mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
 
-data_tc <- data_tc%>%
+data_tc_smd <- data_tc_smd%>%
     select(cite.key, smd, se, upper, lower, pop_cn, pop_sn, group, exposure, outcome, functional_group, trophic_level)
 
-data_tc$trophic_level <- as.factor(data_tc$trophic_level)
+data_tc_smd$trophic_level <- as.factor(data_tc_smd$trophic_level)
 
 # add observational studies
 
-data_tc <- full_join(data_tc, data_cor_smd)
+data_tc_smd <- full_join(data_tc_smd, data_cor_smd)
 
 # rename movement metrics
 
-data_tc <- data_tc%>%
+data_tc_smd <- data_tc_smd%>%
     mutate(outcome = ifelse(outcome == "displacement" | outcome == "movement rate" | outcome == "home range",
                             "movement", outcome))
 
 # fix giordano mouse
 
-data_tc <- data_tc%>%
+data_tc_smd <- data_tc_smd%>%
     mutate(smd = ifelse(pop_cn == "Mouse" & is.na(smd), 0, smd),
             upper = ifelse(pop_cn == "Mouse" & is.na(upper), 0, upper),
             lower = ifelse(pop_cn == "Mouse" & is.na(lower), 0, lower))
 
 # make pop_sn capitalised
 
-data_tc <- data_tc%>%
+data_tc_smd <- data_tc_smd%>%
     mutate(pop_sn = str_to_title(pop_sn))
 
-write.csv(data_tc, "data_tc.csv", row.names = F)
+write.csv(data_tc_smd, "data_tc_smd.csv", row.names = F)
 
 
 # Is the effect significantly different from 0 across outcomes?
 
-source('funcs.R')
+library(meta)
+library(purrr)
 
-stat_all <- data_tc%>%
+
+# map function metagen to data_tc_smd for each outcome
+
+for (i in unique(data_tc_smd$outcome)) {
+ 
+    data <- data_tc_smd %>%
+        filter(outcome == i)
+
+    stat <- metagen(
+            TE = smd,
+            seTE = se,
+            data = data,
+            studlab = cite.key,
+            comb.fixed = FALSE,
+            comb.random = TRUE,
+            hakn = TRUE,
+            method.tau = "DL",
+            prediction = TRUE,
+            sm = "SMD",
+            title = i
+        )
+
+    print(stat)
+}
+
+## using functions fro function.R
+
+source("funcs.R")
+
+stat_man <- data_tc_smd%>%
     mutate(weight = 1/se^2)%>%
-    drop_na(smd)%>%
-    ungroup()%>%
     group_by(outcome)%>%
-    filter(upper != 0)%>%
+    filter(!is.na(smd))%>%
     mutate(Q = Q(weight, smd),
-              df = df(n()),
-              C = C(weight),
-              T_sq = T(Q, df, C),
-              I_sq = I_sq(Q, df),
-            weight_corrected = 1/(se^2 + T_sq)
-)%>%
+           df = df(n()),
+           C = C(weight),
+            T = T(Q, df, C),
+            I_sq = I_sq(Q, df),
+            corrected_wight = 1/((se^2)+ T) )%>%
     summarise(Q = last(Q),
-                df = last(df),
-                T_sq = last(T_sq),
-                I_sq = last(I_sq),
-              E = summary_effect(weight_corrected, smd),
-              var_E = variance_summary_effect(weight_corrected),
-              R_sq = R_sq(Q, df, weight_corrected),
-              Z = Z(E, var_E), 
-              p_0 = p(Z),
-              p_q = pchisq(Q, df, lower.tail = F))
+              df = last(df),
+              C = last(C),
+              T = last(T),
+              I_sq = I_sq(Q, df),
+              var_E = 1/sum(corrected_wight),
+              E = summary_effect(corrected_wight, smd),
+              Z = Z(E, var_E),
+              p = 2*pnorm(-abs(Z)),
+              # prediction interval
+                lower = E - 1.96*sqrt(var_E),
+                upper = E + 1.96*sqrt(var_E))
 
 
-# make and save table
-
-stat_all%>%
-    mutate(p_0 = ifelse(p_0 < 0.001, "<0.001", round(p_0, 3)),
-            p_q = ifelse(p_q < 0.001, "<0.001", round(p_q, 3)))
-
+print(stat_man)
 
 # plot effect size and confidence intervals
 
-ggplot(data = data_tc, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_level))+
+ggplot(data = data_tc_smd, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_level))+
     geom_point(size = 2)+
     geom_errorbarh(aes(xmax = upper, xmin = lower), height = 0.05)+
     geom_vline(xintercept = 0, linetype = "dashed")+
-    xlab("Standardised mean difference")+
+#    geom_point(data = stat_man, aes(y = 0.5, x = E), col = "red", size = 2, shape = 5)+
+ #   geom_errorbarh(data = stat_man, aes(xmax = upper, xmin = lower, x = E, y = 0.5), col = "red", height = 0.1, size = 1)+
+    xlab("Standardised mean difference (± 95% CI)")+
     ylab("Population")+
     theme_bw()+
     theme(text = element_text(size = 20),
     legend.position = "top"
     )+
-    facet_wrap(~outcome, scales = "free_x")+
+    facet_wrap(~outcome, scales = "free")+
     # italicise x axis
     theme(axis.text.y = element_text(face = "italic"))+
     scale_color_brewer(name = "Trophic Level", palette = "Set1")
 
-ggsave("es_tc.png", width = 16, height = 8, dpi = 300)
+ggsave("es_tc.png", width = 24, height = 8, dpi = 300)
+

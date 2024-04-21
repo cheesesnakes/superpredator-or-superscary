@@ -56,13 +56,6 @@ I_sq <- function(Q, df) {
     return((Q - df )*100/ Q)
 }
 
-# R_sq = 1 - (Q - df) / sum w_i
-
-R_sq <- function(Q, df, w_i) {
-
-    return(1 - ((Q - df) / sum(w_i)))
-}
-
 # p-value = 2 * pnorm(-abs(Z))
 
 p <- function(Z) {

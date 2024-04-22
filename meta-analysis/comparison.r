@@ -106,6 +106,10 @@ comp_stat <- data_comp%>%
 
 print(comp_stat)
 
+# save comparison data
+
+write.csv(comp_stat, "comp_stat.csv")
+
 # subgroup analysis
 
 meta_stat <- data.frame()
@@ -149,7 +153,6 @@ for (i in unique(data_tc_smd$outcome)) {
 
 }
 
-meta_stat
 colnames(meta_stat) <- c("exposure", "E", "upper", "lower", "outcome")
 
 meta_stat%>%

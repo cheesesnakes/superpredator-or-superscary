@@ -70,8 +70,10 @@ ggplot(data, aes(x = reorder(pop_sn, pop_sn, FUN = length))) +
     ylab("Number of datapoints")+
     coord_flip()+
     theme_bw()+
-    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+    theme(axis.text.y = element_text(face = "italic"),
     text = element_text(size = 20))
+
+ggsave("pop_sn.png", width = 12, height = 8, dpi = 300)
 
 # Corelational studies --------------------------------------------
 
@@ -99,9 +101,7 @@ library(esc)
 data_cor_smd <- data.frame(esc_B(study = data_cor$cite.key, b = data_cor$mean, sdy = data_cor$sd, grp1n = data_cor$n, grp2n = data_cor$n)
 )
 
-data_cor_smd <- data_cor_smd%>%
-    rename(cite.key = study)%>%
-    left_join(data_cor, by = c("cite.key"))%>%
+data_cor_smd <- cbind(data_cor, select(data_cor_smd, -c(study)))%>%
     select(cite.key, es, se, ci.lo, ci.hi, pop_cn, pop_sn, exposure, treatment, group, control, outcome, n, functional_group, trophic_level)%>%
     distinct(cite.key, es, .keep_all = TRUE)%>%
     rename(smd = es,
@@ -166,9 +166,7 @@ esc_mean_se(
 
 # add covariates from data_pb and rename vars for join
 
-data_pb_smd <- data_pb_smd%>%
-    rename(cite.key = study)%>%
-    left_join(data_pb, by = c("cite.key"))%>%
+data_pb_smd <- cbind(data_pb, select(data_pb_smd, -c(study)))%>%
     select(cite.key, es, se, ci.lo, ci.hi, pop_cn, group, outcome)%>%
     distinct(cite.key, es, .keep_all = TRUE)%>%
     rename(smd = es,
@@ -240,9 +238,7 @@ esc_mean_se(
 
 # add covariates from data_baci and rename vars for join
 
-data_baci_smd <- data_baci_smd%>%
-    rename(cite.key = study)%>%
-    left_join(data_baci, by = c("cite.key"))%>%
+data_baci_smd <- cbind(data_baci, select(data_baci_smd, -c(study)))%>%
     select(cite.key, es, se, ci.lo, ci.hi, pop_cn, group, outcome)%>%
     distinct(cite.key, es, .keep_all = TRUE)%>%
     rename(smd = es,
@@ -299,9 +295,7 @@ esc_mean_se(
 
 # add covariates from data_tc and rename vars for join
 
-data_tc_smd <- data_tc_smd%>%
-    rename(cite.key = study)%>%
-    left_join(data_tc, by = c("cite.key"))%>%
+data_tc_smd <- cbind(data_tc, select(data_tc_smd, -c(study)))%>%
     select(cite.key, es, se, ci.lo, ci.hi, pop_cn, group, exposure, outcome)%>%
     distinct(cite.key, es, .keep_all = TRUE)%>%
     rename(smd = es,
@@ -398,7 +392,7 @@ source("funcs.R")
 stat_man <- data_tc_smd%>%
     mutate(weight = 1/se^2)%>%
     group_by(outcome)%>%
-    filter(!is.na(smd))%>%
+    filter(pop_cn != "Mouse")%>%
     mutate(Q = Q(weight, smd),
            df = df(n()),
            C = C(weight),
@@ -421,10 +415,14 @@ stat_man <- data_tc_smd%>%
 
 print(stat_man)
 
+# save comparison data
+
+write.csv(stat_man, "stat_man.csv")
+
 # plot effect size and confidence intervals
 
 ggplot(data = data_tc_smd, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_level))+
-    geom_point(size = 2)+
+    geom_point(size = 2, position = position_dodge(width = 0.1))+
     geom_errorbarh(aes(xmax = upper, xmin = lower), height = 0.05)+
     geom_vline(xintercept = 0, linetype = "dashed")+
 #    geom_point(data = stat_man, aes(y = 0.5, x = E), col = "red", size = 2, shape = 5)+

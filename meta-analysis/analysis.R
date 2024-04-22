@@ -1,3 +1,5 @@
+#!/home/cheesesnakes/.local/bin/radian
+
 #setwd("./meta-analysis")
 
 # required libraries
@@ -7,7 +9,7 @@ library(stringr)
 
 # import clean data
 
-source("conversions.R")
+source("conversions.R", echo = FALSE)
 
 
 # view data
@@ -387,7 +389,7 @@ for (i in unique(data_tc_smd$outcome)) {
 
 ## using functions fro function.R
 
-source("funcs.R")
+source("funcs.R", echo = FALSE)
 
 stat_man <- data_tc_smd%>%
     mutate(weight = 1/se^2)%>%

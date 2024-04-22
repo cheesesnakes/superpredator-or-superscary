@@ -70,7 +70,6 @@ severcanEffectsFlockSize2011,The effects of flock size and human presence on vig
 severcanEffectsFlockSize2011,The effects of flock size and human presence on vigilance and feeding behavior in the Eurasian Coot (Fulica atra L.) during breeding season,Yorukkirka Lake,39 55,30 25,freshwater,-,group size and vigilance were not correlated, human presence led to an increase in vigilance
 shannonBehavioralResponsesAssociated2014,Behavioral Responses Associated with a Human-Mediated Predator Shelter,Grand Teton National Park,43.7411613464356,-110.802345275879,grassland,#example of human sheild effect altering vigilance foraging and grouping behavior,Ungulates use the human sheild effect to avoid predators and facilitate feeding,
 shannonRoadTrafficNoise2014,Road traffic noise modifies behaviour of a keystone species,"Fort Collins, Colorado",40.5871782,-105.0770113,grassland,-,-,
-shannonRoadTrafficNoise2014,Road traffic noise modifies behaviour of a keystone species,"Fort Collins, Colorado",-,-,grassland,-,-,
 smithFearHumanSuper2017,Fear of the human 'super predator' reduces feeding time in large carnivores,"Santa Cruz Mountains, California",37.163834,-122.012182,forest,-,One of the first experimental demonstrations of the effect of the human superpredator\coined the term superpredator,
 sonnichsenBehaviouralResponsesEuropean2013,Behavioural Responses of European Roe Deer to Temporal Variation in Predation Risk,"Bialowieza Primeval Forest, Poland",52 42 6,23 27 34,forest,-,-,
 sonnichsenBehaviouralResponsesEuropean2013,Behavioural Responses of European Roe Deer to Temporal Variation in Predation Risk,"Bialowieza Primeval Forest, Poland",52 42 6,23 27 34,forest,-,-,
@@ -83,3 +82,10 @@ welchHunterHuntedPerceptions2017,Hunter or hunted? Perceptions of risk and rewar
 yasueApproachAssessPotential2008,An approach to assess the potential impacts of human disturbance on wintering tropical shorebirds,-,-,,,,,
 yasueEffectsHumanPresence2005,"The effects of human presence, flock size and prey density on shorebird foraging rates",-,-,-,-,uncertainty not reported,-,
 zhengDeterminantsVigilanceReintroduced2013,Determinants of vigilance in a reintroduced population of Pere David's deer,"Jiangsu, China","32 59 00,33 03 00","120 47 00,120 53 00",forest,-,-,
+brosethDisturbanceEffectsHunting2010,Disturbance effects of hunting activity in a willow ptarmigan Lagopus lagopus population,"selbu, norway",63.21566,11.033129,-,"#example effect of hunting on movements, habitat selection of birds",-,
+mccormickBoatNoiseImpacts2018,Boat noise impacts risk assessment in a coral reef fish but effects depend on engine type,Great Barier Reef,14 41 00,145 27 00,reef,-,-,
+brownEvaluatingIndirectEffects2020,Evaluating Indirect Effects of Hunting on Mule Deer Spatial Behavior,starky experimental forest and range /oregon/ USA,45 13 00,118 31 00,forest,-,-,
+picardiMovementResponsesRoe2019,Movement responses of roe deer to hunting risk,"Eastern Alps, Italy",46.433334,11.85,forest,,,
+,,,,,,,,
+,,,,,,,,
+-,,,,,,,,

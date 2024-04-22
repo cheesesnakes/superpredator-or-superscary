@@ -1,6 +1,6 @@
 # converting mean and variablity to workable units
 
-source("clearning.R")
+source("clearning.R", echo = FALSE)
 
 # set type for all
 

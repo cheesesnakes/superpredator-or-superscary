@@ -6,6 +6,10 @@ library(tidyr)
 
 studies <- read.csv("data/chapter-1_covariates.csv")
 
+# filter only meta-analysis studies
+
+studies <- studies %>% filter(File52 %in% data_comp$cite.key)
+
 head(studies)
 
 studies$lat
@@ -83,7 +87,7 @@ studies$lon <- as.numeric(studies$deg_max_lon) + as.numeric(studies$min_max_lon)
 
 studies <- studies %>% select(-c(max_lat, min_lat, max_lon, min_lon, deg_max_lat, min_max_lat, sec_max_lat, deg_min_lat, min_min_lat, sec_min_lat, deg_max_lon, min_max_lon, sec_max_lon, deg_min_lon, min_min_lon, sec_min_lon))
 
-studies
+write.csv(studies, "studies.csv", row.names = FALSE)
 
 # plot map
 

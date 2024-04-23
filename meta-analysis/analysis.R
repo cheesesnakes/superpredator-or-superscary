@@ -27,7 +27,8 @@ data <- data %>%
     rename(pop_sn = pop_sn.y)%>%
     mutate(pop_sn = ifelse(is.na(pop_sn), pop_sn.x, pop_sn))%>%
     select(-pop_sn.x)%>%
-    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
+    mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level),
+    pop_sn = str_to_sentence(pop_sn))
 
 # make trophic level as factor
 
@@ -64,18 +65,24 @@ data <- data %>%
 table(data$study_type)
 
 ## number of datapoints per population, sorted
-
-ggplot(data, aes(x = reorder(pop_sn, pop_sn, FUN = length))) +
-    geom_bar() +
+data%>%
+    group_by(pop_sn)%>%
+    summarise(n = length(unique(cite.key)),
+            trophic_level = last(trophic_level))%>%
+    arrange(desc(n))%>%
+    ggplot(aes(x = reorder(pop_sn, n), y = n, fill = trophic_level)) +
+    geom_col(col = "black") +
     labs(title = "Number of datapoints per population")+
     xlab("Population")+
     ylab("Number of datapoints")+
     coord_flip()+
     theme_bw()+
     theme(axis.text.y = element_text(face = "italic"),
-    text = element_text(size = 20))
+    text = element_text(size = 20),
+    legend.position = "top")+
+    scale_fill_brewer(name = "Trophic Level", palette = "Set1")
 
-ggsave("pop_sn.png", width = 12, height = 8, dpi = 300)
+ggsave("pop_sn.png", width = 10, height = 10, dpi = 300)
 
 # Corelational studies --------------------------------------------
 
@@ -85,7 +92,7 @@ data_cor <- data %>%
 ## format var data for ci
 
 data_cor <- data_cor %>%
-    mutate(sd = sqrt(as.numeric(var)),
+    mutate(sd = var,
         upper = sd*1.96 + mean,
         lower = mean - sd*1.96)%>%
     # replace NA multiplier with 1
@@ -100,8 +107,7 @@ data_cor <- data_cor %>%
 
 library(esc)
 
-data_cor_smd <- data.frame(esc_B(study = data_cor$cite.key, b = data_cor$mean, sdy = data_cor$sd, grp1n = data_cor$n, grp2n = data_cor$n)
-)
+data_cor_smd <- data.frame(esc_B(study = data_cor$cite.key, b = data_cor$mean, sdy = data_cor$sd, grp1n = data_cor$n, grp2n = data_cor$n))
 
 data_cor_smd <- cbind(data_cor, select(data_cor_smd, -c(study)))%>%
     select(cite.key, es, se, ci.lo, ci.hi, pop_cn, pop_sn, exposure, treatment, group, control, outcome, n, functional_group, trophic_level)%>%
@@ -140,8 +146,7 @@ data_pb <- data %>%
 # format var data for ci
 
 data_pb <- data_pb %>%
-    mutate(
-        se = sqrt(as.numeric(var/n)))%>%
+    mutate(se = var/sqrt(as.numeric(n)))%>%
     select(cite.key, pop_cn, group, treatment, outcome, mean, se, n, remarks)
 
 # pivot data
@@ -151,7 +156,7 @@ data_pb <- data_pb%>%
     pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
     ungroup()
 
-# calculate standarised mean difference
+# calculate standarised mean difference control:treatment
 
 data_pb_smd <- data.frame(
 esc_mean_se(
@@ -207,7 +212,7 @@ data_baci <- data %>%
     # set mean, var, and n as numeric
     mutate(
         mean = as.numeric(mean),
-        var = as.numeric(var),
+        var = as.numeric(var)^2,
         n = as.numeric(n))%>%
     # rename before treatment to control and after treatmen to treatment
     mutate(treatment = ifelse(treatment == "before treatment", "control", treatment),
@@ -257,7 +262,7 @@ data_tc <- data %>%
     mutate(n = as.numeric(n))%>%
     mutate(treatment = ifelse(treatment == "control", "control", "treatment"))%>%
     # convert standard deviation to standard error
-    mutate(se = sqrt(var/n))
+    mutate(se = var/sqrt(n))
 
 data_tc <- data_tc%>%
     select(cite.key, group, pop_cn, outcome, exposure, treatment, mean, mean.unit, multiplier, se, n)%>%

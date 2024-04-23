@@ -158,6 +158,7 @@ ci.hi.min = as.numeric(ci.hi.min),
 ci.hi.max = as.numeric(ci.hi.max))
 
 coeff
+
 # plot
 
 ggplot(data_lat, aes(x = abs_lat, y = smd, size = se)) +
@@ -227,10 +228,10 @@ source("map.r", echo = FALSE)
 data_comp <- data_comp%>%
 left_join(size, by = c('pop_sn'))%>%
 left_join(studies, by = c('cite.key' = "File52"))%>%
-mutate(abs_lat = abs(lat))
+mutate(abs_lat = abs(lat))%>%
 mutate(size = as.numeric(size))%>%
 mutate(abs_lat = abs(lat))%>%
-select(cite.key, pop_sn, size, abs_lat, smd, se, lower, upper, treatment, outcome)
+select(cite.key, pop_sn, size, abs_lat, smd, se, lower, upper, treatment, outcome, exposure)
 
 for (i in unique(data_comp$outcome)) {
  

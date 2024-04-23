@@ -124,9 +124,6 @@ for (i in unique(data_tc_smd$outcome)) {
             seTE = se,
             data = data,
             studlab = cite.key,
-            comb.fixed = FALSE,
-            comb.random = TRUE,
-            hakn = TRUE,
             method.tau = "DL",
             prediction = TRUE,
             sm = "SMD",
@@ -171,7 +168,7 @@ ggsave("es_meta_subgroup.png", width = 8, height = 8, dpi = 300)
 
 comp_stat%>%
     mutate(exposure = factor(exposure, levels = c("Hunting", "Active Disturbance", "Passive Disturbance")))%>%
-    ggplot(aes(x = exposure, y = E, ymin = lower, ymax = upper, col = outcome, shape = outcome))+
+    ggplot(aes(x = outcome, y = E, ymin = lower, ymax = upper, col = exposure, shape = outcome))+
     geom_pointrange(position = position_dodge(width = 0.5), size = 1, linewidth = 1)+
     geom_hline(yintercept = 0, linetype = "dashed")+
     labs(x = "Type of Human Activity", y = "Summary Effect (± 95% confidence interval)")+

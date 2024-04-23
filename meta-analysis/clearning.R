@@ -102,5 +102,3 @@ library(stringr, help, pos = 2, lib.loc = NULL)
 
 data <- data %>%
     mutate(pop_cn = str_to_title(pop_cn))
-
-

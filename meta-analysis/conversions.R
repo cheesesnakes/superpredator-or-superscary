@@ -11,92 +11,74 @@ data <- data%>%
            upper = as.numeric(upper),
            sampling_time = as.numeric(sampling_time))
 
-# convert proportions to absolute numbers
-
-# time
-data <- data%>%
-    mutate(mean = ifelse(scale == "proportion" & mean.unit == "time", mean*sampling_time, mean),
-           var = ifelse(scale == "proportion" & mean.unit == "time", var*sampling_time, var),
-           lower = ifelse(scale == "proportion" & mean.unit == "time", lower*sampling_time, lower),
-           upper = ifelse(scale == "proportion" & mean.unit == "time", upper*sampling_time, upper))
-
-# n
+# convert percentage to proportion
 
 data <- data%>%
-    mutate(mean = ifelse(scale == "proportion" & mean.unit == "n", mean*n, mean),
-           var = ifelse(scale == "proportion" & mean.unit == "n", var*n, var),
-           lower = ifelse(scale == "proportion" & mean.unit == "n", lower*n, lower),
-           upper = ifelse(scale == "proportion" & mean.unit == "n", upper*n, upper))
+    mutate(mean = ifelse(scale == "percentage" & mean.unit != "coefficient", mean/100, mean),
+           var = ifelse(scale == "percentage" & mean.unit != "coefficient", var/100, var),
+           lower = ifelse(scale == "percentage" & mean.unit != "coefficient", lower/100, lower),
+           upper = ifelse(scale == "percentage" & mean.unit != "coefficient", upper/100, upper),
+           scale = ifelse(scale == "percentage" & mean.unit != "coefficient", "proportion", scale))
 
-# convert percentages to absolute numbers
-
-# time
-
-data <- data%>%
-    mutate(mean = ifelse(scale == "percentage" & mean.unit == "time", mean*sampling_time/100, mean),
-           var = ifelse(scale == "percentage" & mean.unit == "time", var*sampling_time/100, var),
-           lower = ifelse(scale == "percentage" & mean.unit == "time", lower*sampling_time/100, lower),
-           upper = ifelse(scale == "percentage" & mean.unit == "time", upper*sampling_time/100, upper))
-
-# n
+# convert  log-proportion to proportion
 
 data <- data%>%
-    mutate(mean = ifelse(scale == "percentage" & mean.unit == "n", mean*n/100, mean),
-           var = ifelse(scale == "percentage" & mean.unit == "n", var*n/100, var),
-           lower = ifelse(scale == "percentage" & mean.unit == "n", lower*n/100, lower),
-           upper = ifelse(scale == "percentage" & mean.unit == "n", upper*n/100, upper))
+    mutate(mean = ifelse(scale == "Log-proportion" & mean.unit != "coefficient", exp(mean), mean),
+           var = ifelse(scale == "Log-proportion" & mean.unit != "coefficient", exp(var), var),
+           lower = ifelse(scale == "Log-proportion" & mean.unit != "coefficient", exp(lower), lower),
+           upper = ifelse(scale == "Log-proportion" & mean.unit != "coefficient", exp(upper), upper),
+           scale = ifelse(scale == "Log-proportion" & mean.unit != "coefficient", "proportion", scale))
 
-# convert  log-proportion to time
-
-data <- data%>%
-    mutate(mean = ifelse(scale == "log-proportion" & mean.unit == "time", exp(mean)*sampling_time, mean),
-           var = ifelse(scale == "log-proportion" & mean.unit == "time", exp(var)*sampling_time, var),
-           lower = ifelse(scale == "log-proportion" & mean.unit == "time", exp(lower)*sampling_time, lower),
-           upper = ifelse(scale == "log-proportion" & mean.unit == "time", exp(upper)*sampling_time, upper))
-
-# conver arcsine square root proportions to time
+# conver arcsine square root proportions to proportion
 
 data <- data%>%
-    mutate(mean = ifelse(scale == "arcsine square root proportion" & mean.unit == "time", sin(mean)^2*sampling_time, mean),
-           var = ifelse(scale == "arcsine square root proportion" & mean.unit == "time", sin(var)^2*sampling_time, var),
-           lower = ifelse(scale == "arcsine square root proportion" & mean.unit == "time", sin(lower)^2*sampling_time, lower),
-           upper = ifelse(scale == "arcsine square root proportion" & mean.unit == "time", sin(upper)^2*sampling_time, upper))
+    mutate(mean = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", sin(mean)^2, mean),
+           var = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", sin(var)^2, var),
+           lower = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", sin(lower)^2, lower),
+           upper = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", sin(upper)^2, upper),
+           scale = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", "proportion", scale))
 
-# conver credible intervals to variance
+# conver credible intervals to standard deviation
 
 data <- data%>%
-    mutate(var = ifelse(var.unit == "credible interval", abs((upper-lower)/(2*1.96)), var))
+    mutate(var = ifelse(var.unit == "credible interval" , abs((upper-lower)/(2*1.96)), var),
+    var.unit = ifelse(var.unit == "credible interval", "se", var.unit))
     
-# convert interquartile range to variance
+# convert interquartile range to standard deviation
 
 data <- data%>%
-    mutate(var = ifelse(var.unit == "interquantile", abs((lower-upper)/(2*1.35)), var))
+    mutate(var = ifelse(var.unit == "interquantile", abs((lower-upper)/(2*1.35)), var),
+    var.unit = ifelse(var.unit == "interquantile", "sd", var.unit))
 
-# convert range to variance
+# convert range to standard deviation
 
 data <- data%>%
-    mutate(var = ifelse(var.unit == "range", abs((upper-lower)/(2*3.29)), var))
+    mutate(var = ifelse(var.unit == "range", abs((upper-lower)/(2*3.29)), var),
+    var.unit = ifelse(var.unit == "range", "sd", var.unit))
 
 # convert meadian and range to mean
 
 data <- data%>%
-    mutate(mean = ifelse(mean.unit == "median", (lower+upper)/2, mean))
+    mutate(mean = ifelse(scale == "median", (lower+upper)/2, mean),
+    scale = ifelse(scale == "median", "", scale))
 
-# conver sd to variance
+# conver sd to standard deviation
 
 data <- data%>%
     mutate(var = ifelse(var.unit == "sd", var, var))
 
-# convert se to variance
+# convert se to standard deviation
 
 data <- data%>%
-    mutate(var = ifelse(var.unit == "se", (var), var))
+    mutate(var = ifelse(var.unit == "se" & mean.unit != "coefficient", var*sqrt(n), var),
+    var.unit = ifelse(var.unit == "se" & mean.unit != "coefficient", "sd", var.unit))
 
-# convert ci to variance
+# convert ci to standard deviation
 
 data <- data%>%
     mutate(var = ifelse(var.unit == "ci" & !is.na(lower), (abs(upper-lower)/(2*1.96)), var),
-           var = ifelse(var.unit == "ci" & is.na(lower), abs(var/1.96), var))
+           var = ifelse(var.unit == "ci" & is.na(lower), abs(var/1.96), var),
+           var.unit = ifelse(var.unit == "ci", "sd", var.unit))
 
 # check mean:var ratio
 

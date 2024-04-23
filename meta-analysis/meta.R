@@ -4,7 +4,7 @@ library(meta, help, pos = 2, lib.loc = NULL)
 
 # effect of size of animal
 
-source("comparison.r", echo = FALSE)
+source("comparison.r", echo = FALSE, print.eval = FALSE)
 
 size <- read.csv('data/size.csv')
 
@@ -29,6 +29,10 @@ ci.hi.min = numeric(), ci.hi.max = numeric(), outcome = character())
 
 j = 1
 
+reg_tab <- data.frame(intercept = numeric(), se_intercept = numeric(), slope = numeric(), se_slope = numeric(), tau2 = numeric(), se_tau2 = numeric(), I2 = numeric(), H2 = numeric(), R2 = numeric(), outcome = character(), predictor = character())
+
+k = 1
+
 for (i in unique(data_size$outcome)) {
  
     data <- data_size %>%
@@ -52,9 +56,13 @@ for (i in unique(data_size$outcome)) {
     
     reg <- metareg(stat, ~size)
 
-    print(reg)
+    summary(reg)
 
     coeff[j,] <- c(reg$beta[1], reg$beta[2], reg$ci.lb[1], reg$ci.lb[2], reg$ci.ub[1], reg$ci.ub[2], i)
+
+    reg_tab[k,] <- c(reg$beta[1], reg$se[1], reg$beta[2], reg$se[2], reg$tau2, reg$se.tau2, reg$I2, reg$H2, reg$R2, i, "size")
+
+    k = k + 1
 
     bubble(reg, studylab = TRUE, file = paste0("size_reg_", i, ".png"), main = i)
 
@@ -123,11 +131,15 @@ for (i in unique(data_lat$outcome)) {
             title = i
         )
     
-    reg <- metareg(stat, ~lat)
+    reg <- metareg(stat, ~abs_lat)
 
-    print(reg)
+    summary(reg)
 
     coeff[j,] <- c(reg$beta[1], reg$beta[2], reg$ci.lb[1], reg$ci.lb[2], reg$ci.ub[1], reg$ci.ub[2], i)
+
+    reg_tab[k,] <- c(reg$beta[1], reg$se[1], reg$beta[2], reg$se[2], reg$tau2, reg$se.tau2, reg$I2, reg$H2, reg$R2, i, "latitude")
+
+    k = k + 1
 
     j = j + 1
 
@@ -187,8 +199,52 @@ for (i in unique(data_comp$outcome)) {
     
     reg <- metareg(stat, ~exposure)
 
-    print(reg)
+    summary(reg)
 
     bubble(reg, studylab = TRUE, file = paste0("treatment_reg_", i, ".png"), main = i)
 
+    reg_tab[k,] <- c(reg$beta[1], reg$se[1], reg$beta[2], reg$se[2], reg$tau2, reg$se.tau2, reg$I2, reg$H2, reg$R2, i, "interaction_type")
+
+    k = k + 1
+
+
 }
+
+# multiple regression
+
+size <- read.csv('data/size.csv')
+
+size <- size%>%
+mutate(body_mass = ifelse(is.na(body_mass), (body_mass_minimum + body_mass_maximum)/2, body_mass))%>%
+mutate(body_mass = ifelse(body_mass_units != "kg" & body_mass_units != "tonne", body_mass/1000, body_mass),
+body_mass = ifelse(body_mass_units == "tonne", body_mass*1000, body_mass)
+)%>%
+group_by(pop_sn)%>%
+summarise(size = mean(body_mass, na.rm = TRUE))
+
+source("map.r", echo = FALSE)
+
+data_comp <- data_comp%>%
+left_join(size, by = c('pop_sn'))%>%
+left_join(studies, by = c('cite.key' = "File52"))%>%
+mutate(abs_lat = abs(lat))
+mutate(size = as.numeric(size))%>%
+mutate(abs_lat = abs(lat))%>%
+select(cite.key, pop_sn, size, abs_lat, smd, se, lower, upper, treatment, outcome)
+
+for (i in unique(data_comp$outcome)) {
+ 
+    data <- data_comp %>%
+        filter(outcome == i)
+
+    reg <- metafor::rma(yi = smd, sei = se, data = data, mods = ~size + abs_lat + exposure)
+
+    print(i)
+
+    print(summary(reg))
+
+}
+
+print(reg_tab)
+
+write.csv(reg_tab, "reg_tab.csv", row.names = FALSE)

@@ -89,6 +89,9 @@ studies <- studies %>% select(-c(max_lat, min_lat, max_lon, min_lon, deg_max_lat
 
 write.csv(studies, "studies.csv", row.names = FALSE)
 
+summary(as.numeric(studies$lat))
+summary(as.numeric(studies$lon))
+
 # plot map
 
 library(ggplot2)

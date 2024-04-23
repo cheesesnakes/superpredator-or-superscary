@@ -1,6 +1,6 @@
 library(viridis, help, pos = 2, lib.loc = NULL)
 
-source("analysis.R")
+source("analysis.R", echo = FALSE)
 
 # Comparison across hunting, non-hunting disturbance and natural predators --------------------------------------------
 
@@ -157,10 +157,11 @@ colnames(meta_stat) <- c("exposure", "E", "upper", "lower", "outcome")
 
 meta_stat%>%
     mutate(exposure = factor(exposure, levels = c("Hunting", "Active Disturbance", "Passive Disturbance")))%>%
-    ggplot(aes(x = exposure, y = E, ymin = lower, ymax = upper, col = outcome))+
+    ggplot(aes(x = outcome, y = E, ymin = lower, ymax = upper, col = exposure, shape = exposure))+
     geom_pointrange(position = position_dodge(width = 0.5), size = 1, linewidth = 1)+
     geom_hline(yintercept = 0, linetype = "dashed")+
-    labs(x = "Type of Human Activity", y = "Summary Effect (± 95% prediction interval)")+
+    guides(shape = "none", col = guide_legend(title = "Type of Human Activity"))+
+    labs(x = "Measured Behaviours", y = "Summary Effect (± 95% confidence interval)")+
     theme_bw()+
     theme(legend.position = "top")
 
@@ -173,7 +174,7 @@ comp_stat%>%
     ggplot(aes(x = exposure, y = E, ymin = lower, ymax = upper, col = outcome, shape = outcome))+
     geom_pointrange(position = position_dodge(width = 0.5), size = 1, linewidth = 1)+
     geom_hline(yintercept = 0, linetype = "dashed")+
-    labs(x = "Type of Human Activity", y = "Summary Effect (± 95% prediction interval)")+
+    labs(x = "Type of Human Activity", y = "Summary Effect (± 95% confidence interval)")+
     theme_bw()+
     theme(legend.position = "top")+
     scale_color_brewer(name = "Outcome", palette = "Set1")+

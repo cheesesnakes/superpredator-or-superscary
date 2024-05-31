@@ -29,15 +29,6 @@ data <- data%>%
            upper = ifelse(scale == "Log-proportion" & mean.unit != "coefficient", exp(upper), upper),
            scale = ifelse(scale == "Log-proportion" & mean.unit != "coefficient", "proportion", scale))
 
-# conver arcsine square root proportions to proportion
-
-data <- data%>%
-    mutate(mean = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", sin(mean)^2, mean),
-           var = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", sin(var)^2, var),
-           lower = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", sin(lower)^2, lower),
-           upper = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", sin(upper)^2, upper),
-           scale = ifelse(scale == "arcsine squareroot proportion" & mean.unit != "coefficient", "proportion", scale))
-
 # conver credible intervals to standard deviation
 
 data <- data%>%
@@ -76,8 +67,8 @@ data <- data%>%
 # convert ci to standard deviation
 
 data <- data%>%
-    mutate(var = ifelse(var.unit == "ci" & !is.na(lower), (abs(upper-lower)/(2*1.96)), var),
-           var = ifelse(var.unit == "ci" & is.na(lower), abs(var/1.96), var),
+    mutate(var = ifelse(var.unit == "ci" & !is.na(lower), (abs(upper-mean) + abs(mean-lower)/2)/1.96, var),
+           var = ifelse(var.unit == "ci" & is.na(lower), abs(var-mean/1.96), var),
            var.unit = ifelse(var.unit == "ci", "sd", var.unit))
 
 # check mean:var ratio

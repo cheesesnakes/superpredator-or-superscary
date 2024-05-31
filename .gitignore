@@ -10,6 +10,8 @@ summary-lit
 scripts-lit.pdf
 meta-data-sim.pdf
 fig4.png
+figures
+output
 meta-analysis/effect_size_ci.png
 meta-analysis/smd_ci.png
 meta-analysis/data/.~lock.chapter-1_effects.csv#
@@ -40,3 +42,4 @@ meta-analysis/reg_size.png
 meta-analysis/size_reg.png
 meta-analysis/es_meta_subgroup.png
 meta-analysis/histogram_years.png
+meta-analysis/figures/pop_sn.png

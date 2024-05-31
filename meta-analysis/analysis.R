@@ -446,4 +446,3 @@ ggplot(data = data_tc_smd, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_
     scale_color_brewer(name = "Trophic Level", palette = "Set1")
 
 ggsave("es_tc.png", width = 24, height = 8, dpi = 300)
-

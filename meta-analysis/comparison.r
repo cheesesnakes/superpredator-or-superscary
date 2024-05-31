@@ -153,6 +153,7 @@ for (i in unique(data_tc_smd$outcome)) {
 colnames(meta_stat) <- c("exposure", "E", "upper", "lower", "outcome")
 
 meta_stat%>%
+    filter(exposure != "Active Disturbance" | outcome != "movement")%>%
     mutate(exposure = factor(exposure, levels = c("Hunting", "Active Disturbance", "Passive Disturbance")))%>%
     ggplot(aes(x = outcome, y = E, ymin = lower, ymax = upper, col = exposure, shape = exposure))+
     geom_pointrange(position = position_dodge(width = 0.5), size = 1, linewidth = 1)+
@@ -160,6 +161,7 @@ meta_stat%>%
     guides(shape = "none", col = guide_legend(title = "Type of Human Activity"))+
     labs(x = "Measured Behaviours", y = "Summary Effect (± 95% confidence interval)")+
     theme_bw()+
+    coord_flip()+
     theme(legend.position = "top")
 
 ggsave("es_meta_subgroup.png", width = 8, height = 8, dpi = 300)

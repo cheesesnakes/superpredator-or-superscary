@@ -48,7 +48,7 @@ data <- data%>%
             pop_cn = str_trim(pop_cn),
             mean.unit = str_trim(mean.unit))
 
-# select outcome from effect onluy
+# select outcome from effects data
 
 data <- data %>% select(-outcome.x)%>%
     rename(outcome = outcome.y)%>%
@@ -58,12 +58,14 @@ head(data)
 summary(data)
 colnames(data)
 
+# select relevant columns
+
 data <-
     data %>%
     select(cite.key, study_type, sampling, sampling_time, pop_cn, pop_sn, exposure, control, outcome, treatment,
     group, mean, scale, mean.unit, var, lower, upper, var.unit, multiplier, n, remarks)
 
-# rename outcome feeding to foragin
+# rename outcome: feeding to foraging
 
 data <- data %>%
     mutate(outcome = ifelse(outcome == "feeding", "foraging", outcome))

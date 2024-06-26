@@ -1,82 +1,79 @@
 library(viridis, help, pos = 2, lib.loc = NULL)
 
-source("analysis.R", echo = FALSE)
+source("4_effects-sizes.R", echo = FALSE)
+source('5-1_funcs.R', chdir = TRUE)
+
+# Is the effect significantly different from 0 across outcomes?
+
+library(meta)
+library(purrr)
+
+
+# map function metagen to data_tc_smd for each outcome
+
+for (i in unique(data_tc_smd$outcome)) {
+ 
+    data <- data_tc_smd %>%
+        filter(outcome == i)
+
+    stat <- metagen(
+            TE = smd,
+            seTE = se,
+            data = data,
+            studlab = cite.key,
+            comb.fixed = FALSE,
+            comb.random = TRUE,
+            hakn = TRUE,
+            method.tau = "DL",
+            prediction = TRUE,
+            sm = "SMD",
+            title = i
+        )
+
+    print(stat)
+
+    # save forest plot
+
+    forest(stat, file = paste0("figures/meta_", i, ".png"), width = 1000)
+}
+
+## using functions from funcs.R
+
+stat_man <- data_tc_smd%>%
+    mutate(weight = 1/se^2)%>%
+    group_by(outcome)%>%
+    filter(pop_cn != "Mouse")%>%
+    mutate(Q = Q(weight, smd),
+           df = df(n()),
+           C = C(weight),
+            T = T(Q, df, C),
+            I_sq = I_sq(Q, df),
+            corrected_wight = 1/((se^2)+ T) )%>%
+    summarise(Q = last(Q),
+              df = last(df),
+              C = last(C),
+              T = last(T),
+              I_sq = I_sq(Q, df),
+              var_E = 1/sum(corrected_wight),
+              E = summary_effect(corrected_wight, smd),
+              Z = Z(E, var_E),
+              p = 2*pnorm(-abs(Z)),
+              # prediction interval
+                lower = E - 1.96*sqrt(var_E),
+                upper = E + 1.96*sqrt(var_E))
+
+
+print(stat_man)
+
+# save comparison data
+
+write.csv(stat_man, "output/meta_manual.csv")
 
 # Comparison across hunting, non-hunting disturbance and natural predators --------------------------------------------
 
-meta <- meta %>%
-    mutate(cite.key = as.character(cite.key)) 
-
-data_comp <- data_tc_smd%>%
-    left_join(meta, by = c("cite.key"))%>%
-    rename(pop_cn = pop_cn.x,
-           outcome = outcome.x,
-           exposure = exposure.x)%>%
-    mutate(exposure = ifelse(is.na(exposure), exposure.y, exposure))%>%
-    select(cite.key, group, exposure, treatment, pop_cn, outcome, smd, se, upper, lower)
-
-# clearning exposure data
-
-
-data_comp <- data_comp%>%
-    mutate(exposure = ifelse(group == "human", "hunting", exposure),
-           exposure = ifelse(group == "Treatment_1", "active disturbance", exposure),
-           exposure = ifelse(group == "Treatment_2", "hunting", exposure),
-           exposure = ifelse(exposure == "human playback", "hunting", exposure),
-           exposure = ifelse(exposure == "nonhunting disturbance/hunting?", "active disturbance", exposure),
-           exposure = ifelse(exposure == "hunting/nonhunting disturbance/natural predator playback", "hunting", exposure),
-           exposure = ifelse(exposure == "nonhunting disturbance", "non-hunting disturbance", exposure))
-
-# add data_pb where group is not human
-
-# add natural predator to exposure
-
-data_comp <- data_comp%>%
-    mutate(exposure = ifelse(exposure != "hunting" & exposure != "active disturbance" & exposure != "passive disturbance", "active disturbance", exposure))
-
-# filter out natural predator
-
-data_comp <- data_comp%>%
-    filter(exposure != "natural predator")
-
-# add species data
-
-data_comp <- data_comp%>%
-    left_join(pop, by = c("pop_cn"))%>%
-    mutate(trophic_level = as.factor(trophic_level))
-
-# set order as hunting, active disturbance, passive disturbance
-
-data_comp <- data_comp%>%
-    mutate(exposure = factor(exposure, levels = c("hunting", "active disturbance", "passive disturbance")))%>%
-    # capilatise first letter
-    mutate(exposure = str_to_title(exposure))
-
-#plotting
-
-data_comp %>%
-    filter(outcome != "latency" & !is.na(pop_sn))%>%
-    ggplot(aes(x = reorder(pop_sn, smd), y = smd, col = trophic_level))+
-    geom_point()+
-    geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.2)+
-    geom_hline(yintercept = 0, linetype = "dashed")+
-    labs(x = "Exposure", y = "Standardised mean difference")+
-    facet_grid(outcome~exposure, scales = "free")+
-    # order strip text
-    theme(strip.text.x = element_text(size = 12, face = "bold"))+
-    theme_bw()+
-    theme(legend.position = "top")+
-    coord_flip()+
-    # remove shape legend
-    guides(shape = "none")+
-    # set legend title
-    scale_color_brewer(name = "Trophic level", palette = "Set1")+
-    # italicise x-axis labels
-    theme(axis.text.y = element_text(face = "italic"))
-    
-ggsave("es_comp.png", width = 8, height = 8, dpi = 300)
-
 # is hunting different from non-hunting?
+
+# sub-group analysis manually
 
 comp_stat <- data_comp%>%
   mutate(se = abs((upper - smd)/1.96),
@@ -108,7 +105,7 @@ print(comp_stat)
 
 # save comparison data
 
-write.csv(comp_stat, "comp_stat.csv")
+write.csv(comp_stat, "output/subgroup_manual.csv")
 
 # subgroup analysis
 
@@ -146,7 +143,7 @@ for (i in unique(data_tc_smd$outcome)) {
 
     # save forest plot
 
-    forest(stat, file = paste0("forest_", i, ".png"), width = 1000)
+    forest(stat, file = paste0("figures/forest_", i, ".png"), width = 1000)
 
 }
 
@@ -164,7 +161,7 @@ meta_stat%>%
     coord_flip()+
     theme(legend.position = "top")
 
-ggsave("es_meta_subgroup.png", width = 8, height = 8, dpi = 300)
+ggsave("figures/fig-6.png", width = 8, height = 8, dpi = 300)
 
 # difference between hunting and non-hunting
 
@@ -180,7 +177,7 @@ comp_stat%>%
     # remove shape legend
     guides(shape = "none")
 
-ggsave("es_diff.png", width = 8, height = 8, dpi = 300)
+ggsave("figures/subgroup_manual.png", width = 8, height = 8, dpi = 300)
 
 # funnel plot
 
@@ -193,4 +190,4 @@ ggplot(data_comp, aes(x = smd, y = 1/se, col = outcome, shape = exposure))+
     scale_color_brewer(name = "Outcome", palette = "Set1")+
     scale_shape_manual(values = c(1, 2, 3))
 
-ggsave("funnel.png", width = 8, height = 8, dpi = 300)
+ggsave("figures/funnel.png", width = 8, height = 8, dpi = 300)

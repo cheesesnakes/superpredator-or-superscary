@@ -6,17 +6,11 @@
 
 library(ggplot2)
 library(stringr)
+library(esc)
 
 # import clean data
 
-source("conversions.R", echo = FALSE)
-
-
-# view data
-
-colnames(data)
-head(data)
-summary(data)
+source("2_conversions.R", echo = FALSE)
 
 # add information about species
 
@@ -34,56 +28,7 @@ data <- data %>%
 
 data <- data %>%
     mutate(trophic_level = as.factor(trophic_level))
-
-# summaries --------------------------------------------
-
-## total number of studies in meta analysis
-
-n_studies <- data %>% 
-    select(cite.key) %>% 
-    distinct() %>% 
-    nrow()
-
-n_studies
-
-## number of datapoints per outcome
-
-n_datapoints <- data %>% 
-    group_by(outcome) %>% 
-    summarise(n = n())
-
-print(n_datapoints)
-
-## removing FID and GUD studies due lack of data
-
-data <- data %>% 
-    filter(outcome != "FID" & outcome != "GUD")
-#    filter(pop_cn !="")
-
-# studies by type - table
-
-table(data$study_type)
-
-## number of datapoints per population, sorted
-data%>%
-    group_by(pop_sn)%>%
-    summarise(n = length(unique(cite.key)),
-            trophic_level = last(trophic_level))%>%
-    arrange(desc(n))%>%
-    ggplot(aes(x = reorder(pop_sn, n), y = n, fill = trophic_level)) +
-    geom_col(col = "black") +
-    labs(title = "Number of datapoints per population")+
-    xlab("Population")+
-    ylab("Number of datapoints")+
-    coord_flip()+
-    theme_bw()+
-    theme(axis.text.y = element_text(face = "italic"),
-    text = element_text(size = 20),
-    legend.position = "top")+
-    scale_fill_brewer(name = "Trophic Level", palette = "Set1")
-
-ggsave("pop_sn.png", width = 10, height = 10, dpi = 300)
-
+    
 # Corelational studies --------------------------------------------
 
 data_cor <- data %>%
@@ -104,8 +49,6 @@ data_cor <- data_cor %>%
         lower = lower*multiplier)
 
 # convert regression coefficient to smd
-
-library(esc)
 
 data_cor_smd <- data.frame(esc_B(study = data_cor$cite.key, b = data_cor$mean, sdy = data_cor$sd, grp1n = data_cor$n, grp2n = data_cor$n))
 
@@ -131,7 +74,7 @@ ggplot(data = data_cor, aes(x = mean, y = reorder(pop_sn, mean), col = trophic_l
     # italicise x axis
     theme(axis.text.y = element_text(face = "italic"))
 
-ggsave("es_cor.png", width = 12, height = 6, dpi = 300)
+ggsave("figures/es_cor.png", width = 12, height = 6, dpi = 300)
 
 # Playback studies --------------------------------------------
 
@@ -202,7 +145,7 @@ ggplot(data = data_pb_smd, aes(y = smd, x = reorder(group, smd), col = pop_cn))+
     theme(axis.text.y = element_text(face = "italic"))
 
 
-ggsave("es_pb.png", width = 24, height = 10, dpi = 300)
+ggsave("figures/es_pb.png", width = 24, height = 10, dpi = 300)
 
 # BACI studies --------------------------------------------
 
@@ -355,76 +298,81 @@ data_tc_smd <- data_tc_smd%>%
 data_tc_smd <- data_tc_smd%>%
     mutate(pop_sn = str_to_title(pop_sn))
 
-write.csv(data_tc_smd, "data_tc_smd.csv", row.names = F)
+# add meta - data
+
+meta <- meta %>%
+    mutate(cite.key = as.character(cite.key)) 
+
+data_comp <- data_tc_smd%>%
+    left_join(meta, by = c("cite.key"))%>%
+    rename(pop_cn = pop_cn.x,
+           outcome = outcome.x,
+           exposure = exposure.x)%>%
+    mutate(exposure = ifelse(is.na(exposure), exposure.y, exposure))%>%
+    select(cite.key, group, exposure, treatment, pop_cn, outcome, smd, se, upper, lower)
+
+# clearning exposure data
+
+data_comp <- data_comp%>%
+    mutate(exposure = ifelse(group == "human", "hunting", exposure),
+           exposure = ifelse(group == "Treatment_1", "active disturbance", exposure),
+           exposure = ifelse(group == "Treatment_2", "hunting", exposure),
+           exposure = ifelse(exposure == "human playback", "hunting", exposure),
+           exposure = ifelse(exposure == "nonhunting disturbance/hunting?", "active disturbance", exposure),
+           exposure = ifelse(exposure == "hunting/nonhunting disturbance/natural predator playback", "hunting", exposure),
+           exposure = ifelse(exposure == "nonhunting disturbance", "non-hunting disturbance", exposure))
+
+# add data_pb where group is not human
+
+# add natural predator to exposure
+
+data_comp <- data_comp%>%
+    mutate(exposure = ifelse(exposure != "hunting" & exposure != "active disturbance" & exposure != "passive disturbance", "active disturbance", exposure))
+
+# filter out natural predator
+
+data_comp <- data_comp%>%
+    filter(exposure != "natural predator")
+
+# add species data
+
+data_comp <- data_comp%>%
+    left_join(pop, by = c("pop_cn"))%>%
+    mutate(trophic_level = as.factor(trophic_level))
+
+# set order as hunting, active disturbance, passive disturbance
+
+data_comp <- data_comp%>%
+    mutate(exposure = factor(exposure, levels = c("hunting", "active disturbance", "passive disturbance")))%>%
+    # capilatise first letter
+    mutate(exposure = str_to_title(exposure))
 
 
-# Is the effect significantly different from 0 across outcomes?
+write.csv(data_comp, "data/effect-size.csv", row.names = F)
 
-library(meta)
-library(purrr)
+# plotting with type of interactions
 
-
-# map function metagen to data_tc_smd for each outcome
-
-for (i in unique(data_tc_smd$outcome)) {
- 
-    data <- data_tc_smd %>%
-        filter(outcome == i)
-
-    stat <- metagen(
-            TE = smd,
-            seTE = se,
-            data = data,
-            studlab = cite.key,
-            comb.fixed = FALSE,
-            comb.random = TRUE,
-            hakn = TRUE,
-            method.tau = "DL",
-            prediction = TRUE,
-            sm = "SMD",
-            title = i
-        )
-
-    print(stat)
-
-    # save forest plot
-
-    forest(stat, file = paste0("meta_", i, ".png"), width = 1000)
-}
-
-## using functions fro function.R
-
-source("funcs.R", echo = FALSE)
-
-stat_man <- data_tc_smd%>%
-    mutate(weight = 1/se^2)%>%
-    group_by(outcome)%>%
-    filter(pop_cn != "Mouse")%>%
-    mutate(Q = Q(weight, smd),
-           df = df(n()),
-           C = C(weight),
-            T = T(Q, df, C),
-            I_sq = I_sq(Q, df),
-            corrected_wight = 1/((se^2)+ T) )%>%
-    summarise(Q = last(Q),
-              df = last(df),
-              C = last(C),
-              T = last(T),
-              I_sq = I_sq(Q, df),
-              var_E = 1/sum(corrected_wight),
-              E = summary_effect(corrected_wight, smd),
-              Z = Z(E, var_E),
-              p = 2*pnorm(-abs(Z)),
-              # prediction interval
-                lower = E - 1.96*sqrt(var_E),
-                upper = E + 1.96*sqrt(var_E))
-
-
-print(stat_man)
-
-# save comparison data
-
-write.csv(stat_man, "stat_man.csv")
+data_comp %>%
+    filter(outcome != "latency" & !is.na(pop_sn))%>%
+    ggplot(aes(x = reorder(pop_sn, smd), y = smd, col = trophic_level))+
+    geom_point()+
+    geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.2)+
+    geom_hline(yintercept = 0, linetype = "dashed")+
+    labs(x = "Exposure", y = "Standardised mean difference")+
+    facet_grid(outcome~exposure, scales = "free")+
+    # order strip text
+    theme(strip.text.x = element_text(size = 12, face = "bold"))+
+    theme_bw()+
+    theme(legend.position = "top")+
+    coord_flip()+
+    # remove shape legend
+    guides(shape = "none")+
+    # set legend title
+    scale_color_brewer(name = "Trophic level", palette = "Set1")+
+    # italicise x-axis labels
+    theme(axis.text.y = element_text(face = "italic"))
+    
+ggsave("figures/fig-2_1.png", width = 8, height = 8, dpi = 300)
 
 # plot effect size and confidence intervals
 
@@ -445,4 +393,4 @@ ggplot(data = data_tc_smd, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_
     theme(axis.text.y = element_text(face = "italic"))+
     scale_color_brewer(name = "Trophic Level", palette = "Set1")
 
-ggsave("es_tc.png", width = 24, height = 8, dpi = 300)
+ggsave("figures/fig-2.png", width = 24, height = 8, dpi = 300)

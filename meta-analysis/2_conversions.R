@@ -1,6 +1,6 @@
 # converting mean and variablity to workable units
 
-source("clearning.R", echo = FALSE)
+source("1_cleaning.R", echo = FALSE)
 
 # set type for all
 
@@ -53,10 +53,6 @@ data <- data%>%
     mutate(mean = ifelse(scale == "median", (lower+upper)/2, mean),
     scale = ifelse(scale == "median", "", scale))
 
-# conver sd to standard deviation
-
-data <- data%>%
-    mutate(var = ifelse(var.unit == "sd", var, var))
 
 # convert se to standard deviation
 
@@ -79,4 +75,4 @@ data <- data%>%
 #data <- data%>%
  #   select(-c(var.unit, scale, sampling_time, sampling))
 
-write.csv(data, "data.csv", row.names = FALSE)
+write.csv(data, "data/clean_data.csv", row.names = FALSE)

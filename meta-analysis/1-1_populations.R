@@ -1,3 +1,5 @@
+source('1_cleaning.R', chdir = TRUE)
+
 # export a list of pop_cn and pop_sn together
 
 pop <- data %>%
@@ -5,7 +7,7 @@ pop <- data %>%
     distinct() %>%
     arrange(pop_cn)
 
-write.csv(pop, file = "populations.csv", quote = TRUE)
+#write.csv(pop, file = "populations.csv", quote = TRUE) # run once
 
 # read saved populations.csv
 
@@ -26,4 +28,4 @@ size <- pop %>%
               body_mass_maximum = body.mass...maximum,
               in_text_reference = inTextReference)
 
-write.csv(size, file = "size.csv", quote = TRUE)
+write.csv(size, file = "data/size.csv", quote = TRUE)

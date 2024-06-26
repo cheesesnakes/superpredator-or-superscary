@@ -4,12 +4,11 @@ library(meta, help, pos = 2, lib.loc = NULL)
 
 # effect of size of animal
 
-source("comparison.r", echo = FALSE, print.eval = FALSE)
+source("4_effects-sizes.R", echo = FALSE, print.eval = FALSE)
 
 size <- read.csv('data/size.csv')
 
 size <- size%>%
-mutate(body_mass = ifelse(is.na(body_mass), (body_mass_minimum + body_mass_maximum)/2, body_mass))%>%
 mutate(body_mass = ifelse(body_mass_units != "kg" & body_mass_units != "tonne", body_mass/1000, body_mass),
 body_mass = ifelse(body_mass_units == "tonne", body_mass*1000, body_mass)
 )%>%
@@ -81,7 +80,8 @@ ci.lo.max = as.numeric(ci.lo.max),
 ci.hi.min = as.numeric(ci.hi.min),
 ci.hi.max = as.numeric(ci.hi.max))
 
-reg_tab
+print(reg_tab)
+
 ggplot(data_size, aes(x = size, y = smd, size = se, col = trophic_level)) +
     geom_point() +
     geom_hline(yintercept = 0, linetype = "dashed") +
@@ -97,11 +97,11 @@ ggplot(data_size, aes(x = size, y = smd, size = se, col = trophic_level)) +
     theme(legend.position = "top",
     text = element_text(size = 16))
 
-ggsave("reg_size.png", width = 8, height = 12)
+ggsave("figures/fig-4.png", width = 8, height = 12)
 
 # effect of absolute latitude
 
-source("map.r", echo = FALSE)
+source("4-1_map.R", echo = FALSE)
 
 data_lat <- data_comp%>%
     left_join(studies, by = c('cite.key' = "File52"))%>%
@@ -165,7 +165,7 @@ ci.lo.max = as.numeric(ci.lo.max),
 ci.hi.min = as.numeric(ci.hi.min),
 ci.hi.max = as.numeric(ci.hi.max))
 
-coeff
+print(coeff)
 
 # plot
 
@@ -183,7 +183,7 @@ ggplot(data_lat, aes(x = abs_lat, y = smd, size = se, col = trophic_level)) +
     theme(legend.position = "top",
     text = element_text(size = 16))
 
-ggsave("reg_lat.png", width = 8, height = 12)
+ggsave("figures/reg_lat.png", width = 8, height = 12)
 
 # effect of type of human interaction
 
@@ -223,19 +223,19 @@ for (i in unique(data_comp$outcome)) {
 
 }
 
+print(reg_tab)
+
 # multiple regression
 
 size <- read.csv('data/size.csv')
 
 size <- size%>%
-mutate(body_mass = ifelse(is.na(body_mass), (body_mass_minimum + body_mass_maximum)/2, body_mass))%>%
+#mutate(body_mass = ifelse(is.na(body_mass), (body_mass_minimum + body_mass_maximum)/2, body_mass))%>%
 mutate(body_mass = ifelse(body_mass_units != "kg" & body_mass_units != "tonne", body_mass/1000, body_mass),
 body_mass = ifelse(body_mass_units == "tonne", body_mass*1000, body_mass)
 )%>%
 group_by(pop_sn)%>%
 summarise(size = mean(body_mass, na.rm = TRUE))
-
-source("map.r", echo = FALSE)
 
 data_comp <- data_comp%>%
 left_join(size, by = c('pop_sn'))%>%
@@ -260,4 +260,4 @@ for (i in unique(data_comp$outcome)) {
 
 print(reg_tab)
 
-write.csv(reg_tab, "reg_tab.csv", row.names = FALSE)
+write.csv(reg_tab, "output/meta-regression.csv", row.names = FALSE)

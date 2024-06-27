@@ -8,13 +8,13 @@
 11,Elk,Cervus elaphus,herbivore,1
 28,Red Deer,Cervus elaphus,herbivore,1
 33,Semipalmated Plover,Charadrius semipalmatus,herbivore,1
-2,American Crow,Corvus branchyrhynchos,omnivore,2
+2,American Crow,Corvus brachyrhynchos,omnivore,2
 34,Spotted Hyena,Crocuta crocuta,carnivore,3
-24,Prairie Dog,Cynomus ludovicianus,herbivore,1
+24,Prairie Dog,Cynomys ludovicianus,herbivore,1
 13,Fallow Deer,Dama dama,herbivore,1
 23,Pere David’s Deer,Elaphurus davidianus,herbivore,1
 12,Eurasian Coot,Fulica atra,herbivore,1
-17,Hooded Crane,Grys monacha,insectivore,2
+17,Hooded Crane,Grus monacha,insectivore,2
 32,Sable Antelope,Hippotragus niger,herbivore,1
 6,Capybaras,Hydrochoerus hydrochaeris,herbivore,1
 42,Willow Grouse,Lagopus lagopus,granivore,1
@@ -25,7 +25,7 @@
 ,Mule Deer,Odocoileus hemionus,herbivore,1
 37,Thinhorn Sheep,Ovis dalli,herbivore,1
 22,Mouse,Peromyscus leucopus,herbivore,1
-38,Verreaux’s Sifaka,Propicthecus verreauxi,herbivore,1
+38,Verreaux’s Sifaka,Propithecus verreauxi,herbivore,1
 27,Puma,Puma concolor,carnivore,3
 1,Alpine chough,Pyrrhocorax graculus,granivore,1
 14,Gaspesie Caribou,Rangifer tarandus caribou,herbivore,1
@@ -34,7 +34,7 @@
 40,Whale Shark,Rhincodon typus,herbivore,1
 36,Tatra Chamois,Rupicapra rupicapra tatrica,herbivore,1
 8,Dusky Damselfish,Stegastes fuscus,herbivore,1
-41,Wild Boar,Sus scofra,herbivore,1
+41,Wild Boar,Sus scrofa,herbivore,1
 7,Chipmunk,Tamias striatus,herbivore,1
 15,Greater Kudu,Tragelaphus strepsiceros,herbivore,1
 4,Blackbird,Turdus merula,omnivore,1

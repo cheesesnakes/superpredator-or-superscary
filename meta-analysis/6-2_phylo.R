@@ -8,23 +8,29 @@ species <- read.csv("data/populations.csv", header = TRUE, stringsAsFactors = FA
 
 # list of species names
 
-species <- unique(species$pop_sn)
+spp <- unique(species$pop_sn)
 
 # format species names as sentence case
 
-species <- tolower(species)
+spp <- stringr::str_trim(spp) #trim
 
-species <- stringr::str_trim(species) #trim
+spp <- stringr::str_to_sentence(spp)
 
-species <- stringr::str_to_sentence(species)
+length(spp)
 
-length(species)
+# rename unmatched species
 
-species
+# Chromis wardi to Chromis
+
+spp <- stringr::str_replace_all(spp, "Chromis wardi", "Chromis")
+
+# Rhea pennata pennata to Rhea
+
+spp <- stringr::str_replace_all(spp, "Rhea pennata pennata", "Rhea")
 
 # get phylogenetic tree
 
-taxa <- tnrs_match_names(species)
+taxa <- tnrs_match_names(spp, context_name = "Animals")
 
 nrow(taxa)
 
@@ -42,7 +48,21 @@ tip_names <- str_replace_all(tip_names, "_", " ")
 
 # check missing data
 
-setdiff(species, tip_names)
+setdiff(spp, tip_names)
+
+# replace tip names for renamed species Rhea and Chromis
+
+tip_names <- str_replace_all(tip_names, "Rhea", "Rhea pennata pennata")
+
+tip_names <- str_replace_all(tip_names, "Chromis", "Chromis wardi")
+
+# add _
+
+tip_names <- str_replace_all(tip_names, " ", "_")
+
+# apply to tree
+
+tree$tip.label <- tip_names
 
 # compute branch lengths
 
@@ -56,4 +76,8 @@ tree <- multi2di(tree, random = TRUE)
 
 # plot tree
 
-plot(tree, type = "phylogram", cex = 0.5, label.offset = 0.01)
+png("figures/phylo.png", width = 800, height = 800)
+
+plot(tree, type = "phylogram", cex = 1.25, label.offset = 0.01)
+
+dev.off()

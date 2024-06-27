@@ -26,6 +26,7 @@ authors <- authors %>%
 # remove everything before the first space or period in cite
 
 authors <- authors %>%
-  mutate(cite = str_replace(cite, "^[^ .]+[ .]", ""))
+  mutate(cite = str_replace(cite, "^[^ .]+[ .]", ""))%>%
+  mutate(cite = str_trim(cite))
 
 head(authors)

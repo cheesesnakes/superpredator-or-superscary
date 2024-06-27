@@ -9,6 +9,7 @@ pacman::p_load(dplyr, tidyr, stringr, ggplot2, esc)
 # import clean data
 
 source("2_conversions.R", echo = FALSE)
+source('1-2_authors.R', chdir = TRUE)
 
 # add information about species
 
@@ -296,6 +297,12 @@ data_tc_smd <- data_tc_smd%>%
 data_tc_smd <- data_tc_smd%>%
     mutate(pop_sn = str_to_title(pop_sn))
 
+# add citations from authors
+
+data_tc_smd <- data_tc_smd%>%
+    left_join(authors, by = "cite.key")%>%
+    mutate(cite = ifelse(is.na(cite), cite.key, cite))
+
 # add meta - data
 
 meta <- meta %>%
@@ -346,6 +353,12 @@ data_comp <- data_comp%>%
     mutate(exposure = str_to_title(exposure))
 
 
+# add citation from authors
+
+data_comp <- data_comp%>%
+    left_join(authors, by = "cite.key")%>%
+    mutate(cite = ifelse(is.na(cite), cite.key, cite))
+    
 write.csv(data_comp, "data/effect-size.csv", row.names = F)
 
 # plotting with type of interactions

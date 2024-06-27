@@ -1,47 +1,109 @@
-"","pop_cn","pop_sn","body_mass","body_mass_units","body_mass_maximum","in_text_reference"
-"1","Impala","Aepyceros melampus",NA,NA,NA,NA
-"2","Moose","Alces alces",NA,NA,NA,NA
-"3","Pronghorn","Antilocapra americana",NA,NA,NA,NA
-"4","Pronghorn Antelope","Antilocapra americana",NA,NA,NA,NA
-"5","Western Sandpiper","Calidris mauri",NA,NA,NA,NA
-"6","Roe Deer","Capreolus capreolus",NA,NA,NA,NA
-"7","Elk","Cervus elaphus",NA,NA,NA,NA
-"8","Red Deer","Cervus elaphus",NA,NA,NA,NA
-"9","Semipalmated Plover","Charadrius semipalmatus",NA,NA,NA,NA
-"10","American Crow","Corvus branchyrhynchos",NA,NA,NA,NA
-"11","Spotted Hyena","Crocuta crocuta",62.37,"kg",NA,"Crile & Quiring, 1940"
-"12","Prairie Dog","Cynomus ludovicianus",NA,NA,NA,NA
-"13","Fallow Deer","Dama dama",NA,NA,NA,NA
-"14","Pere David’s Deer","Elaphurus davidianus",NA,NA,NA,NA
-"15","Eurasian Coot","Fulica atra",0.568,"kg",NA,"Franklin, Garnett, Luck, Gutierrez-Ibanez, & Iwaniuk, 2014"
-"16","Eurasian Coot","Fulica atra",0.754,"kg",NA,"Prinzinger & Hänssler, 1980"
-"17","Hooded Crane","Grys monacha",NA,NA,NA,NA
-"18","Sable Antelope","Hippotragus niger",NA,NA,NA,NA
-"19","Capybaras","Hydrochoerus hydrochaeris",NA,NA,NA,NA
-"20","Willow Grouse","Lagopus lagopus",0.542,"kg",NA,"Crile & Quiring, 1940"
-"21","Willow Grouse","Lagopus lagopus",0.54,"kg",NA,"Crile & Quiring, 1940"
-"22","Willow Ptarmigan","Lagopus lagopus",0.542,"kg",NA,"Crile & Quiring, 1940"
-"23","Willow Ptarmigan","Lagopus lagopus",0.54,"kg",NA,"Crile & Quiring, 1940"
-"24","Guanco","Lama guanicoe",NA,NA,NA,NA
-"25","Yellowbellied Marmot","Marmota flaviventris",NA,NA,NA,NA
-"26","Badger","Meles meles",NA,NA,NA,NA
-"27","Mule Deer","Odocoileus hemionus",NA,"",NA,"Warnke, 1908"
-"28","Thinhorn Sheep","Ovis dalli",NA,NA,NA,NA
-"29","Mouse","Peromyscus leucopus",NA,NA,NA,NA
-"30","Verreaux’s Sifaka","Propicthecus verreauxi",NA,NA,NA,NA
-"31","Puma","Puma concolor",28.79,"kg",NA,"Crile & Quiring, 1940"
-"32","Alpine chough","Pyrrhocorax graculus",0.15,"kg",NA,"Mlíkovský, 2003"
-"33","Gaspesie Caribou","Rangifer tarandus caribou",NA,NA,NA,NA
-"34","Svalbard Reindeer","Rangifer tarandus platyrhynchus",NA,NA,NA,NA
-"35","Lesser Rhea","Rhea pennata pennata",NA,NA,NA,NA
-"36","Whale Shark","Rhincodon typus",NA,NA,NA,NA
-"37","Tatra Chamois","Rupicapra rupicapra tatrica",NA,NA,NA,NA
-"38","Dusky Damselfish","Stegastes fuscus",NA,NA,NA,NA
-"39","Wild Boar","Sus scofra",NA,NA,NA,NA
-"40","Chipmunk","Tamias striatus",0.075,"kg",NA,"Crile & Quiring, 1940"
-"41","Chipmunk","Tamias striatus",NA,"",NA,"Crile & Quiring, 1940"
-"42","Chipmunk","Tamias striatus",0.0874,"kg",NA,"Wang & Hudson, 1971"
-"43","Greater Kudu","Tragelaphus strepsiceros",NA,NA,NA,NA
-"44","Blackbird","Turdus merula",0.0851,"kg",NA,"Bech, Chappell, Astheimer, Londoño, & Buttemer, 2016"
-"45","Brown Bear","ursus arctos",NA,NA,NA,NA
-"46","Ward's Damsel Fish","Chromis wardi",NA,NA,NA,NA
+pop_cn,pop_sn,body_mass,body_mass_units,body_mass_minimum,body_mass_maximum,in_text_reference
+Impala,Aepyceros melampus,42080,g,,NA,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Impala,Aepyceros melampus,46493.22,g,,,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Impala,Aepyceros melampus,45990,g,,,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Impala,Aepyceros melampus,44180,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Impala,Aepyceros melampus,,g,28000,80000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Impala,Aepyceros melampus,56900,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Impala,Aepyceros melampus,40480,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Moose,Alces alces,,g,190000,825000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Moose,Alces alces,272155,g,,,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Moose,Alces alces,408180,g,,,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Pronghorn Antelope,Antilocapra americana,47508.47,g,,NA,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Pronghorn Antelope,Antilocapra americana,45400,g,,,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Pronghorn Antelope,Antilocapra americana,,g,32000,70000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Western Sandpiper,Calidris mauri,,g,22,35,
+Roe Deer,Capreolus capreolus,26800,g,,NA,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Roe Deer,Capreolus capreolus,25350,g,,,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Roe Deer,Capreolus capreolus,,g,10000,37000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Roe Deer,Capreolus capreolus,19780,g,,,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Elk,Cervus elaphus,172170,g,,NA,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Elk,Cervus elaphus,274876.98,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Elk,Cervus elaphus,,g,58000,500000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Elk,Cervus elaphus,131250,g,,,"Lundgren, E.J., Schowanek, S.D., Rowan, J., Middleton, O., Pedersen, R.Ø., Wallach, A.D., Ramp, D., Davis, M., Sandom, C.J. and Svenning, J.C., 2021. Functional traits of the world’s late Quaternary large-bodied avian and mammalian herbivores. Scientific data, 8(1), p.17. "
+Elk,Cervus elaphus,352441.27,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Semipalmated Plover,Charadrius semipalmatus,47,g,,NA,
+American Crow,Corvus brachyrhynchos,,g,316,575,
+Spotted Hyena,Crocuta crocuta,62.37,kg,,NA,"Crile & Quiring, 1940"
+Spotted Hyena,Crocuta crocuta,,g,40000,90000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Spotted Hyena,Crocuta crocuta,47400,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Spotted Hyena,Crocuta crocuta,51800,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Prairie Dog,Cynomys ludovicianus,914.31,g,,NA,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Prairie Dog,Cynomys ludovicianus,,g,392,2000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Fallow Deer,Dama dama,60560,g,,NA,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Fallow Deer,Dama dama,,g,28000,103000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Fallow Deer,Dama dama,63000,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Pere David’s Deer,Elaphurus davidianus,163300,g,,NA,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Pere David’s Deer,Elaphurus davidianus,158000,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Pere David’s Deer,Elaphurus davidianus,161500,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Eurasian Coot,Fulica atra,0.568,kg,,NA,"Franklin, Garnett, Luck, Gutierrez-Ibanez, & Iwaniuk, 2014"
+Eurasian Coot,Fulica atra,0.754,kg,,NA,"Prinzinger & Hänssler, 1980"
+Hooded Crane,Grus monacha,NA,g,3280,4870,NA
+Hooded Crane,Grus monacha,,g,3400,3740,
+Sable Antelope,Hippotragus niger,218600,g,,NA,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Sable Antelope,Hippotragus niger,,g,180000,300000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Sable Antelope,Hippotragus niger,190509,g,,,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Capybaras,Hydrochoerus hydrochaeris,34360.81,g,,NA,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Capybaras,Hydrochoerus hydrochaeris,50000,g,,,"Lundgren, E.J., Schowanek, S.D., Rowan, J., Middleton, O., Pedersen, R.Ø., Wallach, A.D., Ramp, D., Davis, M., Sandom, C.J. and Svenning, J.C., 2021. Functional traits of the world’s late Quaternary large-bodied avian and mammalian herbivores. Scientific data, 8(1), p.17. "
+Capybaras,Hydrochoerus hydrochaeris,50000,g,35000,65000,"Paglia,A. P., 2012, Lista Anotada dos MamÃƒÂ­feros do Brasil 2Ã‚Âª EdiÃƒÂ§ÃƒÂ£o Annotated Checklist of Brazilian Mammals, "
+Capybaras,Hydrochoerus hydrochaeris,71450,g,,,"Ferreira, J.D., Rinderknecht, A., de Moura Bubadué, J., Gasparetto, L.F., Dozo, M.T., Sánchez-Villagra, M.R. and Kerber, L., 2024. Unveiling the neuroanatomy of Josephoartigasia monesi and the evolution of encephalization in caviomorph rodents. Brain Structure and Function, pp.1-15. "
+Capybaras,Hydrochoerus hydrochaeris,26385,g,,,"Arends,A., 2001, The comparative energetics of Ã¢â‚¬ËœcaviomorphÃ¢â‚¬â„¢rodents, Comparative Biochemistry and Physiology-Part A: Molecular & Integrative Physiology "
+Capybaras,Hydrochoerus hydrochaeris,,g,20000,91000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Willow Ptarmigan,Lagopus lagopus,0.54,kg,,NA,"Crile & Quiring, 1940"
+Guanco,Lama guanicoe,70650,g,,NA,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Guanco,Lama guanicoe,32270,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Guanco,Lama guanicoe,,g,60000,155000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Guanco,Lama guanicoe,64360,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Guanco,Lama guanicoe,62030,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Yellowbellied Marmot,Marmota flaviventris,2406.15,g,,NA,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Yellowbellied Marmot,Marmota flaviventris,,g,1495,6820,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Badger,Meles meles,12000,g,,NA,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Badger,Meles meles,,g,5000,34000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Mule Deer,Odocoileus hemionus,58497.54,g,,NA,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Mule Deer,Odocoileus hemionus,70780,g,,,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Mule Deer,Odocoileus hemionus,,g,31800,215000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Thinhorn Sheep,Ovis dalli,68946,g,,NA,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Thinhorn Sheep,Ovis dalli,84600,g,,,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Thinhorn Sheep,Ovis dalli,,g,40000,11300,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Mouse,Peromyscus leucopus,19.6,g,,NA,"Damuth, J. 2010. ABSOLUT 6 a mammalian database compiled by the national center for ecological analysis and synthesis (NCEAS ) workshop on mammalian communities. "
+Mouse,Peromyscus leucopus,21.6,g,,,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Mouse,Peromyscus leucopus,,g,10,60,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Verreaux’s Sifaka,Propithecus verreauxi,NA,g,2950,6000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Puma,Puma concolor,28.79,kg,,NA,"Crile & Quiring, 1940"
+Puma,Puma concolor,67500,g,,,"Cofre,H., 1999, Conservation status, rarity, and geographic priorities for conservation of Chilean mammals: an assessment, Biological Conservation "
+Puma,Puma concolor,46000,g,22000,70000,"Paglia,A. P., 2012, Lista Anotada dos MamÃƒÂ­feros do Brasil 2Ã‚Âª EdiÃƒÂ§ÃƒÂ£o Annotated Checklist of Brazilian Mammals, "
+Puma,Puma concolor,44574,g,,,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Puma,Puma concolor,,g,23600,227000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Alpine chough,Pyrrhocorax graculus,0.15,kg,,NA,"Mlíkovský, 2003"
+Alpine chough,Pyrrhocorax graculus,,g,160,254,
+Gaspesie Caribou,Rangifer tarandus caribou,,g,37800,318000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Gaspesie Caribou,Rangifer tarandus caribou,240000,g,,,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Gaspesie Caribou,Rangifer tarandus caribou,108170,g,,,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Svalbard Reindeer,Rangifer tarandus platyrhynchus,,g,37800,318000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Svalbard Reindeer,Rangifer tarandus platyrhynchus,240000,g,,,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Svalbard Reindeer,Rangifer tarandus platyrhynchus,108170,g,,,"Wimberly, A.N., 2023. Predicting body mass in Ruminantia using postcranial measurements. Journal of Morphology, 284(10), p.e21636. "
+Lesser Rhea,Rhea pennata pennata,NA,kg,15,25,NA
+Whale Shark,Rhincodon typus,34,tonne,,NA,NA
+Tatra Chamois,Rupicapra rupicapra tatrica,NA,g,14000,62500,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Dusky Damselfish,Stegastes fuscus,100,g,,NA,NA
+Wild Boar,Sus scrofa,86100,g,,NA,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Wild Boar,Sus scrofa,93891.33,g,,,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Wild Boar,Sus scrofa,92500,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Wild Boar,Sus scrofa,94500,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Wild Boar,Sus scrofa,69240,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Wild Boar,Sus scrofa,142000,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Wild Boar,Sus scrofa,63800,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Wild Boar,Sus scrofa,109270,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Wild Boar,Sus scrofa,113300,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Wild Boar,Sus scrofa,,g,21900,350000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Wild Boar,Sus scrofa,115000,g,,,
+Chipmunk,Tamias striatus,0.075,g,,NA,"Crile & Quiring, 1940"
+Chipmunk,Tamias striatus,0.0874,g,,NA,"Wang & Hudson, 1971"
+Greater Kudu,Tragelaphus strepsiceros,NA,g,,NA,NA
+Blackbird,Turdus merula,0.0851,g,,NA,"Bech, Chappell, Astheimer, Londoño, & Buttemer, 2016"
+Brown Bear,ursus arctos,NA,g,80000,780000,"Freudenthal, M. and Martín-Suárez, E., 2013. Estimating body mass of fossil rodents. Scripta Geologica, 145, pp.1-513. "
+Brown Bear,ursus arctos,109900,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Brown Bear,ursus arctos,202800,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Brown Bear,ursus arctos,139071,g,,,"Engelman, R.K., 2022. Occipital condyle width (OCW) is a highly accurate predictor of body mass in therian mammals. BMC biology, 20(1), p.37. "
+Brown Bear,ursus arctos,169000,g,,,"Nelson, A., Engelman, R.K. and Croft, D.A., 2023. How to weigh a fossil mammal? South American notoungulates as a case study for estimating body mass in extinct clades. Journal of Mammalian Evolution, 30(3), pp.773-809. "
+Ward's Damsel Fish,Chromis wardi,100,g,,NA,NA

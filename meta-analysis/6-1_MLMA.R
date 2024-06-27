@@ -8,6 +8,11 @@ head(data_comp)
 
 nrow(data_comp)
 
+# add data id
+
+data_comp <- data_comp %>%
+    mutate(data_id = row_number())
+
 # remove nas from data_comp
 
 data_comp <- drop_na(data_comp, pop_sn)
@@ -42,7 +47,7 @@ for (i in unique(data_comp$outcome)) {
     smd <- data$smd
     se <- data$se
     
-    mlma <- rma.mv(yi = smd, V = se^2, mod = ~1, random = list(~ 1 | pop_sn, ~1 | cite.key), data = data, method = "REML", dfs = "contain", test = "t")
+    mlma <- rma.mv(yi = smd, V = se^2, mod = ~1, random = list(~ 1 | pop_sn, ~1 | cite.key, ~1 | data_id), data = data, method = "REML", dfs = "contain", test = "t")
     
     print(paste("Outcome:", i, sep = " "))
 
@@ -64,10 +69,12 @@ for (i in unique(data_comp$outcome)) {
                                         )
                     )    
 
-    # save the results
 
-    write.csv(results, "output/mlma_results.csv")
 }
+
+# save the results
+
+write.csv(results, "output/mlma_results.csv")
 
 # fitting phylogenetic multilevel metaanalysis model for each outcome
 
@@ -112,7 +119,7 @@ for (i in unique(data_comp$outcome)) {
 
     phylo <- phylo_cor[match(unique(data$tips), tip_names), match(unique(data$tips), tip_names)]
    
-    mlma <- rma.mv(yi = smd, V = se^2, mod = ~1, random = list(~ 1 | pop_sn, ~1 | cite.key, ~1 | tips), R = list(tips = phylo), data = data, method = "REML", dfs = "contain", test = "t")
+    mlma <- rma.mv(yi = smd, V = se^2, mod = ~1, random = list(~ 1 | pop_sn, ~1 | cite.key, ~1 | data_id, ~1 | tips), R = list(tips = phylo), data = data, method = "REML", dfs = "contain", test = "t")
     
     print(paste("Outcome:", i, sep = " "))
 
@@ -134,7 +141,8 @@ for (i in unique(data_comp$outcome)) {
                                         )
                     )    
 
-    # save the results
-
-    write.csv(results, "output/mlma_phylo_results.csv")
 }
+
+# save the results
+
+write.csv(results_phylo, "output/mlma_phylo_results.csv")

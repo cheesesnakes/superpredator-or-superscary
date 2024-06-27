@@ -1,6 +1,6 @@
 # meta-regressions
 
-pacman::p_load(meta)
+pacman::p_load(meta, broom)
 
 # effect of size of animal
 
@@ -9,6 +9,7 @@ source("4_effects-sizes.R", echo = FALSE, print.eval = FALSE)
 size <- read.csv('data/size.csv')
 
 size <- size%>%
+mutate(body_mass = ifelse(is.na(body_mass), (body_mass_minimum + body_mass_maximum)/2, body_mass))%>%
 mutate(body_mass = ifelse(body_mass_units != "kg" & body_mass_units != "tonne", body_mass/1000, body_mass),
 body_mass = ifelse(body_mass_units == "tonne", body_mass*1000, body_mass)
 )%>%
@@ -28,7 +29,8 @@ ci.hi.min = numeric(), ci.hi.max = numeric(), outcome = character())
 
 j = 1
 
-reg_tab <- data.frame(intercept = numeric(), se_intercept = numeric(), slope = numeric(), se_slope = numeric(), tau2 = numeric(), se_tau2 = numeric(), I2 = numeric(), H2 = numeric(), R2 = numeric(), outcome = character(), predictor = character())
+reg_tab <- data.frame(intercept = numeric(), se_intercept = numeric(), slope = numeric(), se_slope = numeric(), tau2 = numeric(), se_tau2 = numeric(), 
+I2 = numeric(), H2 = numeric(), R2 = numeric(), outcome = character(), predictor = character())
 
 k = 1
 
@@ -47,7 +49,7 @@ for (i in unique(data_size$outcome)) {
             comb.fixed = FALSE,
             comb.random = TRUE,
             hakn = TRUE,
-            method.tau = "DL",
+            method.tau = "REML",
             prediction = TRUE,
             sm = "SMD",
             title = i
@@ -61,7 +63,7 @@ for (i in unique(data_size$outcome)) {
 
     coeff[j,] <- c(reg$beta[1], reg$beta[2], reg$ci.lb[1], reg$ci.lb[2], reg$ci.ub[1], reg$ci.ub[2], i)
 
-    reg_tab[k,] <- c(reg$beta[1], reg$se[1], reg$beta[2], reg$se[2], reg$tau2, reg$se.tau2, reg$I2, reg$H2, reg$R2, i, "size")
+    reg_tab[k,] <- c(reg$beta[1], reg$se[1], reg$beta[2], reg$se[2], reg$tau2, reg$se.tau2, reg$I2, reg$H2, 0, i, "size")
 
     k = k + 1
 
@@ -81,6 +83,8 @@ ci.hi.min = as.numeric(ci.hi.min),
 ci.hi.max = as.numeric(ci.hi.max))
 
 print(reg_tab)
+
+write.csv(reg_tab, "output/metareg_size.csv", row.names = FALSE)
 
 ggplot(data_size, aes(x = size, y = smd, size = se, col = trophic_level)) +
     geom_point() +
@@ -131,7 +135,7 @@ for (i in unique(data_lat$outcome)) {
             comb.fixed = FALSE,
             comb.random = TRUE,
             hakn = TRUE,
-            method.tau = "DL",
+            method.tau = "REML",
             prediction = TRUE,
             sm = "SMD",
             title = i
@@ -166,6 +170,10 @@ ci.hi.min = as.numeric(ci.hi.min),
 ci.hi.max = as.numeric(ci.hi.max))
 
 print(coeff)
+
+print(reg_tab)
+
+write.csv(reg_tab, "output/metareg_lat.csv", row.names = FALSE)
 
 # plot
 
@@ -202,7 +210,7 @@ for (i in unique(data_comp$outcome)) {
             comb.fixed = FALSE,
             comb.random = TRUE,
             hakn = TRUE,
-            method.tau = "DL",
+            method.tau = "REML",
             prediction = TRUE,
             sm = "SMD",
             title = i
@@ -230,7 +238,7 @@ print(reg_tab)
 size <- read.csv('data/size.csv')
 
 size <- size%>%
-#mutate(body_mass = ifelse(is.na(body_mass), (body_mass_minimum + body_mass_maximum)/2, body_mass))%>%
+mutate(body_mass = ifelse(is.na(body_mass), (body_mass_minimum + body_mass_maximum)/2, body_mass))%>%
 mutate(body_mass = ifelse(body_mass_units != "kg" & body_mass_units != "tonne", body_mass/1000, body_mass),
 body_mass = ifelse(body_mass_units == "tonne", body_mass*1000, body_mass)
 )%>%
@@ -243,21 +251,38 @@ left_join(studies, by = c('cite.key' = "File52"))%>%
 mutate(abs_lat = abs(lat))%>%
 mutate(size = as.numeric(size))%>%
 mutate(abs_lat = abs(lat))%>%
-select(cite.key, pop_sn, size, abs_lat, smd, se, lower, upper, treatment, outcome, exposure)
+select(cite.key, pop_sn, size, abs_lat, smd, se, lower, upper, treatment, outcome, exposure)%>%
+drop_na(se, pop_sn)%>%
+mutate(data_id = row_number())
+
+estimates <- data.frame()
+stats <- data.frame()
 
 for (i in unique(data_comp$outcome)) {
  
     data <- data_comp %>%
         filter(outcome == i)
+    
+    smd <- data$smd
 
-    reg <- metafor::rma(yi = smd, sei = se, data = data, mods = ~size + abs_lat + exposure)
+    se <- data$se
+
+    reg <- rma.mv(yi = smd, V = se^2, 
+    mod = ~size + exposure, 
+    random = list(~1 | cite.key, ~1 | data_id), 
+    data = data, method = "REML", dfs = "contain", test = "t")
 
     print(i)
 
     print(summary(reg))
 
+    estimates <- rbind(estimates, broom::tidy(reg))
+
+    stats <- rbind(stats, broom::glance(reg))
 }
 
-print(reg_tab)
+print(estimates)
 
-write.csv(reg_tab, "output/meta-regression.csv", row.names = FALSE)
+print(stats)
+
+write.csv(estimates, "output/metarma_full.csv", row.names = FALSE)

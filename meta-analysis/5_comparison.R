@@ -9,6 +9,7 @@ pacman::p_load(meta, ggplot2, purrr)
 
 # map function metagen to data_tc_smd for each outcome
 
+
 for (i in unique(data_tc_smd$outcome)) {
  
     data <- data_tc_smd %>%
@@ -18,11 +19,11 @@ for (i in unique(data_tc_smd$outcome)) {
             TE = smd,
             seTE = se,
             data = data,
-            studlab = cite.key,
+            studlab = cite,
             comb.fixed = FALSE,
             comb.random = TRUE,
             hakn = TRUE,
-            method.tau = "DL",
+            method.tau = "REML",
             prediction = TRUE,
             sm = "SMD",
             title = i
@@ -120,8 +121,8 @@ for (i in unique(data_tc_smd$outcome)) {
             TE = smd,
             seTE = se,
             data = data,
-            studlab = cite.key,
-            method.tau = "DL",
+            studlab = cite,
+            method.tau = "REML",
             prediction = TRUE,
             sm = "SMD",
             title = paste("Effect of type of human activity on effect size for", i),
@@ -143,7 +144,7 @@ for (i in unique(data_tc_smd$outcome)) {
 
     # save forest plot
 
-    forest(stat, file = paste0("figures/forest_", i, ".png"), width = 1000)
+    forest(stat, file = paste0("figures/subgroup_", i, ".png"), width = 1000)
 
 }
 
@@ -159,6 +160,7 @@ meta_stat%>%
     geom_hline(yintercept = 0, linetype = "dashed")+
     guides(shape = "none", col = guide_legend(title = "Type of Human Activity"))+
     labs(x = "Measured Behaviours", y = "Summary Effect (± 95% confidence interval)")+
+    scale_color_brewer(name = "Type of Human Activity", palette = "Dark2")+
     theme_bw()+
     coord_flip()+
     theme(legend.position = "top")
@@ -172,24 +174,29 @@ comp_stat%>%
     ggplot(aes(x = outcome, y = E, ymin = lower, ymax = upper, col = exposure, shape = outcome))+
     geom_pointrange(position = position_dodge(width = 0.5), size = 1, linewidth = 1)+
     geom_hline(yintercept = 0, linetype = "dashed")+
-    labs(x = "Type of Human Activity", y = "Summary Effect (± 95% confidence interval)")+
+    guides(shape = "none", col = guide_legend(title = "Type of Human Activity"))+
+    labs(x = "Measured Behaviours", y = "Summary Effect (± 95% confidence interval)")+
+    scale_color_brewer(name = "Type of Human Activity", palette = "Dark2")+
     theme_bw()+
-    theme(legend.position = "top")+
-    scale_color_brewer(name = "Outcome", palette = "Set1")+
-    # remove shape legend
-    guides(shape = "none")
+    coord_flip()+
+    theme(legend.position = "top")
 
 ggsave("figures/subgroup_manual.png", width = 8, height = 8, dpi = 300)
 
 # funnel plot
 
+## add citation from authors
+
 ggplot(data_comp, aes(x = smd, y = 1/se, col = outcome, shape = exposure))+
     geom_point(size = 2)+
     geom_vline(xintercept = 0, linetype = "dashed")+
+    # label studies
+    geom_text(aes(label = cite), nudge_x = 0.1, nudge_y = 0.1, check_overlap = TRUE)+
     labs(x = "Effect size", y = "1/√variance")+
     theme_bw()+
     theme(legend.position = "top")+
-    scale_color_brewer(name = "Outcome", palette = "Set1")+
-    scale_shape_manual(values = c(1, 2, 3))
+    scale_color_brewer(name = "Outcome", palette = "Set1", guide = "none")+
+    scale_shape_manual(name = "Type of Interaction",values = c(1, 2, 3))+
+    facet_wrap(~outcome, scales = "free")
 
-ggsave("figures/funnel.png", width = 8, height = 8, dpi = 300)
+ggsave("figures/funnel.png", width = 12, height = 6, dpi = 300)

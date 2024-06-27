@@ -1,6 +1,6 @@
 # meta-regressions
 
-library(meta, help, pos = 2, lib.loc = NULL)
+pacman::p_load(meta)
 
 # effect of size of animal
 

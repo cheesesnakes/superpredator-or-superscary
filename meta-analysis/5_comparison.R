@@ -5,9 +5,7 @@ source('5-1_funcs.R', chdir = TRUE)
 
 # Is the effect significantly different from 0 across outcomes?
 
-library(meta)
-library(purrr)
-
+pacman::p_load(meta, ggplot2, purrr)
 
 # map function metagen to data_tc_smd for each outcome
 
@@ -35,6 +33,8 @@ for (i in unique(data_tc_smd$outcome)) {
     # save forest plot
 
     forest(stat, file = paste0("figures/meta_", i, ".png"), width = 1000)
+
+    write.csv(stat, paste0("output/summary_metagen_", i, ".csv"))
 }
 
 ## using functions from funcs.R
@@ -67,7 +67,7 @@ print(stat_man)
 
 # save comparison data
 
-write.csv(stat_man, "output/meta_manual.csv")
+write.csv(stat_man, "output/summary_manual.csv")
 
 # Comparison across hunting, non-hunting disturbance and natural predators --------------------------------------------
 
@@ -148,6 +148,8 @@ for (i in unique(data_tc_smd$outcome)) {
 }
 
 colnames(meta_stat) <- c("exposure", "E", "upper", "lower", "outcome")
+
+write.csv(meta_stat, "output/subgroup_metagen.csv")
 
 meta_stat%>%
     filter(exposure != "Active Disturbance" | outcome != "movement")%>%

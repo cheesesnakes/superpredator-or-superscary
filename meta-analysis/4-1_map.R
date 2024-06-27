@@ -1,8 +1,6 @@
 #setwd("./meta-analysis")
 
-library(stringr)
-library(dplyr)
-library(tidyr)
+pacman::p_load(stringr, dplyr, tidyr, ggplot2)
 
 studies <- read.csv("data/chapter-1_covariates.csv")
 
@@ -93,8 +91,6 @@ summary(as.numeric(studies$lat))
 summary(as.numeric(studies$lon))
 
 # plot map
-
-library(ggplot2)
 
 world <- map_data("world")
 

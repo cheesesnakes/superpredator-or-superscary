@@ -4,9 +4,7 @@
 
 # required libraries
 
-library(ggplot2)
-library(stringr)
-library(esc)
+pacman::p_load(dplyr, tidyr, stringr, ggplot2, esc)
 
 # import clean data
 

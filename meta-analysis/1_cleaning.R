@@ -2,9 +2,7 @@
 
 # required libraries
 
-library(dplyr)
-library(tidyr)
-
+pacman::p_load(dplyr, tidyr, stringr)
 
 # import data
 
@@ -35,7 +33,6 @@ data <- meta %>% left_join(effect, by = "cite.key")
 colnames(data) <- tolower(colnames(data))
 
 # merge pop_cn.x and pop_cn.y, where pop_cn.y is NA
-library(stringr)
 
 data <- data%>%
     mutate(pop_cn.y = as.character(pop_cn.y))%>%
@@ -100,7 +97,6 @@ data <- data %>%
     mutate(var = gsub("\\\\", "", var))
 
 # format pop_cn as a sentence
-library(stringr, help, pos = 2, lib.loc = NULL)
 
 data <- data %>%
     mutate(pop_cn = str_to_title(pop_cn))

@@ -21,7 +21,7 @@ authors <- authors %>%
 
 authors <- authors %>%
   mutate(cite = paste(author, year, sep = ", "))%>%
-  distinct(cite.key, cite)
+  distinct(cite.key, cite, year)
 
 # remove everything before the first space or period in cite
 

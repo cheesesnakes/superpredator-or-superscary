@@ -1,6 +1,6 @@
 # meta-regressions
 
-pacman::p_load(meta, broom)
+pacman::p_load(meta, broom, metafor)
 
 # effect of size of animal
 
@@ -271,6 +271,24 @@ for (i in unique(data_comp$outcome)) {
     mod = ~size + exposure, 
     random = list(~1 | cite.key, ~1 | data_id), 
     data = data, method = "REML", dfs = "contain", test = "t")
+    
+    png(paste0("figures/multi_reg_size_", i, ".png"))
+
+    regplot(x = reg, mod = "size", pi = TRUE, xlab = "Size (kg)", ylab = "Standardized mean difference", xlim = c(0, 600))
+
+    dev.off()
+
+    png(paste0("figures/multi_reg_hunting-active_", i, ".png"))
+
+    regplot(x = reg, mod = "exposureHunting", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
+
+    dev.off()
+
+    png(paste0("figures/multi_reg_passive-active_", i, ".png"))
+
+    regplot(x = reg, mod = "exposurePassive Disturbance", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
+
+    dev.off()
 
     print(i)
 

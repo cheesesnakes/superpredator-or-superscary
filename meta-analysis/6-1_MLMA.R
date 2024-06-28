@@ -53,6 +53,12 @@ for (i in unique(data_comp$outcome)) {
 
     print(summary(mlma))
 
+    png(paste("figures/forest-metafor_", i, ".png", sep = ""), width = 800, height = 800)
+
+    forest(mlma, slab = data$cite, digits = 3, refline = 0, xlab = "Standardised Mean Difference", main = paste("Forest plot of", i))
+
+    dev.off()
+
     results <- rbind(results, data.frame(outcome = i,
                                         intercept = mlma$beta[1],
                                         se_intercept = mlma$se[1],
@@ -121,6 +127,12 @@ for (i in unique(data_comp$outcome)) {
    
     mlma <- rma.mv(yi = smd, V = se^2, mod = ~1, random = list(~ 1 | pop_sn, ~1 | cite.key, ~1 | data_id, ~1 | tips), R = list(tips = phylo), data = data, method = "REML", dfs = "contain", test = "t")
     
+    png(paste("figures/forest-metafor_phylo_", i, ".png", sep = ""), width = 800, height = 800)
+
+    forest(mlma, slab = data$cite, digits = 3, refline = 0, xlab = "Standardised Mean Difference", main = paste("Forest plot of", i))
+
+    dev.off()
+
     print(paste("Outcome:", i, sep = " "))
 
     print(summary(mlma))
@@ -140,7 +152,7 @@ for (i in unique(data_comp$outcome)) {
                                         p = mlma$p[1]
                                         )
                     )    
-
+    
 }
 
 # save the results

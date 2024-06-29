@@ -294,7 +294,7 @@ for (i in unique(data_comp$outcome)) {
 
     print(summary(reg))
 
-    estimates <- rbind(estimates, broom::tidy(reg))
+    estimates <- rbind(estimates, cbind(broom::tidy(reg), outcome = i))
 
     stats <- rbind(stats, broom::glance(reg))
 }

@@ -52,7 +52,7 @@ data_cor <- data_cor %>%
 data_cor_smd <- data.frame(esc_B(study = data_cor$cite.key, b = data_cor$mean, sdy = data_cor$sd, grp1n = data_cor$n, grp2n = data_cor$n))
 
 data_cor_smd <- cbind(data_cor, select(data_cor_smd, -c(study)))%>%
-    select(cite.key, es, se, ci.lo, ci.hi, pop_cn, pop_sn, exposure, treatment, group, control, outcome, n, functional_group, trophic_level)%>%
+    select(cite.key, es, se, ci.lo, ci.hi, pop_cn, pop_sn, exposure_category, treatment, group, controls, outcome, n, functional_group, trophic_level)%>%
     distinct(cite.key, es, .keep_all = TRUE)%>%
     rename(smd = es,
             upper = ci.hi,
@@ -167,6 +167,7 @@ data_baci <- data %>%
 
 data_baci <- data_baci%>%
     group_by(cite.key, group, outcome)%>%
+    mutate(treatment = ifelse(treatment == "control", "control", "treatment"))%>%
     pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
     ungroup()
 
@@ -199,7 +200,7 @@ data_baci_smd <- cbind(data_baci, select(data_baci_smd, -c(study)))%>%
 data_tc <- data %>%
     filter(study_type == "treatment-control"| study_type == "correlational")%>%
     filter(mean.unit != "odds" & mean.unit != "coefficient")%>%
-    select(cite.key, group, pop_cn, exposure, treatment, outcome, multiplier, mean, mean.unit, var,  n, remarks)%>%
+    select(cite.key, group, pop_cn, exposure_category, treatment, outcome, multiplier, mean, mean.unit, var,  n, remarks)%>%
     # make n numeric
     mutate(n = as.numeric(n))%>%
     mutate(treatment = ifelse(treatment == "control", "control", "treatment"))%>%
@@ -207,7 +208,7 @@ data_tc <- data %>%
     mutate(se = var/sqrt(n))
 
 data_tc <- data_tc%>%
-    select(cite.key, group, pop_cn, outcome, exposure, treatment, mean, mean.unit, multiplier, se, n)%>%
+    select(cite.key, group, pop_cn, outcome, exposure_category, treatment, mean, mean.unit, multiplier, se, n)%>%
     distinct()%>%
     # set types
     mutate(mean =  as.numeric(mean),
@@ -217,7 +218,7 @@ data_tc <- data_tc%>%
 # spread mean and var for treatment and control
 
 data_tc <- data_tc%>%
-    group_by(cite.key, pop_cn, group, exposure, outcome, mean.unit)%>%
+    group_by(cite.key, pop_cn, group, exposure_category, outcome, mean.unit)%>%
     pivot_wider(names_from = treatment, values_from = c(mean, se, n))%>%
     ungroup()%>%
     #correction for foraging rates
@@ -245,11 +246,14 @@ esc_mean_se(
 # add covariates from data_tc and rename vars for join
 
 data_tc_smd <- cbind(data_tc, select(data_tc_smd, -c(study)))%>%
-    select(cite.key, es, se, ci.lo, ci.hi, pop_cn, group, exposure, outcome)%>%
+    select(cite.key, es, se, ci.lo, ci.hi, pop_cn, group, exposure_category, outcome)%>%
     distinct(cite.key, es, .keep_all = TRUE)%>%
     rename(smd = es,
             upper = ci.hi,
             lower= ci.lo)
+
+length(unique(data_tc_smd$cite.key))
+
 
 # add studies from play back group = human
 
@@ -258,11 +262,15 @@ data_tc_smd <- data_tc_smd%>%
     filter(group == "human" & outcome != "latency" )%>%
     select(cite.key, group, pop_cn, outcome, smd, se, upper, lower))
 
+length(unique(data_tc_smd$cite.key))
+
 # add studies from baci
 
 data_tc_smd <- data_tc_smd%>%
     bind_rows(data_baci_smd%>%
     select(cite.key, group, pop_cn, outcome, smd, se, upper, lower))
+
+length(unique(data_tc_smd$cite.key))
 
 # add species information
 
@@ -271,7 +279,7 @@ data_tc_smd <-  data_tc_smd %>%
     mutate(trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level))
 
 data_tc_smd <- data_tc_smd%>%
-    select(cite.key, smd, se, upper, lower, pop_cn, pop_sn, group, exposure, outcome, functional_group, trophic_level)
+    select(cite.key, smd, se, upper, lower, pop_cn, pop_sn, group, exposure_category, outcome, functional_group, trophic_level)
 
 data_tc_smd$trophic_level <- as.factor(data_tc_smd$trophic_level)
 
@@ -279,11 +287,8 @@ data_tc_smd$trophic_level <- as.factor(data_tc_smd$trophic_level)
 
 data_tc_smd <- full_join(data_tc_smd, data_cor_smd)
 
-# rename movement metrics
+length(unique(data_tc_smd$cite.key))
 
-data_tc_smd <- data_tc_smd%>%
-    mutate(outcome = ifelse(outcome == "displacement" | outcome == "movement rate" | outcome == "home range",
-                            "movement", outcome))
 
 # fix giordano mouse
 
@@ -291,6 +296,7 @@ data_tc_smd <- data_tc_smd%>%
     mutate(smd = ifelse(pop_cn == "Mouse" & is.na(smd), 0, smd),
             upper = ifelse(pop_cn == "Mouse" & is.na(upper), 0, upper),
             lower = ifelse(pop_cn == "Mouse" & is.na(lower), 0, lower))
+
 
 # make pop_sn capitalised
 
@@ -311,33 +317,10 @@ meta <- meta %>%
 data_comp <- data_tc_smd%>%
     left_join(meta, by = c("cite.key"))%>%
     rename(pop_cn = pop_cn.x,
-           outcome = outcome.x,
-           exposure = exposure.x)%>%
-    mutate(exposure = ifelse(is.na(exposure), exposure.y, exposure))%>%
-    select(cite.key, group, exposure, treatment, pop_cn, outcome, smd, se, upper, lower)
+           exposure_category = exposure_category.y)%>%           
+    select(cite.key, group, exposure_category, pop_cn, outcome, smd, se, upper, lower)
 
-# clearning exposure data
-
-data_comp <- data_comp%>%
-    mutate(exposure = ifelse(group == "human", "hunting", exposure),
-           exposure = ifelse(group == "Treatment_1", "active disturbance", exposure),
-           exposure = ifelse(group == "Treatment_2", "hunting", exposure),
-           exposure = ifelse(exposure == "human playback", "hunting", exposure),
-           exposure = ifelse(exposure == "nonhunting disturbance/hunting?", "active disturbance", exposure),
-           exposure = ifelse(exposure == "hunting/nonhunting disturbance/natural predator playback", "hunting", exposure),
-           exposure = ifelse(exposure == "nonhunting disturbance", "non-hunting disturbance", exposure))
-
-# add data_pb where group is not human
-
-# add natural predator to exposure
-
-data_comp <- data_comp%>%
-    mutate(exposure = ifelse(exposure != "hunting" & exposure != "active disturbance" & exposure != "passive disturbance", "active disturbance", exposure))
-
-# filter out natural predator
-
-data_comp <- data_comp%>%
-    filter(exposure != "natural predator")
+length(unique(data_comp$cite.key))
 
 # add species data
 
@@ -345,32 +328,75 @@ data_comp <- data_comp%>%
     left_join(pop, by = c("pop_cn"))%>%
     mutate(trophic_level = as.factor(trophic_level))
 
+
 # set order as hunting, active disturbance, passive disturbance
 
 data_comp <- data_comp%>%
-    mutate(exposure = factor(exposure, levels = c("hunting", "active disturbance", "passive disturbance")))%>%
+    mutate(exposure_category = factor(str_to_lower(exposure_category), levels = c("lethal interaction", "active interaction", "passive interaction")))%>%
     # capilatise first letter
-    mutate(exposure = str_to_title(exposure))
+    mutate(exposure_category = str_to_title(exposure_category))
 
+length(unique(data_comp$cite.key))
 
 # add citation from authors
 
 data_comp <- data_comp%>%
     left_join(authors, by = "cite.key")%>%
-    mutate(cite = ifelse(is.na(cite), cite.key, cite))
-    
+    mutate(cite = ifelse(is.na(cite), cite.key, cite))%>%
+    # capitalise first letter of outcome
+    mutate(outcome = str_to_title(outcome))
+
+length(unique(data_comp$cite.key))
+
+# add treament
+
+treatment <- data%>%
+    select(cite.key, treatment)%>%
+    distinct()%>%
+    # remove entries containing control
+    filter(!grepl("control", treatment))%>%
+    # join with data_comp where exposure_category is NA
+    left_join(data_comp%>%
+    filter(is.na(exposure_category)), by = "cite.key")%>%
+    filter(!is.na(smd))%>%
+    mutate(treatment = ifelse(group == "Treatment_1", "active interaction", ifelse(group == "Treatment_2", "lethal interaction", treatment)))%>%
+    distinct()%>%
+    mutate(exposure_category = str_to_title(treatment))%>%
+    select(-treatment)
+
+treatment
+
+# drop na and bind
+
+data_comp <- data_comp%>%
+    filter(!is.na(exposure_category))%>%
+    bind_rows(treatment)
+
+# add movement
+
+data_comp <- data_comp%>%
+    mutate(outcome = ifelse(outcome == "Foraging" | outcome == "Vigilance", outcome, "Movement"))
+
+# fix hunting exposure category
+
+data_comp <- data_comp%>%
+    mutate(exposure_category = ifelse(exposure_category == "Hunting", "Lethal Interaction", exposure_category))%>%
+    mutate(exposure_category = ifelse(exposure_category == "Passive Disturbance", "Passive Interaction", exposure_category))
+
 write.csv(data_comp, "data/effect-size.csv", row.names = F)
 
 # plotting with type of interactions
 
 data_comp %>%
+    mutate(exposure_category = factor(exposure_category, levels = c("Lethal Interaction", "Active Interaction", "Passive Interaction")))%>%
+    mutate(outcome = factor(outcome, levels = c("Foraging", "Vigilance", "Movement")))%>%
     filter(outcome != "latency" & !is.na(pop_sn))%>%
     ggplot(aes(x = reorder(pop_sn, smd), y = smd, col = trophic_level))+
     geom_point()+
     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.2)+
     geom_hline(yintercept = 0, linetype = "dashed")+
-    labs(x = "Exposure", y = "Standardised mean difference")+
-    facet_grid(outcome~exposure, scales = "free")+
+    labs(x = "Species", y = "Standardised mean difference")+
+    facet_grid(exposure_category~outcome, scales = "free")+
     # order strip text
     theme(strip.text.x = element_text(size = 12, face = "bold"))+
     theme_bw()+

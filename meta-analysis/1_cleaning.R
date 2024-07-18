@@ -6,7 +6,7 @@ pacman::p_load(dplyr, tidyr, stringr)
 
 # import data
 
-meta <- read.csv("./data/chapter-1_meta.csv")
+meta <- read.csv("./data/chapter-1_study-info.csv")
 effect <- read.csv("./data/chapter-1_effects.csv")
 
 # view data
@@ -18,6 +18,7 @@ colnames(meta)
 head(effect)
 summary(effect)
 colnames(effect)
+length(effect$cite.key)
 
 # clean data
 
@@ -27,6 +28,11 @@ meta <- meta %>% rename(cite.key = File52)
 ## join meta and effect
 
 data <- meta %>% left_join(effect, by = "cite.key")
+
+## excluded studies
+
+meta%>%
+    filter(!cite.key %in% data$cite.key)
 
 ## set colnames to lower case
 
@@ -47,8 +53,7 @@ data <- data%>%
 
 # select outcome from effects data
 
-data <- data %>% select(-outcome.x)%>%
-    rename(outcome = outcome.y)%>%
+data <- data %>% 
     mutate(outcome = str_trim(outcome))
 
 head(data)
@@ -59,8 +64,13 @@ colnames(data)
 
 data <-
     data %>%
-    select(cite.key, study_type, sampling, sampling_time, pop_cn, pop_sn, exposure, control, outcome, treatment,
+    select(cite.key, study_type, contrast_type, sampling, sampling_time, pop_cn, pop_sn, exposure_category, controls, outcome, outcomes, treatment,
     group, mean, scale, mean.unit, var, lower, upper, var.unit, multiplier, n, remarks)
+
+# trim contras_type
+
+data <- data %>%
+    mutate(contrast_type = str_trim(contrast_type))
 
 # rename outcome: feeding to foraging
 
@@ -100,3 +110,6 @@ data <- data %>%
 
 data <- data %>%
     mutate(pop_cn = str_to_title(pop_cn))
+
+head(data)
+length(data$cite.key)

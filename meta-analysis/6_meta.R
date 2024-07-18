@@ -19,7 +19,7 @@ summarise(size = mean(body_mass, na.rm = TRUE))
 data_size <- data_comp%>%
 left_join(size, by = c('pop_sn'))%>%
 mutate(size = as.numeric(size))%>%
-select(cite.key, pop_sn, size, smd, se, lower, upper, treatment, outcome, trophic_level)%>%
+select(cite.key, pop_sn, size, smd, se, lower, upper, exposure_category, outcome, trophic_level)%>%
 filter(!size > 1000)
 
 # map metareg over each outcome in data_size
@@ -110,7 +110,7 @@ source("4-1_map.R", echo = FALSE)
 data_lat <- data_comp%>%
     left_join(studies, by = c('cite.key' = "File52"))%>%
     mutate(abs_lat = abs(lat))%>%
-    select(cite.key, pop_sn, abs_lat, smd, se, lower, upper, treatment, outcome, trophic_level)
+    select(cite.key, pop_sn, abs_lat, smd, se, lower, upper, exposure_category, outcome, trophic_level)
 
 
 # map metareg over each outcome in data_lat
@@ -216,7 +216,7 @@ for (i in unique(data_comp$outcome)) {
             title = i
         )
     
-    reg <- metareg(stat, ~exposure)
+    reg <- metareg(stat, ~exposure_category)
 
     print(paste("Type_int", i,  sep = " ", " "))
 
@@ -251,7 +251,7 @@ left_join(studies, by = c('cite.key' = "File52"))%>%
 mutate(abs_lat = abs(lat))%>%
 mutate(size = as.numeric(size))%>%
 mutate(abs_lat = abs(lat))%>%
-select(cite.key, pop_sn, size, abs_lat, smd, se, lower, upper, treatment, outcome, exposure)%>%
+select(cite.key, pop_sn, size, abs_lat, smd, se, lower, upper, exposure_category, outcome, exposure_category)%>%
 drop_na(se, pop_sn)%>%
 mutate(data_id = row_number())
 
@@ -268,7 +268,7 @@ for (i in unique(data_comp$outcome)) {
     se <- data$se
 
     reg <- rma.mv(yi = smd, V = se^2, 
-    mod = ~size + exposure, 
+    mod = ~size + exposure_category, 
     random = list(~1 | cite.key, ~1 | data_id), 
     data = data, method = "REML", dfs = "contain", test = "t")
     
@@ -278,17 +278,30 @@ for (i in unique(data_comp$outcome)) {
 
     dev.off()
 
-    png(paste0("figures/multi_reg_hunting-active_", i, ".png"))
+    if (i != "Movement"){
 
-    regplot(x = reg, mod = "exposureHunting", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
+        png(paste0("figures/multi_reg_hunting-active_", i, ".png"))
 
-    dev.off()
+        regplot(x = reg, mod = "exposure_categoryLethal Interaction", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
 
-    png(paste0("figures/multi_reg_passive-active_", i, ".png"))
+        dev.off()
 
-    regplot(x = reg, mod = "exposurePassive Disturbance", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
+        png(paste0("figures/multi_reg_passive-active_", i, ".png"))
 
-    dev.off()
+        regplot(x = reg, mod = "exposure_categoryPassive Interaction", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
+
+        dev.off()
+
+    }else{
+
+        png(paste0("figures/multi_reg_passive-lethal_", i, ".png"))
+
+        regplot(x = reg, mod = "exposure_categoryPassive Interaction", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
+
+        dev.off()
+    }
+
+    
 
     print(i)
 

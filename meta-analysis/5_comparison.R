@@ -10,9 +10,9 @@ pacman::p_load(meta, ggplot2, purrr)
 # map function metagen to data_tc_smd for each outcome
 
 
-for (i in unique(data_tc_smd$outcome)) {
+for (i in unique(data_comp$outcome)) {
  
-    data <- data_tc_smd %>%
+    data <- data_comp %>%
         filter(outcome == i)
 
     stat <- metagen(
@@ -40,7 +40,7 @@ for (i in unique(data_tc_smd$outcome)) {
 
 ## using functions from funcs.R
 
-stat_man <- data_tc_smd%>%
+stat_man <- data_comp%>%
     mutate(weight = 1/se^2)%>%
     group_by(outcome)%>%
     filter(pop_cn != "Mouse")%>%
@@ -80,7 +80,7 @@ comp_stat <- data_comp%>%
   mutate(se = abs((upper - smd)/1.96),
           var = se^2,
           weight = 1/var)%>%
-    group_by(exposure, outcome)%>%
+    group_by(exposure_category, outcome)%>%
     filter(upper != 0)%>%
     filter(!is.na(smd))%>%
     mutate(Q = Q(weight, smd),
@@ -112,7 +112,7 @@ write.csv(comp_stat, "output/subgroup_manual.csv")
 
 meta_stat <- data.frame()
 
-for (i in unique(data_tc_smd$outcome)) {
+for (i in unique(data_comp$outcome)) {
  
     data <- data_comp %>%
         filter(outcome == i)
@@ -126,14 +126,14 @@ for (i in unique(data_tc_smd$outcome)) {
             prediction = TRUE,
             sm = "SMD",
             title = paste("Effect of type of human activity on effect size for", i),
-            subgroup = exposure,
+            subgroup = exposure_category,
             method.ci = "z",
             method.random.ci = "KR"
         )
 
     stat_subg <- cbind(stat$TE.random.w, stat$upper.random.w, stat$lower.random.w)
 
-    stat_subg <- as.data.frame(stat_subg)%>%tibble::rownames_to_column("exposure")
+    stat_subg <- as.data.frame(stat_subg)%>%tibble::rownames_to_column("exposure_category")
 
     stat_subg <- stat_subg%>%
         mutate(outcome = i)
@@ -148,30 +148,33 @@ for (i in unique(data_tc_smd$outcome)) {
 
 }
 
-colnames(meta_stat) <- c("exposure", "E", "upper", "lower", "outcome")
+colnames(meta_stat) <- c("exposure_category", "E", "upper", "lower", "outcome")
 
 write.csv(meta_stat, "output/subgroup_metagen.csv")
 
 meta_stat%>%
-    filter(exposure != "Active Disturbance" | outcome != "movement")%>%
-    mutate(exposure = factor(exposure, levels = c("Hunting", "Active Disturbance", "Passive Disturbance")))%>%
-    ggplot(aes(x = outcome, y = E, ymin = lower, ymax = upper, col = exposure, shape = exposure))+
+    mutate(exposure_category = factor(exposure_category, levels = c("Passive Interaction", "Active Interaction", "Lethal Interaction")))%>%
+    mutate(outcome = stringr::str_to_title(outcome))%>%
+    mutate(outcome = factor(outcome, levels = c("Movement", "Foraging", "Vigilance")))%>%
+    # capitalise first letter of outcome
+    filter(exposure_category != "Active non-lethal interactions" | outcome != "Movement")%>%
+    ggplot(aes(x = exposure_category, y = E, ymin = lower, ymax = upper, col = exposure_category, shape = exposure_category))+
     geom_pointrange(position = position_dodge(width = 0.5), size = 1, linewidth = 1)+
     geom_hline(yintercept = 0, linetype = "dashed")+
-    guides(shape = "none", col = guide_legend(title = "Type of Human Activity"))+
-    labs(x = "Measured Behaviours", y = "Summary Effect (± 95% confidence interval)")+
+    guides(shape = "none", color = "none")+
+    labs(x = "Type of interaction", y = "Summary Effect (± 95% confidence interval)")+
     scale_color_brewer(name = "Type of Human Activity", palette = "Dark2")+
     theme_bw()+
     coord_flip()+
-    theme(legend.position = "top")
+    theme(legend.position = "top")+
+    facet_grid(~outcome)
 
-ggsave("figures/fig-6.png", width = 8, height = 8, dpi = 300)
+ggsave("figures/fig-6.png", width = 10, height = 4, dpi = 300)
 
 # difference between hunting and non-hunting
 
 comp_stat%>%
-    mutate(exposure = factor(exposure, levels = c("Hunting", "Active Disturbance", "Passive Disturbance")))%>%
-    ggplot(aes(x = outcome, y = E, ymin = lower, ymax = upper, col = exposure, shape = outcome))+
+    ggplot(aes(x = outcome, y = E, ymin = lower, ymax = upper, col = exposure_category, shape = outcome))+
     geom_pointrange(position = position_dodge(width = 0.5), size = 1, linewidth = 1)+
     geom_hline(yintercept = 0, linetype = "dashed")+
     guides(shape = "none", col = guide_legend(title = "Type of Human Activity"))+
@@ -187,7 +190,7 @@ ggsave("figures/subgroup_manual.png", width = 8, height = 8, dpi = 300)
 
 ## add citation from authors
 
-ggplot(data_comp, aes(x = smd, y = 1/se, col = outcome, shape = exposure))+
+ggplot(data_comp, aes(x = smd, y = 1/se, col = outcome, shape = exposure_category))+
     geom_point(size = 2)+
     geom_vline(xintercept = 0, linetype = "dashed")+
     # label studies

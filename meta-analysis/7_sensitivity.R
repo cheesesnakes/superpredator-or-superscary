@@ -1,3 +1,5 @@
+pacman::p_load(meta, broom, metafor)
+
 source('4_effects-sizes.R', chdir = TRUE)
 
 # publication bias funnel plot assymetry
@@ -109,8 +111,6 @@ for (i in unique(data_comp$outcome)){
   } 
 
 }
-
-print(loo_test)
 
 write.csv(loo_test, "output/loo_test.csv", row.names = FALSE)
 

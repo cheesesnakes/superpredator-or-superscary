@@ -46,9 +46,125 @@ print(paste("Number of studies included in meta-analysis:",n_studies))
 
 ## number of datapoints per outcome
 
-n_datapoints <- data %>% 
-    group_by(outcome) %>% 
-    summarise(n = n())
+outcomes <- data$outcomes
+
+## split outcome by ' + '
+
+outcomes <- str_split(outcomes, " \\+ ")
+
+outcomes <- str_split(outcomes, "/")
+
+outcomes <- str_split(outcomes, ",")
+
+## trim
+
+outcomes <- lapply(outcomes, str_trim)
+
+## unlist
+
+outcomes <- unlist(outcomes)
+
+## rename
+
+## change AD to alert distance
+
+outcomes <- lapply(outcomes, function(x) {
+    x <- lapply(x, function(y) {
+        if(y == "AD") {
+            y <- "Alert Distance"
+        }
+        return(y)
+    })
+    return(x)
+})
+
+## Change ED to escape distance
+
+outcomes <- lapply(outcomes, function(x) {
+    x <- lapply(x, function(y) {
+        if(y == "ED") {
+            y <- "Escape Distance"
+        }
+        return(y)
+    })
+    return(x)
+})
+
+## change feeding rate and feeding time to foraging rate and foraging time
+
+outcomes <- lapply(outcomes, function(x) {
+    x <- lapply(x, function(y) {
+        if(y == "feeding rate") {
+            y <- "foraging rate"
+        }
+        return(y)
+    })
+    return(x)
+})
+
+## change foraging frequency to foraging rate
+
+outcomes <- lapply(outcomes, function(x) {
+    x <- lapply(x, function(y) {
+        if(y == "foraging frequency") {
+            y <- "foraging rate"
+        }
+        return(y)
+    })
+    return(x)
+})
+
+## Change GUD to giving up density
+
+outcomes <- lapply(outcomes, function(x) {
+    x <- lapply(x, function(y) {
+        if(y == "GUD") {
+            y <- "Giving Up Density"
+        }
+        return(y)
+    })
+    return(x)
+})
+
+## change prob. Flight to probability of flight
+
+outcomes <- lapply(outcomes, function(x) {
+    x <- lapply(x, function(y) {
+        if(y == "prob. Flight") {
+            y <- "Probability of Flight"
+        }
+        return(y)
+    })
+    return(x)
+})
+
+## change foraging to foraging rate
+
+outcomes <- lapply(outcomes, function(x) {
+    x <- lapply(x, function(y) {
+        if(y == "foraging") {
+            y <- "foraging rate"
+        }
+        return(y)
+    })
+    return(x)
+})
+
+## change vigilance to vigilance rate
+
+outcomes <- lapply(outcomes, function(x) {
+    x <- lapply(x, function(y) {
+        if(y == "vigilance") {
+            y <- "vigilance rate"
+        }
+        return(y)
+    })
+    return(x)
+})
+
+# count
+
+n_datapoints <- table(outcomes)
 
 print("Number of datapoints per outcome")
 
@@ -65,6 +181,12 @@ data <- data %>%
 print("Number of studies by type")
 
 print(table(data$study_type))
+
+## studies by contrast type
+
+print("Number of studies by contrast type")
+
+print(table(data$contrast))
 
 ## number of datapoints per population, sorted
 data%>%

@@ -33,6 +33,17 @@ data <- data %>%
 data <- data %>%
     mutate(trophic_level = as.factor(trophic_level))
 
+# expanding studies with multiple exposures
+
+data <- data %>%
+    mutate(exposure_category = str_replace_all(exposure_category, " \\+ ", ", "))%>%
+    separate_rows(exposure_category, sep = ", ")
+
+# make interacitons interaction
+
+data <- data %>%
+    mutate(exposure_category = ifelse(str_trim(exposure_category) == "lethal interactions", "lethal interaction", exposure_category))
+
 # summaries --------------------------------------------
 
 ## total number of studies in meta analysis
@@ -44,132 +55,6 @@ n_studies <- data %>%
 
 print(paste("Number of studies included in meta-analysis:",n_studies))
 
-## number of datapoints per outcome
-
-outcomes <- data$outcomes
-
-## split outcome by ' + '
-
-outcomes <- str_split(outcomes, " \\+ ")
-
-outcomes <- str_split(outcomes, "/")
-
-outcomes <- str_split(outcomes, ",")
-
-## trim
-
-outcomes <- lapply(outcomes, str_trim)
-
-## unlist
-
-outcomes <- unlist(outcomes)
-
-## rename
-
-## change AD to alert distance
-
-outcomes <- lapply(outcomes, function(x) {
-    x <- lapply(x, function(y) {
-        if(y == "AD") {
-            y <- "Alert Distance"
-        }
-        return(y)
-    })
-    return(x)
-})
-
-## Change ED to escape distance
-
-outcomes <- lapply(outcomes, function(x) {
-    x <- lapply(x, function(y) {
-        if(y == "ED") {
-            y <- "Escape Distance"
-        }
-        return(y)
-    })
-    return(x)
-})
-
-## change feeding rate and feeding time to foraging rate and foraging time
-
-outcomes <- lapply(outcomes, function(x) {
-    x <- lapply(x, function(y) {
-        if(y == "feeding rate") {
-            y <- "foraging rate"
-        }
-        return(y)
-    })
-    return(x)
-})
-
-## change foraging frequency to foraging rate
-
-outcomes <- lapply(outcomes, function(x) {
-    x <- lapply(x, function(y) {
-        if(y == "foraging frequency") {
-            y <- "foraging rate"
-        }
-        return(y)
-    })
-    return(x)
-})
-
-## Change GUD to giving up density
-
-outcomes <- lapply(outcomes, function(x) {
-    x <- lapply(x, function(y) {
-        if(y == "GUD") {
-            y <- "Giving Up Density"
-        }
-        return(y)
-    })
-    return(x)
-})
-
-## change prob. Flight to probability of flight
-
-outcomes <- lapply(outcomes, function(x) {
-    x <- lapply(x, function(y) {
-        if(y == "prob. Flight") {
-            y <- "Probability of Flight"
-        }
-        return(y)
-    })
-    return(x)
-})
-
-## change foraging to foraging rate
-
-outcomes <- lapply(outcomes, function(x) {
-    x <- lapply(x, function(y) {
-        if(y == "foraging") {
-            y <- "foraging rate"
-        }
-        return(y)
-    })
-    return(x)
-})
-
-## change vigilance to vigilance rate
-
-outcomes <- lapply(outcomes, function(x) {
-    x <- lapply(x, function(y) {
-        if(y == "vigilance") {
-            y <- "vigilance rate"
-        }
-        return(y)
-    })
-    return(x)
-})
-
-# count
-
-n_datapoints <- table(outcomes)
-
-print("Number of datapoints per outcome")
-
-print(n_datapoints)
-
 ## removing FID and GUD studies due lack of data
 
 data <- data %>% 
@@ -180,13 +65,67 @@ data <- data %>%
 
 print("Number of studies by type")
 
-print(table(data$study_type))
+data %>%
+    distinct(cite.key, .keep_all = TRUE) %>%
+    group_by(exposure_category, study_type) %>%
+    summarise(n = n()) %>%
+    pivot_wider(names_from = study_type, values_from = n, values_fill = list(n = 0))%>%
+    print(.)
 
 ## studies by contrast type
 
 print("Number of studies by contrast type")
 
-print(table(data$contrast))
+data %>%
+    distinct(cite.key, .keep_all = TRUE) %>%
+    group_by(exposure_category, contrast_type) %>%
+    summarise(n = n()) %>%
+    pivot_wider(names_from = contrast_type, values_from = n, values_fill = list(n = 0))%>%
+    print(.)
+
+# number of datapoints per outcome
+
+outcomes <- data%>%
+    select(cite.key, exposure_category, outcomes)%>%
+    distinct(cite.key, .keep_all = TRUE)%>%
+    # split outcomes at ' + '
+    mutate(outcomes = str_split(outcomes, " \\+ "))%>%
+    unnest(outcomes)%>%
+    # trim whitespace
+    mutate(outcomes = str_trim(outcomes))%>%
+    # rename lethal interacitons to lethal interaciton
+    group_by(exposure_category, outcomes)%>%
+    summarise(n = n())
+
+# treaments 
+
+treatment <- str_split(meta$treatment, " \\+ ")
+
+treatment <- unlist(treatment)
+
+treatment <- str_to_lower(treatment)
+
+treatment <- unique(treatment)
+
+print(treatment)
+
+# plot
+
+print("Number of datapoints per outcome")
+
+ggplot(outcomes, aes(x = reorder(outcomes, n), y = n, fill = exposure_category)) +
+    geom_col(col = "black") +
+    labs(title = "Number of datapoints per outcome")+
+    xlab("Outcome")+
+    ylab("Number of datapoints")+
+    coord_flip()+
+    theme_bw()+
+    theme(axis.text.y = element_text(face = "italic"),
+    text = element_text(size = 20),
+    legend.position = "top")+
+    scale_fill_brewer(name = "Exposure Category", palette = "Set1")
+
+ggsave("figures/outcomes.png", width = 10, height = 10, dpi = 300)
 
 ## number of datapoints per population, sorted
 data%>%
@@ -269,7 +208,7 @@ print("Number of datapoints")
 # number of studies across exposures
 
 data %>%
-  group_by(exposure) %>%
+  group_by(exposure_category) %>%
   summarise(n = length(unique(cite.key)))%>%
   print(.)
 
@@ -287,4 +226,3 @@ data%>%
   summarise(n = length(unique(cite.key)))%>%
   print(.)
   
-

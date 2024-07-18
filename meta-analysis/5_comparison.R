@@ -155,7 +155,7 @@ write.csv(meta_stat, "output/subgroup_metagen.csv")
 meta_stat%>%
     mutate(exposure_category = factor(exposure_category, levels = c("Passive Interaction", "Active Interaction", "Lethal Interaction")))%>%
     mutate(outcome = stringr::str_to_title(outcome))%>%
-    mutate(outcome = factor(outcome, levels = c("Movement", "Foraging", "Vigilance")))%>%
+    mutate(outcome = factor(outcome, levels = c("Foraging", "Vigilance", "Movement")))%>%
     # capitalise first letter of outcome
     filter(exposure_category != "Active non-lethal interactions" | outcome != "Movement")%>%
     ggplot(aes(x = exposure_category, y = E, ymin = lower, ymax = upper, col = exposure_category, shape = exposure_category))+

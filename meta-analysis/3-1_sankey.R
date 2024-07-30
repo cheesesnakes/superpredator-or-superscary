@@ -82,6 +82,21 @@ studies <- studies%>%
 studies <- studies%>%
     filter(outcomes != "Vigilance" & outcomes != "Foraging")
 
+## Vigilance Rabe pop to Vigilance Rate pop
+
+studies <- studies%>%
+    mutate(outcomes = str_replace_all(outcomes, "Viglance Rate Pop.", "Vigilance Rate Pop."))
+
+## Vigilsnce Rate pop. to Population Vigilance Rate
+
+studies <- studies%>%
+    mutate(outcomes = str_replace_all(outcomes, "Vigilance Rate Pop.", "Population Vigilance Rate"))
+
+## Density to Population Density
+
+studies <- studies%>%
+    mutate(outcomes = str_replace_all(outcomes, "Density pop.", "Population Density"))
+    
 ## classify outcome_type as Foraging, Vigilance, Movement or Other
 
 ## if Foraging or Feed in string then Foraging
@@ -138,4 +153,4 @@ links <- rbind(links,
 
 sankeyNetwork(Links = links, Nodes = nodes, 
 Source = "source", Target = "target", Value = "value", NodeID = "name", 
-units = "Number of datapoints", fontSize = 12, nodeWidth = 30)
+units = "Number of datapoints", fontSize = 12, nodeWidth = 10)

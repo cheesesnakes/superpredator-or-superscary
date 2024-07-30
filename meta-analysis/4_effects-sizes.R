@@ -390,15 +390,17 @@ write.csv(data_comp, "data/effect-size.csv", row.names = F)
 data_comp %>%
     mutate(exposure_category = factor(exposure_category, levels = c("Lethal Interaction", "Active Interaction", "Passive Interaction")))%>%
     mutate(outcome = factor(outcome, levels = c("Foraging", "Vigilance", "Movement")))%>%
-    filter(outcome != "latency" & !is.na(pop_sn))%>%
-    ggplot(aes(x = reorder(pop_sn, smd), y = smd, col = trophic_level))+
-    geom_point()+
-    geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.2)+
+    # rename trophic levels
+    mutate(trophic_level = ifelse(trophic_level == 1, "Consumer", ifelse(trophic_level == 2, "Primary Predator", "Secondary Predator")),
+    trophic_level = factor(trophic_level, levels = c("Secondary Predator", "Primary Predator", "Consumer")))%>%
+    filter(outcome != "latency" & !is.na(pop_cn) & !is.na(trophic_level))%>%
+    ggplot(aes(x = reorder(pop_cn, smd), y = smd, col = trophic_level))+
+    geom_point(size = 2)+
+    geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.5)+
     geom_hline(yintercept = 0, linetype = "dashed")+
     labs(x = "Species", y = "Standardised mean difference")+
     facet_grid(exposure_category~outcome, scales = "free")+
     # order strip text
-    theme(strip.text.x = element_text(size = 12, face = "bold"))+
     theme_bw()+
     theme(legend.position = "top")+
     coord_flip()+
@@ -407,9 +409,10 @@ data_comp %>%
     # set legend title
     scale_color_brewer(name = "Trophic level", palette = "Set1")+
     # italicise x-axis labels
-    theme(axis.text.y = element_text(face = "italic"))
+    theme(axis.text.y = element_text(face = "italic"),
+        text = element_text(size = 20))
     
-ggsave("figures/fig-2_1.png", width = 8, height = 8, dpi = 300)
+ggsave("figures/fig-2_1.png", width = 12, height = 10, dpi = 300)
 
 # plot effect size and confidence intervals
 

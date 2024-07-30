@@ -164,12 +164,15 @@ meta_stat%>%
     guides(shape = "none", color = "none")+
     labs(x = "Type of interaction", y = "Summary Effect (± 95% confidence interval)")+
     scale_color_brewer(name = "Type of Human Activity", palette = "Dark2")+
+    scale_x_discrete(labels = function(x) str_wrap(x, width = 10 ))+
     theme_bw()+
     coord_flip()+
-    theme(legend.position = "top")+
+    theme(legend.position = "top",
+    text = element_text(size = 20),
+    axis.text.y = element_text(hjust = 0.5, vjust = 0.5))+
     facet_grid(~outcome)
 
-ggsave("figures/fig-6.png", width = 10, height = 4, dpi = 300)
+ggsave("figures/fig-6.png", width = 10, height = 5, dpi = 300)
 
 # difference between hunting and non-hunting
 

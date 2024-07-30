@@ -434,3 +434,22 @@ ggplot(data = data_tc_smd, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_
     scale_color_brewer(name = "Trophic Level", palette = "Set1")
 
 ggsave("figures/fig-2.png", width = 24, height = 8, dpi = 300)
+
+# count positive and negative studies which conf int don't overlap with zero
+
+data_comp%>%
+select(exposure_category, outcome, smd, upper, lower)%>%
+mutate(sign = ifelse(smd > 0, "positive", "negative"))%>%
+group_by(exposure_category, outcome, sign)%>%
+summarise(n = sum(ifelse(sign == "positive", lower > 0, upper < 0)))%>%
+pivot_wider(names_from = exposure_category, values_from = n)
+
+# count number of insig interactions
+
+data_comp%>%
+select(exposure_category, outcome, smd, upper, lower)%>%
+mutate(sign = ifelse(smd > 0, "positive", "negative"))%>%
+group_by(exposure_category, outcome)%>%
+summarise(n = sum(ifelse(sign == "positive", lower < 0, upper > 0)))%>%
+pivot_wider(names_from = exposure_category, values_from = n)
+

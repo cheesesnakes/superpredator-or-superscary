@@ -123,12 +123,33 @@ studies <- studies%>%
            !is.na(treatments) & treatments != "",
            !is.na(outcomes) & outcomes != "",
            !is.na(outcome_type) & outcome_type != "")%>%
-    filter(treatments != "Natural Predator" & treatments != "Dog")
+    filter(treatments != "Natural Predator" & treatments != "Natural Perdator" & treatments != "Dog")
 
 ## make displacement, range size Movement
 
 studies <- studies%>%
     mutate(outcome_type = ifelse(outcomes == "Displacement" | outcomes == "Range Size", "Movement", outcome_type))
+
+## remove erroneous connections due to multiple treatments 
+
+studies <- studies%>%
+    filter(!(exposure_category == "Active Interaction" & treatments == "Hunting"),
+    !(exposure_category == "Lethal Interaction" & treatments == "Hiking"),
+    !(exposure_category == "Passive Interaction" & treatments == "Hiking"),
+    !(exposure_category == "Active Interaction" & treatments == "Roads"),
+    !(exposure_category == "Passive Interaction" & treatments == "Sonar"))
+
+## Remove unneded outcome types
+
+studies <- studies%>%
+    filter(outcomes != "Flight Probability" & outcomes != "Density" & outcomes != "Escape Distance" &
+           outcomes != "Giving Up Density" &
+           outcomes != "Flight Initiation Distance" &
+           outcomes != "Alert Distance" &
+           outcomes != "Fecal Cortisol" &
+           outcomes != "Group Size" &
+           outcomes != "Abundance" &
+           outcomes != "Return Time")
 
 # make data frame of nodes
 
@@ -154,3 +175,8 @@ links <- rbind(links,
 sankeyNetwork(Links = links, Nodes = nodes, 
 Source = "source", Target = "target", Value = "value", NodeID = "name", 
 units = "Number of datapoints", fontSize = 12, nodeWidth = 10)
+
+sankeyNetwork(Links = links, Nodes = nodes, 
+Source = "source", Target = "target", Value = "value", NodeID = "name", 
+units = "Number of datapoints", fontSize = 25, nodeWidth = 200)%>%
+    saveNetwork(file = "figures/sankey.html", selfcontained = TRUE)

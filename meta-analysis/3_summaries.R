@@ -66,9 +66,11 @@ data <- data %>%
 print("Number of studies by type")
 
 data %>%
-    distinct(cite.key, .keep_all = TRUE) %>%
+    distinct(cite.key, exposure_category, study_type) %>%
     group_by(exposure_category, study_type) %>%
-    summarise(n = n()) %>%
+    summarise(n = n())%>%
+    ungroup()%>%
+    summarise(n = sum(n))
     pivot_wider(names_from = study_type, values_from = n, values_fill = list(n = 0))%>%
     print(.)
 
@@ -77,17 +79,18 @@ data %>%
 print("Number of studies by contrast type")
 
 data %>%
-    distinct(cite.key, .keep_all = TRUE) %>%
-    group_by(exposure_category, contrast_type) %>%
-    summarise(n = n()) %>%
+    distinct(cite.key, exposure_category, contrast_type)%>%
+    group_by(exposure_category, contrast_type)%>% 
+    summarise(n = n())%>%
+    ungroup()%>%
+    summarise(n = sum(n))
     pivot_wider(names_from = contrast_type, values_from = n, values_fill = list(n = 0))%>%
     print(.)
 
 # number of datapoints per outcome
 
 outcomes <- data%>%
-    select(cite.key, exposure_category, outcomes)%>%
-    distinct(cite.key, .keep_all = TRUE)%>%
+    distinct(cite.key, exposure_category, outcomes)%>%
     # split outcomes at ' + '
     mutate(outcomes = str_split(outcomes, " \\+ "))%>%
     unnest(outcomes)%>%
@@ -99,13 +102,6 @@ outcomes <- data%>%
 
 # treaments 
 
-treatment <- str_split(meta$treatment, " \\+ ")
-
-treatment <- unlist(treatment)
-
-treatment <- str_to_lower(treatment)
-
-treatment <- unique(treatment)
 
 print(treatment)
 
@@ -225,4 +221,25 @@ data%>%
   group_by(trophic_level) %>%
   summarise(n = length(unique(cite.key)))%>%
   print(.)
-  
+
+# table with pop_cn, pop_sn, trophic_level, functional_group and citations
+
+source('1-2_authors.R', chdir = TRUE)
+
+table_a1 <- data %>%
+  select(pop_cn, pop_sn, trophic_level, functional_group, cite.key)%>%
+  distinct()%>%
+  left_join(authors, by = "cite.key")%>%
+  select(pop_cn, pop_sn, trophic_level, functional_group, cite)%>%
+  mutate(trophic_level = ifelse(trophic_level == 1, "Consumer", 
+                                ifelse(trophic_level == 2, "Primary Predator", 
+                                       ifelse(trophic_level == 3, "Secondary Predator", "Unknown"))))%>%
+  group_by(pop_cn)%>%
+    summarise(pop_sn = first(pop_sn),
+                trophic_level = first(trophic_level),
+                functional_group = first(functional_group),
+                cite = paste(cite, collapse = ", "))
+
+print(table_a1)
+
+write.csv(table_a1, file = "output/table_a1.csv", quote = TRUE)

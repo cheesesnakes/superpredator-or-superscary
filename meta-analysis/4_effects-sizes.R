@@ -442,7 +442,8 @@ select(exposure_category, outcome, smd, upper, lower)%>%
 mutate(sign = ifelse(smd > 0, "positive", "negative"))%>%
 group_by(exposure_category, outcome, sign)%>%
 summarise(n = sum(ifelse(sign == "positive", lower > 0, upper < 0)))%>%
-pivot_wider(names_from = exposure_category, values_from = n)
+pivot_wider(names_from = exposure_category, values_from = n)%>%
+print()
 
 # count number of insig interactions
 
@@ -451,5 +452,6 @@ select(exposure_category, outcome, smd, upper, lower)%>%
 mutate(sign = ifelse(smd > 0, "positive", "negative"))%>%
 group_by(exposure_category, outcome)%>%
 summarise(n = sum(ifelse(sign == "positive", lower < 0, upper > 0)))%>%
-pivot_wider(names_from = exposure_category, values_from = n)
+pivot_wider(names_from = exposure_category, values_from = n)%>%
+print()
 

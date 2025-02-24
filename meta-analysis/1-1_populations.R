@@ -30,3 +30,4 @@ size <- pop %>%
               in_text_reference = inTextReference)
 
 #write.csv(size, file = "data/size.csv", quote = TRUE)
+

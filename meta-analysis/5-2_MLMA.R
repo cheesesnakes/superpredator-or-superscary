@@ -37,6 +37,13 @@ Qp = numeric(),
 df = numeric(), 
 p = numeric())
 
+factors <- c("Species", "Study ID", "Data ID")
+
+results_random <- data.frame(outcome = character(),
+factor = character(),
+sigma2 = numeric(),
+n_levels = numeric())
+
 # loop over each outcome
 
 for (i in unique(data_comp$outcome)) {
@@ -73,7 +80,14 @@ for (i in unique(data_comp$outcome)) {
                                         df = mlma$k[1],
                                         p = mlma$p[1]
                                         )
-                    )    
+                    )
+
+    results_random <- rbind(results_random, data.frame(outcome = rep(i, 3),
+                                        factor = factors,
+                                        sigma2 = mlma$sigma2,
+                                        n_levels = mlma$s.nlevels)
+                                        
+                    )   
 
 
 }
@@ -81,6 +95,7 @@ for (i in unique(data_comp$outcome)) {
 # save the results
 
 write.csv(results, "output/mlma_results.csv")
+write.csv(results_random, "output/mlma_results_random.csv")
 
 # fitting phylogenetic multilevel metaanalysis model for each outcome
 
@@ -111,6 +126,11 @@ Q = numeric(),
 Qp = numeric(),
 df = numeric(),
 p = numeric())
+
+results_phylo_random <- data.frame(outcome = character(),
+factor = character(),
+sigma2 = numeric(),
+n_levels = numeric())
 
 # loop over each outcome
 
@@ -153,8 +173,15 @@ for (i in unique(data_comp$outcome)) {
                                         )
                     )    
     
+    results_phylo_random <- rbind(results_phylo_random, data.frame(outcome = rep(i, 4),
+                                        factor = c(factors, "Phylogeny"),
+                                        sigma2 = mlma$sigma2,
+                                        n_levels = mlma$s.nlevels)
+                                        
+                    )
 }
 
 # save the results
 
 write.csv(results_phylo, "output/mlma_phylo_results.csv")
+write.csv(results_phylo_random, "output/mlma_phylo_results_random.csv")

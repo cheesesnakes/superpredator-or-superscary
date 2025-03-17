@@ -42,6 +42,21 @@ studies <- studies%>%
 
 # rename and format outcomes
 
+## Pedestrian to Pedestrians
+
+studies <- studies%>%
+    mutate(treatments = ifelse(treatments == "Pedestrian", "Pedestrians", treatments))
+
+# make road roads
+
+studies <- studies%>%
+    mutate(treatments = ifelse(treatments == "Road", "Roads", treatments))
+
+# Make generic disturbance unspecified disturbance
+
+studies <- studies%>%
+    mutate(treatments = ifelse(treatments == "Generic Disturbance", "Unspecified Disturbance", treatments))
+
 ## AD to Alert Distance
 
 studies <- studies%>%
@@ -90,7 +105,8 @@ studies <- studies%>%
 ## Vigilsnce Rate pop. to Population Vigilance Rate
 
 studies <- studies%>%
-    mutate(outcomes = str_replace_all(outcomes, "Vigilance Rate Pop.", "Population Vigilance Rate"))
+    mutate(outcomes = str_replace_all(outcomes, "Vigilance Rate Pop.", "Vigilance Rate"),
+           outcomes = str_replace_all(outcomes, "Collective Vigilance", "Vigilance Rate"))
 
 ## Density to Population Density
 
@@ -150,6 +166,12 @@ studies <- studies%>%
            outcomes != "Group Size" &
            outcomes != "Abundance" &
            outcomes != "Return Time")
+
+# Rename active and passive interactions to Active non-lethal interactions and passive non-lethal interactions
+
+studies <- studies%>%
+    mutate(exposure_category = ifelse(exposure_category == "Active Interaction", "Active Non-lethal Interaction", exposure_category))%>%
+    mutate(exposure_category = ifelse(exposure_category == "Passive Interaction", "Passive Non-lethal Interaction", exposure_category))
 
 # make data frame of nodes
 

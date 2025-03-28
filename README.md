@@ -64,7 +64,11 @@ To reproduce the analysis in this repository, follow these steps:
 1. **Clone the Repository**:
    Clone this repository to your local machine using the following command:
    ```bash
+<<<<<<< HEAD
    git clone https://github.com/your-repo-url.git
+=======
+   git clone https://github.com/superpredator-or-superscary.git
+>>>>>>> 007d2b9 (add Readme)
    cd analysis
    ```
 

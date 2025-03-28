@@ -4,9 +4,7 @@
 
 ## import data from WOS -----
 
-setwd("C:/Users/shony/Nextcloud/Work/PhD/Thesis/review/Analysis/scoping-lit")
-
-papers <- read.csv("scope_3.csv")
+papers <- read.csv("data/scoping_search.csv")
 
 summary(papers)
 
@@ -15,38 +13,40 @@ summary(papers)
 library(dplyr)
 library(tidyr)
 
-papers <- papers%>%
-  select(-c(contains(match = "conference", ignore.case = T), 
-            contains(match = "book", ignore.case = T), 
-            Keywords.Plus, 
-            contains(match = "addresses", ignore.case = T),
-            contains(match = "funding", ignore.case = T),
-            contains(match = "cite", ignore.case = T),
-            contains(match = "publisher", ignore.case = T),
-            contains(match = "abbreviation", ignore.case = T),
-            Affiliations,
-            Researcher.Ids,
-            Research.Areas,
-            ORCIDs,
-            contains("usage", ignore.case = T),
-            contains("Page"),
-            Early.Access.Date,
-            WoS.Categories,
-            Web.of.Science.Index,
-            IDS.Number,
-            UT..Unique.WOS.ID.,
-            Pubmed.Id,
-            Open.Access.Designations,
-            Hot.Paper.Status,
-            Group.Authors,
-            X
-            )
-         )%>%
-  mutate(Meeting.Abstract = as.character(Meeting.Abstract),
-         Volume = as.character(Volume),
-         Document.Type = ifelse(grepl("article*", Document.Type, ignore.case = T), "Article", Document.Type),
-         Document.Type = ifelse(grepl("review*", Document.Type, ignore.case = T), "Review", Document.Type),
-         Document.Type = ifelse(grepl("editorial*", Document.Type, ignore.case = T), "Editorial Material", Document.Type))
+papers <- papers %>%
+  select(-c(
+    contains(match = "conference", ignore.case = T),
+    contains(match = "book", ignore.case = T),
+    Keywords.Plus,
+    contains(match = "addresses", ignore.case = T),
+    contains(match = "funding", ignore.case = T),
+    contains(match = "cite", ignore.case = T),
+    contains(match = "publisher", ignore.case = T),
+    contains(match = "abbreviation", ignore.case = T),
+    Affiliations,
+    Researcher.Ids,
+    Research.Areas,
+    ORCIDs,
+    contains("usage", ignore.case = T),
+    contains("Page"),
+    Early.Access.Date,
+    WoS.Categories,
+    Web.of.Science.Index,
+    IDS.Number,
+    UT..Unique.WOS.ID.,
+    Pubmed.Id,
+    Open.Access.Designations,
+    Hot.Paper.Status,
+    Group.Authors,
+    X
+  )) %>%
+  mutate(
+    Meeting.Abstract = as.character(Meeting.Abstract),
+    Volume = as.character(Volume),
+    Document.Type = ifelse(grepl("article*", Document.Type, ignore.case = T), "Article", Document.Type),
+    Document.Type = ifelse(grepl("review*", Document.Type, ignore.case = T), "Review", Document.Type),
+    Document.Type = ifelse(grepl("editorial*", Document.Type, ignore.case = T), "Editorial Material", Document.Type)
+  )
 
 summary(papers)
 
@@ -56,41 +56,41 @@ library(ggplot2)
 
 ### Number of publications by year
 
-ggplot(papers, aes(Publication.Year))+
-  geom_bar(col = "black")+
-  labs(x = "Publication Year", y = "Count")+
-  theme_bw()+
+ggplot(papers, aes(Publication.Year)) +
+  geom_bar(col = "black") +
+  labs(x = "Publication Year", y = "Count") +
+  theme_bw() +
   theme(text = element_text(size = 20))
 
-ggsave(last_plot(),  filename = "years.png", height = 4, width = 6)
+ggsave(last_plot(), filename = "years.png", height = 4, width = 6)
 ### Article type
 
-ggplot(papers, aes(Document.Type))+
-  geom_bar(col = "black")+
-  labs(x = "Document Type", y = "Count")+
-  coord_flip()+
-  theme_bw()+
+ggplot(papers, aes(Document.Type)) +
+  geom_bar(col = "black") +
+  labs(x = "Document Type", y = "Count") +
+  coord_flip() +
+  theme_bw() +
   theme(text = element_text(size = 20))
 
-ggsave(last_plot(),  filename = "type.png", height = 4, width = 6)
+ggsave(last_plot(), filename = "type.png", height = 4, width = 6)
 
 ### Language
 
-ggplot(papers, aes(Language))+
-  geom_bar(col = "black")+
-  labs(x = "Language", y = "Count")+
-  coord_flip()+
-  theme_bw()+
+ggplot(papers, aes(Language)) +
+  geom_bar(col = "black") +
+  labs(x = "Language", y = "Count") +
+  coord_flip() +
+  theme_bw() +
   theme(text = element_text(size = 20))
 
 
-ggsave(last_plot(),  filename = "lang.png", height = 4, width = 6)
+ggsave(last_plot(), filename = "lang.png", height = 4, width = 6)
 
 ## sub-sampling ----
 
-#sample <- 1:100
+# sample <- 1:100
 
-#papers <- papers[sample,]
+# papers <- papers[sample,]
 
 ## Analyse  keywords -----
 
@@ -100,18 +100,17 @@ library(stringr)
 
 keywords <- list()
 
-ind = 1
+ind <- 1
 
 for (s in papers$Author.Keywords) {
-  
-  keywords[ind] <- strsplit(s, ";")  
-  
-  ind = ind + 1
+  keywords[ind] <- strsplit(s, ";")
+
+  ind <- ind + 1
 }
 
 keywords <- unlist(keywords)
 
-keywords <- str_trim(keywords) #removing white spaces
+keywords <- str_trim(keywords) # removing white spaces
 
 keywords <- tolower(keywords)
 
@@ -133,18 +132,17 @@ keys_in_str <- papers$Author.Keywords[!grepl("amygdala*|ptsd|anxiety|*exitinctio
 
 keys_in <- list()
 
-ind = 1
+ind <- 1
 
 for (s in keys_in_str) {
-  
-  keys_in[ind] <- strsplit(s, ";")  
-  
-  ind = ind + 1
+  keys_in[ind] <- strsplit(s, ";")
+
+  ind <- ind + 1
 }
 
 keys_in <- unlist(keys_in)
 
-keys_in <- str_trim(keys_in) #removing white spaces
+keys_in <- str_trim(keys_in) # removing white spaces
 
 keys_in <- tolower(keys_in)
 
@@ -162,15 +160,13 @@ wordcloud(words = kw_in_freq$keys_in, freq = kw_in_freq$Freq, colors = brewer.pa
 
 title_words <- list()
 
-ind = 1
+ind <- 1
 
 for (w in papers$Article.Title) {
-  
-  title_words[ind] = strsplit(w, split = " ")
-  
-  ind = ind + 1
+  title_words[ind] <- strsplit(w, split = " ")
 
-  }
+  ind <- ind + 1
+}
 
 title_words <- unlist(title_words)
 
@@ -187,7 +183,7 @@ title_freq <- data.frame(table(title_words))
 
 library(tidytext)
 
-title_freq <- title_freq%>%
+title_freq <- title_freq %>%
   anti_join(stop_words, by = c("title_words" = "word"))
 
 ## Word Cloud
@@ -204,14 +200,12 @@ wordcloud(words = title_freq$title_words, freq = title_freq$Freq, colors = brewe
 
 abs_words <- list()
 
-ind = 1
+ind <- 1
 
 for (w in papers$Abstract) {
-  
-  abs_words[ind] = strsplit(w, split = " ")
-  
-  ind = ind + 1
-  
+  abs_words[ind] <- strsplit(w, split = " ")
+
+  ind <- ind + 1
 }
 
 abs_words <- unlist(abs_words)
@@ -226,7 +220,7 @@ abs_freq <- data.frame(table(abs_words))
 
 ## removing stop words
 
-abs_freq <- abs_freq%>%
+abs_freq <- abs_freq %>%
   anti_join(stop_words, by = c("abs_words" = "word"))
 
 ## Word Cloud
@@ -239,18 +233,17 @@ abs_in_str <- papers$Abstract[!grepl("amygdala*|conditioning|ptsd|anxiety|*exiti
 
 abs_in <- list()
 
-ind = 1
+ind <- 1
 
 for (s in abs_in_str) {
-  
-  abs_in[ind] <- strsplit(s, " ")  
-  
-  ind = ind + 1
+  abs_in[ind] <- strsplit(s, " ")
+
+  ind <- ind + 1
 }
 
 abs_in <- unlist(abs_in)
 
-abs_in <- str_trim(abs_in) #removing white spaces
+abs_in <- str_trim(abs_in) # removing white spaces
 
 abs_in <- tolower(abs_in)
 
@@ -260,7 +253,7 @@ abs_in_freq <- data.frame(table(abs_in))
 
 ## removing stop words
 
-abs_in_freq <- abs_in_freq%>%
+abs_in_freq <- abs_in_freq %>%
   anti_join(stop_words, by = c("abs_in" = "word"))
 
 ### word cloud
@@ -268,4 +261,3 @@ abs_in_freq <- abs_in_freq%>%
 wordcloud(words = abs_in_freq$abs_in, freq = abs_in_freq$Freq, colors = brewer.pal(8, "Dark2"), min.freq = 5, max.words = 500)
 
 ## Grouping
-

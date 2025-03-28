@@ -43,3 +43,5 @@ meta-analysis/size_reg.png
 meta-analysis/es_meta_subgroup.png
 meta-analysis/histogram_years.png
 meta-analysis/figures/pop_sn.png
+renv
+.vscode

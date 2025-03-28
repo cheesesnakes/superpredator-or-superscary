@@ -93,6 +93,4 @@ To reproduce the analysis in this repository, follow these steps:
 
 This repository is associated with a manuscript currently under review. If you use this code or data in your research, please cite the repository as follows:
 
-```bibtex
-
-```
+Shawn Dsouza, Shanker, K., & Thaker, M. (2025). cheesesnakes/superpredator-or-superscary: under-review (0.1) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.15099679

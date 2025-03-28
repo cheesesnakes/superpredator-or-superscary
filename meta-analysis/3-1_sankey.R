@@ -52,11 +52,20 @@ studies <- studies%>%
 studies <- studies%>%
     mutate(treatments = ifelse(treatments == "Road", "Roads", treatments))
 
+# make conflict to Human - Animal Conflict
+
+studies <- studies%>%
+    mutate(treatments = ifelse(treatments == "Conflict", "Human - Animal Conflict", treatments))
 # Make generic disturbance unspecified disturbance
 
 studies <- studies%>%
     mutate(treatments = ifelse(treatments == "Generic Disturbance", "Unspecified Disturbance", treatments))
 
+# remove human cue
+
+studies <- studies%>%
+    filter(treatments != "Human Cue")
+    
 ## AD to Alert Distance
 
 studies <- studies%>%
@@ -200,5 +209,5 @@ units = "Number of datapoints", fontSize = 12, nodeWidth = 10)
 
 sankeyNetwork(Links = links, Nodes = nodes, 
 Source = "source", Target = "target", Value = "value", NodeID = "name", 
-units = "Number of datapoints", fontSize = 25, nodeWidth = 200)%>%
+units = "Number of datapoints", fontSize = 20, nodeWidth = 20)%>%
     saveNetwork(file = "figures/sankey.html", selfcontained = TRUE)

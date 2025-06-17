@@ -1,7 +1,3 @@
-#!/home/cheesesnakes/.local/bin/radian
-
-#setwd("./meta-analysis")
-
 # required libraries
 
 pacman::p_load(dplyr, tidyr, stringr, ggplot2, here)
@@ -69,10 +65,7 @@ print("Number of studies by type")
 data %>%
     distinct(cite.key, exposure_category, study_type) %>%
     group_by(exposure_category, study_type) %>%
-    summarise(n = n())%>%
-    ungroup()%>%
-    summarise(n = sum(n))
-    pivot_wider(names_from = study_type, values_from = n, values_fill = list(n = 0))%>%
+    summarise(n = n())%>%pivot_wider(names_from = study_type, values_from = n, values_fill = list(n = 0))%>%
     print(.)
 
 ## studies by contrast type
@@ -83,8 +76,6 @@ data %>%
     distinct(cite.key, exposure_category, contrast_type)%>%
     group_by(exposure_category, contrast_type)%>% 
     summarise(n = n())%>%
-    ungroup()%>%
-    summarise(n = sum(n))
     pivot_wider(names_from = contrast_type, values_from = n, values_fill = list(n = 0))%>%
     print(.)
 
@@ -100,11 +91,6 @@ outcomes <- data%>%
     # rename lethal interacitons to lethal interaciton
     group_by(exposure_category, outcomes)%>%
     summarise(n = n())
-
-# treaments 
-
-
-print(treatment)
 
 # plot
 
@@ -123,6 +109,7 @@ ggplot(outcomes, aes(x = reorder(outcomes, n), y = n, fill = exposure_category))
     scale_fill_brewer(name = "Exposure Category", palette = "Set1")
 
 ggsave("figures/outcomes.png", width = 10, height = 10, dpi = 300)
+
 
 ## number of datapoints per population, sorted
 data%>%
@@ -146,7 +133,7 @@ ggsave("figures/populations.png", width = 10, height = 10, dpi = 300)
 
 # Load the data
 
-fts_all <- read.csv("data/chapter-1_full-text-screening.csv")
+fts_all <- read.csv(here::here("meta-analysis/data/chapter-1_full-text-screening.csv"))
 
 ## histogram of years
 
@@ -187,7 +174,7 @@ print(nrow(fts_included[grepl("data", fts_included$labels, ignore.case = TRUE),]
 
 # number included in meta-analysis
 
-data <- read.csv("data/effect-size.csv")
+data <- read.csv(here::here("meta-analysis/data/effect-size.csv"))
 
 print("Number of studies included in meta-analysis")
 
@@ -216,6 +203,22 @@ data %>%
   summarise(n = length(unique(cite.key)))%>%
   print(.)
 
+print(paste("Number of studies with more than one type of outcome:",
+  (data %>%
+    group_by(cite.key) %>%
+    summarise(n = length(unique(outcome)))%>%
+    filter(n > 1)%>%
+    nrow())
+))
+
+print("List of studies with more than one type of outcome")
+
+data %>%
+    group_by(cite.key) %>%
+    summarise(n = length(unique(outcome)))%>%
+    filter(n > 1)%>%
+    select(cite.key)
+    
 # number of studies across trophic level
 
 data%>%

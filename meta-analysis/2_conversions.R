@@ -1,6 +1,6 @@
 # converting mean and variablity to workable units
 
-source("1_cleaning.R", echo = FALSE)
+source(here::here("meta-analysis/1_cleaning.R"), echo = FALSE)
 
 # set type for all
 

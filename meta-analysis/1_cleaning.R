@@ -2,12 +2,14 @@
 
 # required libraries
 
-pacman::p_load(dplyr, tidyr, stringr)
+pacman::p_load(dplyr, tidyr, stringr, here)
+
+here::i_am("meta-analysis/1_cleaning.R")
 
 # import data
 
-meta <- read.csv("./data/chapter-1_study-info.csv")
-effect <- read.csv("./data/chapter-1_effects.csv")
+meta <- read.csv(here::here("meta-analysis/data/chapter-1_study-info.csv"))
+effect <- read.csv(here::here("meta-analysis/data/chapter-1_effects.csv"))
 
 # view data
 

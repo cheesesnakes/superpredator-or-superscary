@@ -75,4 +75,4 @@ data <- data%>%
 #data <- data%>%
  #   select(-c(var.unit, scale, sampling_time, sampling))
 
-write.csv(data, "data/clean_data.csv", row.names = FALSE)
+write.csv(data, here::here("meta-analysis/data/clean_data.csv"), row.names = FALSE)

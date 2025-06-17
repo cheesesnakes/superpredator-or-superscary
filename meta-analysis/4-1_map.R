@@ -2,7 +2,8 @@
 
 pacman::p_load(stringr, dplyr, tidyr, ggplot2)
 
-studies <- read.csv("data/chapter-1_covariates.csv")
+here::i_am("meta-analysis/4-1_map.R")
+studies <- read.csv(here::here("meta-analysis/data/chapter-1_covariates.csv"))
 
 # filter only meta-analysis studies
 
@@ -85,7 +86,7 @@ studies$lon <- as.numeric(studies$deg_max_lon) + as.numeric(studies$min_max_lon)
 
 studies <- studies %>% select(-c(max_lat, min_lat, max_lon, min_lon, deg_max_lat, min_max_lat, sec_max_lat, deg_min_lat, min_min_lat, sec_min_lat, deg_max_lon, min_max_lon, sec_max_lon, deg_min_lon, min_min_lon, sec_min_lon))
 
-write.csv(studies, "data/studies.csv", row.names = FALSE)
+write.csv(studies, here::here("meta-analysis/data/studies.csv"), row.names = FALSE)
 
 summary(as.numeric(studies$lat))
 summary(as.numeric(studies$lon))
@@ -103,4 +104,4 @@ ggplot() +
   labs(title = "Study locations") +
   theme(plot.title = element_text(hjust = 0.5))
 
-ggsave("figures/map.png", width = 10, height = 6, dpi = 300)
+ggsave(here::here("meta-analysis/figures/map.png"), width = 10, height = 6, dpi = 300)

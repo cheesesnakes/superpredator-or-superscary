@@ -4,11 +4,12 @@
 
 # required libraries
 
-pacman::p_load(dplyr, tidyr, stringr, ggplot2)
+pacman::p_load(dplyr, tidyr, stringr, ggplot2, here)
 
 # import clean data
 
-source("2_conversions.R", echo = FALSE)
+here::i_am("meta-analysis/3_summaries.R")
+source(here::here("meta-analysis/2_conversions.R"), echo = FALSE)
 
 # view data
 
@@ -18,7 +19,7 @@ summary(data)
 
 # add information about species
 
-pop <- read.csv("./data/populations.csv")
+pop <- read.csv(here::here("meta-analysis/data/populations.csv"))
 
 data <- data %>%
     left_join(pop, by = "pop_cn")%>%
@@ -242,4 +243,4 @@ table_a1 <- data %>%
 
 print(table_a1)
 
-write.csv(table_a1, file = "output/table_a1.csv", quote = TRUE)
+write.csv(table_a1, file = here::here("meta-analysis/output/table_a1.csv"), quote = TRUE)

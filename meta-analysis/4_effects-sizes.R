@@ -4,16 +4,16 @@
 
 # required libraries
 
-pacman::p_load(dplyr, tidyr, stringr, ggplot2, esc)
+pacman::p_load(dplyr, tidyr, stringr, ggplot2, esc, here)
 
 # import clean data
 
-source("2_conversions.R", echo = FALSE)
-source('1-2_authors.R', chdir = TRUE)
+source(here::here("meta-analysis/2_conversions.R"), echo = FALSE)
+source(here::here("meta-analysis/1-2_authors.R"), chdir = TRUE)
 
 # add information about species
 
-pop <- read.csv("./data/populations.csv")
+pop <- read.csv(here::here("meta-analysis/data/populations.csv"))
 
 data <- data %>%
     left_join(pop, by = "pop_cn")%>%
@@ -73,7 +73,7 @@ ggplot(data = data_cor, aes(x = mean, y = reorder(pop_sn, mean), col = trophic_l
     # italicise x axis
     theme(axis.text.y = element_text(face = "italic"))
 
-ggsave("figures/es_cor.png", width = 12, height = 6, dpi = 300)
+ggsave(here::here("meta-analysis/figures/es_cor.png"), width = 12, height = 6, dpi = 300)
 
 # Playback studies --------------------------------------------
 
@@ -144,7 +144,7 @@ ggplot(data = data_pb_smd, aes(y = smd, x = reorder(group, smd), col = pop_cn))+
     theme(axis.text.y = element_text(face = "italic"))
 
 
-ggsave("figures/es_pb.png", width = 24, height = 10, dpi = 300)
+ggsave(here::here("meta-analysis/figures/es_pb.png"), width = 24, height = 10, dpi = 300)
 
 # BACI studies --------------------------------------------
 
@@ -383,7 +383,7 @@ data_comp <- data_comp%>%
     mutate(exposure_category = ifelse(exposure_category == "Hunting", "Lethal Interaction", exposure_category))%>%
     mutate(exposure_category = ifelse(exposure_category == "Passive Disturbance", "Passive Interaction", exposure_category))
 
-write.csv(data_comp, "data/effect-size.csv", row.names = F)
+write.csv(data_comp, here::here("meta-analysis/data/effect-size.csv"), row.names = F)
 
 # plotting with type of interactions
 
@@ -411,8 +411,8 @@ data_comp %>%
     # italicise x-axis labels
     theme(axis.text.y = element_text(face = "italic"),
         text = element_text(size = 20))
-    
-ggsave("figures/fig-2_1.png", width = 12, height = 10, dpi = 300)
+
+ggsave(here::here("meta-analysis/figures/fig-2_1.png"), width = 12, height = 10, dpi = 300)
 
 # plot effect size and confidence intervals
 
@@ -433,7 +433,7 @@ ggplot(data = data_tc_smd, aes(x = smd, y = reorder(pop_sn, smd), col = trophic_
     theme(axis.text.y = element_text(face = "italic"))+
     scale_color_brewer(name = "Trophic Level", palette = "Set1")
 
-ggsave("figures/fig-2.png", width = 24, height = 8, dpi = 300)
+ggsave(here::here("meta-analysis/figures/fig-2.png"), width = 24, height = 8, dpi = 300)
 
 # count positive and negative studies which conf int don't overlap with zero
 

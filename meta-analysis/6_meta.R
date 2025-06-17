@@ -3,10 +3,10 @@
 pacman::p_load(meta, broom, metafor)
 
 # effect of size of animal
+here::i_am("meta-analysis/6_meta.R")
+source(here::here("meta-analysis/4_effects-sizes.R"), echo = FALSE, print.eval = FALSE)
 
-source("4_effects-sizes.R", echo = FALSE, print.eval = FALSE)
-
-size <- read.csv('data/size.csv')
+size <- read.csv(here::here("meta-analysis/data/size.csv"))
 
 size <- size%>%
 mutate(body_mass = ifelse(is.na(body_mass), (body_mass_minimum + body_mass_maximum)/2, body_mass))%>%
@@ -84,7 +84,7 @@ ci.hi.max = as.numeric(ci.hi.max))
 
 print(reg_tab)
 
-write.csv(reg_tab, "output/metareg_size.csv", row.names = FALSE)
+write.csv(reg_tab, here::here("meta-analysis/output/metareg_size.csv"), row.names = FALSE)
 
 ggplot(data_size, aes(x = size, y = smd, size = se, col = trophic_level)) +
     geom_point() +
@@ -101,11 +101,11 @@ ggplot(data_size, aes(x = size, y = smd, size = se, col = trophic_level)) +
     theme(legend.position = "top",
     text = element_text(size = 16))
 
-ggsave("figures/fig-4.png", width = 8, height = 12)
+ggsave(here::here("meta-analysis/figures/fig-4.png"), width = 8, height = 12)
 
 # effect of absolute latitude
 
-source("4-1_map.R", echo = FALSE)
+source(here::here("meta-analysis/4-1_map.R"), echo = FALSE)
 
 data_lat <- data_comp%>%
     left_join(studies, by = c('cite.key' = "File52"))%>%
@@ -155,7 +155,7 @@ for (i in unique(data_lat$outcome)) {
 
     j = j + 1
 
-    bubble(reg, studylab = TRUE, file = paste0("lat_reg_", i, ".png"), main = i)
+    bubble(reg, studylab = TRUE, file = here::here(paste0("lat_reg_", i, ".png")), main = i)
 
 }
 
@@ -173,7 +173,7 @@ print(coeff)
 
 print(reg_tab)
 
-write.csv(reg_tab, "output/metareg_lat.csv", row.names = FALSE)
+write.csv(reg_tab, here::here("meta-analysis/output/metareg_lat.csv"), row.names = FALSE)
 
 # plot
 
@@ -191,7 +191,7 @@ ggplot(data_lat, aes(x = abs_lat, y = smd, size = se, col = trophic_level)) +
     theme(legend.position = "top",
     text = element_text(size = 16))
 
-ggsave("figures/reg_lat.png", width = 8, height = 12)
+ggsave(here::here("meta-analysis/figures/reg_lat.png"), width = 8, height = 12)
 
 # effect of type of human interaction
 
@@ -222,7 +222,7 @@ for (i in unique(data_comp$outcome)) {
 
     print(summary(reg))
 
-    bubble(reg, studylab = TRUE, file = paste0("treatment_reg_", i, ".png"), main = i)
+    bubble(reg, studylab = TRUE, file = here::here(paste0("treatment_reg_", i, ".png")), main = i)
 
     reg_tab[k,] <- c(reg$beta[1], reg$se[1], reg$beta[2], reg$se[2], reg$tau2, reg$se.tau2, reg$I2, reg$H2, reg$R2, i, "interaction_type")
 
@@ -235,7 +235,7 @@ print(reg_tab)
 
 # multiple regression
 
-size <- read.csv('data/size.csv')
+size <- read.csv(here::here("meta-analysis/data/size.csv"))
 
 size <- size%>%
 mutate(body_mass = ifelse(is.na(body_mass), (body_mass_minimum + body_mass_maximum)/2, body_mass))%>%
@@ -271,8 +271,8 @@ for (i in unique(data_comp$outcome)) {
     mod = ~size + exposure_category, 
     random = list(~1 | cite.key, ~1 | data_id), 
     data = data, method = "REML", dfs = "contain", test = "t")
-    
-    png(paste0("figures/multi_reg_size_", i, ".png"))
+
+    png(here::here(paste0("figures/multi_reg_size_", i, ".png")))
 
     regplot(x = reg, mod = "size", pi = TRUE, xlab = "Size (kg)", ylab = "Standardized mean difference", xlim = c(0, 600))
 
@@ -280,13 +280,13 @@ for (i in unique(data_comp$outcome)) {
 
     if (i != "Movement"){
 
-        png(paste0("figures/multi_reg_hunting-active_", i, ".png"))
+        png(here::here(paste0("figures/multi_reg_hunting-active_", i, ".png")))
 
         regplot(x = reg, mod = "exposure_categoryLethal Interaction", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
 
         dev.off()
 
-        png(paste0("figures/multi_reg_passive-active_", i, ".png"))
+        png(here::here(paste0("figures/multi_reg_passive-active_", i, ".png")))
 
         regplot(x = reg, mod = "exposure_categoryPassive Interaction", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
 
@@ -294,7 +294,7 @@ for (i in unique(data_comp$outcome)) {
 
     }else{
 
-        png(paste0("figures/multi_reg_passive-lethal_", i, ".png"))
+        png(here::here(paste0("figures/multi_reg_passive-lethal_", i, ".png")))
 
         regplot(x = reg, mod = "exposure_categoryPassive Interaction", pi = TRUE, xlab = "Type of human interaction", ylab = "Standardized mean difference")
 
@@ -316,4 +316,4 @@ print(estimates)
 
 print(stats)
 
-write.csv(estimates, "output/metarma_full.csv", row.names = FALSE)
+write.csv(estimates, here::here("meta-analysis/output/metarma_full.csv"), row.names = FALSE)

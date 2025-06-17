@@ -1,6 +1,7 @@
 pacman::p_load(meta, broom, metafor)
 
-source('4_effects-sizes.R', chdir = TRUE)
+here::i_am("meta-analysis/7_sensitivity.R")
+source(here::here("meta-analysis/4_effects-sizes.R"), echo = FALSE, print.eval = FALSE)
 
 # publication bias funnel plot assymetry
 
@@ -17,8 +18,8 @@ for (i in unique(data_comp$outcome)) {
   se <- data$se
   
   mod <- rma(yi = smd, sei = se, data = data, method = "REML", test = "t", slab = data$outcome, digits = 3)
-  
-  png(paste("output/funnel_sym_", i, ".png", sep = ""), width = 800, height = 800)
+
+  png(here::here(paste("output/funnel_sym_", i, ".png", sep = "")), width = 800, height = 800)
 
   funnel(mod, refline = 0, digits = 3, xlab = "Standardized mean difference",
    ylab = "Standard error of the mean difference", main = paste("Funnel plot of publication bias for", i))
@@ -39,7 +40,7 @@ for (i in unique(data_comp$outcome)) {
 
 print(funnel_sym)
 
-write.csv(funnel_sym, "output/funnel_sym.csv", row.names = FALSE)
+write.csv(funnel_sym, here::here("meta-analysis/output/funnel_sym.csv"), row.names = FALSE)
 
 # multi level meta-regression on variance to test for publication bias
 
@@ -66,7 +67,7 @@ for (i in unique(data_comp$outcome)) {
 
 print(vartest)
 
-write.csv(vartest, "output/vartest.csv", row.names = FALSE)
+write.csv(vartest, here::here("meta-analysis/output/vartest.csv"), row.names = FALSE)
 
 # time - lag effect 
 
@@ -80,7 +81,7 @@ ggplot(data_comp, aes(x = year, y = smd)) +
   facet_wrap(~outcome, ncol = 1, scales = "free") +
   theme_bw()
 
-ggsave("figures/time_lag.png", width = 6, height = 12)
+ggsave(here::here("meta-analysis/figures/time_lag.png"), width = 6, height = 12)
 
 # leave one out --- robustness
 
@@ -112,7 +113,7 @@ for (i in unique(data_comp$outcome)){
 
 }
 
-write.csv(loo_test, "output/loo_test.csv", row.names = FALSE)
+write.csv(loo_test, here::here("meta-analysis/output/loo_test.csv"), row.names = FALSE)
 
 ## plot  estimate with confidence intervals
 
@@ -124,4 +125,4 @@ ggplot(loo_test, aes(x = estimate, y = cite, xmin = conf.low, xmax = conf.high))
   geom_vline(xintercept = 0, linetype = "dashed") +
   theme_bw()
 
-ggsave("figures/loo_test.png", width = 24, height = 6)
+ggsave(here::here("meta-analysis/figures/loo_test.png"), width = 24, height = 6)

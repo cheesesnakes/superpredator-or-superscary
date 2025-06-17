@@ -2,8 +2,8 @@
 pacman::p_load(rotl, ape, phytools)
 
 # load species names
-
-species <- read.csv("data/populations.csv", header = TRUE, stringsAsFactors = FALSE)
+here::i_am("meta-analysis/5-3_phylo.R")
+species <- read.csv(here::here("meta-analysis/data/populations.csv"), header = TRUE, stringsAsFactors = FALSE)
 
 
 # list of species names
@@ -76,7 +76,7 @@ tree <- multi2di(tree, random = TRUE)
 
 # plot tree
 
-png("figures/phylo.png", width = 800, height = 800)
+png(here::here("meta-analysis/figures/phylo.png"), width = 800, height = 800)
 
 plot(tree, type = "phylogram", cex = 1.25, label.offset = 0.01)
 

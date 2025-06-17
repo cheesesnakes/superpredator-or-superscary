@@ -1,8 +1,8 @@
 # formatting citations for papers in meta-analysis
 
-# impor data
+# import data
 
-authors <- read.csv("data/authors.csv")
+authors <- read.csv(here::here("meta-analysis/data/authors.csv"))
 
 # split authors into list
 

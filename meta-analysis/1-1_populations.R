@@ -11,11 +11,11 @@ pop <- data %>%
 
 # read saved populations.csv
 
-pop <- read.csv("data/populations.csv")
+pop <- read.csv(here::here("meta-analysis/data/populations.csv"))
 
 # read animal_traits.csv
 
-traits <- read.csv("data/animal_traits.csv")
+traits <- read.csv(here::here("meta-analysis/data/animal_traits.csv"))
 
 # join pop and traits
 

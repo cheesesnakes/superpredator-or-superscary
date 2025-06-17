@@ -1,7 +1,8 @@
 library(viridis, help, pos = 2, lib.loc = NULL)
 
-source("4_effects-sizes.R", echo = FALSE)
-source('5-1_funcs.R', chdir = TRUE)
+here::i_am("meta-analysis/5_comparison.R")
+source(here::here("meta-analysis/4_effects-sizes.R"), echo = FALSE)
+source(here::here("meta-analysis/5-1_funcs.R"), chdir = TRUE)
 
 # Is the effect significantly different from 0 across outcomes?
 
@@ -33,9 +34,9 @@ for (i in unique(data_comp$outcome)) {
 
     # save forest plot
 
-    forest(stat, file = paste0("figures/meta_", i, ".png"), width = 1000)
+    forest(stat, file = here::here(paste0("meta-analysis/figures/meta_", i, ".png")), width = 1000)
 
-    write.csv(stat, paste0("output/summary_metagen_", i, ".csv"))
+    write.csv(stat, here::here(paste0("meta-analysis/output/summary_metagen_", i, ".csv")))
 }
 
 ## using functions from funcs.R
@@ -68,7 +69,7 @@ print(stat_man)
 
 # save comparison data
 
-write.csv(stat_man, "output/summary_manual.csv")
+write.csv(stat_man, here::here("meta-analysis/output/summary_manual.csv"))
 
 # Comparison across hunting, non-hunting disturbance and natural predators --------------------------------------------
 
@@ -106,7 +107,7 @@ print(comp_stat)
 
 # save comparison data
 
-write.csv(comp_stat, "output/subgroup_manual.csv")
+write.csv(comp_stat, here::here("meta-analysis/output/subgroup_manual.csv"))
 
 # subgroup analysis
 
@@ -144,13 +145,13 @@ for (i in unique(data_comp$outcome)) {
 
     # save forest plot
 
-    forest(stat, file = paste0("figures/subgroup_", i, ".png"), width = 1000)
+    forest(stat, file = here::here(paste0("meta-analysis/figures/subgroup_", i, ".png")), width = 1000)
 
 }
 
 colnames(meta_stat) <- c("exposure_category", "E", "upper", "lower", "outcome")
 
-write.csv(meta_stat, "output/subgroup_metagen.csv")
+write.csv(meta_stat, here::here("meta-analysis/output/subgroup_metagen.csv"))
 
 meta_stat%>%
     mutate(exposure_category = factor(exposure_category, levels = c("Passive Interaction", "Active Interaction", "Lethal Interaction")))%>%
@@ -172,7 +173,7 @@ meta_stat%>%
     axis.text.y = element_text(hjust = 0.5, vjust = 0.5))+
     facet_grid(~outcome)
 
-ggsave("figures/fig-6.png", width = 10, height = 5, dpi = 300)
+ggsave(here::here("meta-analysis/figures/fig-6.png"), width = 10, height = 5, dpi = 300)
 
 # difference between hunting and non-hunting
 
@@ -187,7 +188,7 @@ comp_stat%>%
     coord_flip()+
     theme(legend.position = "top")
 
-ggsave("figures/subgroup_manual.png", width = 8, height = 8, dpi = 300)
+ggsave(here::here("meta-analysis/figures/subgroup_manual.png"), width = 8, height = 8, dpi = 300)
 
 # funnel plot
 
@@ -205,4 +206,4 @@ ggplot(data_comp, aes(x = smd, y = 1/se, col = outcome, shape = exposure_categor
     scale_shape_manual(name = "Type of Interaction",values = c(1, 2, 3))+
     facet_wrap(~outcome, scales = "free")
 
-ggsave("figures/funnel.png", width = 12, height = 6, dpi = 300)
+ggsave(here::here("meta-analysis/figures/funnel.png"), width = 12, height = 6, dpi = 300)

@@ -1,8 +1,8 @@
 pacman::p_load(dplyr, metafor)
 
 # Get computed effect size data ---> data_comp
-
-source('4_effects-sizes.R', chdir = TRUE)
+here::i_am("meta-analysis/5-2_MLMA.R")
+source(here::here("meta-analysis/4_effects-sizes.R"), chdir = TRUE)
 
 head(data_comp)
 
@@ -60,7 +60,7 @@ for (i in unique(data_comp$outcome)) {
 
     print(summary(mlma))
 
-    png(paste("figures/forest-metafor_", i, ".png", sep = ""), width = 800, height = 800)
+    png(here::here(paste("figures/forest-metafor_", i, ".png", sep = "")), width = 800, height = 800)
 
     forest(mlma, slab = data$cite, digits = 3, refline = 0, xlab = "Standardised Mean Difference", main = paste("Forest plot of", i))
 
@@ -94,12 +94,12 @@ for (i in unique(data_comp$outcome)) {
 
 # save the results
 
-write.csv(results, "output/mlma_results.csv")
-write.csv(results_random, "output/mlma_results_random.csv")
+write.csv(results, here::here("meta-analysis/output/mlma_results.csv"))
+write.csv(results_random, here::here("meta-analysis/output/mlma_results_random.csv"))
 
 # fitting phylogenetic multilevel metaanalysis model for each outcome
 
-source('5-3_phylo.R')
+source(here::here("meta-analysis/5-3_phylo.R"))
 
 # Create correlation matrix for analysis
 
@@ -146,8 +146,8 @@ for (i in unique(data_comp$outcome)) {
     phylo <- phylo_cor[match(unique(data$tips), tip_names), match(unique(data$tips), tip_names)]
    
     mlma <- rma.mv(yi = smd, V = se^2, mod = ~1, random = list(~ 1 | pop_sn, ~1 | cite.key, ~1 | data_id, ~1 | tips), R = list(tips = phylo), data = data, method = "REML", dfs = "contain", test = "t")
-    
-    png(paste("figures/forest-metafor_phylo_", i, ".png", sep = ""), width = 800, height = 800)
+
+    png(here::here(paste("figures/forest-metafor_phylo_", i, ".png", sep = "")), width = 800, height = 800)
 
     forest(mlma, slab = data$cite, digits = 3, refline = 0, xlab = "Standardised Mean Difference", main = paste("Forest plot of", i))
 
@@ -183,5 +183,5 @@ for (i in unique(data_comp$outcome)) {
 
 # save the results
 
-write.csv(results_phylo, "output/mlma_phylo_results.csv")
-write.csv(results_phylo_random, "output/mlma_phylo_results_random.csv")
+write.csv(results_phylo, here::here("meta-analysis/output/mlma_phylo_results.csv"))
+write.csv(results_phylo_random, here::here("meta-analysis/output/mlma_phylo_results_random.csv"))

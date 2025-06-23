@@ -1,6 +1,6 @@
 # meta-regressions
 
-pacman::p_load(meta, broom, metafor)
+pacman::p_load(meta, broom, metafor, flextable)
 
 # effect of size of animal
 here::i_am("meta-analysis/6_meta.R")
@@ -91,6 +91,29 @@ coeff <- coeff %>%
 print(reg_tab)
 
 write.csv(reg_tab, here::here("meta-analysis/output/metareg_size.csv"), row.names = FALSE)
+
+# save as flextable
+
+reg_tab %>%
+    mutate_if(is.numeric, round, 3) %>%
+    flextable() %>%
+    set_header_labels(
+        intercept = "Intercept",
+        se_intercept = "SE Intercept",
+        slope = "Slope",
+        se_slope = "SE Slope",
+        tau2 = "Tau^2",
+        se_tau2 = "SE Tau^2",
+        I2 = "I^2",
+        H2 = "H^2",
+        R2 = "R^2",
+        outcome = "Outcome",
+        predictor = "Predictor"
+    ) %>%
+    save_as_docx(path = here::here("meta-analysis/output/metareg_size.docx"))
+
+data_size <- data_size %>%
+    mutate(trophic_level = as.factor(trophic_level))
 
 ggplot(data_size, aes(x = size, y = smd, size = se, col = trophic_level)) +
     geom_point() +
@@ -185,7 +208,30 @@ print(reg_tab)
 
 write.csv(reg_tab, here::here("meta-analysis/output/metareg_lat.csv"), row.names = FALSE)
 
+# save as flextable
+
+reg_tab %>%
+    mutate_if(is.numeric, round, 3) %>%
+    flextable() %>%
+    set_header_labels(
+        intercept = "Intercept",
+        se_intercept = "SE Intercept",
+        slope = "Slope",
+        se_slope = "SE Slope",
+        tau2 = "Tau^2",
+        se_tau2 = "SE Tau^2",
+        I2 = "I^2",
+        H2 = "H^2",
+        R2 = "R^2",
+        outcome = "Outcome",
+        predictor = "Predictor"
+    ) %>%
+    save_as_docx(path = here::here("meta-analysis/output/metareg_lat.docx"))
+
 # plot
+
+data_lat <- data_lat %>%
+    mutate(trophic_level = as.factor(trophic_level))
 
 ggplot(data_lat, aes(x = abs_lat, y = smd, size = se, col = trophic_level)) +
     geom_point() +
@@ -321,7 +367,34 @@ for (i in unique(data_comp$outcome)) {
 }
 
 print(estimates)
-
 print(stats)
+
+# save as flextable
+
+estimates %>%
+    mutate_if(is.numeric, round, 3) %>%
+    flextable() %>%
+    set_header_labels(
+        term = "Term",
+        estimate = "Estimate",
+        std.error = "Standard Error",
+        statistic = "Statistic",
+        p.value = "P-value",
+        outcome = "Outcome"
+    ) %>%
+    save_as_docx(path = here::here("meta-analysis/output/metarma_full_estimates.docx"))
+
+stats %>%
+    mutate_if(is.numeric, round, 3) %>%
+    flextable() %>%
+    set_header_labels(
+        r.squared = "R-squared",
+        sigma2 = "Sigma^2",
+        tau2 = "Tau^2",
+        I2 = "I-squared",
+        H2 = "H-squared",
+        R2 = "R-squared"
+    ) %>%
+    save_as_docx(path = here::here("meta-analysis/output/metarma_full.docx"))
 
 write.csv(estimates, here::here("meta-analysis/output/metarma_full.csv"), row.names = FALSE)

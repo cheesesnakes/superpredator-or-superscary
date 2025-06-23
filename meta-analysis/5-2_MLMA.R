@@ -1,4 +1,4 @@
-pacman::p_load(dplyr, metafor)
+pacman::p_load(dplyr, metafor, flextable)
 
 # Get computed effect size data ---> data_comp
 here::i_am("meta-analysis/5-2_MLMA.R")
@@ -98,6 +98,43 @@ for (i in unique(data_comp$outcome)) {
 write.csv(results, here::here("meta-analysis/output/mlma_results.csv"))
 write.csv(results_random, here::here("meta-analysis/output/mlma_results_random.csv"))
 
+# flextable for results
+
+results_ft <- results %>%
+    mutate_if(is.numeric, round, 3) %>%
+    flextable() %>%
+    set_header_labels(
+        outcome = "Outcome",
+        intercept = "Intercept",
+        se_intercept = "SE Intercept",
+        lower = "Lower CI",
+        upper = "Upper CI",
+        sigma2 = "Sigma^2",
+        tau2 = "Tau^2",
+        T = "T-value",
+        n = "N",
+        Q = "Q-statistic",
+        Qp = "Q p-value",
+        df = "Degrees of Freedom",
+        p = "p-value"
+    ) %>%
+    set_caption("Multilevel Meta-Analysis Results")
+
+save_as_docx(results_ft, path = here::here("meta-analysis/output/mlma_results.docx"))
+
+results_random_ft <- results_random %>%
+    mutate_if(is.numeric, round, 3) %>%
+    flextable() %>%
+    set_header_labels(
+        outcome = "Outcome",
+        factor = "Factor",
+        sigma2 = "Sigma^2",
+        n_levels = "N Levels"
+    ) %>%
+    set_caption("Multilevel Meta-Analysis Random Effects Results")
+
+save_as_docx(results_random_ft, path = here::here("meta-analysis/output/mlma_results_random.docx"))
+
 # fitting phylogenetic multilevel metaanalysis model for each outcome
 
 source(here::here("meta-analysis/5-3_phylo.R"))
@@ -189,3 +226,40 @@ for (i in unique(data_comp$outcome)) {
 
 write.csv(results_phylo, here::here("meta-analysis/output/mlma_phylo_results.csv"))
 write.csv(results_phylo_random, here::here("meta-analysis/output/mlma_phylo_results_random.csv"))
+
+# flextable for results
+
+results_phylo_ft <- results_phylo %>%
+    mutate_if(is.numeric, round, 3) %>%
+    flextable() %>%
+    set_header_labels(
+        outcome = "Outcome",
+        intercept = "Intercept",
+        se_intercept = "SE Intercept",
+        lower = "Lower CI",
+        upper = "Upper CI",
+        sigma2 = "Sigma^2",
+        tau2 = "Tau^2",
+        T = "T-value",
+        n = "N",
+        Q = "Q-statistic",
+        Qp = "Q p-value",
+        df = "Degrees of Freedom",
+        p = "p-value"
+    ) %>%
+    set_caption("Phylogenetic Multilevel Meta-Analysis Results")
+
+save_as_docx(results_phylo_ft, path = here::here("meta-analysis/output/mlma_phylo_results.docx"))
+
+results_phylo_random_ft <- results_phylo_random %>%
+    mutate_if(is.numeric, round, 3) %>%
+    flextable() %>%
+    set_header_labels(
+        outcome = "Outcome",
+        factor = "Factor",
+        sigma2 = "Sigma^2",
+        n_levels = "N Levels"
+    ) %>%
+    set_caption("Phylogenetic Multilevel Meta-Analysis Random Effects Results")
+
+save_as_docx(results_phylo_random_ft, path = here::here("meta-analysis/output/mlma_phylo_results_random.docx"))

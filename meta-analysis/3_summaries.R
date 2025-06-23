@@ -24,6 +24,7 @@ data <- data %>%
     select(-pop_sn.x) %>%
     mutate(
         trophic_level = ifelse(pop_sn == "Pyrrhocorax graculus", 1, trophic_level),
+        functional_group = ifelse(pop_sn == "Pyrrhocorax graculus", "granivore", functional_group),
         pop_sn = str_to_sentence(pop_sn)
     )
 
@@ -184,8 +185,6 @@ print("Number of studies where labels contains 'data'")
 print(nrow(fts_included[grepl("data", fts_included$labels, ignore.case = TRUE), ]))
 
 # number included in meta-analysis
-
-data <- read.csv(here::here("meta-analysis/data/effect-size.csv"))
 
 print("Number of studies included in meta-analysis")
 

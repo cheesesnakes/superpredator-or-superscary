@@ -424,7 +424,11 @@ names <- data_comp %>%
 data_comp <- data_comp %>%
     mutate(pop_sn = str_to_sentence(pop_sn)) %>%
     select(-c(pop_cn)) %>%
-    left_join(names, by = "pop_sn")
+    left_join(names, by = "pop_sn") %>%
+    mutate(
+        pop_sn = ifelse(pop_cn == "Alpine Chough", "Pyrrhocorax graculus", str_to_sentence(pop_sn)),
+        trophic_level = ifelse(pop_cn == "Alpine Chough", 1, trophic_level)
+    )
 
 data_comp %>%
     mutate(exposure_category = factor(exposure_category, levels = c("Lethal Interaction", "Active Interaction", "Passive Interaction"))) %>%
@@ -434,7 +438,7 @@ data_comp %>%
         trophic_level = ifelse(trophic_level == 1, "Consumer", ifelse(trophic_level == 2, "Primary Predator", "Secondary Predator")),
         trophic_level = factor(trophic_level, levels = c("Secondary Predator", "Primary Predator", "Consumer"))
     ) %>%
-    filter(outcome != "latency" & !is.na(pop_cn) & !is.na(trophic_level)) %>%
+    filter(outcome != "latency") %>%
     ungroup() %>%
     ggplot(aes(x = reorder(pop_cn, abs(smd)), y = smd, col = trophic_level)) +
     geom_point(size = 2) +

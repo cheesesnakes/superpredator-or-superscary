@@ -1,4 +1,4 @@
-pacman::p_load(meta, broom, metafor)
+pacman::p_load(meta, broom, metafor, flextable)
 
 here::i_am("meta-analysis/7_sensitivity.R")
 source(here::here("meta-analysis/4_effects-sizes.R"), echo = FALSE, print.eval = FALSE)
@@ -43,6 +43,23 @@ print(funnel_sym)
 
 write.csv(funnel_sym, here::here("meta-analysis/output/funnel_sym.csv"), row.names = FALSE)
 
+# save as flextable
+
+funnel_sym_ft <- flextable(funnel_sym) %>%
+  set_header_labels(
+    outcome = "Outcome",
+    intercept = "Intercept",
+    lower = "Lower CI",
+    upper = "Upper CI",
+    Z = "Z-value",
+    p = "p-value"
+  ) %>%
+  set_table_properties(layout = "autofit") %>%
+  align(align = "center", part = "all") %>%
+  bold(part = "header")
+
+save_as_docx(funnel_sym_ft, path = here::here("meta-analysis/output/funnel_sym.docx"))
+
 # multi level meta-regression on variance to test for publication bias
 
 ## seperate for each outcome
@@ -67,6 +84,23 @@ for (i in unique(data_comp$outcome)) {
 print(vartest)
 
 write.csv(vartest, here::here("meta-analysis/output/vartest.csv"), row.names = FALSE)
+
+# save as flextable
+
+vartest_ft <- flextable(vartest) %>%
+  set_header_labels(
+    term = "Term",
+    estimate = "Estimate",
+    std.error = "Standard Error",
+    statistic = "Statistic",
+    p.value = "P-value",
+    outcome = "Outcome"
+  ) %>%
+  set_table_properties(layout = "autofit") %>%
+  align(align = "center", part = "all") %>%
+  bold(part = "header")
+
+save_as_docx(vartest_ft, path = here::here("meta-analysis/output/vartest.docx"))
 
 # time - lag effect
 
@@ -111,6 +145,26 @@ for (i in unique(data_comp$outcome)) {
 }
 
 write.csv(loo_test, here::here("meta-analysis/output/loo_test.csv"), row.names = FALSE)
+
+# save as flextable
+
+loo_test_ft <- flextable(loo_test) %>%
+  set_header_labels(
+    term = "Term",
+    estimate = "Estimate",
+    std.error = "Standard Error",
+    statistic = "Statistic",
+    p.value = "P-value",
+    conf.low = "Lower CI",
+    conf.high = "Upper CI",
+    outcome = "Outcome",
+    cite = "Citation"
+  ) %>%
+  set_table_properties(layout = "autofit") %>%
+  align(align = "center", part = "all") %>%
+  bold(part = "header")
+
+save_as_docx(loo_test_ft, path = here::here("meta-analysis/output/loo_test.docx"))
 
 ## plot  estimate with confidence intervals
 

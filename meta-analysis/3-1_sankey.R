@@ -74,7 +74,8 @@ studies <- studies %>%
             outcomes %in% c("Displacement", "Range Size") ~ "Movement",
             TRUE ~ "Other"
         )
-    )
+    ) %>%
+    filter(outcome_type != "Other")
 
 ## remove nas and empty strings
 
@@ -112,6 +113,7 @@ studies <- studies %>%
             TRUE ~ exposure_category
         )
     )
+
 
 # make data frame of nodes
 
@@ -166,5 +168,5 @@ sankeyNetwork(
 
 webshot(here("meta-analysis/figures", "sankey.html"),
     file = here("meta-analysis/figures", "sankey.png"),
-    vwidth = 1000, vheight = 800, zoom = 2, delay = 0.2
+    vwidth = 1200, vheight = 1000, zoom = 2, delay = 0.2
 )

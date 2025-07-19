@@ -4,7 +4,7 @@
 
 # required libraries
 
-pacman::p_load(dplyr, tidyr, stringr, ggplot2, esc, here)
+pacman::p_load(dplyr, tidyr, stringr, ggplot2, esc, here, flextable)
 
 # import clean data
 
@@ -485,20 +485,137 @@ ggsave(here::here("meta-analysis/figures/fig-2.png"), width = 24, height = 8, dp
 
 # count positive and negative studies which conf int don't overlap with zero
 
-data_comp %>%
+table6a <- data_comp %>%
+    filter(!is.na(smd)) %>%
     select(exposure_category, outcome, smd, upper, lower) %>%
     mutate(sign = ifelse(smd > 0, "positive", "negative")) %>%
     group_by(exposure_category, outcome, sign) %>%
-    summarise(n = sum(ifelse(sign == "positive", lower > 0, upper < 0))) %>%
-    pivot_wider(names_from = exposure_category, values_from = n) %>%
-    print()
+    summarise(n = sum(ifelse(sign == "positive", lower > 0, upper < 0), na.rm = TRUE)) %>%
+    mutate(across(where(is.numeric), ~ ifelse(is.na(.), 0, .))) %>%
+    mutate(P = "Significant")
 
 # count number of insig interactions
 
-data_comp %>%
+table6b <- data_comp %>%
+    filter(!is.na(smd)) %>%
     select(exposure_category, outcome, smd, upper, lower) %>%
     mutate(sign = ifelse(smd > 0, "positive", "negative")) %>%
-    group_by(exposure_category, outcome) %>%
+    group_by(exposure_category, outcome, sign) %>%
     summarise(n = sum(ifelse(sign == "positive", lower < 0, upper > 0))) %>%
+    mutate(across(where(is.numeric), ~ ifelse(is.na(.), 0, .))) %>%
+    mutate(P = "Insignificant")
+
+# summary table of effect sizes
+
+table6 <- full_join(table6a, table6b) %>%
     pivot_wider(names_from = exposure_category, values_from = n) %>%
-    print()
+    mutate(across(where(is.numeric), ~ ifelse(is.na(.), 0, .))) %>%
+    mutate(across(where(is.character), ~ str_to_title(.)))
+
+table6_ft <- table6 %>%
+    select(outcome, P, sign, everything()) %>%
+    arrange(outcome, P) %>%
+    flextable() %>%
+    set_header_labels(outcome = "Outcome", P = "Significance", sign = "Sign") %>%
+    merge_v(j = c("outcome", "P")) %>%
+    theme_box()
+
+print(table6_ft)
+
+save_as_docx(table6_ft, path = here::here("meta-analysis/output/table-6.docx"))
+
+# summary table of effect sizes
+
+table7 <- data_comp %>%
+    filter(!is.na(smd)) %>%
+    select(exposure_category, outcome, pop_cn, group, smd, upper, lower, cite) %>%
+    mutate(across(where(is.numeric), ~ ifelse(is.na(.), 0, .))) %>%
+    mutate(across(where(is.character), ~ str_to_title(.))) %>%
+    mutate(across(where(is.numeric), ~ round(., 3)))
+
+table7_ft <- table7 %>%
+    arrange(exposure_category, outcome, abs(smd)) %>%
+    flextable() %>%
+    set_header_labels(
+        exposure_category = "Exposure Category",
+        outcome = "Outcome",
+        pop_cn = "Common Name",
+        group = "Treatment Group",
+        smd = "Standardized Mean Difference",
+        upper = "Upper CI",
+        lower = "Lower CI",
+        cite = "Citation"
+    ) %>%
+    merge_v(j = c("exposure_category", "outcome")) %>%
+    theme_box() %>%
+    set_table_properties(layout = "fixed", width = 0.95)
+
+print(table7_ft)
+
+save_as_docx(table7_ft, path = here::here("meta-analysis/output/table-7.docx"))
+
+# Species with multiple treatments
+
+table8 <- data_comp %>%
+    filter(!is.na(smd)) %>%
+    select(exposure_category, outcome, pop_cn, group, smd, upper, lower, cite) %>%
+    mutate(across(where(is.numeric), ~ ifelse(is.na(.), 0, .))) %>%
+    mutate(across(where(is.character), ~ str_to_title(.))) %>%
+    mutate(across(where(is.numeric), ~ round(., 3))) %>%
+    arrange(pop_cn, exposure_category, outcome, abs(smd)) %>%
+    group_by(pop_cn) %>%
+    mutate(N_exposure = length(unique(exposure_category))) %>%
+    ungroup() %>%
+    filter(N_exposure > 1) %>%
+    select(pop_cn, outcome, exposure_category, group, smd, upper, lower, cite) %>%
+    arrange(pop_cn, outcome, exposure_category, abs(smd))
+
+table8_ft <- table8 %>%
+    flextable() %>%
+    set_header_labels(
+        exposure_category = "Exposure Category",
+        outcome = "Outcome",
+        pop_cn = "Common Name",
+        group = "Treatment Group",
+        cite = "Citation"
+    ) %>%
+    merge_v(j = c("pop_cn", "outcome", "exposure_category")) %>%
+    theme_box() %>%
+    set_table_properties(layout = "fixed", width = 0.95)
+
+print(table8_ft)
+
+save_as_docx(table8_ft, path = here::here("meta-analysis/output/table-8.docx"))
+
+# Studies with multiple outcomes
+
+table9 <- data_comp %>%
+    filter(!is.na(smd)) %>%
+    select(exposure_category, outcome, pop_cn, group, smd, upper, lower, cite) %>%
+    mutate(across(where(is.numeric), ~ ifelse(is.na(.), 0, .))) %>%
+    mutate(across(where(is.character), ~ str_to_title(.))) %>%
+    mutate(across(where(is.numeric), ~ round(., 3))) %>%
+    arrange(pop_cn, exposure_category, outcome, abs(smd)) %>%
+    group_by(cite) %>%
+    mutate(N_outcome = length(unique(outcome))) %>%
+    ungroup() %>%
+    filter(N_outcome > 1) %>%
+    select(cite, exposure_category, outcome, pop_cn, group, smd, upper, lower) %>%
+    arrange(cite, exposure_category, outcome)
+
+table9_ft <- table9 %>%
+    flextable() %>%
+    set_header_labels(
+        exposure_category = "Exposure Category",
+        outcome = "Outcome",
+        pop_cn = "Common Name",
+        group = "Treatment Group",
+        cite = "Citation"
+    ) %>%
+    merge_v(j = c("cite", "outcome")) %>%
+    theme_box() %>%
+    set_table_properties(layout = "fixed", width = 0.95)
+
+print(table9_ft)
+
+save_as_docx(table9_ft, path = here::here("meta-analysis/output/table-9.docx"))

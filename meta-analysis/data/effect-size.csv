@@ -20,9 +20,9 @@
 "gerte.olssonEffectsHuntingWillow1996","","Lethal Interaction","Willow Grouse","Movement",0.257149413052952,0.220576885168318,0.689472163804883,-0.175173337698979,42,"Lagopus lagopus","granivore","1","E. Olsson et al., 1996",1996
 "gerte.olssonEffectsHuntingWillow1996","","Lethal Interaction","Willow Grouse","Movement",0.40879496775507,0.221951618003978,0.84381214535326,-0.0262222098431194,42,"Lagopus lagopus","granivore","1","E. Olsson et al., 1996",1996
 "giordanoPreyResponsesPredation2022","","Passive Interaction","Chipmunk","Foraging",-0.385469479135486,0.239573770886352,0.0840864834422144,-0.855025441713186,7,"Tamias striatus","herbivore","1","Giordano et al., 2022",2022
-"giordanoPreyResponsesPredation2022","","Passive Interaction","White-footed mouse","Foraging",1.25427286781119,0.29293989057387,1.82842450297107,0.680121232651296,22,"Peromyscus leucopus","herbivore","1","Giordano et al., 2022",2022
+"giordanoPreyResponsesPredation2022","","Passive Interaction","White-Footed Mouse","Foraging",1.25427286781119,0.29293989057387,1.82842450297107,0.680121232651296,NA,NA,NA,NA,"Giordano et al., 2022",2022
 "giordanoPreyResponsesPredation2022","","Passive Interaction","Chipmunk","Vigilance",0.873346654621289,0.248436259866342,1.36027277641315,0.386420532829425,7,"Tamias striatus","herbivore","1","Giordano et al., 2022",2022
-"giordanoPreyResponsesPredation2022","","Passive Interaction","White-footed mouse","Vigilance",0,NA,0,0,22,"Peromyscus leucopus","herbivore","1","Giordano et al., 2022",2022
+"giordanoPreyResponsesPredation2022","","Passive Interaction","White-Footed Mouse","Vigilance",NA,NA,NA,NA,NA,NA,NA,NA,"Giordano et al., 2022",2022
 "grignolioEffectsHuntingHounds2011","","Lethal Interaction","Roe Deer","Movement",0.154086019248825,0.149063106724839,0.44624433985316,-0.13807230135551,29,"Capreolus capreolus","herbivore","1","Grignolio et al., 2011",2011
 "liCollectiveVigilanceWintering2016","","Active Interaction","Hooded Crane","Vigilance",0.333246853031662,0.233048889731601,0.790014283542647,-0.123520577479322,17,"Grus monacha","insectivore","2","Li et al., 2016",2016
 "liVigilanceActivityTimeBudget2015","2013_adult","Active Interaction","Hooded Crane","Foraging",1.56369489605115,0.120445161277191,1.79976307426656,1.32762671783574,17,"Grus monacha","insectivore","2","Li et al., 2015",2015

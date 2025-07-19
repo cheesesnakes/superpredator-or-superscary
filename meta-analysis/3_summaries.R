@@ -83,6 +83,17 @@ data %>%
     pivot_wider(names_from = contrast_type, values_from = n, values_fill = list(n = 0)) %>%
     print(.)
 
+# number of studies with more than one exposure category
+
+print("Number of studies with more than one exposure category")
+
+data %>%
+    group_by(cite.key) %>%
+    summarise(n = length(unique(exposure_category))) %>%
+    filter(n > 1) %>%
+    nrow() %>%
+    print(.)
+
 # number of datapoints per outcome
 
 outcomes <- data %>%
@@ -291,3 +302,39 @@ table_a1_ft <- table_a1 %>%
 print(table_a1_ft)
 
 save_as_docx(table_a1_ft, path = here::here("meta-analysis/output/table_a1.docx"))
+
+# Summary of studies with contrast type, exposure category, outcome, outcomes and treatment
+
+tablea2 <- data %>%
+    # add cite as a column
+    left_join(authors, by = "cite.key") %>%
+    select(cite, contrast_type, exposure_category, outcome, outcomes, treatment) %>%
+    distinct() %>%
+    group_by(cite) %>%
+    summarise(
+        contrast_type = paste(unique(contrast_type), collapse = ", "),
+        exposure_category = paste(unique(exposure_category), collapse = ", "),
+        outcome = paste(unique(outcome), collapse = ", "),
+        outcomes = paste(unique(outcomes), collapse = ", "),
+        treatment = paste(unique(treatment), collapse = ", ")
+    )%>%
+    # remove + from outcomes
+    mutate(outcomes = str_replace_all(outcomes, "\\+ ", ", ")) %>%
+    # Format all as sentence case
+    mutate(across(everything(), str_to_sentence)) %>%
+    select(cite, contrast_type, exposure_category, treatment, outcome, outcomes) %>%
+    distinct()
+
+tablea2_ft <- tablea2 %>%
+    flextable() %>%
+    set_header_labels(
+        cite = "Citations",
+        contrast_type = "Contrast Type",
+        exposure_category = "Exposure Category",
+        treatment = "Treatment",
+        outcome = "Outcome",
+        outcomes = "Metrics"
+    ) %>%
+    set_table_properties(layout = "fixed", width = 0.95)
+
+save_as_docx(tablea2_ft, path = here::here("meta-analysis/output/table_a2.docx"))

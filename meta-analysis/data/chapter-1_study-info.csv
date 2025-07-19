@@ -7,7 +7,7 @@ brosethDisturbanceEffectsHunting2010,lethal interaction,,spatial,correlational,G
 brownEffectHumanActivities2012,active interaction,,none,correlational,FIS + scan,867,Multispecies,,anthropogenic noise + pedestrians,none,foraging time + vigilance time,,
 brownEvaluatingIndirectEffects2020,lethal interaction,,temporal,treatment-control,GPS,,Mule deer,Odocoileus hemionus,hunting,negative control,movement rate + range size,,
 camillewardPredictorsVigilanceAmerican1997,active interaction,,spatial,correlational,FIS,,american crow,Corvus branchyrhynchos,pedestrian,none,vigilance time + foraging time,,
-cappaEffectsRoadsBehaviour2017,passive interaction,,none,correlational,FIS,,Guanco,Lama guanicoe,road,none,vigilance rate pop.,,
+cappaEffectsRoadsBehaviour2017,passive interaction,,none,correlational,FIS,,Guanaco,Lama guanicoe,road,none,vigilance rate pop.,,
 chen-krausHumanLemurCoexistenceMultipleUse2022,passive interaction,,none,correlational,FIS,1200,Verreaux’s Sifaka,Propicthecus verreauxi,road,none,foraging time + vigilance time,"passive interactions (dogs, livestock, vehicles) also included as predictors",
 ciutiEffectsHumansBehaviour2012,passive interaction,,spatial,treatment-control,FIS,450,Elk,Cervus elaphus,road,none,foraging time + vigilance time,,
 clinchyFearHumanSuper2016,lethal interaction,,Auditory cues,playback,FIS,150,Badger,Meles meles,hunting + natural predator,negative control + positive control,foraging rate + vigilance rate + foraging time + vigilance time,,

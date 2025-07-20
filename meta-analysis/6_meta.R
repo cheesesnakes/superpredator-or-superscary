@@ -187,7 +187,7 @@ for (i in unique(data_lat$outcome)) {
 
     j <- j + 1
 
-    bubble(reg, studylab = TRUE, file = here::here(paste0("lat_reg_", i, ".png")), main = i)
+    # bubble(reg, studylab = TRUE, file = here::here(paste0("lat_reg_", i, ".png")), main = i)
 }
 
 # set type coeff
@@ -279,7 +279,7 @@ for (i in unique(data_comp$outcome)) {
 
     print(summary(reg))
 
-    bubble(reg, studylab = TRUE, file = here::here(paste0("treatment_reg_", i, ".png")), main = i)
+    # bubble(reg, studylab = TRUE, file = here::here(paste0("treatment_reg_", i, ".png")), main = i)
 
     reg_tab[k, ] <- c(reg$beta[1], reg$se[1], reg$beta[2], reg$se[2], reg$tau2, reg$se.tau2, reg$I2, reg$H2, reg$R2, i, "interaction_type")
 

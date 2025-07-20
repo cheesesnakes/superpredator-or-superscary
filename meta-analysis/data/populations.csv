@@ -1,4 +1,4 @@
-,pop_cn,pop_sn,functional_group,trophic_level, group
+,pop_cn,pop_sn,functional_group,trophic_level, grouping
 19,Impala,Aepyceros melampus,herbivore,1, yes
 21,Moose,Alces alces,herbivore,1, yes
 26,Pronghorn Antelope,Antilocapra americana,herbivore,1, yes
@@ -16,7 +16,7 @@
 17,Hooded Crane,Grus monacha,insectivore,2, yes
 32,Sable Antelope,Hippotragus niger,herbivore,1, yes
 6,Capybaras,Hydrochoerus hydrochaeris,herbivore,1, yes
-,Willow Ptarmigan,Lagopus lagopus,granivore,1, yes
+,Willow Grouse,Lagopus lagopus,granivore,1, yes
 16,Guanaco,Lama guanicoe,herbivore,1, yes
 43,Yellowbellied Marmot,Marmota flaviventris,herbivore,1, yes
 3,Badger,Meles meles,omnivore,2, no

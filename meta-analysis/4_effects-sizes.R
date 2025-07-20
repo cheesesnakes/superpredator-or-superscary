@@ -15,7 +15,17 @@ source(here::here("meta-analysis/1-2_authors.R"), chdir = TRUE)
 
 pop <- read.csv(here::here("meta-analysis/data/populations.csv"))
 
+pop <- pop %>%
+    mutate(
+        pop_cn = str_to_sentence(pop_cn),
+        pop_sn = str_to_sentence(pop_sn)
+    ) %>%
+    select(pop_cn, pop_sn, functional_group, trophic_level)
+
 data <- data %>%
+    mutate(
+        pop_cn = str_to_sentence(pop_cn)
+    ) %>%
     left_join(pop, by = "pop_cn") %>%
     rename(pop_sn = pop_sn.y) %>%
     mutate(pop_sn = ifelse(is.na(pop_sn), pop_sn.x, pop_sn)) %>%
@@ -459,7 +469,7 @@ data_comp %>%
         text = element_text(size = 20)
     )
 
-ggsave(here::here("meta-analysis/figures/fig-2_1.png"), width = 12, height = 10, dpi = 300)
+ggsave(here::here("meta-analysis/figures/fig-2_1.png"), width = 12, height = 12, dpi = 300)
 
 # plot effect size and confidence intervals
 
@@ -548,7 +558,10 @@ table7_ft <- table7 %>%
     ) %>%
     merge_v(j = c("exposure_category", "outcome")) %>%
     theme_box() %>%
-    set_table_properties(layout = "fixed", width = 0.95)
+    set_table_properties(layout = "fixed", width = 0.95) %>%
+    # color rows background with absolute values smd, lower or upper >1
+    bg(i = ~ smd > 1 | abs(lower) > 1 | abs(upper) > 1, bg = "#fb5053") %>%
+    set_caption("Raw effect sizes across studies (in ascending order of absolute value). Red cells indicate effect size intervals which exceed 1.0 in absolute value.")
 
 print(table7_ft)
 

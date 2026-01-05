@@ -1,426 +1,428 @@
-"cite.key","title","year","labels","status","comment","x","x.1","x.2","x.3","x.4","x.5"
-"mollerUrbanAreasRefuges2012","Urban areas as refuges from predators and flight distance of prey",2012,"Data,  concept","included"," #concept possible mechanism of human shield effect in development gradients","","","","","",""
-"hebblewhiteModellingWildlifehumanRelationships2008","Modelling wildlife-human relationships for social species with mixed-effects resource selection models",2008,"Data","exclude","-","","","","","",""
-"loneLivingDyingMultipredator2014","Living and dying in a multi-predator landscape of fear Roe deer are squeezed by contrasting pattern of predation risk imposed by lynx and humans",2014,"Data","exclude","#example mortality of roe deer due to hunting","","","","","",""
-"sergeyevInfluenceHabitatUse2020","The influence of habitat use on harvest vulnerability of cow elk (Cervus canadensis)",2020,"Data","exclude","-","","","","","",""
-"millsHumansDisruptAccess2020","Humans disrupt access to prey for large African carnivores",2020,"Data","exclude","-","","","","","",""
-"diserensFossorialityRiskyLandscape2021","Fossoriality in a risky landscape badger sett use varies with perceived wolf risk",2021,"Data","exclude","#example of non-hunting disturbance vs natural predator effects on badger sett use","","","","","",""
-"cortes-alfonsoPerceivedRiskPredation2021","Perceived risk of predation and habitat use by the Andean White-eared Opossum Didelphis pernigra (Didelphimorphia Didelphidae) in an ex-urban area",2021,"Data","exclude","-","","","","","",""
-"zugmeyerAvianRiskAssessment","Avian risk assessment Effects of perching height and detectability",NA,"Data","exclude","-","","","","","",""
-"gotmarkPreySelectionSparrowhawks1996","Prey selection by sparrowhawks, Accipiter nisus Relative predation risk for breeding passerine birds in relation to their size, ecology and behaviour",1996,"Data","exclude","-","","","","","",""
-"bowersForagingGraySquirrels1996","Foraging of gray squirrels on an urban-rural gradient Use of the GUD to assess anthropogenic impact",1996,"Data","exclude","-","","","","","",""
-"cooperTradeoffsPredationRisk2000","Tradeoffs between predation risk and feeding in a lizard, the broad-headed skink (Eumeces laticeps)",2000,"Data","exclude","-","","","","","",""
-"hendersonBehaviourDomesticDucks2001","Behaviour of domestic ducks exposed to mobile predator stimuli. 1. Flock responses",2001,"Data","exclude","-","","","","","",""
-"fernandez-juricicVariationsScanningBehavior2003","Do variations in scanning behavior affect tolerance to human disturbance?",2003,"-","exclude","-","","","","","",""
-"stenhouseExperimentalStudyExamining2005","An experimental study examining the anti-predator behaviour of Sabine's gulls (Xema sabini) during breeding",2005,"Experimental","exclude","-","","","","","",""
-"rodriguez-prietoEffectsDirectHuman2005","Effects of direct human disturbance on the endemic Iberian frog Rana iberica at individual and population levels",2005,"Data,Other NCB","exclude","FID in relation to number of approaches not disturbance","","","","","",""
-"nevinPerceivedRiskDisplacement2005","Perceived risk, displacement and refuging in brown bears positive impacts of ecotourism?",2005,"Data, Other NCB","exclude","-","","","","","",""
-"blumsteinInterspecificVariationAvian2005","Inter-specific variation in avian responses to human disturbance",2005,"-","exclude","-","","","","","",""
-"petersUsingRiskdisturbanceHypothesis2005","Using the risk-disturbance hypothesis to assess the relative effects of human disturbance and predation risk on foraging American oystercatchers",2005,"Data","exclude","effect size not reported for feeding time nhd treatment;  number of individuals exbhiting given behavior per treatment","","","","","",""
-"nevinMeasuringCostRisk2005","Measuring the cost of risk avoidance in brown bears Further evidence of positive impacts of ecotourism",2005,"-","exclude","-","","","","","",""
-"yasuePotentialImpactTourism2006","The potential impact of tourism development on habitat availability and productivity of Malaysian plovers Charadrius peronii",2006,"Data","exclude","-","","","","","",""
-"yasueEnvironmentalFactorsSpatial2006","Environmental factors and spatial scale influence shorebirds' responses to human disturbance",2006,"Data","exclude","-","","","","","",""
-"blumsteinDevelopingEvolutionaryEcology2006","Developing an evolutionary ecology of fear how life history and natural history traits affect disturbance tolerance in birds",2006,"Data","exclude","-","","","","","",""
-"stankowichEffectsRiskAssessment2007","Effects of risk assessment, predator behavior, and habitat on escape behavior in Columbian black-tailed deer",2007,"Data, Other NCB","exclude","-","","","","","",""
-"liEvidenceEffectsHuman2007","Evidence of effects of human disturbance on alert response in pere david's deer (Elaphurus davidianus)",2007,"Data","exclude","exposure was tourists","","","","","",""
-"croesInfluenceHuntingAntipredator2007","The influence of hunting on antipredator behavior in Central African monkeys and duikers",2007,"Data","exclude","-","","","","","",""
-"cooperEscapeItsRelationship2007","Escape and its relationship to pursuit-deterrent signalling in the cuban curly-tailed lizard Leiocephalus carinatus",2007,"Data","exclude","-","","","","","",""
-"bergerFearHumanShields2007","Fear, human shields and the redistribution of prey and predators in protected areas",2007,"Data","exclude","-","","","","","",""
-"tsurimFORAGINGBEHAVIORURBAN2008","FORAGING BEHAVIOR OF URBAN BIRDS ARE HUMAN COMMENSALS LESS SENSITIVE TO PREDATION RISK THAN THEIR NONURBAN COUNTERPARTS?",2008,"Data","exclude","across species comparison,  #example species habituation to human disturbance alters predation risk perceived","","","","","",""
-"rodriguez-prietoRunFlyLow2008","To run or to fly low cost versus low risk escape strategies in blackbirds",2008,"Data","exclude","descisions under risk","","","","","",""
-"rippleTrophicCascadesInvolving2008","Trophic cascades involving cougar, mule deer, and black oaks in Yosemite National Park",2008,"Data","exclude","#example effect of apex predator removal on plan recruitment,  trophic cascade","","","","","",""
-"laursenHuntingMotorboatsDisplaces2008","Hunting from motorboats displaces Wadden Sea eiders Somateria mollissima from their favoured feeding distribution",2008,"Data","exclude","#example for density changes dues to hunting","","","","","",""
-"garnerHumanDisturbanceInfluences2008","Human disturbance influences behaviour and local density of juvenile frogs",2008,"Data","exclude","possible example for human disturbance","","","","","",""
-"carterSubtleCuesPredation2008","Subtle cues of predation risk starlings respond to a predator's direction of eye-gaze",2008,"Data","exclude","human treatment only","","","","","",""
-"wolfSIGNSTOPHABITAT2009","SIGNS AT THE TOP HABITAT FEATURES INFLUENCING SNOW LEOPARD UNCIA UNCIA ACTIVITY IN SAGARMATHA NATIONAL PARK, NEPAL",2009,"Data","exclude","-","","","","","",""
-"theuerkaufWhatDrivesWolves2009","What Drives Wolves Fear or Hunger? Humans, Diet, Climate and Wolf Activity Patterns",2009,"Data, review","exclude","#example effects on human predator on top trophic levels","","","","","",""
-"lagosFlightInitiationDistance2009","Flight initiation distance is differentially sensitive to the costs of staying and leaving food patches in a small-mammal prey",2009,"Data","exclude","NCE","","","","","",""
-"fridConservationAntiPredatorBehavior2009","Conservation and Anti-Predator Behavior",2009,"Review","exclude","-","","","","","",""
-"bellefleurImpactRecreationalBoat2009","The impact of recreational boat traffic on Marbled Murrelets (Brachyramphus mamoratus)",2009,"Data","exclude","-","","","","","",""
-"neumannNonimpactHuntingMoose2009","The non-impact of hunting on moose Alces alces movement, diurnal activity, and activity range",2009,"Data","exclude","#example effects of hunting and non - hunting disturbance on animal movement","","","","","",""
-"wolfMinimizingDisturbanceWildlife2010","Minimizing disturbance to wildlife by tourists approaching on foot or in a car A study of kangaroos in the Australian rangelands",2010,"Data","exclude","lack of control","","","","","",""
-"sirotShouldRiskAllocation2010","Should risk allocation strategies facilitate or hinder habituation to nonlethal disturbance in wildlife?",2010,"theoretical model","exclude","#read/later","","","","","",""
-"madinFishingIndirectlyStructures2010","Fishing Indirectly Structures Macroalgal Assemblages by Altering Herbivore Behavior",2010,"Data","exclude","#model incorporating foraging of herbivores and predation risk,  #bmii","","","","","",""
-"lemaitreDeerMiceMediate2010","Deer mice mediate red-backed vole behaviour and abundance along a gradient of habitat alteration",2010,"Data","exclude","#example effects of passive human interaction on competition","","","","","",""
-"jansenReactionHarborSeals2010","Reaction of harbor seals to cruise ships",2010,"Data","exclude","#example effect of non-human disturbance on escape behavior + behvioural thermoregulation,  marine","","","","","",""
-"dowdingNocturnalRangingBehaviour2010","Nocturnal ranging behaviour of urban hedgehogs, Erinaceus europaeus, in relation to risk and reward",2010,"Data","exclude","#example non-hunting disturbance effects on animal space use and activity","","","","","",""
-"cooperPredationRiskEscape2010","Predation risk, escape and refuge use by mountain spiny lizards (Sceloporus jarrovii)",2010,"Data","exclude","NCE","","","","","",""
-"chanAnthropogenicNoiseAffects2010","Anthropogenic noise affects risk assessment and attention the distracted prey hypothesis",2010,"Data","exclude","hyp presented in paper is difficult to separate from human sheild effect - crabs may interpret human cues as safety - keeping predators away","","","","","",""
-"madinFieldEvidencePervasive2010","Field evidence for pervasive indirect effects of fishing on prey foraging behavior",2010,"Data","exclude","#example of predator removal effects on prey behavior,  #marine","","","","","",""
-"panEldDeerTranslocated2011","Eld's Deer Translocated to Human-Inhabited Areas Become Nocturnal",2011,"Data","exclude","#example NHD effects of temporal activity on herbivore","","","","","",""
-"muhlyHumanActivityHelps2011","Human activity helps prey win the predator-prey space race",2011,"Data","exclude","#example of human shield effect,  NHD","","","","","",""
-"jayakodyEffectsHumanDisturbance2011","Effects of human disturbance on the diet composition of wild red deer (Cervus elaphus)",2011,"Data","exclude","#example effects of non-hunting disturbance on diet composition of herbivores","","","","","",""
-"campbellPasserineReactionsHuman2011","Passerine reactions to human behaviour and vegetation structure in Peterborough, Canada",2011,"Data","exclude","lack of control","","","","","",""
-"batemanWhoAreYou2011","Who are you looking at? Hadeda ibises use direction of gaze, head orientation and approach speed in their risk assessment of a potential predator",2011,"Data","exclude","lack of control","","","","","",""
-"taraborelliCooperativeVigilanceGuanaco2012","Cooperative vigilance The guanaco's (Lama guanicoe) key antipredator mechanism",2012,"Data","exclude","-","","","","","",""
-"rasmussenMaskingZeitgeberAfrican2012","Masking of the zeitgeber African wild dogs mitigate persecution by balancing time",2012,"Data","exclude","#example effects of hunting on temporal activity of large carnivore","","","","","",""
-"ordizBearsKnowThey2012","Do bears know they are being hunted?",2012,"Data","exclude","#example hunting effects of temporal activity of large carnivores","","","","","",""
-"moenBehaviourSolitaryAdult2012","Behaviour of Solitary Adult Scandinavian Brown Bears (Ursus arctos) when Approached by Humans on Foot",2012,"Data","exclude","-","","","","","",""
-"keyelNOEVIDENCEINDIVIDUAL2012","NO EVIDENCE FOR INDIVIDUAL ASSORTMENT BY TEMPERAMENT RELATIVE TO PATCH AREA OR PATCH OPENNESS IN THE BOBOLINK",2012,"Data","exclude","-","","","","","",""
-"gyimesiHumanDisturbanceBewick2012","Human disturbance of Bewick's Swans is reflected in giving-up net energy intake rate, but not in giving-up food density",2012,"Data","exclude","-","","","","","",""
-"dumontFlightInitiationDistance2012","Flight Initiation Distance and Starting Distance Biological Effect or Mathematical Artefact?",2012,"Data","exclude","-","","","","","",""
-"crosmaryAfricanUngulatesTheir2012","African ungulates and their drinking problems Hunting and predation risks constrain access to water",2012,"Data","exclude","#example effects of hunting on temporal activity of herbivores","","","","","",""
-"waleNoiseNegativelyAffects2013","Noise negatively affects foraging and antipredator behaviour in shore crabs",2013,"Data","exclude","#example effect of NHD on foraging efficiency of crabs","","","","","",""
-"perez-cembranosPredationRiskOpportunity2013","Predation Risk and Opportunity Cost of Fleeing While Foraging on Plants Influence Escape Decisions of an Insular Lizard",2013,"Data","exclude","-","","","","","",""
-"ordizLastingBehaviouralResponses2013","Lasting behavioural responses of brown bears to experimental encounters with humans",2013,"Data","exclude","#example experimental effect of NHD on bear activity","","","","","",""
-"ohashiDifferencesActivityPattern2013","Differences in the activity pattern of the wild boar Sus scrofa related to human disturbance",2013,"Data","exclude","temporal activity
-#example effect of hunting and NHD on temporal activity of wild boars","","","","","",""
-"merkleFoodAvailabilityForaging2013","Food availability and foraging near human developments by black bears",2013,"Data","exclude","#example human subsidisation of predator energy intake","","","","","",""
-"melisRoeDeerFace2013","Roe deer face competing risks between predators along a gradient in abundance",2013,"Data","exclude","comparison of mortality from human hunters and natural predators","","","","","",""
-"leeDirectLookPredator2013","Direct Look from a Predator Shortens the Risk-Assessment Time by Prey",2013,"Data","exclude","-","","","","","",""
-"bumpBearBaitingMayExacerbate2013","Bear-Baiting May Exacerbate Wolf-Hunting Dog Conflict",2013,"Data","exclude","#example conflict between hunters and wolves","","","","","",""
-"bonnotHabitatUsePredation2013","Habitat use under predation risk Hunting, roads and human dwellings influence the spatial behaviour of roe deer",2013,"Data","exclude","#example hunting and NHD effects on herbivore space use","","","","","",""
-"symonsSexDifferencesRisk2014","Sex differences in risk perception in deep-diving bottlenose dolphins leads to decreased foraging efficiency when exposed to human disturbance",2014,"Data","exclude","#example effect of non-hunting disturbance on dolphin dive behavior","","","","","",""
-"ndaimaniPredictingSpatialDistribution2014","Predicting the spatial distribution of hunted and non-hunted Sable antelope (Hippotragus niger niger) using remotely sensed woody cover in a Southern African savanna",2014,"data","exclude","#example effect of hunting on habitat use of sable","","","","","",""
-"marchandImpactsTourismHunting2014","Impacts of tourism and hunting on a large herbivore's spatio-temporal behavior in and around a French protected area",2014,"Data","exclude","#example contrasting effects of hunting and NHD on space use and temporal activity","","","","","",""
-"littleDoesHumanPredation2014","Does Human Predation Risk Affect Harvest Susceptibility of White-Tailed Deer During Hunting Season?",2014,"Data","exclude","-","","","","","",""
-"kiffnerInterspecificVariationLarge2014","Interspecific variation in large mammal responses to human observers along a conservation gradient with variable hunting pressure",2014,"Data","exclude","measured variables do not align with theory","","","","","",""
-"avrilExplorationForaysJuvenile2014","Exploration forays in juvenile European hares (Lepus europaeus) Dispersal preludes or hunting-induced troubles?",2014,"-","exclude","#example effect of hunting on movement of small mammals","","","","","",""
-"wronskiInteractionsWildlifeHumans2015","Interactions between wildlife, humans and cattle activity patterns of a remnant population of impala on the degraded Mutara Rangelands, Rwanda",2015,"Data","exclude","-","","","","","",""
-"stillfriedWhenTopPredators2015","When top predators become prey Black bears alter movement behaviour in response to hunting pressure",2015,"Data","exclude","lack of contrast,  distance to road measured but reported in a very weird way",""," contrast maybe interpreted as NHD vs hunting","","","",""
-"smithTopCarnivoresIncrease2015","Top carnivores increase their kill rates on prey as a response to human-induced fear",2015,"Data","exclude","why not use proportion of kill left over as a GUD?,  proportion of time spent at kill site has nothing to do with cost","","","","","",""
-"padieRoeDeerRisk2015","Roe deer at risk teasing apart habitat selection and landscape constraints in risk exposure at multiple scales",2015,"Data","exclude","lack of contrast,  table 1 does not make sense",""," what is the effect size in habitat selection function?","","","",""
-"loneAdaptiveBehaviouralResponse2015","An adaptive behavioural response to hunting surviving male red deer shift habitat at the onset of the hunting season",2015,"Data","exclude","#example effect of hunting on habitat use of red deer,  cover + forage choice","","","","","",""
-"kiszkaBehaviouralDriversEcological2015","Behavioural drivers of the ecological roles and importance of marine mammals",2015,"Review","exclude","-","","","","","",""
-"haywardRiskPerceptionEndangered2015","Risk perception by endangered European bison Bison bonasus is context (condition) dependent",2015,"Data","exclude","-","","","","","",""
-"gendallToleranceDisturbanceHumans2015","Tolerance of disturbance by humans in long-time resident and recent colonist urban doves",2015,"Data","exclude","comparison accross species"," #example difference in effect of NHD with time of first exposure (evolutionary)","","","","",""
-"garcia-garciaDoesGatheringShellfish2015","Does the gathering of shellfish affect the behavior of gastropod scavengers on sandy beaches? A field experiment",2015,"Data","exclude","#example effect of NHD on antipredator behavior of shellfish","","","","","",""
-"blasiInfluenceTrammelNets2015","Influence of Trammel Nets on the Behaviour and Spatial Distribution of Bottlenose Dolphins (Tursiops truncatus) in the Aeolian Archipelago, Southern Italy",2015,"Data","exclude","#example effect of fishing on habitat use of dolphins","","","","","",""
-"oriol-cotterillSpatiotemporalPatternsLion2015","Spatiotemporal patterns of lion space use in a human-dominated landscape",2015,"Data","exclude","#example effect of hunting on space use of lions","","","","","",""
-"wheatHabituationReversesFearbased2016","Habituation reverses fear-based ecological effects in brown bears (Ursus arctos)",2016,"Data","exclude","-","","","","","",""
-"weteringsStrongReactiveMovement2016","Strong reactive movement response of the medium-sized European hare to elevated predation risk in short vegetation",2016,"Data","exclude","-","","","","","",""
-"smithSpatialCharacteristicsResidential2016","Spatial characteristics of residential development shift large carnivore prey habits",2016,"Data","exclude","-","","","","","",""
-"schuetteUngulateDistributionsRangeland2016","Ungulate distributions in a rangeland with competitors, predators and pastoralists",2016,"Data","exclude","-","","","","","",""
-"reislandSympatricApesSacred2016","Sympatric Apes in Sacred Forests Shared Space and Habitat Use by Humans and Endangered Javan Gibbons (Hylobates moloch)",2016,"Data,Other NCB","exclude","-","","","","","",""
-"nowakInfluenceLivecaptureRisk2016","Influence of live-capture on risk perceptions of habituated samango monkeys",2016,"Data","exclude","-","","","","","",""
-"lamannaBehavioralResponseBrown2016","Behavioral response of brown meagre (Sciaena umbra) to boat noise",2016,"Data","exclude","-","","","","","",""
-"krishnaWildUngulateDecisionMaking2016","Wild Ungulate Decision-Making and the Role of Tiny Refuges in Human-Dominated Landscapes",2016,"Data","exclude","-","","","","","",""
-"isojunnoSpermWhalesReduce2016","Sperm whales reduce foraging effort during exposure to 1-2 kHz sonar and killer whale sounds",2016,"Data","exclude","-","","","","","",""
-"holmernEffectsExperimentalHuman2016","Effects of experimental human approaches on escape behavior in Thomson's gazelle (Eudorcas thomsonii)",2016,"Data","exclude","-","","","","","",""
-"hertelTemporalEffectsHunting2016","Temporal effects of hunting on foraging behavior of an apex predator Do bears forego foraging when risk is high?",2016,"Data","exclude","-","","","","","",""
-"freebergForagingCallingBehavior2016","Foraging and Calling Behavior of Carolina chickadees (Poecile carolinensis) in Response to the Head Orientation of Potential Predators",2016,"Data","exclude","-","","","","","",""
-"diaz-ruizDriversRedFox2016","Drivers of red fox (Vulpes vulpes) daily activity prey availability, human disturbance or habitat structure?",2016,"Data","exclude","-","","","","","",""
-"colefaxEffectAnglingIntensity2016","Effect of angling intensity on feeding behaviour and community structure of subtropical reef-associated fishes",2016,"Data","exclude","-","","","","","",""
-"bensonIndividualPopulationLevel2016","Individual and population level resource selection patterns of mountain lions preying on mule deer along an urban-wildland gradient",2016,"Data","exclude","lack of contrast"," why was amount of carcas left not measure?????"," RSF does not explain how disturbance changes habitat use just which habitats were used - a good rsf study design will involve comparison across disturbed and undisturbed sites - even then the RSF will be very specific to the species studied","","","",""
-"podgorskiDriversSynchronizedVigilance2016","Drivers of synchronized vigilance in wild boar groups",2016,"Data","exclude","-","","","","","",""
-"Madin2016","Human activities change marine ecosystems by altering predation risk",2016,"review","exclude","-","","","","","",""
-"thurfjellLearningMistakesOthers2017","Learning from the mistakes of others How female elk (Cervus elaphus) adjust behaviour with age to avoid hunters",2017,"Data","exclude","effect of learning vs personality in antipredator responses"," interesting study design","","","","",""
-"visscherHumanRiskInduced2017","Human Risk Induced Behavioral Shifts in Refuge Use by Elk in an Agricultural Matrix",2017,"Data","exclude","-","","","","","",""
-"schaknerCanFearConditioning2017","Can fear conditioning repel California sea lions from fishing activities?",2017,"Data","exclude","-","","","","","",""
-"planteLandscapeAttributesExplain2017","Landscape attributes explain migratory caribou vulnerability to sport hunting",2017,"Data","exclude","-","","","","","",""
-"petrelliFirstFlushEffects2017","First to Flush The Effects of Ambient Noise on Songbird Flight Initiation Distances and Implications for Human Experiences with Nature",2017,"Data","exclude","-","","","","","",""
-"ordizSeasonalityHumanDisturbance2017","Seasonality and human disturbance alter brown bear activity patterns implications for circumpolar carnivore conservation?",2017,"Data","exclude","-","","","","","",""
-"morris-drakeAnthropogenicNoiseAlters2017","Anthropogenic noise alters dwarf mongoose responses to heterospecific alarm calls",2017,"Data","exclude","-","","","","","",""
-"moriPorcupinesLandscapeFear2017","Porcupines in the landscape of fear effect of hunting with dogs on the behaviour of a non-target species",2017,"Data","exclude","-","","","","","",""
-"lovariSuburbanEcologyCrested2017","Suburban ecology of the crested porcupine in a heavily poached area a global approach",2017,"Data","exclude","-","","","","","",""
-"loneTemporalVariationHabitat2017","Temporal variation in habitat selection breaks the catch-22 of spatially contrasting predation risk from multiple predators",2017,"Data","exclude","-","","","","","",""
-"jiangEscapePredatorsGenetic2017","Escape from predators and genetic variance in birds",2017,"Data","exclude","-","","","","","",""
-"jiangAntipredatorEscapeDistances2017","Antipredator escape distances of common and threatened birds",2017,"Data","exclude","-","","","","","",""
-"diazpauliBehaviouralResponsesHumaninduced2017","Behavioural responses to human-induced change Why fishing should not be ignored",2017,"Review","exclude","-","","","","","",""
-"cabreraIslandTamenessRepeatability2017","Island tameness and the repeatability of flight initiation distance in a large herbivore",2017,"Data","exclude","-","","","","","",""
-"bonnotStickTwistRoe2017","Stick or twist roe deer adjust their flight behaviour to the perceived trade-off between risk and reward",2017,"Data","exclude","-","","","","","",""
-"yamashitaAntipredatorBehaviourAfrican2018","Antipredator behaviour of African ungulates around human settlements",2018,"Data","exclude","-","","","","","",""
-"vancleaveDielPatternsMovement2018","Diel patterns of movement activity and habitat use by leopards (Panthera pardus pardus) living in a human-dominated landscape in central Kenya",2018,"Data","exclude","-","","","","","",""
-"shamoonIncreasedMammalNocturnality2018","Increased mammal nocturnality in agricultural landscapes results in fragmentation due to cascading effects",2018,"Data,data","exclude","-","","","","","",""
-"planteHumanDisturbanceEffects2018","Human disturbance effects and cumulative habitat loss in endangered migratory caribou",2018,"Data","exclude","-","","","","","",""
-"osorio-beristainRelatingFlightInitiation2018","Relating flight initiation distance in birds to tropical dry forest restoration",2018,"Data","exclude","effect of habitat on FID","","","","","",""
-"genovartDifferentialAdultSurvival2018","Differential adult survival at close seabird colonies The importance of spatial foraging segregation and bycatch risk during the breeding season",2018,"Data","exclude","-","","","","","",""
-"blankEscapingBehaviorGoitered2018","Escaping behavior in goitered gazelle",2018,"Data","exclude","-","","","","","",""
-"goldenbergIntergenerationalChangeAfrican2018","Inter-generational change in African elephant range use is associated with poaching risk, primary productivity and adult mortality",2018,"Data","exclude","-","","","","","",""
-"vinczeGreatTitsTake2019","Great tits take greater risk toward humans and sparrowhawks in urban habitats than in forests",2019,"Data","exclude","-","","","","","",""
-"suraciHumansNotTheir2019","Humans, but not their dogs, displace pumas from their kills An experimental approach",2019,"Data","exclude","-","","","","","",""
-"shoresMesopredatorsChangeTemporal2019","Mesopredators change temporal activity in response to a recolonizing apex predator",2019,"Data","exclude","#example effect of disturbance on temporal overlap of mesopredators","","","","","",""
-"samiaMetaanalysisFishBehavioural2019","A meta-analysis of fish behavioural reaction to underwater human presence",2019,"Review","exclude","-","","","","","",""
-"pattenIntersectionHumanDisturbance2019","The Intersection of Human Disturbance and Diel Activity, with Potential Consequences on Trophic Interactions",2019,"Data","exclude","#example effect of disturbance on predator - prey temporal overlap","","","","","",""
-"otienoHumanRiskmediatedBrowsing2019","Human- and risk-mediated browsing pressure by sympatric antelope in an African savanna",2019,"Data","exclude","#example effect of disturbance on forage choice of large herbivores","","","","","",""
-"mikleForageFleeLessons2019","To forage or flee lessons from an elk migration near a protected area",2019,"Data","exclude","#example effect of hunting on migration timing in elk","","","","","",""
-"kalbFlightInitiationDistance2019","Flight initiation distance and escape behavior in the black redstart (Phoenicurus ochruros)",2019,"Data","exclude","-","","","","","",""
-"ihwagiPoachingLowersElephant2019","Poaching lowers elephant path tortuosity implications for conservation",2019,"Data","exclude","-","","","","","",""
-"davilaAntipredatorBehaviorPure2019","Anti-predator behavior in pure and hybrid red-legged partridges",2019,"Data","exclude","-","","","","","",""
-"millerLandscapeFearHumanpredator2019","Landscape of fear and human-predator coexistence Applying spatial predator-prey interaction theory to understand and reduce carnivore-livestock conflict",2019,"concept","exclude","-","","","","","",""
-"tatteAntipredatorFunctionVigilance2019","Antipredator function of vigilance re-examined vigilant birds delay escape",2019,"Data","exclude","FID maybe a better predictor of antipredator behavior than vigilance >>","","","","","",""
-"suraciFearHumansApex2019","Fear of humans as apex predators has landscape-scale impacts from mountain lions to mice",2019,"Data","exclude","effect of non-hunting disturbance across trophic levels in one system","","","","","",""
-"suraciBehaviorspecificHabitatSelection2019","Behavior-specific habitat selection by African lions may promote their persistence in a human-dominated landscape",2019,"Data","exclude","#example effect of non-hunting dsiturbance on lion habitat use"," not FIS","","","","",""
-"mohlmanNonconsumptiveEffectsHunting2019","Nonconsumptive effects of hunting on a nontarget game bird",2019,"-","exclude","-","","","","","",""
-"dwinnellWhereForageWhen2019","Where to forage when afraid Does perceived risk impair use of the foodscape?",2019,"Data","exclude","-","","","","","",""
-"turnerRisktakingFreelivingSpotted2020","Risk-taking in free-living spotted hyenas is associated with anthropogenic disturbance, predicts survivorship, and is consistent across experimental contexts",2020,"Data","exclude","#example effect of non-hunting disturbance on the risk taking behavior of hyenas","","","","","",""
-"troupMovementTortuositySpeed2020","Movement tortuosity and speed reveal the trade-offs of crop raiding for African elephants",2020,"Data","exclude","-","","","","","",""
-"mendesLandscapeHumanFear2020","Landscape of human fear in Neotropical rainforest mammals",2020,"Data","exclude","-","","","","","",""
-"jacobySharkMovementStrategies2020","Shark movement strategies influence poaching risk and can guide enforcement decisions in a large, remote marine protected area",2020,"Data","exclude","-","","","","","",""
-"houdeManipulatingForageRisk2020","Manipulating forage and risk avoidance to increase white-tailed deer vulnerability to hunters",2020,"Data","exclude","-","","","","","",""
-"haswellFearDarkMesopredator2020","Fear of the dark? A mesopredator mitigates large carnivore risk through nocturnality, but humans moderate the interaction",2020,"Data","exclude","-","","","","","",""
-"gehrStayHomeStay2020","Stay home, stay safe-Site familiarity reduces predation risk in a large herbivore in two contrasting study sites",2020,"Data","exclude","-","","","","","",""
-"geffroyEvolutionaryDynamicsAnthropocene2020","Evolutionary dynamics in the Anthropocene Life history and intensity of human contact shape antipredator responses",2020,"Data,Review","exclude","chapter-1 #methods #metaanalysis"," human sheild effects on antipredator trait retention","","","","",""
-"garcia-arroyoTolerantHumansAssessment2020","Tolerant to humans? Assessment of alert and flight initiation distances of two bird species in relation to sex, flock size, and environmental characteristics",2020,"Data","exclude","-","","","","","",""
-"findlayFieldGuardingCrop2020","Field guarding as a crop protection method preliminary implications for improving field guarding",2020,"Data","exclude","-","","","","","",""
-"carreiraQuestionSizeFear2020","A question of size and fear competition and predation risk perception among frugivores and predators",2020,"Data","exclude","#example temporal avoidance of natural predators"," temporal partioning between competitiors","","","","",""
-"bonnotFearDarkContrasting2020","Fear of the dark? Contrasting impacts of humans versus lynx on diel activity of roe deer across EuropeMots-cles",2020,"Data","exclude","#example contrasting effects of non-hunting disturbance and lynx on temporal activity of roe deer","","","","","",""
-"blankBehavioralResponsesGoitered2020","Behavioral responses of goitered gazelles to potential threats",2020,"Data","exclude","#example differential response of goitered gazelles to human vs natural predator","","","","","",""
-"yamaguchiRelationshipHuntingTime2020","Relationship Between Hunting Time Schedule and Sika Deer Spatial Displacement in Hunting with and Without Driving",2020,"Data","exclude","displacement away from home range not within day","","","","","",""
-"creelHiddenMarkovModels2020","Hidden Markov Models reveal a clear human footprint on the movements of highly mobile African wild dogs",2020,"Data","exclude","-","","","","","",""
-"chassagneuxShouldStayShould2020","Should I stay or should I go? Determinants of immediate and delayed movement responses of female red deer (Cervus elaphus) to drive hunts",2020,"-","exclude","-","","","","","",""
-"waltonInsightsShortLongterm2021","Insights into short- and long-term crop-foraging strategies in a chacma baboon (Papio ursinus) from GPS and accelerometer data",2021,"Data","exclude","-","","","","","",""
-"souza-alvesEmergencyOnlyTerrestrial2021","For emergency only terrestrial feeding in Coimbra-Filho's titis reflects seasonal arboreal resource availability",2021,"Data","exclude","-","","","","","",""
-"schultzSexspecificForagingApex2021","Sex-specific foraging of an apex predator puts females at risk of human-wildlife conflict",2021,"Data","exclude","#example predator ecology can impact how much actual risk they experience from humans"," “prey” context for human predators","","","","",""
-"santodomingoLimitedInfluenceHunting2021","Limited influence of hunting on the activity patterns and habitat use of Pampas fox (Lycalopex gymnocercus) in agroecosystems of central Argentina",2021,"Data","exclude","#example effect of hunting  + NHD on space use and temporal activity of a predator","","","","","",""
-"sandBehavioralEffectsWolf2021","Behavioral effects of wolf presence on moose habitat selection testing the landscape of fear hypothesis in an anthropogenic landscape",2021,"Data","exclude","-","","","","","",""
-"ramirez-alvarezPumaPumaConcolor2021","Puma (Puma concolor) in the Neighborhood? Records Near Human Settlements and Insights into Human-Carnivore Coexistence in Central Chile",2021,"-","exclude","using public records to analyse puma occurences","","","","","",""
-"petersonHabitatSelectionWolves2021","Habitat selection by wolves and mountain lions during summer in western Montana",2021,"Data","exclude","-","","","","","",""
-"pereiraLowSpatialOverlap2021","Low spatial overlap between foraging shearwaters during the breeding season and industrial fisheries off the west coast of Portugal",2021,"Data","exclude","-","","","","","",""
-"naderiHaresHumansLynx2021","Hares, humans, and lynx activity rhythms who avoids whom?",2021,"Data","exclude","-","","","","","",""
-"kongDisturbancePredationRisk2021","Disturbance and predation risk influence vigilance synchrony of black-necked cranes Grus nigricollis, but not as strongly as expected",2021,"Data","exclude","-","","","","","",""
-"kittendorfUrbanFoxSquirrels2021","Urban fox squirrels exhibit tolerance to humans but respond to stimuli from natural predators",2021,"Other NCB","exclude","-","","","","","",""
-"haemigDynamicTablevisitingBehavior2021","Dynamic table-visiting behavior of birds at outdoor restaurants and cafes",2021,"Data","exclude","-","","","","","",""
-"dinizUrbanCyclesHuman2021","Urban cycles of human activity do not significantly alter the behaviour of a duetting bird",2021,"Data","exclude","-","","","","","",""
-"czapanskiyModellingShorttermEnergetic2021","Modelling short-term energetic costs of sonar disturbance to cetaceans using high-resolution foraging data",2021,"Data,concept","exclude","-","","","","","",""
-"borowskiFactorsAffectingDeer2021","Factors affecting deer pressure on forest regeneration The roles of forest roads, visibility and forage availability",2021,"Data","exclude","-","","","","","",""
-"bartelAgriculturalLandUse2021","Past agricultural land use affects multiple facets of ungulate antipredator behavior",2021,"Data","exclude","#example effect of habitat modification on vigilance and temporal activity of roe deer","","","","","",""
-"nickelEnergeticsFearHumans2021","Energetics and fear of humans constrain the spatial ecology of pumas",2021,"Data","exclude","#example effect of passive interactions or non-hunting disturbance on a predators movement rate, range size and energy expenditure","","","","","",""
-"murphyThreadingNeedleHow2021","Threading the needle How humans influence predator-prey spatiotemporal interactions in a multiple-predator system",2021,"Data","exclude","-","","","","","",""
-"sytsmaLowLevelsOutdoor2022","Low levels of outdoor recreation alter wildlife behaviour",2022,"Data,Other NCB","exclude","-","","","","","",""
-"sweetNaturalAnthropogenicNoise2022","Natural and anthropogenic noise increase vigilance and decrease foraging behaviors in song sparrows",2022,"Data","exclude","-","","","","","",""
-"stansellIndividualVariationTolerance2022","Individual variation in tolerance of human activity by urban Dark-eyed Juncos (Junco hyemalis)",2022,"Data","exclude","-","","","","","",""
-"sevequeImpactHumanDisturbance2022","Impact of human disturbance on temporal partitioning within carnivore communities",2022,"bfs,Review","exclude","-","","","","","",""
-"reillyMesopredatorsRetainTheir2022","Mesopredators retain their fear of humans across a development gradient",2022,"Data","exclude","-","","","","","",""
-"nhlekoWhiteRhinosOther2022","White rhinos and other herbivores decrease visitations and increase vigilance in response to human vocalizations",2022,"Data","exclude","-","","","","","",""
-"morelliFlightInitiationDistance2022","Flight initiation distance and refuge in urban birds",2022,"Data","exclude","lack of control","","","","","",""
-"molenaarFeedingAssociationHarbour2022","Feeding Association Between Harbour Porpoise (Phocoena phocoena) and Flyshoot Fishing",2022,"Data","exclude","#example fisheries subsidising marine mammals","","","","","",""
-"mehlhoopMooseOurNeighborhood2022","Moose in our neighborhood Does perceived hunting risk have cascading effects on tree performance in vicinity of roads and houses?",2022,"Data","exclude","#example BMII of hunting on herbivores"," using hunting for wildlife management","","","","",""
-"hammondRiskPerceptionTerrestriality2022","Risk perception and terrestriality in primates A quasi-experiment through habituation of chacma baboons (Papio ursinus) in Gorongosa National Park, Mozambique",2022,"-","exclude","-","","","","","",""
-"hammerRepeatabilityAlertFlight2022","Repeatability of alert and flight initiation distances in king penguins Effects of colony, approach speed, and weather",2022,"Data","exclude","-","","","","","",""
-"collinsBehavioralResponsesAnthropogenic2022","Behavioral responses to anthropogenic noise at highways vary across temporal scales",2022,"Data","exclude","#example passive interaction elliciting non-consumptive effects","","","","","",""
-"burtonBehavioralBycatchCamera2022","Behavioral “bycatch” from camera trap surveys yields insights on prey responses to human-mediated predation risk",2022,"Data","exclude","-","","","","","",""
-"blaskovicTemporalOverlapHuman2022","Temporal overlap of human and apex predator activity on wildlife trails and forest roads",2022,"Data","exclude","-","","","","","",""
-"ausilioEnvironmentalAnthropogenicFeatures2022","Environmental and anthropogenic features mediate risk from human hunters and wolves for moose",2022,"Data","exclude","#example hunting effects on wolf predation outcomes","","","","","",""
-"widenPlaybacksPredatorVocalizations2022","Playbacks of predator vocalizations reduce crop damage by ungulates",2022,"Data,Experimental","exclude","-","","","","","",""
-"rodriguez-recioEstimatingGlobalDeterminants2022","Estimating global determinants of leopard home range size in a changing world",2022,"Data,Review","exclude","-","","","","","",""
-"vanbeeckcalkoenNumericalTopdownEffects2023","Numerical top-down effects on red deer (Cervus elaphus) are mainly shaped by humans rather than large carnivores across Europe",2023,"-","exclude","-","","","","","",""
-"ramirezTopdownBottomupForces2023","Top-down and bottom-up forces explain patch utilization by two deer species and forest recruitment",2023,"Data","exclude","-","","","","","",""
-"khanShiftsDielActivity2023","Shifts in diel activity of Rocky Mountain mammal communities in response to anthropogenic disturbance and sympatric invasive white-tailed deer",2023,"Data","exclude","-","","","","","",""
-"everattOptimalForagingLions2023","Optimal foraging of lions at the human wildlands interface",2023,"Data","exclude","-","","","","","",""
-"mcgrathNorthernBobwhiteForaging2018","-",2018,"-","exclude","not FIS/scan","","","","","",""
-"jordanEcologicalFactorsShape2022","-",2022,"Data","exclude","change in foraging decisions in response to cost, risk and potential benefit in a generalist","","","","","",""
-"yasueApproachAssessPotential2008","An approach to assess the potential impacts of human disturbance on wintering tropical shorebirds",2008,"Data","included","-","","","","","",""
-"rosellResponsesForagingEurasian2000","Responses of foraging Eurasian beavers Castor fiber to predator odours",2000,"-","included","-","","","","","",""
-"fernandez-juricicEffectsHumanDisturbance2000","Effects of human disturbance on spatial and temporal feeding patterns of Blackbird Turdus merula in urban parks in Madrid, Spain",2000,"Data","included","negative control included natural predators","","","","","",""
-"stillmanSeasonalChangesResponse2002","Seasonal changes in the response of oystercatchers Haematopus ostralegus to human disturbance",2002,"-","included","no hunting","","","","","",""
-"fridHumancausedDisturbanceStimuli2002","Human-caused disturbance stimuli as a form of predation risk",2002,"review","included","#examples of disturbance mimicing predation risk,  #risk-disturbance hypothesis","","","","","",""
-"manorImpactHumanNuisance2003","Impact of human nuisance disturbance on vigilance and group size of a social ungulate",2003,"Data","included","non-hunting disturbance
-human disturbance index used not comparable across studies","","","","","",""
-"fernandez-juricicTestingRiskdisturbanceHypothesis2003","Testing the risk-disturbance hypothesis in a fragmented landscape Nonlinear responses of House Sparrows to humans",2003,"Data","included","non-linear relationship between human approach and GUD","","","","","",""
-"yasueEffectsHumanPresence2005","The effects of human presence, flock size and prey density on shorebird foraging rates",2005,"Data","included","uncertainty not reported","","","","","",""
-"matsonFactorsAffectingVigilance2005","Factors affecting the vigilance and flight behaviour of impalas",2005,"Data","included","-","","","","","",""
-"loehrGenderAgeclassspecificReactions2005","Gender- and age-class-specific reactions to human disturbance in a sexually dimorphic ungulate",2005,"Data","included","-","","","","","",""
-"rodeBehavioralResponsesBrown2006","Behavioral responses of brown bears mediate nutritional effects of experimentally introduced tourism",2006,"Data","included","BACI","","","","","",""
-"gavinPronghornAntilocapraAmericana2006","Do pronghorn (Antilocapra americana) perceive roads as a predation risk?",2006,"Data","included","distance from road used as categorical control","","","","","",""
-"neweyForagingBehaviourCommon2007","Foraging behaviour of the Common Myna (Acridotheres tristis) in relation to vigilance and group size",2007,"Data","included","disturbance was higher in the afternoon than in the morning","","","","","",""
-"priceImpactHumanDisturbance2008","The impact of human disturbance on birds A selective review",2008,"Review","included","-","","","","","",""
-"jayakodyRedDeerCervus2008","Red deer Cervus elephus vigilance behaviour differs with habitat and type of human disturbance",2008,"Data","included","not focal animal sampling","","","","","",""
-"benhaiemHuntingIncreasesVigilance2008","Hunting increases vigilance levels in roe deer and modifies feeding site selection",2008,"Data","included","temporal gradient of hunting (seaon/off season)","","","","","",""
-"proffittContrastingEffectsWolves2009","Contrasting Effects of Wolves and Human Hunters on Elk Behavioral Responses to Predation Risk",2009,"Data","included","-","","","","","",""
-"pangleLethalNonlethalAnthropogenic2010","Lethal and nonlethal anthropogenic effects on spotted hyenas in the Masai Mara National Reserve",2010,"Data","included","study design mixes effects of natural pedators, human hunters, tourists; contrast accross two groups; cowbells can be considered predator cues","","","","","",""
-"severcanEffectsFlockSize2011","The effects of flock size and human presence on vigilance and feeding behavior in the Eurasian Coot (Fulica atra L.) during breeding season",2011,"Data","included","-","","","","","",""
-"lianRoadProximityTraffic2011","Road proximity and traffic flow perceived as potential predation risks evidence from the Tibetan antelope in the Kekexili National Nature Reserve, China",2011,"Data","included","Rank correlation and chi square reported","","","","","",""
-"liQuantifyingHumanDisturbance2011","Quantifying human disturbance on antipredator behavior and flush initiation distance in yellow-bellied marmots",2011,"Data","included","-","","","","","",""
-"reimersVigilanceFrightBehaviour2011","Vigilance and fright behaviour in the insular Svalbard reindeer Rangifer tarandus platyrhynchus)",2011,"Data","included","desensitisation in absence of predators,  habituation to humans may alter response to NHD","","","","","",""
-"grignolioEffectsHuntingHounds2011","Effects of hunting with hounds on a non-target species living on the edge of a protected area",2011,"Data","included","#example effects of hunting on range size of herbivore,  hunting mode: with hounds","","","","","",""
-"tadesseImpactTourismNubian2012","Impact of tourism on Nubian Ibex (Capra nubiana) revealed through assessment of behavioral indicators",2012,"Data","included","which treatment to include temporal or spatial?","","","","","",""
-"crosmaryVulnerabilityPredationWater2012","Vulnerability to predation and water constraints limit behavioural adjustments of ungulates in response to hunting risk",2012,"Data","included","-","","","","","",""
-"ciutiEffectsHumansBehaviour2012","Effects of Humans on Behaviour of Wildlife Exceed Those of Natural Predators in a Landscape of Fear",2012,"Data","included","-","","","","","",""
-"brownEffectHumanActivities2012","The Effect of Human Activities and Their Associated Noise on Ungulate Behavior",2012,"Data","included","habituation vs human sheilds","","","","","",""
-"barriEffectsGroupSize2012","Effects of group size, habitat and hunting risk on vigilance and foraging behaviour in the Lesser Rhea (Rhea pennata pennata)",2012,"Data","included","-","","","","","",""
-"zhengDeterminantsVigilanceReintroduced2013","Determinants of vigilance in a reintroduced population of Pere David's deer",2013,"Data","included","-","","","","","",""
-"storchHumanDisturbanceGrouse2013","Human disturbance of grouse - why and when?",2013,"review","included","-","","","","","",""
-"ordizSavingLargeCarnivores2013","Saving large carnivores, but losing the apex predator?",2013,"opinion","included","-","","","","","",""
-"jiangBehavioralResponsesBlue2013","Behavioral responses of blue sheep (Pseudois nayaur) to nonlethal human recreational disturbance",2013,"Data","included","-","","","","","",""
-"sonnichsenBehaviouralResponsesEuropean2013","Behavioural Responses of European Roe Deer to Temporal Variation in Predation Risk",2013,"Data","included","-","","","","","",""
-"podgorskiSpatiotemporalBehavioralPlasticity2013","Spatiotemporal behavioral plasticity of wild boar (Sus scrofa) under contrasting conditions of human pressure primeval forest and metropolitan area",2013,"Data","included","#effect non-hunting disturbance on space use and temporal activity of boars","","","","","",""
-"shannonRoadTrafficNoise2014","Road traffic noise modifies behaviour of a keystone species",2014,"Data","included","-","","","","","",""
-"shannonBehavioralResponsesAssociated2014","Behavioral Responses Associated with a Human-Mediated Predator Shelter",2014,"Data","included","#example of human sheild effect altering vigilance foraging and grouping behavior","","","","","",""
-"oriol-cotterillLandscapesCoexistenceTerrestrial2015","Landscapes of Coexistence for terrestrial carnivores the ecological consequences of being downgraded from ultimate to penultimate predator by humans",2015,"Review","included","gaynor2019","","","","","",""
-"liVigilanceActivityTimeBudget2015","Vigilance and Activity Time-Budget Adjustments of Wintering Hooded Cranes, Grus monacha, in Human-Dominated Foraging Habitats",2015,"Data","included","-","","","","","",""
-"pecorellaEffectsCullingVigilance2016","Effects of culling on vigilance behaviour and endogenous stress response of female fallow deer",2016,"Data","included","-","","","","","",""
-"parsonsEcologicalImpactHumans2016","The ecological impact of humans and dogs on wildlife in protected areas in eastern North America",2016,"Data","included","-","","","","","",""
-"murchisonHumanActivityHabitat2016","Human Activity and Habitat Characteristics Influence Shorebird Habitat Use and Behavior at a Vancouver Island Migratory Stopover Site",2016,"Data","included","-","","","","","",""
-"liCollectiveVigilanceWintering2016","Collective Vigilance in the Wintering Hooded Crane The Role of Flock Size and Anthropogenic Disturbances in a Human-Dominated Landscape",2016,"Data","included","-","","","","","",""
-"kuijperPawsClawsEcological2016","Paws without claws? Ecological effects of large carnivores in anthropogenic landscapes",2016,"review","included","-","","","","","",""
-"clinchyFearHumanSuper2016","Fear of the human ""Super Predator"" far exceeds the fear of large carnivores in a model mesocarnivore",2016,"Data","included","-","","","","","",""
-"blackwellNoSingleSolution2016","No single solution application of behavioural principles in mitigating human-wildlife conflict",2016,"Review,applied","included","Animal vehicle collisions as active threat of roads"," Altering flight vs foraging behavior (space use) to avoid conflict","FEAR hypothesis??"," heat as a resource for poikilothermic animals"," naivete of apex predators is not mentioned"," true threat of death or injury is required to reinforce apex predator fear of humans"," sub lethal deterents are not effective in the long term"
-"adamEffectStartHunting2016","Effect of Start of Hunting Season on Behaviour of Greylag Geese Anser anser",2016,"Data","included","-","","","","","",""
-"welchHunterHuntedPerceptions2017","Hunter or hunted? Perceptions of risk and reward in a small mesopredator",2017,"Data","included","foraging rate and vigilance rate + time were measured but not reported","","","","","",""
-"tabladoDeterminantsUncertaintyWildlife2017","Determinants of uncertainty in wildlife responses to human disturbance",2017,"review","included","no substantially new ideas","","","","","",""
-"smithFearHumanSuper2017","Fear of the human 'super predator' reduces feeding time in large carnivores",2017,"Data","included","-","","","","","",""
-"schuttlerDeerLookoutHow2017a","Deer on the lookout How hunting, hiking and coyotes affect white-tailed deer vigilance",2017,"Data","included","separate data file created due to incompatibility of formats","","","","","",""
-"personsHumanActivityHabitat2017","Human activity and habitat type affect perceived predation risk in urban white-footed mice (Peromyscus leucopus)",2017,"Data","included","-","","","","","",""
-"patonHuntingExacerbatesResponse2017","Hunting exacerbates the response to human disturbance in large herbivores while migrating through a road network",2017,"Data","included","-","","","","","",""
-"lesmerisesRefugePredationRisk2017","Refuge or predation risk? Alternate ways to perceive hiker disturbance based on maternal state of female caribou",2017,"Data","included","state-dependence of human effects on herbivore"," reproductive state"," human sheild effect","","","",""
-"haswellLargeCarnivoreImpacts2017","Large carnivore impacts are context-dependent",2017,"Review","included","-","","","","","",""
-"cappaEffectsRoadsBehaviour2017","Effects of roads on the behaviour of the largest South American artiodactyl (Lama guanicoe) in an Argentine reserve",2017,"Data","included","-","","","","","",""
-"peksaDaytimeActivityBudget2018","Daytime activity budget of an alpine ungulate (Tatra chamois Rupicapra rupicapra tatrica) influence of herd size, sex, weather and human disturbance",2018,"Data","included","-","","","","","",""
-"harrisMarineMammalsSonar2018","Marine mammals and sonar Dose-response studies, the risk-disturbance hypothesis and the role of exposure context",2018,"review","included","-","","","","","",""
-"belottiRecreationalActivitiesAffect2018","Recreational activities affect resting site selection and foraging time of Eurasian lynx (Lynx lynx)",2018,"Data","included","habitat selection not transcribed","","","","","",""
-"mccormickBoatNoiseImpacts2018","Boat noise impacts risk assessment in a coral reef fish but effects depend on engine type",2018,"-","included","-","","","","","",""
-"benevidesFearinducedBehaviouralModifications2019","Fear-induced behavioural modifications in damselfishes can be diver-triggered",2019,"Data","included","bite rate measured totally for a given territory","","","","","",""
-"picardiMovementResponsesRoe2019","Movement responses of roe deer to hunting risk",2019,"Data,concept","included","risk-fear_manuscript risk - fear model; home range effect not reported
-using only data from september hunting season and M. Bondone sites","","","","","",""
-"zanetteEcologyNeurobiologyFear2020","Ecology and Neurobiology of Fear in Free-Living Wildlife",2020,"Review,review,theory, #data","included","-","","","","","",""
-"montgomeryInducibleDefencesLarge2020","The inducible defences of large mammals to human lethality",2020,"Data, Review","included","-","","","","","",""
-"montero-quintanaEcotourismImpactsBehaviour2020","Ecotourism impacts on the behaviour of whale sharks an experimental approach",2020,"Data","included","-","","","","","",""
-"fardellFearStressingPredator2020","Fear and stressing in predator prey ecology Considering the twin stressors of predators and people on mammals",2020,"theory,applied,concept","included","-","","","","","",""
-"uchidaHabituationSensitizationLongterm2021","Habituation or sensitization? Long-term responses of yellow-bellied marmots to human disturbance",2021,"Data","included","study demonstrates habituation of animals to repeated exposure of non-threatening stimulus","","","","","",""
-"tsunodaHumanDisturbancesIncrease2021","Human disturbances increase vigilance levels in sika deer (Cervus nippon) A preliminary observation by camera-trapping",2021,"Data","included","-","","","","","",""
-"smithMismatchRiskResponse2021a","Mismatch Between Risk and Response May Amplify Lethal and Non-lethal Effects of Humans on Wild Animal Populations",2021,"Review","included","is this sufficiently different from the superpredator framework?; lack of cross trophic comparison; human sheild effects, provisioning effects; habituation is not ellaborated sufficiently","","","","","",""
-"reislandEndangeredApesCanTheir2021","Endangered Apes-Can Their Behaviors Be Used to Index Fear and Disturbance in Anthropogenic Landscapes?",2021,"Data","included","-","","","","","",""
-"proudmanRedDeerAllocate2021","Red deer allocate vigilance differently in response to spatio-temporal patterns of risk from human hunters and wolves",2021,"Data","included","#example human sheild effect"," temporal shift in vigilance in response to different predators (wolf: night"," human: day)","","","",""
-"ordizEffectsHumanDisturbance2021","Effects of Human Disturbance on Terrestrial Apex Predators",2021,"Review","included","-","","","","","",""
-"keulingDoesHuntingAffect2021","Does hunting affect the behavior of wild pigs?",2021,"Review","included","-","","","","","",""
-"gaynorAppliedEcologyFear2021","An applied ecology of fear framework Linking theory to conservation practice",2021,"theory,applied","included","-","","","","","",""
-"lopesHumanmodifiedLandscapesAlter2021","Human-modified landscapes alter home range and movement patterns of capybaras",2021,"Data","included","-","","","","","",""
-"montgomeryHuntingModesHuman2022","The hunting modes of human predation and potential nonconsumptive effects on animal populations",2022,"Review","included","-","","","","","",""
-"millerBehavioralResponsesPredatory2022","Behavioral responses to predatory sounds predict sensitivity of cetaceans to anthropogenic noise within a soundscape of fear",2022,"Data","included","-","","","","","",""
-"metcalfeObserverEffectsRemote2022","Observer effects in a remote population of large-headed capuchins, Sapajus macrocephalus",2022,"Data","included","-","","","","","",""
-"giordanoPreyResponsesPredation2022","Prey responses to predation risk under chronic road noise",2022,"Data","included","should lack of mouse vigilance be included in meta-analysis?","","","","","",""
-"davidsonWildBoarForaging2022","Wild boar foraging and risk perception—variation among urban, natural, and agricultural areas",2022,"-","included","-","","","","","",""
-"crawfordPreyTellsLarge2022","Prey tells, large herbivores fear the human ‘super predator’",2022,"Data","included","raw data available on dryad"," calculate raw foraging time (proportion)","","","","",""
-"chen-krausHumanLemurCoexistenceMultipleUse2022","Human-Lemur Coexistence in a Multiple-Use Landscape",2022,"Data","included","passive interactions (dogs, livestock, vehicles) also included as predictors","","","","","",""
-"fardellSmallPreyAnimal2022","Small Prey Animal Foraging Behaviors in Landscapes of Fear Effects of Predator Presence and Human Activity Along an Urban Disturbance Gradient",2022,"Data","included","#followup check ethogram + video analysis protocol"," See supplementary tables for values/data"," recalculate species wise treatment responses","","","",""
-"bhardwajInducingFearUsing2022","Inducing fear using acoustic stimuli—A behavioral experiment on moose (Alces alces) in Sweden",2022,"Data","included","-","","","","","",""
-"chitwoodEcologyFearUngulates2022","-",2022,"review","included","-","","","","","",""
-"brosethDisturbanceEffectsHunting2010","Disturbance effects of hunting activity in a willow ptarmigan Lagopus lagopus population",2010,"-","exclude","#example effect of hunting on movements, habitat selection of birds","","","","","",""
-"brownEvaluatingIndirectEffects2020","Evaluating Indirect Effects of Hunting on Mule Deer Spatial Behavior",2020,"-","exclude","-","","","","","",""
-"spitzBehavioralChangesNutritional2019","Behavioral changes and nutritional consequences to elk ( Cervus canadensis ) avoiding perceived risk from human hunters",2019,"Data","exclude","-","","","","","",""
-"williamsHighHumanDisturbance2020","High human disturbance decreases individual variability in skink escape behavior",2020,"Data","exclude","-","","","","","",""
-"dillBehaviourallyMediatedBiases2020","Behaviourally mediated biases in transect surveys a predation risk sensitivity approach",2020,"Review","exclude","-","","","","","",""
-"meisingsetImpactsHumanDisturbance2022","Impacts of human disturbance on flight response and habitat use of red deer",2022,"Data","exclude","#example hunting effect on flight behavior and space use","","","","","",""
-"goss-custardDisturbanceDoesNot2020","-",2020,"Data","exclude","-","","","","","",""
-"hunterLandUsesBotswana1996","Land uses on the Botswana/Zimbabwe border and their effects on buffalo",1996,"case study","exclude","-","","","","","",""
-"aikinsEvaluationLevelHuman2018","An evaluation of the level of human disturbance to waterbirds at Mole National Park in Ghana",2018,"Data","exclude","-","","","","","",""
-"puigInfluenceHumanActivities","Influence of human activities, social and environmental variables on the behavior of guanacos in Southern Andean Precordillera (Argentina)",NA,"Data","exclude","-","","","","","",""
-"scheibeBehaviorWildAnimals2009","Behavior of wild animals against humans in reservations, sanctuaries, and hunted areas - review and theoretical approach",2009,"Review","exclude","-","","","","","",""
-"davidsonAgeSexdependentVigilance2022","Age- and sex-dependent vigilance behaviour modifies social structure of hunted wild boar populations",2022,"Data","exclude","-","","","","","",""
-"bastille-rousseauLandscapescaleHabitatResponse2020","Landscape-scale habitat response of African elephants shows strong selection for foraging opportunities in a human dominated ecosystem",2020,"Data","exclude","review","","","","","",""
-"ciutiHumanSelectionElk2012","Human selection of elk behavioural traits in a landscape of fear",2012,"-","exclude","#example hunting effect on movement and space use of large herbivore","","","","","",""
-"gillMethodQuantifyEffects1996","A method to quantify the effects of human disturbance on animal populations",1996,"Data, Review","exclude","-","","","","","",""
-"ferrandResponsesEurasianWoodcock2013","Responses of Eurasian woodcock Scolopax rusticola to simulated hunting disturbance",2013,"-","exclude","#example effect of hunting on space use and temporal activity of a bird","","","","","",""
-"nowakSamangoMonkeysCercopithecus2017","Samango Monkeys (Cercopithecus albogularis labiatus) Manage Risk in a Highly Seasonal, Human-Modified Landscape in Amathole Mountains, South Africa",2017,"-","exclude","-","","","","","",""
-"yovovichPumasFearHumans2021","Pumas' fear of humans precipitates changes in plant architecture",2021,"Data","exclude","#example non-hunting disturbance causing a human sheild effect"," pumas are not actively hunted but interactions with humans can lead to mortality / DOI not found","","","","",""
-"limaVigilanceResponseKey2021","Vigilance Response of a Key Prey Species to Anthropogenic and Natural Threats in Detroit",2021,"Data","exclude","not FIS","","","","","",""
-"fardellSmallPreyAnimal2021","Small Prey Animal Habitat Use in Landscapes of Fear Effects of Predator Presence and Human Activity Along an Urban Disturbance Gradient",2021,"Data","exclude","review","","","","","",""
-"blumsteinFlightinitiationDistanceBirds2003","Flight-initiation distance in birds is dependent on intruder starting distance",2003,"-","exclude","-","","","","","",""
-"webbVariationHumanDisturbance2005","Variation in human disturbance differentially affects predation risk assessment in Western Gulls",2005,"Data","exclude","-","","","","","",""
-"stankowichEffectsPredatorBehavior2006","Effects of predator behavior and proximity on risk assessment by Columbian black-tailed deer",2006,"Data,Other NCB","exclude","-","","","","","",""
-"setsaasHowDoesHuman2007","How does human exploitation affect impala populations in protected and partially protected areas? - A case study from the Serengeti Ecosystem, Tanzania",2007,"Data","exclude","density across habitats and treatments, initial behaviors were also measured","","","","","",""
-"karlssonWhatDistanceWolves2007","At what distance do wolves move away from an approaching human?",2007,"Data,Other NCB","exclude","should studies with only human treatment be included and compared to natural predators?,  Cannot be done for apex predators","","","","","",""
-"jiangEffectsHumanDisturbance2007","Effects of human disturbance on movement, foraging and bed selection in red deer Cervus elaphus xanthopygus from the Wandashan Mountains, northeastern China",2007,"Data","exclude","different behaviors analysed","","","","","",""
-"stankowichUngulateFlightResponses2008","Ungulate flight responses to human disturbance A review and meta-analysis",2008,"bfs, data, review","exclude","data available (effect sizes) for ungulates","","","","","",""
-"tolonRespondingSpatialTemporal2009","Responding to spatial and temporal variations in predation risk space use of a game species in a changing landscape of fear",2009,"-","exclude","-","","","","","",""
-"rodriguez-prietoAntipredatorBehaviorBlackbirds2009","Antipredator behavior in blackbirds habituation complements risk allocation",2009,"Data,Experimental","exclude","4 levels of disturbance - how to analyse?","","","","","",""
-"fernandez-juricicCaliforniaEndangeredBelding2009","California's Endangered Belding's Savannah Sparrow (Passerculus sandwichensis beldingi) Tolerance of Pedestrian Disturbance",2009,"-","exclude","-","","","","","",""
-"stclairPresenceMammalianPredators2010","Presence of mammalian predators decreases tolerance to human disturbance in a breeding shorebird",2010,"Data","exclude","#read/later","","","","","",""
-"rogalaHumanActivityDifferentially2011","Human Activity Differentially Redistributes Large Mammals in the Canadian Rockies National Parks",2011,"Data","exclude","#example of NHD altering predator-prey spatial interactions","","","","","",""
-"maloMeasuringUngulateTolerance2011","Measuring ungulate tolerance to human with flight distance a reliable visitor management tool?",2011,"Data","exclude","-","","","","","",""
-"januchowski-hartleyFearFishersHuman2011a","Fear of Fishers Human Predation Explains Behavioral Changes in Coral Reef Fishes",2011,"-","exclude","#example effects of hunting on marine animal behavior","","","","","",""
-"engelhardtEffectsLevelsHuman2011","Effects of levels of human exposure on flight initiation distance and distance to refuge in foraging eastern gray squirrels (Sciurus carolinensis)",2011,"Data","exclude","#read/later","","","","","",""
-"wamOverlookingConcealedPredator2012","From overlooking to concealed predator avoidance in an apex carnivore",2012,"Data","exclude","#example wold avoidance of human dominated areas","","","","","",""
-"griggForagingDistributionPacific2012","Foraging distribution of Pacific harbor seals (Phoca vitulina richardii) in a highly impacted estuary",2012,"-","exclude","#example effects of NHD on marine predator habitat use","","","","","",""
-"eldegardCopingHumandominatedLandscape2012","Coping in a human-dominated landscape trade-off between foraging and keeping away from roads by moose (Alces alces)",2012,"Data","exclude","#example effect of passive interactions or NHD on herbivore habitat use","","","","","",""
-"clevelandLinkingElkMovement2012","Linking Elk Movement and Resource Selection to Hunting Pressure in a Heterogeneous Landscape",2012,"Data","exclude","#example effect of hunting on movement rate,  habituation to NHD","","","","","",""
-"thurfjellEffectsHuntingWild2013","Effects of hunting on wild boar Sus scrofa behaviour",2013,"-","exclude","#example hunting effect on space use of wild boar","","","","","",""
-"mollerChangeFlightInitiation2013","Change in flight initiation distance between urban and rural habitats following a cold winter",2013,"-","exclude","-","","","","","",""
-"cristescuPerceptionHumanDerivedRisk2013","Perception of Human-Derived Risk Influences Choice at Top of the Food Chain",2013,"Data","exclude","#example NHD effects on space use of bears","","","","","",""
-"colemanGrizzlyBearHuman2013","Grizzly bear and human interaction in Yellowstone National Park An evaluation of bear management areas",2013,"Data","exclude","#example of NHD on space use of large predator","","","","","",""
-"tarakiniFlightBehaviouralResponses2014","Flight behavioural responses to sport hunting by two African herbivores",2014,"Data","exclude","-","","","","","",""
-"taraborelliDifferentFactorsThat2014","Different factors that modify anti-predator behaviour in guanacos (Lama guanicoe)",2014,"Data","exclude","-","","","","","",""
-"priceHumanActivityAffects2014","Human activity affects the perception of risk by mule deer",2014,"Data","exclude","-","","","","","",""
-"mikulaPedestrianDensityInfluences2014","Pedestrian density influences flight distances of urban birds",2014,"-","exclude","#example disturbance altering flight response to humans,  does disturbance also alter flight response to other predators? (generalisation)","","","","","",""
-"mcgowanEffectHumanPresence2014","The Effect of Human Presence and Human Activity on Risk Assessment and Flight Initiation Distance in Skinks",2014,"-","exclude","-","","","","","",""
-"lesaoutShorttermEffectsHunting2014","Short-term effects of hunting on naive black-tailed deer (Odocoileus hemionus sitkensis) behavioural response and consequences on vegetation growth",2014,"-","exclude","#example experimental evidence of hunting effects on deer habitat use","","","","","",""
-"djagounHuntingAffectsDry2014","Hunting affects dry season habitat selection by several bovid species in northern Benin",2014,"-","exclude","#example effect of hunting on habitat selection of ungulates","","","","","",""
-"cristescuGrizzlyBearUngulate2014","Grizzly bear ungulate consumption and the relevance of prey size to caching and meat sharing",2014,"Data","exclude","#example effects of non-hunting disturbance on space use of bears","","","","","",""
-"batemanSwitchingPlanChanges2014","Switching to Plan B changes in the escape tactics of two grasshopper species (Acrididae Orthoptera) in response to repeated predatory approaches",2014,"-","exclude","-","","","","","",""
-"batemanDoesHumanPedestrian2014","Does human pedestrian behaviour influence risk assessment in a successful mammal urban adapter?",2014,"-","exclude","-","","","","","",""
-"atickemIndividualHeterogeneityUse2014","Individual Heterogeneity in Use of Human Shields by Mountain Nyala",2014,"Data","exclude","review
-#example human shield effect (spatial)","","","","","",""
-"staflAmericanPikasOchotona2015","American pikas' (Ochotona princeps) foraging response to hikers and sensitivity to heat in an alpine environment",2015,"Data","exclude","unsubstantiated claims of MOC","","","","","",""
-"sreekarFlightInitiationDistance2015","Flight initiation distance as behavioral indicator of hunting pressure a case study of the Sooty-headed Bulbul (Pycnonotus aurigaster) in Xishuangbanna, SW China",2015,"Data","exclude","-","","","","","",""
-"sahlenBehaviouralDifferencesSingle2015","Behavioural Differences between Single Scandinavian Brown Bears (Ursus arctos) and Females with Dependent Young When Experimentally Approached by Humans",2015,"Data","exclude","-","","","","","",""
-"hansenHabituationHumansPredatorfree2015","Habituation to humans in a predator-free wild ungulate",2015,"Data","exclude","-","","","","","",""
-"bjorvikBirdFlightInitiation2015","Bird flight initiation distances in relation to distance from human settlements in a Tanzanian floodplain habitat",2015,"-","exclude","-","","","","","",""
-"bensonSpatiotemporalVariationSelection2015","Spatiotemporal variation in selection of roads influences mortality risk for canids in an unprotected landscape",2015,"-","exclude","#example effect of roads on habitat use of canids","","","","","",""
-"uchidaSeasonalVariationFlight2016","Seasonal variation of flight initiation distance in Eurasian red squirrels in urban versus rural habitat",2016,"-","exclude","-","","","","","",""
-"tranSpearfishinginducedBehavioralChanges2016","Spearfishing-induced behavioral changes of an unharvested species inside and outside a marine protected area",2016,"Data","exclude","-","","","","","",""
-"shannonRoadNoiseCauses2016","Road noise causes earlier predator detection and flight response in a free-ranging mammal",2016,"Data","exclude","-","","","","","",""
-"polichFlightInitiationDistance2016","Flight Initiation Distance in a Freshwater Turtle, Chrysemys picta",2016,"Data","exclude","-","","","","","",""
-"guayAvianBufferInteractiveTool2016","AvianBuffer An interactive tool for characterising and managing wildlife fear responses",2016,"applied","exclude","-","","","","","",""
-"gregoryResponsesNatricineSnakes2016","Responses of Natricine Snakes to Predatory Threat A Mini-Review and Research Prospectus",2016,"review","exclude","-","","","","","",""
-"collopVariabilityAreaEnergy2016","Variability in the area, energy and time costs of wintering waders responding to disturbance",2016,"-","exclude","-","","","","","",""
-"cavalliDifferentialRiskPerception2016","Differential risk perception of rural and urban Burrowing Owls exposed to humans and dogs",2016,"Data","exclude","-","","","","","",""
-"brubakerEffectsSingleMixedSpecies2016","Effects of Single- and Mixed-Species Group Composition on the Flight Initiation Distances of Plains and Grevy's Zebras",2016,"Data","exclude","-","","","","","",""
-"bergsethProtectedAreasPreserve2016","Protected areas preserve natural behaviour of a targeted fish species on coral reefs",2016,"-","exclude","-","","","","","",""
-"battlePREDICTORSFLIGHTBEHAVIOR2016","PREDICTORS OF FLIGHT BEHAVIOR IN RURAL AND URBAN SONGBIRDS",2016,"-","exclude","-","","","","","",""
-"suttonEffectsHumanState2017","Effects of human state park visitation rates on escape behavior of white-tailed deer",2017,"Data","exclude","-","","","","","",""
-"stillfriedSecretsSuccessLandscape2017","Secrets of Success in a Landscape of Fear Urban Wild Boar Adjust Risk Perception and Tolerate Disturbance",2017,"Data","exclude","-","","","","","",""
-"sarmentoHumanVisitationLimits2017","Human visitation limits the utility of protected areas as ecological baselines",2017,"Data","exclude","#example human sheild effect","","","","","",""
-"samiaRuralUrbanDifferencesEscape2017","Rural-Urban Differences in Escape Behavior of European Birds across a Latitudinal Gradient",2017,"Data","exclude","-","","","","","",""
-"lowreyTOLERANCEDISTURBANCEREGULATED2017","TOLERANCE TO DISTURBANCE REGULATED BY ATTRACTIVENESS OF RESOURCES A CASE STUDY OF DESERT BIGHORN SHEEP WITHIN THE RIVER MOUNTAINS, NEVADA",2017,"-","exclude","RSF","","","","","",""
-"griffinIndividuallevelBehavioralResponses2017","Individual-level behavioral responses of immature green turtles to snorkeler disturbance",2017,"-","exclude","-","","","","","",""
-"gehrLandscapeCoexistenceLarge2017","A landscape of coexistence for a large predator in a human dominated landscape",2017,"-","exclude","-","","","","","",""
-"carreteBehavioralCorrelationsAssociated2017","Behavioral Correlations Associated with Fear of Humans Differ between Rural and Urban Burrowing Owls",2017,"Data","exclude","-","","","","","",""
-"cappaEffectsPoachingHabitat2017","The effects of poaching and habitat structure on anti-predator behavioral strategies A guanaco population in a high cold desert as case study",2017,"-","exclude","-","","","","","",""
-"vandonselaarUrbanizationAltersFear2018","Urbanization alters fear behavior in black-capped chickadees",2018,"Data","exclude","-","","","","","",""
-"tatteIntegratedViewEscape2018","Towards an integrated view of escape decisions in birds relation between flight initiation distance and distance fled",2018,"Data","exclude","-","","","","","",""
-"sullivanRecognizingDangerZone2018","Recognizing the danger zone response of female white-tailed to discrete hunting events",2018,"Data","exclude","-","","","","","",""
-"seccoHabitatSelectionBlacktufted2018","Habitat selection by the black-tufted marmoset Callithrix penicillata in human-disturbed landscapes",2018,"Data","exclude","-","","","","","",""
-"sbragagliaSpearfishingModulatesFlight2018","Spearfishing modulates flight initiation distance of fishes the effects of protection, individual size, and bearing a speargun",2018,"Data","exclude","chapter-4 study design","","","","","",""
-"rhoadesFishedSpeciesUniformly2018","Fished species uniformly reduced escape behaviors in response to protection",2018,"Data","exclude","-","","","","","",""
-"mikulaRiskPerceptionVervet2018","Risk perception of vervet monkeys Chlorocebus pygerythrus to humans in urban and rural environments",2018,"-","exclude","-","","","","","",""
-"haidtHumanBeastFlightAggressive2018","Human and the beast-Flight and aggressive responses of European bison to human disturbance",2018,"Data","exclude","-","","","","","",""
-"cavalliRoleHabituationAdjustment2018","The role of habituation in the adjustment to urban life An experimental approach with burrowing owls",2018,"Data","exclude","-","","","","","",""
-"braimohManagingHumanDisturbance2018","Managing human disturbance factors influencing flight-initiation distance of birds in a West African nature reserve",2018,"Data","exclude","-","","","","","",""
-"botschEffectHumanRecreation2018","Effect of human recreation on bird anti-predatory response",2018,"Data","exclude","-","","","","","",""
-"blechaHungerMediatesApex2018","Hunger mediates apex predator's risk avoidance response in wildland-urban interface",2018,"Data","exclude","-","","","","","",""
-"zamanIncreasedFlightInitiation2019","Increased Flight Initiation Distance (FID) in Golden Marmots (Marmota caudata aurea) Responding to Domestic Dogs in A Landscape of Human Disturbance",2019,"Data,Other NCB","exclude","-","","","","","",""
-"uchidaDecreasedVigilanceHabituation2019","Decreased vigilance or habituation to humans? Mechanisms on increased boldness in urban animals",2019,"Data","exclude","AD maybe related to FID","","","","","",""
-"stamoulisFlightBehaviorTargeted2019","Flight behavior of targeted fishes depends on variables other than fishing",2019,"Data","exclude","-","","","","","",""
-"rhoadesHumaninducedReductionsFish2019","Human-induced reductions in fish predator boldness decrease their predation rates in kelp forests",2019,"Data","exclude","bruvs using baited surveys to determine foraging rate"," chapter-4 plasticity in response after protection"," individual species data not reported"," feeding rate study design is not FIS/Scan","","",""
-"nunesReefFishAntipredator2019","Reef fish antipredator behavior in remote islands does not reflect patterns seen in coastal areas",2019,"-","exclude","-","","","","","",""
-"lodberg-holmHumaninducedLandscapeFear2019","A human-induced landscape of fear influences foraging behavior of brown bears",2019,"Data","exclude","-","","","","","",""
-"ladleGrizzlyBearResponse2019","Grizzly bear response to spatio-temporal variability in human recreational activity",2019,"Data","exclude","-","","","","","",""
-"evansHourlyMovementDecisions2019","Hourly movement decisions indicate how a large carnivore inhabits developed landscapes",2019,"Data","exclude","-","","","","","",""
-"devoeElkForageRisk2019","Elk forage and risk tradeoffs during the fall archery season",2019,"-","exclude","-","","","","","",""
-"blumsteinWhatChasingBirds2019","What chasing birds can teach us about predation risk effects Past insights and future directions",2019,"-","exclude","-","","","","","",""
-"blackwellSocialInformationAffects2019","Social information affects Canada goose alert and escape responses to vehicle approach implications for animal-vehicle collisions",2019,"-","exclude","-","","","","","",""
-"austinFlightResponsesEastern2019","Flight responses of eastern gray kangaroos to benign or harmful human behavior",2019,"-","exclude","-","","","","","",""
-"alldredgeHumanCougarInteractionsWildlandurban2019","Human-Cougar interactions in the wildland-urban interface of Colorado's front range",2019,"-","exclude","-","","","","","",""
-"weversTradingFearFood2020","Trading fear for food in the Anthropocene How ungulates cope with human disturbance in a multi-use, suburban ecosystem",2020,"Data","exclude","-","","","","","",""
-"tryjanowskiEmergenceToleranceHuman2020","The emergence of tolerance of human disturbance in Neotropical birds",2020,"Data","exclude","-","","","","","",""
-"perryIndividualResponsesNovel2020","Individual responses to novel predation risk and the emergence of a landscape of fear",2020,"Data","exclude","-","","","","","",""
-"mbiseHumanHabituationReduces2020","Human habituation reduces hyrax flight initiation distance in Serengeti",2020,"-","exclude","-","","","","","",""
-"hallFlightInitiationDistance2020","Flight initiation distance changes across landscapes and habitats in a successful urban coloniser",2020,"Data","exclude","-","","","","","",""
-"goumasHerringGullAversion2020","Herring gull aversion to gaze in urban and rural human settlements",2020,"Data","exclude","-","","","","","",""
-"fujiokaAlertFlightInitiation2020","Alert and flight initiation distances of crows in relation to the culling method, shooting or trapping",2020,"Data","exclude","-","","","","","",""
-"xuAlertTimeReflects2021","Alert time reflects the negative impacts of human disturbance on an endangered bird species in Changbai Mountain, China",2021,"-","exclude","-","","","","","",""
-"vedorOceanicDielVertical2021","Oceanic Diel Vertical Movement Patterns of Blue Sharks Vary With Water Temperature and Productivity to Change Vulnerability to Fishing",2021,"Data","exclude","-","","","","","",""
-"susckeRoleHuntingSapajus2021","The role of hunting on Sapajus xanthosternos' landscape of fear in the Atlantic Forest, Brazil",2021,"Data","exclude","#example comparing effects of natural vs human predator on habitat use of mesopredator","","","","","",""
-"rodgersSexSpecificBehaviorsHunted2021","Sex-Specific Behaviors of Hunted Mule Deer During Rifle Season",2021,"Data","exclude","#example effect of hunting on herbivore space use","","","","","",""
-"reynoldsDefiningSeparationZones2021","Defining separation zones for coastal birds at a wetland of global importance",2021,"Data","exclude","-","","","","","",""
-"rangelOccurrenceBehaviourShorebirds2021","Occurrence and Behaviour of Shorebirds Depend on Food Availability and Distance of Beaches from Urban Settlements",2021,"Data","exclude","-","","","","","",""
-"nahaMovementBehaviorSolitary2021","Movement behavior of a solitary large carnivore within a hotspot of human-wildlife conflicts in India",2021,"Data,Other NCB","exclude","-","","","","","",""
-"leightonHidingPlainSight2021","Hiding in plain sight risk mitigation by a cryptic carnivore foraging at the urban edge",2021,"-","exclude","-","","","","","",""
-"labansenReactionsColonialSeabird2021","Reactions of a colonial seabird species to controlled gunshot disturbance experiments",2021,"-","exclude","-","","","","","",""
-"azakiLevelLocalHuman2021","Level of local human disturbance and feeding state determines escape behaviour in Eurasian Oystercatchers",2021,"-","exclude","-","","","","","",""
-"versluijsWolfResponsesExperimental2022","Wolf Responses to Experimental Human Approaches Using High-Resolution Positioning Data",2022,"-","exclude","-","","","","","",""
-"stewartSpatiotemporalPatternsMale2022","Spatiotemporal patterns of male and female white-tailed deer on a hunted landscape",2022,"-","exclude","-","","","","","",""
-"smithQuietIslandsWorld2022","Quiet islands in a world of fear Wolves seek core zones of protected areas to escape human disturbance",2022,"Data","exclude","-","","","","","",""
-"smithBehavioralResponsesMale2022","Behavioral responses of male elk to hunting risk",2022,"Data","exclude","-","","","","","",""
-"parsonsIntensiveHuntingChanges2022","Intensive hunting changes human-wildlife relationships",2022,"Data","exclude","-","","","","","",""
-"ortiz-jimenezBehaviouralCorrelationsMultiple2022","Behavioural correlations across multiple stages of the antipredator response do animals that escape sooner hide longer?",2022,"Data,Other NCB","exclude","non - foraging behavior"," FID"," Latency to resume","","","",""
-"nisiPumaResponsesUnreliable","Puma responses to unreliable human cues suggest an ecological trap in a fragmented landscape",2022,"Data","exclude","-","","","","","",""
-"molsRecreationHuntingDifferentially2022","Recreation and hunting differentially affect deer behaviour and sapling performance",2022,"-","exclude","#example contrast between nuisance and hunting, down stream effects on herbivore behavior (Space use) and plant survival","","","","","",""
-"guoVariationEscapeResponse2022","Variation in escape response of Himalayan marmots (Marmota himalayana) under different human disturbances",2022,"Data","exclude","#example disturbance effects on small mammal flight behavior","","","","","",""
-"darlingtonCumulativeEffectsHuman2022","Cumulative effects of human footprint, natural features and predation risk best predict seasonal resource selection by white-tailed deer",2022,"Data","exclude","-","","","","","",""
-"courbinInteractingLethalNonlethal2022","Interacting lethal and nonlethal human activities shape complex risk tolerance behaviors in a mountain herbivore",2022,"-","exclude","#example effects of non-hunting disturbance on spatiotemporal use","","","","","",""
-"barocasRuppellFoxMovement2022","Ruppell's fox movement and spatial behavior are influenced by topography and human activity",2022,"-","exclude","-","","","","","",""
-"ardila-villamizarFearUrbanLandscapes2022","Fear in urban landscapes Conspecific flock size drives escape decisions in tropical birds",2022,"-","exclude","-","","","","","",""
-"morelliAreBirdsMore2023","Are birds more afraid in urban parks or cemeteries? A Latin American study contrasts with results from Europe",2023,"Data","exclude","-","","","","","",""
-"cooperFactorsAffectingRisk1997",""": Factors affecting risk and cost of escape by the broad-headed skink (Eumeces laticeps) Predator speed, directness of approach, and female presence",1997,"Data","exclude","-","","","","","",""
+﻿cite.key,title,year,labels,status,comment,reason
+adamEffectStartHunting2016,Effect of Start of Hunting Season on Behaviour of Greylag Geese Anser anser,2016,Data,included,-,-
+aikinsEvaluationLevelHuman2018,An evaluation of the level of human disturbance to waterbirds at Mole National Park in Ghana,2018,Data,exclude,-,wrong outcome
+alldredgeHumanCougarInteractionsWildlandurban2019,Human-Cougar interactions in the wildland-urban interface of Colorado's front range,2019,-,exclude,-,wrong outcome
+ardila-villamizarFearUrbanLandscapes2022,Fear in urban landscapes Conspecific flock size drives escape decisions in tropical birds,2022,-,exclude,-,wrong outcome
+atickemIndividualHeterogeneityUse2014,Individual Heterogeneity in Use of Human Shields by Mountain Nyala,2014,Data,exclude,"review
+#example human shield effect (spatial)",wrong outcome
+ausilioEnvironmentalAnthropogenicFeatures2022,Environmental and anthropogenic features mediate risk from human hunters and wolves for moose,2022,Data,exclude,#example hunting effects on wolf predation outcomes,wrong outcome
+austinFlightResponsesEastern2019,Flight responses of eastern gray kangaroos to benign or harmful human behavior,2019,-,exclude,-,wrong outcome
+avrilExplorationForaysJuvenile2014,Exploration forays in juvenile European hares (Lepus europaeus) Dispersal preludes or hunting-induced troubles?,2014,-,exclude,#example effect of hunting on movement of small mammals,study design
+azakiLevelLocalHuman2021,Level of local human disturbance and feeding state determines escape behaviour in Eurasian Oystercatchers,2021,-,exclude,-,wrong outcome
+barocasRuppellFoxMovement2022,Ruppell's fox movement and spatial behavior are influenced by topography and human activity,2022,-,exclude,-,wrong outcome
+barriEffectsGroupSize2012,"Effects of group size, habitat and hunting risk on vigilance and foraging behaviour in the Lesser Rhea (Rhea pennata pennata)",2012,Data,included,-,-
+bartelAgriculturalLandUse2021,Past agricultural land use affects multiple facets of ungulate antipredator behavior,2021,Data,exclude,#example effect of habitat modification on vigilance and temporal activity of roe deer,wrong exposure
+bastille-rousseauLandscapescaleHabitatResponse2020,Landscape-scale habitat response of African elephants shows strong selection for foraging opportunities in a human dominated ecosystem,2020,Data,exclude,review,-
+batemanDoesHumanPedestrian2014,Does human pedestrian behaviour influence risk assessment in a successful mammal urban adapter?,2014,-,exclude,-,wrong outcome
+batemanSwitchingPlanChanges2014,Switching to Plan B changes in the escape tactics of two grasshopper species (Acrididae Orthoptera) in response to repeated predatory approaches,2014,-,exclude,-,wrong outcome
+batemanWhoAreYou2011,"Who are you looking at? Hadeda ibises use direction of gaze, head orientation and approach speed in their risk assessment of a potential predator",2011,Data,exclude,lack of control,wrong study design
+battlePREDICTORSFLIGHTBEHAVIOR2016,PREDICTORS OF FLIGHT BEHAVIOR IN RURAL AND URBAN SONGBIRDS,2016,-,exclude,-,wrong outcome
+bellefleurImpactRecreationalBoat2009,The impact of recreational boat traffic on Marbled Murrelets (Brachyramphus mamoratus),2009,Data,exclude,-,wrong study design
+belottiRecreationalActivitiesAffect2018,Recreational activities affect resting site selection and foraging time of Eurasian lynx (Lynx lynx),2018,Data,included,habitat selection not transcribed,non-standard measure of disturbance used
+benevidesFearinducedBehaviouralModifications2019,Fear-induced behavioural modifications in damselfishes can be diver-triggered,2019,Data,included,bite rate measured totally for a given territory,-
+benhaiemHuntingIncreasesVigilance2008,Hunting increases vigilance levels in roe deer and modifies feeding site selection,2008,Data,included,temporal gradient of hunting (seaon/off season),-
+bensonIndividualPopulationLevel2016,Individual and population level resource selection patterns of mountain lions preying on mule deer along an urban-wildland gradient,2016,Data,exclude,lack of contrast,wrong study design
+bensonSpatiotemporalVariationSelection2015,Spatiotemporal variation in selection of roads influences mortality risk for canids in an unprotected landscape,2015,-,exclude,#example effect of roads on habitat use of canids,wrong outcome
+bergerFearHumanShields2007,"Fear, human shields and the redistribution of prey and predators in protected areas",2007,Data,exclude,-,wrong outcome
+bergsethProtectedAreasPreserve2016,Protected areas preserve natural behaviour of a targeted fish species on coral reefs,2016,-,exclude,-,wrong outcome
+bhardwajInducingFearUsing2022,Inducing fear using acoustic stimuli—A behavioral experiment on moose (Alces alces) in Sweden,2022,Data,included,-,-
+bjorvikBirdFlightInitiation2015,Bird flight initiation distances in relation to distance from human settlements in a Tanzanian floodplain habitat,2015,-,exclude,-,wrong outcome
+blackwellNoSingleSolution2016,No single solution application of behavioural principles in mitigating human-wildlife conflict,2016,"Review,applied",included,Animal vehicle collisions as active threat of roads,-
+blackwellSocialInformationAffects2019,Social information affects Canada goose alert and escape responses to vehicle approach implications for animal-vehicle collisions,2019,-,exclude,-,wrong outcome
+blankBehavioralResponsesGoitered2020,Behavioral responses of goitered gazelles to potential threats,2020,Data,exclude,#example differential response of goitered gazelles to human vs natural predator,wrong outcome
+blankEscapingBehaviorGoitered2018,Escaping behavior in goitered gazelle,2018,Data,exclude,-,wrong outcome
+blasiInfluenceTrammelNets2015,"Influence of Trammel Nets on the Behaviour and Spatial Distribution of Bottlenose Dolphins (Tursiops truncatus) in the Aeolian Archipelago, Southern Italy",2015,Data,exclude,#example effect of fishing on habitat use of dolphins,wrong outcome
+blaskovicTemporalOverlapHuman2022,Temporal overlap of human and apex predator activity on wildlife trails and forest roads,2022,Data,exclude,-,wrong outcome
+blechaHungerMediatesApex2018,Hunger mediates apex predator's risk avoidance response in wildland-urban interface,2018,Data,exclude,-,wrong outcome
+blumsteinDevelopingEvolutionaryEcology2006,Developing an evolutionary ecology of fear how life history and natural history traits affect disturbance tolerance in birds,2006,Data,exclude,-,wrong study design
+blumsteinFlightinitiationDistanceBirds2003,Flight-initiation distance in birds is dependent on intruder starting distance,2003,-,exclude,-,wrong outcome;
+blumsteinInterspecificVariationAvian2005,Inter-specific variation in avian responses to human disturbance,2005,-,exclude,-,wrong study design
+blumsteinWhatChasingBirds2019,What chasing birds can teach us about predation risk effects Past insights and future directions,2019,-,exclude,-,wrong outcome
+bonnotFearDarkContrasting2020,Fear of the dark? Contrasting impacts of humans versus lynx on diel activity of roe deer across EuropeMots-cles,2020,Data,exclude,#example contrasting effects of non-hunting disturbance and lynx on temporal activity of roe deer,wrong outcome
+bonnotHabitatUsePredation2013,"Habitat use under predation risk Hunting, roads and human dwellings influence the spatial behaviour of roe deer",2013,Data,exclude,#example hunting and NHD effects on herbivore space use,wrong outcome
+bonnotStickTwistRoe2017,Stick or twist roe deer adjust their flight behaviour to the perceived trade-off between risk and reward,2017,Data,exclude,-,wrong study design
+borowskiFactorsAffectingDeer2021,"Factors affecting deer pressure on forest regeneration The roles of forest roads, visibility and forage availability",2021,Data,exclude,-,wrong outcome
+botschEffectHumanRecreation2018,Effect of human recreation on bird anti-predatory response,2018,Data,exclude,-,wrong outcome
+bowersForagingGraySquirrels1996,Foraging of gray squirrels on an urban-rural gradient Use of the GUD to assess anthropogenic impact,1996,Data,exclude,-,wrong-exposure
+braimohManagingHumanDisturbance2018,Managing human disturbance factors influencing flight-initiation distance of birds in a West African nature reserve,2018,Data,exclude,-,wrong outcome
+brosethDisturbanceEffectsHunting2010,Disturbance effects of hunting activity in a willow ptarmigan Lagopus lagopus population,2010,-,exclude,"#example effect of hunting on movements, habitat selection of birds",wrong outcome
+brownEffectHumanActivities2012,The Effect of Human Activities and Their Associated Noise on Ungulate Behavior,2012,Data,included,habituation vs human sheilds,mean and se not reported in ms
+brownEvaluatingIndirectEffects2020,Evaluating Indirect Effects of Hunting on Mule Deer Spatial Behavior,2020,-,exclude,-,wrong outcome
+brubakerEffectsSingleMixedSpecies2016,Effects of Single- and Mixed-Species Group Composition on the Flight Initiation Distances of Plains and Grevy's Zebras,2016,Data,exclude,-,wrong outcome
+bumpBearBaitingMayExacerbate2013,Bear-Baiting May Exacerbate Wolf-Hunting Dog Conflict,2013,Data,exclude,#example conflict between hunters and wolves,wrong study design
+burtonBehavioralBycatchCamera2022,Behavioral “bycatch” from camera trap surveys yields insights on prey responses to human-mediated predation risk,2022,Data,exclude,-,wrong outcome
+cabreraIslandTamenessRepeatability2017,Island tameness and the repeatability of flight initiation distance in a large herbivore,2017,Data,exclude,-,wrong study design
+campbellPasserineReactionsHuman2011,"Passerine reactions to human behaviour and vegetation structure in Peterborough, Canada",2011,Data,exclude,lack of control,wrong study design
+cappaEffectsPoachingHabitat2017,The effects of poaching and habitat structure on anti-predator behavioral strategies A guanaco population in a high cold desert as case study,2017,-,exclude,-,wrong outcome
+cappaEffectsRoadsBehaviour2017,Effects of roads on the behaviour of the largest South American artiodactyl (Lama guanicoe) in an Argentine reserve,2017,Data,included,-,-
+carreiraQuestionSizeFear2020,A question of size and fear competition and predation risk perception among frugivores and predators,2020,Data,exclude,#example temporal avoidance of natural predators,wrong study design
+carreteBehavioralCorrelationsAssociated2017,Behavioral Correlations Associated with Fear of Humans Differ between Rural and Urban Burrowing Owls,2017,Data,exclude,-,wrong outcome
+carterSubtleCuesPredation2008,Subtle cues of predation risk starlings respond to a predator's direction of eye-gaze,2008,Data,exclude,human treatment only,wrong study design
+cavalliDifferentialRiskPerception2016,Differential risk perception of rural and urban Burrowing Owls exposed to humans and dogs,2016,Data,exclude,-,wrong outcome
+cavalliRoleHabituationAdjustment2018,The role of habituation in the adjustment to urban life An experimental approach with burrowing owls,2018,Data,exclude,-,wrong outcome
+chanAnthropogenicNoiseAffects2010,Anthropogenic noise affects risk assessment and attention the distracted prey hypothesis,2010,Data,exclude,hyp presented in paper is difficult to separate from human sheild effect - crabs may interpret human cues as safety - keeping predators away,wrong exposure
+chassagneuxShouldStayShould2020,Should I stay or should I go? Determinants of immediate and delayed movement responses of female red deer (Cervus elaphus) to drive hunts,2020,-,exclude,-,wrong outcome
+chen-krausHumanLemurCoexistenceMultipleUse2022,Human-Lemur Coexistence in a Multiple-Use Landscape,2022,Data,included,"passive interactions (dogs, livestock, vehicles) also included as predictors",-
+chitwoodEcologyFearUngulates2022,-,2022,review,included,-,-
+ciutiEffectsHumansBehaviour2012,Effects of Humans on Behaviour of Wildlife Exceed Those of Natural Predators in a Landscape of Fear,2012,Data,included,-,wrong study design; distance from disturbance
+ciutiHumanSelectionElk2012,Human selection of elk behavioural traits in a landscape of fear,2012,-,exclude,#example hunting effect on movement and space use of large herbivore,wrong outcome
+clevelandLinkingElkMovement2012,Linking Elk Movement and Resource Selection to Hunting Pressure in a Heterogeneous Landscape,2012,Data,exclude,"#example effect of hunting on movement rate,  habituation to NHD",wrong outcome
+clinchyFearHumanSuper2016,"Fear of the human ""Super Predator"" far exceeds the fear of large carnivores in a model mesocarnivore",2016,Data,included,-,-
+colefaxEffectAnglingIntensity2016,Effect of angling intensity on feeding behaviour and community structure of subtropical reef-associated fishes,2016,Data,exclude,-,wrong outcome
+colemanGrizzlyBearHuman2013,Grizzly bear and human interaction in Yellowstone National Park An evaluation of bear management areas,2013,Data,exclude,#example of NHD on space use of large predator,wrong outcome
+collinsBehavioralResponsesAnthropogenic2022,Behavioral responses to anthropogenic noise at highways vary across temporal scales,2022,Data,exclude,#example passive interaction elliciting non-consumptive effects,wrong exposure
+collopVariabilityAreaEnergy2016,"Variability in the area, energy and time costs of wintering waders responding to disturbance",2016,-,exclude,-,wrong outcome
+cooperEscapeItsRelationship2007,Escape and its relationship to pursuit-deterrent signalling in the cuban curly-tailed lizard Leiocephalus carinatus,2007,Data,exclude,-,wrong study design
+cooperFactorsAffectingRisk1997,""": Factors affecting risk and cost of escape by the broad-headed skink (Eumeces laticeps) Predator speed, directness of approach, and female presence",1997,Data,exclude,-,wrong outcome
+cooperPredationRiskEscape2010,"Predation risk, escape and refuge use by mountain spiny lizards (Sceloporus jarrovii)",2010,Data,exclude,NCE,wrong study design
+cooperTradeoffsPredationRisk2000,"Tradeoffs between predation risk and feeding in a lizard, the broad-headed skink (Eumeces laticeps)",2000,Data,exclude,-,wrong study design
+cortes-alfonsoPerceivedRiskPredation2021,Perceived risk of predation and habitat use by the Andean White-eared Opossum Didelphis pernigra (Didelphimorphia Didelphidae) in an ex-urban area,2021,Data,exclude,-,wrong exposure
+courbinInteractingLethalNonlethal2022,Interacting lethal and nonlethal human activities shape complex risk tolerance behaviors in a mountain herbivore,2022,-,exclude,#example effects of non-hunting disturbance on spatiotemporal use,wrong outcome
+crawfordPreyTellsLarge2022,"Prey tells, large herbivores fear the human ‘super predator’",2022,Data,included,raw data available on dryad,behavior measures inconsistent
+creelHiddenMarkovModels2020,Hidden Markov Models reveal a clear human footprint on the movements of highly mobile African wild dogs,2020,Data,exclude,-,wrong outcome
+cristescuGrizzlyBearUngulate2014,Grizzly bear ungulate consumption and the relevance of prey size to caching and meat sharing,2014,Data,exclude,#example effects of non-hunting disturbance on space use of bears,wrong outcome
+cristescuPerceptionHumanDerivedRisk2013,Perception of Human-Derived Risk Influences Choice at Top of the Food Chain,2013,Data,exclude,#example NHD effects on space use of bears,wrong outcome
+croesInfluenceHuntingAntipredator2007,The influence of hunting on antipredator behavior in Central African monkeys and duikers,2007,Data,exclude,-,wrong outcome
+crosmaryAfricanUngulatesTheir2012,African ungulates and their drinking problems Hunting and predation risks constrain access to water,2012,Data,exclude,#example effects of hunting on temporal activity of herbivores,wrong outcome
+crosmaryVulnerabilityPredationWater2012,Vulnerability to predation and water constraints limit behavioural adjustments of ungulates in response to hunting risk,2012,Data,included,-,-
+czapanskiyModellingShorttermEnergetic2021,Modelling short-term energetic costs of sonar disturbance to cetaceans using high-resolution foraging data,2021,"Data,concept",exclude,-,wrong study design
+darlingtonCumulativeEffectsHuman2022,"Cumulative effects of human footprint, natural features and predation risk best predict seasonal resource selection by white-tailed deer",2022,Data,exclude,-,wrong outcome
+davidsonAgeSexdependentVigilance2022,Age- and sex-dependent vigilance behaviour modifies social structure of hunted wild boar populations,2022,Data,exclude,-,-
+davidsonWildBoarForaging2022,"Wild boar foraging and risk perception—variation among urban, natural, and agricultural areas",2022,-,included,-,-
+davilaAntipredatorBehaviorPure2019,Anti-predator behavior in pure and hybrid red-legged partridges,2019,Data,exclude,-,wrong population
+devoeElkForageRisk2019,Elk forage and risk tradeoffs during the fall archery season,2019,-,exclude,-,wrong outcome
+diaz-ruizDriversRedFox2016,"Drivers of red fox (Vulpes vulpes) daily activity prey availability, human disturbance or habitat structure?",2016,Data,exclude,-,wrong outcome
+diazpauliBehaviouralResponsesHumaninduced2017,Behavioural responses to human-induced change Why fishing should not be ignored,2017,Review,exclude,-,wrong outcome
+dillBehaviourallyMediatedBiases2020,Behaviourally mediated biases in transect surveys a predation risk sensitivity approach,2020,Review,exclude,-,wrong outcome
+dinizUrbanCyclesHuman2021,Urban cycles of human activity do not significantly alter the behaviour of a duetting bird,2021,Data,exclude,-,wrong study design
+diserensFossorialityRiskyLandscape2021,Fossoriality in a risky landscape badger sett use varies with perceived wolf risk,2021,Data,exclude,#example of non-hunting disturbance vs natural predator effects on badger sett use,wrong outcome
+djagounHuntingAffectsDry2014,Hunting affects dry season habitat selection by several bovid species in northern Benin,2014,-,exclude,#example effect of hunting on habitat selection of ungulates,wrong outcome
+dowdingNocturnalRangingBehaviour2010,"Nocturnal ranging behaviour of urban hedgehogs, Erinaceus europaeus, in relation to risk and reward",2010,Data,exclude,#example non-hunting disturbance effects on animal space use and activity,wrong outcome
+dumontFlightInitiationDistance2012,Flight Initiation Distance and Starting Distance Biological Effect or Mathematical Artefact?,2012,Data,exclude,-,wrong study design
+dwinnellWhereForageWhen2019,Where to forage when afraid Does perceived risk impair use of the foodscape?,2019,Data,exclude,-,study design
+eldegardCopingHumandominatedLandscape2012,Coping in a human-dominated landscape trade-off between foraging and keeping away from roads by moose (Alces alces),2012,Data,exclude,#example effect of passive interactions or NHD on herbivore habitat use,wrong outcome
+engelhardtEffectsLevelsHuman2011,Effects of levels of human exposure on flight initiation distance and distance to refuge in foraging eastern gray squirrels (Sciurus carolinensis),2011,Data,exclude,#read/later,wrong outcome
+evansHourlyMovementDecisions2019,Hourly movement decisions indicate how a large carnivore inhabits developed landscapes,2019,Data,exclude,-,wrong outcome
+everattOptimalForagingLions2023,Optimal foraging of lions at the human wildlands interface,2023,Data,exclude,-,wrong outcome
+fardellFearStressingPredator2020,Fear and stressing in predator prey ecology Considering the twin stressors of predators and people on mammals,2020,"theory,applied,concept",included,-,-
+fardellSmallPreyAnimal2021,Small Prey Animal Habitat Use in Landscapes of Fear Effects of Predator Presence and Human Activity Along an Urban Disturbance Gradient,2021,Data,exclude,review,pooled mixed species analysis
+fardellSmallPreyAnimal2022,Small Prey Animal Foraging Behaviors in Landscapes of Fear Effects of Predator Presence and Human Activity Along an Urban Disturbance Gradient,2022,Data,included,#followup check ethogram + video analysis protocol,mixed multispecies analysis
+fernandez-juricicCaliforniaEndangeredBelding2009,California's Endangered Belding's Savannah Sparrow (Passerculus sandwichensis beldingi) Tolerance of Pedestrian Disturbance,2009,-,exclude,-,-
+fernandez-juricicEffectsHumanDisturbance2000,"Effects of human disturbance on spatial and temporal feeding patterns of Blackbird Turdus merula in urban parks in Madrid, Spain",2000,Data,included,negative control included natural predators,-
+fernandez-juricicTestingRiskdisturbanceHypothesis2003,Testing the risk-disturbance hypothesis in a fragmented landscape Nonlinear responses of House Sparrows to humans,2003,Data,included,non-linear relationship between human approach and GUD,"non-linear relationship, effects not reported"
+fernandez-juricicVariationsScanningBehavior2003,Do variations in scanning behavior affect tolerance to human disturbance?,2003,-,exclude,-,wrong study design
+ferrandResponsesEurasianWoodcock2013,Responses of Eurasian woodcock Scolopax rusticola to simulated hunting disturbance,2013,-,exclude,#example effect of hunting on space use and temporal activity of a bird,wrong outcome
+findlayFieldGuardingCrop2020,Field guarding as a crop protection method preliminary implications for improving field guarding,2020,Data,exclude,-,wrong population
+freebergForagingCallingBehavior2016,Foraging and Calling Behavior of Carolina chickadees (Poecile carolinensis) in Response to the Head Orientation of Potential Predators,2016,Data,exclude,-,wrong outcome
+fridConservationAntiPredatorBehavior2009,Conservation and Anti-Predator Behavior,2009,Review,exclude,-,pdf unavailable; book chapter
+fridHumancausedDisturbanceStimuli2002,Human-caused disturbance stimuli as a form of predation risk,2002,review,included,"#examples of disturbance mimicing predation risk,  #risk-disturbance hypothesis",-
+fujiokaAlertFlightInitiation2020,"Alert and flight initiation distances of crows in relation to the culling method, shooting or trapping",2020,Data,exclude,-,wrong outcome
+garcia-arroyoTolerantHumansAssessment2020,"Tolerant to humans? Assessment of alert and flight initiation distances of two bird species in relation to sex, flock size, and environmental characteristics",2020,Data,exclude,-,wrong study design
+garcia-garciaDoesGatheringShellfish2015,Does the gathering of shellfish affect the behavior of gastropod scavengers on sandy beaches? A field experiment,2015,Data,exclude,#example effect of NHD on antipredator behavior of shellfish,wrong outcome
+garnerHumanDisturbanceInfluences2008,Human disturbance influences behaviour and local density of juvenile frogs,2008,Data,exclude,possible example for human disturbance,wrong outcome
+gavinPronghornAntilocapraAmericana2006,Do pronghorn (Antilocapra americana) perceive roads as a predation risk?,2006,Data,included,distance from road used as categorical control,-
+gaynorAppliedEcologyFear2021,An applied ecology of fear framework Linking theory to conservation practice,2021,"theory,applied",included,-,-
+geffroyEvolutionaryDynamicsAnthropocene2020,Evolutionary dynamics in the Anthropocene Life history and intensity of human contact shape antipredator responses,2020,"Data,Review",exclude,chapter-1 #methods #metaanalysis,wrong exposure
+gehrLandscapeCoexistenceLarge2017,A landscape of coexistence for a large predator in a human dominated landscape,2017,-,exclude,-,wrong outcome
+gehrStayHomeStay2020,"Stay home, stay safe-Site familiarity reduces predation risk in a large herbivore in two contrasting study sites",2020,Data,exclude,-,wrong outcome
+gendallToleranceDisturbanceHumans2015,Tolerance of disturbance by humans in long-time resident and recent colonist urban doves,2015,Data,exclude,comparison accross species,wrong study design
+genovartDifferentialAdultSurvival2018,Differential adult survival at close seabird colonies The importance of spatial foraging segregation and bycatch risk during the breeding season,2018,Data,exclude,-,wrong outcome
+gillMethodQuantifyEffects1996,A method to quantify the effects of human disturbance on animal populations,1996,"Data, Review",exclude,-,uncertainty not reported
+giordanoPreyResponsesPredation2022,Prey responses to predation risk under chronic road noise,2022,Data,included,should lack of mouse vigilance be included in meta-analysis?,-
+goldenbergIntergenerationalChangeAfrican2018,"Inter-generational change in African elephant range use is associated with poaching risk, primary productivity and adult mortality",2018,Data,exclude,-,wrong outcome
+goss-custardDisturbanceDoesNot2020,-,2020,Data,exclude,-,wrong outcome
+gotmarkPreySelectionSparrowhawks1996,"Prey selection by sparrowhawks, Accipiter nisus Relative predation risk for breeding passerine birds in relation to their size, ecology and behaviour",1996,Data,exclude,-,wrong-exposure
+goumasHerringGullAversion2020,Herring gull aversion to gaze in urban and rural human settlements,2020,Data,exclude,-,wrong outcome
+gregoryResponsesNatricineSnakes2016,Responses of Natricine Snakes to Predatory Threat A Mini-Review and Research Prospectus,2016,review,exclude,-,lack of relevance
+griffinIndividuallevelBehavioralResponses2017,Individual-level behavioral responses of immature green turtles to snorkeler disturbance,2017,-,exclude,-,wrong outcome
+griggForagingDistributionPacific2012,Foraging distribution of Pacific harbor seals (Phoca vitulina richardii) in a highly impacted estuary,2012,-,exclude,#example effects of NHD on marine predator habitat use,wrong outcome
+grignolioEffectsHuntingHounds2011,Effects of hunting with hounds on a non-target species living on the edge of a protected area,2011,Data,included,"#example effects of hunting on range size of herbivore,  hunting mode: with hounds",wrong outcome
+guayAvianBufferInteractiveTool2016,AvianBuffer An interactive tool for characterising and managing wildlife fear responses,2016,applied,exclude,-,wrong outcome
+guoVariationEscapeResponse2022,Variation in escape response of Himalayan marmots (Marmota himalayana) under different human disturbances,2022,Data,exclude,#example disturbance effects on small mammal flight behavior,wrong outcome
+gyimesiHumanDisturbanceBewick2012,"Human disturbance of Bewick's Swans is reflected in giving-up net energy intake rate, but not in giving-up food density",2012,Data,exclude,-,wrong outcome
+haemigDynamicTablevisitingBehavior2021,Dynamic table-visiting behavior of birds at outdoor restaurants and cafes,2021,Data,exclude,-,wrong outcome
+haidtHumanBeastFlightAggressive2018,Human and the beast-Flight and aggressive responses of European bison to human disturbance,2018,Data,exclude,-,wrong outcome
+hallFlightInitiationDistance2020,Flight initiation distance changes across landscapes and habitats in a successful urban coloniser,2020,Data,exclude,-,wrong outcome
+hammerRepeatabilityAlertFlight2022,"Repeatability of alert and flight initiation distances in king penguins Effects of colony, approach speed, and weather",2022,Data,exclude,-,lack of control
+hammondRiskPerceptionTerrestriality2022,"Risk perception and terrestriality in primates A quasi-experiment through habituation of chacma baboons (Papio ursinus) in Gorongosa National Park, Mozambique",2022,-,exclude,-,wrong exposure
+hansenHabituationHumansPredatorfree2015,Habituation to humans in a predator-free wild ungulate,2015,Data,exclude,-,wrong outcome
+harrisMarineMammalsSonar2018,"Marine mammals and sonar Dose-response studies, the risk-disturbance hypothesis and the role of exposure context",2018,review,included,-,-
+haswellFearDarkMesopredator2020,"Fear of the dark? A mesopredator mitigates large carnivore risk through nocturnality, but humans moderate the interaction",2020,Data,exclude,-,wrong outcome
+haswellLargeCarnivoreImpacts2017,Large carnivore impacts are context-dependent,2017,Review,included,-,-
+haywardRiskPerceptionEndangered2015,Risk perception by endangered European bison Bison bonasus is context (condition) dependent,2015,Data,exclude,-,wrong study design
+hebblewhiteModellingWildlifehumanRelationships2008,Modelling wildlife-human relationships for social species with mixed-effects resource selection models,2008,Data,exclude,-,wrong outcome
+hendersonBehaviourDomesticDucks2001,Behaviour of domestic ducks exposed to mobile predator stimuli. 1. Flock responses,2001,Data,exclude,-,wrong population; non-wild animal
+hertelTemporalEffectsHunting2016,Temporal effects of hunting on foraging behavior of an apex predator Do bears forego foraging when risk is high?,2016,Data,exclude,-,wrong outcome
+holmernEffectsExperimentalHuman2016,Effects of experimental human approaches on escape behavior in Thomson's gazelle (Eudorcas thomsonii),2016,Data,exclude,-,wrong study design
+houdeManipulatingForageRisk2020,Manipulating forage and risk avoidance to increase white-tailed deer vulnerability to hunters,2020,Data,exclude,-,wrong exposure
+hunterLandUsesBotswana1996,Land uses on the Botswana/Zimbabwe border and their effects on buffalo,1996,case study,exclude,-,wrong outcome
+ihwagiPoachingLowersElephant2019,Poaching lowers elephant path tortuosity implications for conservation,2019,Data,exclude,-,wrong outcome
+isojunnoSpermWhalesReduce2016,Sperm whales reduce foraging effort during exposure to 1-2 kHz sonar and killer whale sounds,2016,Data,exclude,-,wrong outcome
+jacobySharkMovementStrategies2020,"Shark movement strategies influence poaching risk and can guide enforcement decisions in a large, remote marine protected area",2020,Data,exclude,-,wrong outcome
+jansenReactionHarborSeals2010,Reaction of harbor seals to cruise ships,2010,Data,exclude,"#example effect of non-human disturbance on escape behavior + behvioural thermoregulation,  marine",wrong outcome; escape behavior
+januchowski-hartleyFearFishersHuman2011a,Fear of Fishers Human Predation Explains Behavioral Changes in Coral Reef Fishes,2011,-,exclude,#example effects of hunting on marine animal behavior,wrong outcome
+jayakodyEffectsHumanDisturbance2011,Effects of human disturbance on the diet composition of wild red deer (Cervus elaphus),2011,Data,exclude,#example effects of non-hunting disturbance on diet composition of herbivores,wrong outcome
+jayakodyRedDeerCervus2008,Red deer Cervus elephus vigilance behaviour differs with habitat and type of human disturbance,2008,Data,included,not focal animal sampling,-
+jiangAntipredatorEscapeDistances2017,Antipredator escape distances of common and threatened birds,2017,Data,exclude,-,wrong study design
+jiangBehavioralResponsesBlue2013,Behavioral responses of blue sheep (Pseudois nayaur) to nonlethal human recreational disturbance,2013,Data,included,-,uncertainty not reported
+jiangEffectsHumanDisturbance2007,"Effects of human disturbance on movement, foraging and bed selection in red deer Cervus elaphus xanthopygus from the Wandashan Mountains, northeastern China",2007,Data,exclude,different behaviors analysed,wrong outcome
+jiangEscapePredatorsGenetic2017,Escape from predators and genetic variance in birds,2017,Data,exclude,-,wrong study design
+jordanEcologicalFactorsShape2022,-,2022,Data,exclude,"change in foraging decisions in response to cost, risk and potential benefit in a generalist",wrong outcome
+kalbFlightInitiationDistance2019,Flight initiation distance and escape behavior in the black redstart (Phoenicurus ochruros),2019,Data,exclude,-,wrong study design
+karlssonWhatDistanceWolves2007,At what distance do wolves move away from an approaching human?,2007,"Data,Other NCB",exclude,"should studies with only human treatment be included and compared to natural predators?,  Cannot be done for apex predators",wrong study design
+keulingDoesHuntingAffect2021,Does hunting affect the behavior of wild pigs?,2021,Review,included,-,-
+keyelNOEVIDENCEINDIVIDUAL2012,NO EVIDENCE FOR INDIVIDUAL ASSORTMENT BY TEMPERAMENT RELATIVE TO PATCH AREA OR PATCH OPENNESS IN THE BOBOLINK,2012,Data,exclude,-,wrong study design
+khanShiftsDielActivity2023,Shifts in diel activity of Rocky Mountain mammal communities in response to anthropogenic disturbance and sympatric invasive white-tailed deer,2023,Data,exclude,-,wrong outcome
+kiffnerInterspecificVariationLarge2014,Interspecific variation in large mammal responses to human observers along a conservation gradient with variable hunting pressure,2014,Data,exclude,measured variables do not align with theory,wrong outcome
+kiszkaBehaviouralDriversEcological2015,Behavioural drivers of the ecological roles and importance of marine mammals,2015,Review,exclude,-,-
+kittendorfUrbanFoxSquirrels2021,Urban fox squirrels exhibit tolerance to humans but respond to stimuli from natural predators,2021,Other NCB,exclude,-,wrong exposure
+kongDisturbancePredationRisk2021,"Disturbance and predation risk influence vigilance synchrony of black-necked cranes Grus nigricollis, but not as strongly as expected",2021,Data,exclude,-,wrong outcome
+krishnaWildUngulateDecisionMaking2016,Wild Ungulate Decision-Making and the Role of Tiny Refuges in Human-Dominated Landscapes,2016,Data,exclude,-,wrong exposure
+kuijperPawsClawsEcological2016,Paws without claws? Ecological effects of large carnivores in anthropogenic landscapes,2016,review,included,-,-
+labansenReactionsColonialSeabird2021,Reactions of a colonial seabird species to controlled gunshot disturbance experiments,2021,-,exclude,-,wrong outcome
+ladleGrizzlyBearResponse2019,Grizzly bear response to spatio-temporal variability in human recreational activity,2019,Data,exclude,-,wrong study design
+lagosFlightInitiationDistance2009,Flight initiation distance is differentially sensitive to the costs of staying and leaving food patches in a small-mammal prey,2009,Data,exclude,NCE,wrong study design
+lamannaBehavioralResponseBrown2016,Behavioral response of brown meagre (Sciaena umbra) to boat noise,2016,Data,exclude,-,wrong outcome
+laursenHuntingMotorboatsDisplaces2008,Hunting from motorboats displaces Wadden Sea eiders Somateria mollissima from their favoured feeding distribution,2008,Data,exclude,#example for density changes dues to hunting,wrong outcome
+leeDirectLookPredator2013,Direct Look from a Predator Shortens the Risk-Assessment Time by Prey,2013,Data,exclude,-,wrong study design
+leightonHidingPlainSight2021,Hiding in plain sight risk mitigation by a cryptic carnivore foraging at the urban edge,2021,-,exclude,-,wrong outcome
+lemaitreDeerMiceMediate2010,Deer mice mediate red-backed vole behaviour and abundance along a gradient of habitat alteration,2010,Data,exclude,#example effects of passive human interaction on competition,wrong study design; wrong exposure
+lesaoutShorttermEffectsHunting2014,Short-term effects of hunting on naive black-tailed deer (Odocoileus hemionus sitkensis) behavioural response and consequences on vegetation growth,2014,-,exclude,#example experimental evidence of hunting effects on deer habitat use,wrong outcome
+lesmerisesRefugePredationRisk2017,Refuge or predation risk? Alternate ways to perceive hiker disturbance based on maternal state of female caribou,2017,Data,included,state-dependence of human effects on herbivore,-
+lianRoadProximityTraffic2011,"Road proximity and traffic flow perceived as potential predation risks evidence from the Tibetan antelope in the Kekexili National Nature Reserve, China",2011,Data,included,Rank correlation and chi square reported,-
+liCollectiveVigilanceWintering2016,Collective Vigilance in the Wintering Hooded Crane The Role of Flock Size and Anthropogenic Disturbances in a Human-Dominated Landscape,2016,Data,included,-,-
+liEvidenceEffectsHuman2007,Evidence of effects of human disturbance on alert response in pere david's deer (Elaphurus davidianus),2007,Data,exclude,exposure was tourists,wrong population
+limaVigilanceResponseKey2021,Vigilance Response of a Key Prey Species to Anthropogenic and Natural Threats in Detroit,2021,Data,exclude,not FIS,wrong study design
+liQuantifyingHumanDisturbance2011,Quantifying human disturbance on antipredator behavior and flush initiation distance in yellow-bellied marmots,2011,Data,included,-,-
+littleDoesHumanPredation2014,Does Human Predation Risk Affect Harvest Susceptibility of White-Tailed Deer During Hunting Season?,2014,Data,exclude,-,wrong outcome
+liVigilanceActivityTimeBudget2015,"Vigilance and Activity Time-Budget Adjustments of Wintering Hooded Cranes, Grus monacha, in Human-Dominated Foraging Habitats",2015,Data,included,-,-
+lodberg-holmHumaninducedLandscapeFear2019,A human-induced landscape of fear influences foraging behavior of brown bears,2019,Data,exclude,-,wrong outcome
+loehrGenderAgeclassspecificReactions2005,Gender- and age-class-specific reactions to human disturbance in a sexually dimorphic ungulate,2005,Data,included,-,-
+loneAdaptiveBehaviouralResponse2015,An adaptive behavioural response to hunting surviving male red deer shift habitat at the onset of the hunting season,2015,Data,exclude,"#example effect of hunting on habitat use of red deer,  cover + forage choice",wrong outcome
+loneLivingDyingMultipredator2014,Living and dying in a multi-predator landscape of fear Roe deer are squeezed by contrasting pattern of predation risk imposed by lynx and humans,2014,Data,exclude,#example mortality of roe deer due to hunting,wrong outcome
+loneTemporalVariationHabitat2017,Temporal variation in habitat selection breaks the catch-22 of spatially contrasting predation risk from multiple predators,2017,Data,exclude,-,wrong outcome
+lopesHumanmodifiedLandscapesAlter2021,Human-modified landscapes alter home range and movement patterns of capybaras,2021,Data,included,-,wrong outcome
+lovariSuburbanEcologyCrested2017,Suburban ecology of the crested porcupine in a heavily poached area a global approach,2017,Data,exclude,-,wrong outcome
+lowreyTOLERANCEDISTURBANCEREGULATED2017,"TOLERANCE TO DISTURBANCE REGULATED BY ATTRACTIVENESS OF RESOURCES A CASE STUDY OF DESERT BIGHORN SHEEP WITHIN THE RIVER MOUNTAINS, NEVADA",2017,-,exclude,RSF,wrong outcome
+Madin2016,Human activities change marine ecosystems by altering predation risk,2016,review,exclude,-,wrong outcome
+madinFieldEvidencePervasive2010,Field evidence for pervasive indirect effects of fishing on prey foraging behavior,2010,Data,exclude,"#example of predator removal effects on prey behavior,  #marine",wrong outcome
+madinFishingIndirectlyStructures2010,Fishing Indirectly Structures Macroalgal Assemblages by Altering Herbivore Behavior,2010,Data,exclude,"#model incorporating foraging of herbivores and predation risk,  #bmii",wrong exposure
+maloMeasuringUngulateTolerance2011,Measuring ungulate tolerance to human with flight distance a reliable visitor management tool?,2011,Data,exclude,-,wrong outcome
+manorImpactHumanNuisance2003,Impact of human nuisance disturbance on vigilance and group size of a social ungulate,2003,Data,included,"non-hunting disturbance
+human disturbance index used not comparable across studies",-
+marchandImpactsTourismHunting2014,Impacts of tourism and hunting on a large herbivore's spatio-temporal behavior in and around a French protected area,2014,Data,exclude,#example contrasting effects of hunting and NHD on space use and temporal activity,wrong outcome
+matsonFactorsAffectingVigilance2005,Factors affecting the vigilance and flight behaviour of impalas,2005,Data,included,-,-
+mbiseHumanHabituationReduces2020,Human habituation reduces hyrax flight initiation distance in Serengeti,2020,-,exclude,-,wrong outcome
+mccormickBoatNoiseImpacts2018,Boat noise impacts risk assessment in a coral reef fish but effects depend on engine type,2018,-,included,-,wrong outcome
+mcgowanEffectHumanPresence2014,The Effect of Human Presence and Human Activity on Risk Assessment and Flight Initiation Distance in Skinks,2014,-,exclude,-,wrong outcome
+mcgrathNorthernBobwhiteForaging2018,-,2018,-,exclude,not FIS/scan,wrong study design
+mehlhoopMooseOurNeighborhood2022,Moose in our neighborhood Does perceived hunting risk have cascading effects on tree performance in vicinity of roads and houses?,2022,Data,exclude,#example BMII of hunting on herbivores,wrong outcome
+meisingsetImpactsHumanDisturbance2022,Impacts of human disturbance on flight response and habitat use of red deer,2022,Data,exclude,#example hunting effect on flight behavior and space use,wrong outcome
+melisRoeDeerFace2013,Roe deer face competing risks between predators along a gradient in abundance,2013,Data,exclude,comparison of mortality from human hunters and natural predators,wrong outcome
+mendesLandscapeHumanFear2020,Landscape of human fear in Neotropical rainforest mammals,2020,Data,exclude,-,wrong outcome
+merkleFoodAvailabilityForaging2013,Food availability and foraging near human developments by black bears,2013,Data,exclude,#example human subsidisation of predator energy intake,wrong outcome
+metcalfeObserverEffectsRemote2022,"Observer effects in a remote population of large-headed capuchins, Sapajus macrocephalus",2022,Data,included,-,-
+mikleForageFleeLessons2019,To forage or flee lessons from an elk migration near a protected area,2019,Data,exclude,#example effect of hunting on migration timing in elk,wrong outcome
+mikulaPedestrianDensityInfluences2014,Pedestrian density influences flight distances of urban birds,2014,-,exclude,"#example disturbance altering flight response to humans,  does disturbance also alter flight response to other predators? (generalisation)",wrong outcome
+mikulaRiskPerceptionVervet2018,Risk perception of vervet monkeys Chlorocebus pygerythrus to humans in urban and rural environments,2018,-,exclude,-,-
+millerBehavioralResponsesPredatory2022,Behavioral responses to predatory sounds predict sensitivity of cetaceans to anthropogenic noise within a soundscape of fear,2022,Data,included,-,-
+millerLandscapeFearHumanpredator2019,Landscape of fear and human-predator coexistence Applying spatial predator-prey interaction theory to understand and reduce carnivore-livestock conflict,2019,concept,exclude,-,wrong outcome
+millsHumansDisruptAccess2020,Humans disrupt access to prey for large African carnivores,2020,Data,exclude,-,wrong outcome
+moenBehaviourSolitaryAdult2012,Behaviour of Solitary Adult Scandinavian Brown Bears (Ursus arctos) when Approached by Humans on Foot,2012,Data,exclude,-,wrong study design
+mohlmanNonconsumptiveEffectsHunting2019,Nonconsumptive effects of hunting on a nontarget game bird,2019,-,exclude,-,wrong outcome
+molenaarFeedingAssociationHarbour2022,Feeding Association Between Harbour Porpoise (Phocoena phocoena) and Flyshoot Fishing,2022,Data,exclude,#example fisheries subsidising marine mammals,wrong study design
+mollerChangeFlightInitiation2013,Change in flight initiation distance between urban and rural habitats following a cold winter,2013,-,exclude,-,wrong outcome
+mollerUrbanAreasRefuges2012,Urban areas as refuges from predators and flight distance of prey,2012,"Data,  concept",included, #concept possible mechanism of human shield effect in development gradients,individual species data not available
+molsRecreationHuntingDifferentially2022,Recreation and hunting differentially affect deer behaviour and sapling performance,2022,-,exclude,"#example contrast between nuisance and hunting, down stream effects on herbivore behavior (Space use) and plant survival",wrong outcome
+montero-quintanaEcotourismImpactsBehaviour2020,Ecotourism impacts on the behaviour of whale sharks an experimental approach,2020,Data,included,-,-
+montgomeryHuntingModesHuman2022,The hunting modes of human predation and potential nonconsumptive effects on animal populations,2022,Review,included,-,-
+montgomeryInducibleDefencesLarge2020,The inducible defences of large mammals to human lethality,2020,"Data, Review",included,-,-
+morelliAreBirdsMore2023,Are birds more afraid in urban parks or cemeteries? A Latin American study contrasts with results from Europe,2023,Data,exclude,-,wrong outcome: no pdf found
+morelliFlightInitiationDistance2022,Flight initiation distance and refuge in urban birds,2022,Data,exclude,lack of control,wrong study design
+moriPorcupinesLandscapeFear2017,Porcupines in the landscape of fear effect of hunting with dogs on the behaviour of a non-target species,2017,Data,exclude,-,wrong outcome
+morris-drakeAnthropogenicNoiseAlters2017,Anthropogenic noise alters dwarf mongoose responses to heterospecific alarm calls,2017,Data,exclude,-,wrong outcome
+muhlyHumanActivityHelps2011,Human activity helps prey win the predator-prey space race,2011,Data,exclude,"#example of human shield effect,  NHD",wrong outcome
+murchisonHumanActivityHabitat2016,Human Activity and Habitat Characteristics Influence Shorebird Habitat Use and Behavior at a Vancouver Island Migratory Stopover Site,2016,Data,included,-,-
+murphyThreadingNeedleHow2021,Threading the needle How humans influence predator-prey spatiotemporal interactions in a multiple-predator system,2021,Data,exclude,-,wrong outcome
+naderiHaresHumansLynx2021,"Hares, humans, and lynx activity rhythms who avoids whom?",2021,Data,exclude,-,wrong outcome
+nahaMovementBehaviorSolitary2021,Movement behavior of a solitary large carnivore within a hotspot of human-wildlife conflicts in India,2021,"Data,Other NCB",exclude,-,wrong outcome
+ndaimaniPredictingSpatialDistribution2014,Predicting the spatial distribution of hunted and non-hunted Sable antelope (Hippotragus niger niger) using remotely sensed woody cover in a Southern African savanna,2014,data,exclude,#example effect of hunting on habitat use of sable,wrong outcome
+neumannNonimpactHuntingMoose2009,"The non-impact of hunting on moose Alces alces movement, diurnal activity, and activity range",2009,Data,exclude,#example effects of hunting and non - hunting disturbance on animal movement,wrong outcome
+nevinMeasuringCostRisk2005,Measuring the cost of risk avoidance in brown bears Further evidence of positive impacts of ecotourism,2005,-,exclude,-,-
+nevinPerceivedRiskDisplacement2005,"Perceived risk, displacement and refuging in brown bears positive impacts of ecotourism?",2005,"Data, Other NCB",exclude,-,wrong outcome
+neweyForagingBehaviourCommon2007,Foraging behaviour of the Common Myna (Acridotheres tristis) in relation to vigilance and group size,2007,Data,included,disturbance was higher in the afternoon than in the morning,incomplete study design
+nhlekoWhiteRhinosOther2022,White rhinos and other herbivores decrease visitations and increase vigilance in response to human vocalizations,2022,Data,exclude,-,wrong study design
+nickelEnergeticsFearHumans2021,Energetics and fear of humans constrain the spatial ecology of pumas,2021,Data,exclude,"#example effect of passive interactions or non-hunting disturbance on a predators movement rate, range size and energy expenditure",study design
+nisiPumaResponsesUnreliable,Puma responses to unreliable human cues suggest an ecological trap in a fragmented landscape,2022,Data,exclude,-,wrong outcome
+nowakInfluenceLivecaptureRisk2016,Influence of live-capture on risk perceptions of habituated samango monkeys,2016,Data,exclude,-,wrong study design
+nowakSamangoMonkeysCercopithecus2017,"Samango Monkeys (Cercopithecus albogularis labiatus) Manage Risk in a Highly Seasonal, Human-Modified Landscape in Amathole Mountains, South Africa",2017,-,exclude,-,wrong outcome
+nunesReefFishAntipredator2019,Reef fish antipredator behavior in remote islands does not reflect patterns seen in coastal areas,2019,-,exclude,-,wrong outcome
+ohashiDifferencesActivityPattern2013,Differences in the activity pattern of the wild boar Sus scrofa related to human disturbance,2013,Data,exclude,"temporal activity
+#example effect of hunting and NHD on temporal activity of wild boars",wrong outcome
+ordizBearsKnowThey2012,Do bears know they are being hunted?,2012,Data,exclude,#example hunting effects of temporal activity of large carnivores,wrong outcome
+ordizEffectsHumanDisturbance2021,Effects of Human Disturbance on Terrestrial Apex Predators,2021,Review,included,-,-
+ordizLastingBehaviouralResponses2013,Lasting behavioural responses of brown bears to experimental encounters with humans,2013,Data,exclude,#example experimental effect of NHD on bear activity,wrong outcome
+ordizSavingLargeCarnivores2013,"Saving large carnivores, but losing the apex predator?",2013,opinion,included,-,-
+ordizSeasonalityHumanDisturbance2017,Seasonality and human disturbance alter brown bear activity patterns implications for circumpolar carnivore conservation?,2017,Data,exclude,-,wrong outcome
+oriol-cotterillLandscapesCoexistenceTerrestrial2015,Landscapes of Coexistence for terrestrial carnivores the ecological consequences of being downgraded from ultimate to penultimate predator by humans,2015,Review,included,gaynor2019,-
+oriol-cotterillSpatiotemporalPatternsLion2015,Spatiotemporal patterns of lion space use in a human-dominated landscape,2015,Data,exclude,#example effect of hunting on space use of lions,study design
+ortiz-jimenezBehaviouralCorrelationsMultiple2022,Behavioural correlations across multiple stages of the antipredator response do animals that escape sooner hide longer?,2022,"Data,Other NCB",exclude,non - foraging behavior,wrong outcome
+osorio-beristainRelatingFlightInitiation2018,Relating flight initiation distance in birds to tropical dry forest restoration,2018,Data,exclude,effect of habitat on FID,wrong study design
+otienoHumanRiskmediatedBrowsing2019,Human- and risk-mediated browsing pressure by sympatric antelope in an African savanna,2019,Data,exclude,#example effect of disturbance on forage choice of large herbivores,wrong outcome
+padieRoeDeerRisk2015,Roe deer at risk teasing apart habitat selection and landscape constraints in risk exposure at multiple scales,2015,Data,exclude,"lack of contrast,  table 1 does not make sense",wrong study design
+panEldDeerTranslocated2011,Eld's Deer Translocated to Human-Inhabited Areas Become Nocturnal,2011,Data,exclude,#example NHD effects of temporal activity on herbivore,wrong outcome
+pangleLethalNonlethalAnthropogenic2010,Lethal and nonlethal anthropogenic effects on spotted hyenas in the Masai Mara National Reserve,2010,Data,included,"study design mixes effects of natural pedators, human hunters, tourists; contrast accross two groups; cowbells can be considered predator cues",-
+parsonsEcologicalImpactHumans2016,The ecological impact of humans and dogs on wildlife in protected areas in eastern North America,2016,Data,included,-,wrong outcome
+parsonsIntensiveHuntingChanges2022,Intensive hunting changes human-wildlife relationships,2022,Data,exclude,-,wrong outcome
+patonHuntingExacerbatesResponse2017,Hunting exacerbates the response to human disturbance in large herbivores while migrating through a road network,2017,Data,included,-,-
+pattenIntersectionHumanDisturbance2019,"The Intersection of Human Disturbance and Diel Activity, with Potential Consequences on Trophic Interactions",2019,Data,exclude,#example effect of disturbance on predator - prey temporal overlap,wrong outcome
+pecorellaEffectsCullingVigilance2016,Effects of culling on vigilance behaviour and endogenous stress response of female fallow deer,2016,Data,included,-,-
+peksaDaytimeActivityBudget2018,"Daytime activity budget of an alpine ungulate (Tatra chamois Rupicapra rupicapra tatrica) influence of herd size, sex, weather and human disturbance",2018,Data,included,-,-
+pereiraLowSpatialOverlap2021,Low spatial overlap between foraging shearwaters during the breeding season and industrial fisheries off the west coast of Portugal,2021,Data,exclude,-,wrong outcome
+perez-cembranosPredationRiskOpportunity2013,Predation Risk and Opportunity Cost of Fleeing While Foraging on Plants Influence Escape Decisions of an Insular Lizard,2013,Data,exclude,-,wrong study design
+perryIndividualResponsesNovel2020,Individual responses to novel predation risk and the emergence of a landscape of fear,2020,Data,exclude,-,wrong outcome
+personsHumanActivityHabitat2017,Human activity and habitat type affect perceived predation risk in urban white-footed mice (Peromyscus leucopus),2017,Data,included,-,-
+petersonHabitatSelectionWolves2021,Habitat selection by wolves and mountain lions during summer in western Montana,2021,Data,exclude,-,wrong outcome
+petersUsingRiskdisturbanceHypothesis2005,Using the risk-disturbance hypothesis to assess the relative effects of human disturbance and predation risk on foraging American oystercatchers,2005,Data,exclude,effect size not reported for feeding time nhd treatment;  number of individuals exbhiting given behavior per treatment,wrong study design
+petrelliFirstFlushEffects2017,First to Flush The Effects of Ambient Noise on Songbird Flight Initiation Distances and Implications for Human Experiences with Nature,2017,Data,exclude,-,wrong study design
+picardiMovementResponsesRoe2019,Movement responses of roe deer to hunting risk,2019,"Data,concept",included,"risk-fear_manuscript risk - fear model; home range effect not reported
+using only data from september hunting season and M. Bondone sites",wrong outcome
+planteHumanDisturbanceEffects2018,Human disturbance effects and cumulative habitat loss in endangered migratory caribou,2018,Data,exclude,-,wrong outcome
+planteLandscapeAttributesExplain2017,Landscape attributes explain migratory caribou vulnerability to sport hunting,2017,Data,exclude,-,wrong outcome
+podgorskiDriversSynchronizedVigilance2016,Drivers of synchronized vigilance in wild boar groups,2016,Data,exclude,-,wrong study design
+podgorskiSpatiotemporalBehavioralPlasticity2013,Spatiotemporal behavioral plasticity of wild boar (Sus scrofa) under contrasting conditions of human pressure primeval forest and metropolitan area,2013,Data,included,#effect non-hunting disturbance on space use and temporal activity of boars,wrong outcome
+polichFlightInitiationDistance2016,"Flight Initiation Distance in a Freshwater Turtle, Chrysemys picta",2016,Data,exclude,-,wrong outcome
+priceHumanActivityAffects2014,Human activity affects the perception of risk by mule deer,2014,Data,exclude,-,wrong outcome
+priceImpactHumanDisturbance2008,The impact of human disturbance on birds A selective review,2008,Review,included,-,-
+proffittContrastingEffectsWolves2009,Contrasting Effects of Wolves and Human Hunters on Elk Behavioral Responses to Predation Risk,2009,Data,included,-,wrong outcome
+proudmanRedDeerAllocate2021,Red deer allocate vigilance differently in response to spatio-temporal patterns of risk from human hunters and wolves,2021,Data,included,#example human sheild effect,-
+puigInfluenceHumanActivities,"Influence of human activities, social and environmental variables on the behavior of guanacos in Southern Andean Precordillera (Argentina)",NA,Data,exclude,-,-
+ramirez-alvarezPumaPumaConcolor2021,Puma (Puma concolor) in the Neighborhood? Records Near Human Settlements and Insights into Human-Carnivore Coexistence in Central Chile,2021,-,exclude,using public records to analyse puma occurences,wrong study design
+ramirezTopdownBottomupForces2023,Top-down and bottom-up forces explain patch utilization by two deer species and forest recruitment,2023,Data,exclude,-,wrong outcome
+rangelOccurrenceBehaviourShorebirds2021,Occurrence and Behaviour of Shorebirds Depend on Food Availability and Distance of Beaches from Urban Settlements,2021,Data,exclude,-,wrong outcome
+rasmussenMaskingZeitgeberAfrican2012,Masking of the zeitgeber African wild dogs mitigate persecution by balancing time,2012,Data,exclude,#example effects of hunting on temporal activity of large carnivore,wrong outcome
+reillyMesopredatorsRetainTheir2022,Mesopredators retain their fear of humans across a development gradient,2022,Data,exclude,-,wrong outcome
+reimersVigilanceFrightBehaviour2011,Vigilance and fright behaviour in the insular Svalbard reindeer Rangifer tarandus platyrhynchus),2011,Data,included,"desensitisation in absence of predators,  habituation to humans may alter response to NHD",-
+reislandEndangeredApesCanTheir2021,Endangered Apes-Can Their Behaviors Be Used to Index Fear and Disturbance in Anthropogenic Landscapes?,2021,Data,included,-,wrong exposure
+reislandSympatricApesSacred2016,Sympatric Apes in Sacred Forests Shared Space and Habitat Use by Humans and Endangered Javan Gibbons (Hylobates moloch),2016,"Data,Other NCB",exclude,-,wrong outcome
+reynoldsDefiningSeparationZones2021,Defining separation zones for coastal birds at a wetland of global importance,2021,Data,exclude,-,wrong outcome
+rhoadesFishedSpeciesUniformly2018,Fished species uniformly reduced escape behaviors in response to protection,2018,Data,exclude,-,wrong outcome
+rhoadesHumaninducedReductionsFish2019,Human-induced reductions in fish predator boldness decrease their predation rates in kelp forests,2019,Data,exclude,bruvs using baited surveys to determine foraging rate,wrong outcome
+rippleTrophicCascadesInvolving2008,"Trophic cascades involving cougar, mule deer, and black oaks in Yosemite National Park",2008,Data,exclude,"#example effect of apex predator removal on plan recruitment,  trophic cascade",wrong outcome
+rodeBehavioralResponsesBrown2006,Behavioral responses of brown bears mediate nutritional effects of experimentally introduced tourism,2006,Data,included,BACI,-
+rodgersSexSpecificBehaviorsHunted2021,Sex-Specific Behaviors of Hunted Mule Deer During Rifle Season,2021,Data,exclude,#example effect of hunting on herbivore space use,wrong outcome
+rodriguez-prietoAntipredatorBehaviorBlackbirds2009,Antipredator behavior in blackbirds habituation complements risk allocation,2009,"Data,Experimental",exclude,4 levels of disturbance - how to analyse?,wrong outcome
+rodriguez-prietoEffectsDirectHuman2005,Effects of direct human disturbance on the endemic Iberian frog Rana iberica at individual and population levels,2005,"Data,Other NCB",exclude,FID in relation to number of approaches not disturbance,wrong outcome
+rodriguez-prietoRunFlyLow2008,To run or to fly low cost versus low risk escape strategies in blackbirds,2008,Data,exclude,descisions under risk,wrong study design
+rodriguez-recioEstimatingGlobalDeterminants2022,Estimating global determinants of leopard home range size in a changing world,2022,"Data,Review",exclude,-,wrong outcome
+rogalaHumanActivityDifferentially2011,Human Activity Differentially Redistributes Large Mammals in the Canadian Rockies National Parks,2011,Data,exclude,#example of NHD altering predator-prey spatial interactions,wrong outcome
+rosellResponsesForagingEurasian2000,Responses of foraging Eurasian beavers Castor fiber to predator odours,2000,-,included,-,uncertainty not reported
+sahlenBehaviouralDifferencesSingle2015,Behavioural Differences between Single Scandinavian Brown Bears (Ursus arctos) and Females with Dependent Young When Experimentally Approached by Humans,2015,Data,exclude,-,wrong outcome
+samiaMetaanalysisFishBehavioural2019,A meta-analysis of fish behavioural reaction to underwater human presence,2019,Review,exclude,-,wrong study design
+samiaRuralUrbanDifferencesEscape2017,Rural-Urban Differences in Escape Behavior of European Birds across a Latitudinal Gradient,2017,Data,exclude,-,wrong outcome
+sandBehavioralEffectsWolf2021,Behavioral effects of wolf presence on moose habitat selection testing the landscape of fear hypothesis in an anthropogenic landscape,2021,Data,exclude,-,wrong exposure
+santodomingoLimitedInfluenceHunting2021,Limited influence of hunting on the activity patterns and habitat use of Pampas fox (Lycalopex gymnocercus) in agroecosystems of central Argentina,2021,Data,exclude,#example effect of hunting  + NHD on space use and temporal activity of a predator,wrong outcome
+sarmentoHumanVisitationLimits2017,Human visitation limits the utility of protected areas as ecological baselines,2017,Data,exclude,#example human sheild effect,wrong outcome
+sbragagliaSpearfishingModulatesFlight2018,"Spearfishing modulates flight initiation distance of fishes the effects of protection, individual size, and bearing a speargun",2018,Data,exclude,chapter-4 study design,wrong outcome
+schaknerCanFearConditioning2017,Can fear conditioning repel California sea lions from fishing activities?,2017,Data,exclude,-,wrong outcome
+scheibeBehaviorWildAnimals2009,"Behavior of wild animals against humans in reservations, sanctuaries, and hunted areas - review and theoretical approach",2009,Review,exclude,-,-
+schuetteUngulateDistributionsRangeland2016,"Ungulate distributions in a rangeland with competitors, predators and pastoralists",2016,Data,exclude,-,wrong outcome
+schultzSexspecificForagingApex2021,Sex-specific foraging of an apex predator puts females at risk of human-wildlife conflict,2021,Data,exclude,#example predator ecology can impact how much actual risk they experience from humans,wrong outcome
+schuttlerDeerLookoutHow2017a,"Deer on the lookout How hunting, hiking and coyotes affect white-tailed deer vigilance",2017,Data,included,separate data file created due to incompatibility of formats,results reported inconsistently
+seccoHabitatSelectionBlacktufted2018,Habitat selection by the black-tufted marmoset Callithrix penicillata in human-disturbed landscapes,2018,Data,exclude,-,wrong outcome
+sergeyevInfluenceHabitatUse2020,The influence of habitat use on harvest vulnerability of cow elk (Cervus canadensis),2020,Data,exclude,-,wrong outcome
+setsaasHowDoesHuman2007,"How does human exploitation affect impala populations in protected and partially protected areas? - A case study from the Serengeti Ecosystem, Tanzania",2007,Data,exclude,"density across habitats and treatments, initial behaviors were also measured",wrong outcome; comparative study design
+sevequeImpactHumanDisturbance2022,Impact of human disturbance on temporal partitioning within carnivore communities,2022,"bfs,Review",exclude,-,-
+severcanEffectsFlockSize2011,The effects of flock size and human presence on vigilance and feeding behavior in the Eurasian Coot (Fulica atra L.) during breeding season,2011,Data,included,-,-
+shamoonIncreasedMammalNocturnality2018,Increased mammal nocturnality in agricultural landscapes results in fragmentation due to cascading effects,2018,"Data,data",exclude,-,wrong outcome
+shannonBehavioralResponsesAssociated2014,Behavioral Responses Associated with a Human-Mediated Predator Shelter,2014,Data,included,#example of human sheild effect altering vigilance foraging and grouping behavior,-
+shannonRoadNoiseCauses2016,Road noise causes earlier predator detection and flight response in a free-ranging mammal,2016,Data,exclude,-,wrong outcome
+shannonRoadTrafficNoise2014,Road traffic noise modifies behaviour of a keystone species,2014,Data,included,-,-
+shoresMesopredatorsChangeTemporal2019,Mesopredators change temporal activity in response to a recolonizing apex predator,2019,Data,exclude,#example effect of disturbance on temporal overlap of mesopredators,wrong outcome
+sirotShouldRiskAllocation2010,Should risk allocation strategies facilitate or hinder habituation to nonlethal disturbance in wildlife?,2010,theoretical model,exclude,#read/later,-
+smithBehavioralResponsesMale2022,Behavioral responses of male elk to hunting risk,2022,Data,exclude,-,wrong outcome
+smithFearHumanSuper2017,Fear of the human 'super predator' reduces feeding time in large carnivores,2017,Data,included,-,-
+smithMismatchRiskResponse2021a,Mismatch Between Risk and Response May Amplify Lethal and Non-lethal Effects of Humans on Wild Animal Populations,2021,Review,included,"is this sufficiently different from the superpredator framework?; lack of cross trophic comparison; human sheild effects, provisioning effects; habituation is not ellaborated sufficiently",-
+smithQuietIslandsWorld2022,Quiet islands in a world of fear Wolves seek core zones of protected areas to escape human disturbance,2022,Data,exclude,-,wrong outcome;
+smithSpatialCharacteristicsResidential2016,Spatial characteristics of residential development shift large carnivore prey habits,2016,Data,exclude,-,wrong outcome
+smithTopCarnivoresIncrease2015,Top carnivores increase their kill rates on prey as a response to human-induced fear,2015,Data,exclude,"why not use proportion of kill left over as a GUD?,  proportion of time spent at kill site has nothing to do with cost",wrong outcome
+sonnichsenBehaviouralResponsesEuropean2013,Behavioural Responses of European Roe Deer to Temporal Variation in Predation Risk,2013,Data,included,-,-
+souza-alvesEmergencyOnlyTerrestrial2021,For emergency only terrestrial feeding in Coimbra-Filho's titis reflects seasonal arboreal resource availability,2021,Data,exclude,-,wrong exposure
+spitzBehavioralChangesNutritional2019,Behavioral changes and nutritional consequences to elk ( Cervus canadensis ) avoiding perceived risk from human hunters,2019,Data,exclude,-,wrong outcome
+sreekarFlightInitiationDistance2015,"Flight initiation distance as behavioral indicator of hunting pressure a case study of the Sooty-headed Bulbul (Pycnonotus aurigaster) in Xishuangbanna, SW China",2015,Data,exclude,-,wrong outcome
+staflAmericanPikasOchotona2015,American pikas' (Ochotona princeps) foraging response to hikers and sensitivity to heat in an alpine environment,2015,Data,exclude,unsubstantiated claims of MOC,wrong outcome
+stamoulisFlightBehaviorTargeted2019,Flight behavior of targeted fishes depends on variables other than fishing,2019,Data,exclude,-,wrong outcome
+stankowichEffectsPredatorBehavior2006,Effects of predator behavior and proximity on risk assessment by Columbian black-tailed deer,2006,"Data,Other NCB",exclude,-,wrong outcome
+stankowichEffectsRiskAssessment2007,"Effects of risk assessment, predator behavior, and habitat on escape behavior in Columbian black-tailed deer",2007,"Data, Other NCB",exclude,-,wrong study design
+stankowichUngulateFlightResponses2008,Ungulate flight responses to human disturbance A review and meta-analysis,2008,"bfs, data, review",exclude,data available (effect sizes) for ungulates,wrong outcome;
+stansellIndividualVariationTolerance2022,Individual variation in tolerance of human activity by urban Dark-eyed Juncos (Junco hyemalis),2022,Data,exclude,-,wrong outcome;
+stclairPresenceMammalianPredators2010,Presence of mammalian predators decreases tolerance to human disturbance in a breeding shorebird,2010,Data,exclude,#read/later,wrong outcome
+stenhouseExperimentalStudyExamining2005,An experimental study examining the anti-predator behaviour of Sabine's gulls (Xema sabini) during breeding,2005,Experimental,exclude,-,wrong study design
+stewartSpatiotemporalPatternsMale2022,Spatiotemporal patterns of male and female white-tailed deer on a hunted landscape,2022,-,exclude,-,wrong outcome
+stillfriedSecretsSuccessLandscape2017,Secrets of Success in a Landscape of Fear Urban Wild Boar Adjust Risk Perception and Tolerate Disturbance,2017,Data,exclude,-,wrong outcome
+stillfriedWhenTopPredators2015,When top predators become prey Black bears alter movement behaviour in response to hunting pressure,2015,Data,exclude,"lack of contrast,  distance to road measured but reported in a very weird way",wrong study design
+stillmanSeasonalChangesResponse2002,Seasonal changes in the response of oystercatchers Haematopus ostralegus to human disturbance,2002,-,included,no hunting,uncertainty not reported
+storchHumanDisturbanceGrouse2013,Human disturbance of grouse - why and when?,2013,review,included,-,-
+sullivanRecognizingDangerZone2018,Recognizing the danger zone response of female white-tailed to discrete hunting events,2018,Data,exclude,-,wrong outcome
+suraciBehaviorspecificHabitatSelection2019,Behavior-specific habitat selection by African lions may promote their persistence in a human-dominated landscape,2019,Data,exclude,#example effect of non-hunting dsiturbance on lion habitat use,wrong study design
+suraciFearHumansApex2019,Fear of humans as apex predators has landscape-scale impacts from mountain lions to mice,2019,Data,exclude,effect of non-hunting disturbance across trophic levels in one system,wrong outcome
+suraciHumansNotTheir2019,"Humans, but not their dogs, displace pumas from their kills An experimental approach",2019,Data,exclude,-,data used from previous included study
+susckeRoleHuntingSapajus2021,"The role of hunting on Sapajus xanthosternos' landscape of fear in the Atlantic Forest, Brazil",2021,Data,exclude,#example comparing effects of natural vs human predator on habitat use of mesopredator,wrong outcome
+suttonEffectsHumanState2017,Effects of human state park visitation rates on escape behavior of white-tailed deer,2017,Data,exclude,-,wrong outcome
+sweetNaturalAnthropogenicNoise2022,Natural and anthropogenic noise increase vigilance and decrease foraging behaviors in song sparrows,2022,Data,exclude,-,wrong exposure; anthropogenic noise
+symonsSexDifferencesRisk2014,Sex differences in risk perception in deep-diving bottlenose dolphins leads to decreased foraging efficiency when exposed to human disturbance,2014,Data,exclude,#example effect of non-hunting disturbance on dolphin dive behavior,wrong outcome
+sytsmaLowLevelsOutdoor2022,Low levels of outdoor recreation alter wildlife behaviour,2022,"Data,Other NCB",exclude,-,wrong outcome
+tabladoDeterminantsUncertaintyWildlife2017,Determinants of uncertainty in wildlife responses to human disturbance,2017,review,included,no substantially new ideas,-
+tadesseImpactTourismNubian2012,Impact of tourism on Nubian Ibex (Capra nubiana) revealed through assessment of behavioral indicators,2012,Data,included,which treatment to include temporal or spatial?,incompatible study design
+taraborelliCooperativeVigilanceGuanaco2012,Cooperative vigilance The guanaco's (Lama guanicoe) key antipredator mechanism,2012,Data,exclude,-,wrong study design
+taraborelliDifferentFactorsThat2014,Different factors that modify anti-predator behaviour in guanacos (Lama guanicoe),2014,Data,exclude,-,wrong outcome
+tarakiniFlightBehaviouralResponses2014,Flight behavioural responses to sport hunting by two African herbivores,2014,Data,exclude,-,wrong outcome
+tatteAntipredatorFunctionVigilance2019,Antipredator function of vigilance re-examined vigilant birds delay escape,2019,Data,exclude,FID maybe a better predictor of antipredator behavior than vigilance >>,wrong outcome
+tatteIntegratedViewEscape2018,Towards an integrated view of escape decisions in birds relation between flight initiation distance and distance fled,2018,Data,exclude,-,wrong outcome
+theuerkaufWhatDrivesWolves2009,"What Drives Wolves Fear or Hunger? Humans, Diet, Climate and Wolf Activity Patterns",2009,"Data, review",exclude,#example effects on human predator on top trophic levels,wrong outcome;
+thurfjellEffectsHuntingWild2013,Effects of hunting on wild boar Sus scrofa behaviour,2013,-,exclude,#example hunting effect on space use of wild boar,wrong outcome
+thurfjellLearningMistakesOthers2017,Learning from the mistakes of others How female elk (Cervus elaphus) adjust behaviour with age to avoid hunters,2017,Data,exclude,effect of learning vs personality in antipredator responses,wrong exposure
+tolonRespondingSpatialTemporal2009,Responding to spatial and temporal variations in predation risk space use of a game species in a changing landscape of fear,2009,-,exclude,-,wrong outcome
+tranSpearfishinginducedBehavioralChanges2016,Spearfishing-induced behavioral changes of an unharvested species inside and outside a marine protected area,2016,Data,exclude,-,wrong outcome
+troupMovementTortuositySpeed2020,Movement tortuosity and speed reveal the trade-offs of crop raiding for African elephants,2020,Data,exclude,-,wrong exposure
+tryjanowskiEmergenceToleranceHuman2020,The emergence of tolerance of human disturbance in Neotropical birds,2020,Data,exclude,-,wrong outcome
+tsunodaHumanDisturbancesIncrease2021,Human disturbances increase vigilance levels in sika deer (Cervus nippon) A preliminary observation by camera-trapping,2021,Data,included,-,-
+tsurimFORAGINGBEHAVIORURBAN2008,FORAGING BEHAVIOR OF URBAN BIRDS ARE HUMAN COMMENSALS LESS SENSITIVE TO PREDATION RISK THAN THEIR NONURBAN COUNTERPARTS?,2008,Data,exclude,"across species comparison,  #example species habituation to human disturbance alters predation risk perceived",wrong study design
+turnerRisktakingFreelivingSpotted2020,"Risk-taking in free-living spotted hyenas is associated with anthropogenic disturbance, predicts survivorship, and is consistent across experimental contexts",2020,Data,exclude,#example effect of non-hunting disturbance on the risk taking behavior of hyenas,wrong exposure
+uchidaDecreasedVigilanceHabituation2019,Decreased vigilance or habituation to humans? Mechanisms on increased boldness in urban animals,2019,Data,exclude,AD maybe related to FID,wrong outcome
+uchidaHabituationSensitizationLongterm2021,Habituation or sensitization? Long-term responses of yellow-bellied marmots to human disturbance,2021,Data,included,study demonstrates habituation of animals to repeated exposure of non-threatening stimulus,-
+uchidaSeasonalVariationFlight2016,Seasonal variation of flight initiation distance in Eurasian red squirrels in urban versus rural habitat,2016,-,exclude,-,wrong outcome
+vanbeeckcalkoenNumericalTopdownEffects2023,Numerical top-down effects on red deer (Cervus elaphus) are mainly shaped by humans rather than large carnivores across Europe,2023,-,exclude,-,wrong outcome; density
+vancleaveDielPatternsMovement2018,Diel patterns of movement activity and habitat use by leopards (Panthera pardus pardus) living in a human-dominated landscape in central Kenya,2018,Data,exclude,-,wrong outcome
+vandonselaarUrbanizationAltersFear2018,Urbanization alters fear behavior in black-capped chickadees,2018,Data,exclude,-,wrong outcome
+vedorOceanicDielVertical2021,Oceanic Diel Vertical Movement Patterns of Blue Sharks Vary With Water Temperature and Productivity to Change Vulnerability to Fishing,2021,Data,exclude,-,wrong outcome
+versluijsWolfResponsesExperimental2022,Wolf Responses to Experimental Human Approaches Using High-Resolution Positioning Data,2022,-,exclude,-,wrong outcome
+vinczeGreatTitsTake2019,Great tits take greater risk toward humans and sparrowhawks in urban habitats than in forests,2019,Data,exclude,-,wrong outcome
+visscherHumanRiskInduced2017,Human Risk Induced Behavioral Shifts in Refuge Use by Elk in an Agricultural Matrix,2017,Data,exclude,-,wrong outcome
+waleNoiseNegativelyAffects2013,Noise negatively affects foraging and antipredator behaviour in shore crabs,2013,Data,exclude,#example effect of NHD on foraging efficiency of crabs,wrong outcome
+waltonInsightsShortLongterm2021,Insights into short- and long-term crop-foraging strategies in a chacma baboon (Papio ursinus) from GPS and accelerometer data,2021,Data,exclude,-,sample size too low; sample size = 2
+wamOverlookingConcealedPredator2012,From overlooking to concealed predator avoidance in an apex carnivore,2012,Data,exclude,#example wold avoidance of human dominated areas,wrong outcome
+webbVariationHumanDisturbance2005,Variation in human disturbance differentially affects predation risk assessment in Western Gulls,2005,Data,exclude,-,wrong outcome
+welchHunterHuntedPerceptions2017,Hunter or hunted? Perceptions of risk and reward in a small mesopredator,2017,Data,included,foraging rate and vigilance rate + time were measured but not reported,-
+weteringsStrongReactiveMovement2016,Strong reactive movement response of the medium-sized European hare to elevated predation risk in short vegetation,2016,Data,exclude,-,wrong study design
+weversTradingFearFood2020,"Trading fear for food in the Anthropocene How ungulates cope with human disturbance in a multi-use, suburban ecosystem",2020,Data,exclude,-,wrong outcome
+wheatHabituationReversesFearbased2016,Habituation reverses fear-based ecological effects in brown bears (Ursus arctos),2016,Data,exclude,-,wrong outcome
+widenPlaybacksPredatorVocalizations2022,Playbacks of predator vocalizations reduce crop damage by ungulates,2022,"Data,Experimental",exclude,-,mixed reporting
+williamsHighHumanDisturbance2020,High human disturbance decreases individual variability in skink escape behavior,2020,Data,exclude,-,wrong outcome
+wolfMinimizingDisturbanceWildlife2010,Minimizing disturbance to wildlife by tourists approaching on foot or in a car A study of kangaroos in the Australian rangelands,2010,Data,exclude,lack of control,wrong study design
+wolfSIGNSTOPHABITAT2009,"SIGNS AT THE TOP HABITAT FEATURES INFLUENCING SNOW LEOPARD UNCIA UNCIA ACTIVITY IN SAGARMATHA NATIONAL PARK, NEPAL",2009,Data,exclude,-,wrong outcome
+wronskiInteractionsWildlifeHumans2015,"Interactions between wildlife, humans and cattle activity patterns of a remnant population of impala on the degraded Mutara Rangelands, Rwanda",2015,Data,exclude,-,wrong outcome
+xuAlertTimeReflects2021,"Alert time reflects the negative impacts of human disturbance on an endangered bird species in Changbai Mountain, China",2021,-,exclude,-,wrong outcome
+yamaguchiRelationshipHuntingTime2020,Relationship Between Hunting Time Schedule and Sika Deer Spatial Displacement in Hunting with and Without Driving,2020,Data,exclude,displacement away from home range not within day,wrong outcome
+yamashitaAntipredatorBehaviourAfrican2018,Antipredator behaviour of African ungulates around human settlements,2018,Data,exclude,-,wrong outcome
+yasueApproachAssessPotential2008,An approach to assess the potential impacts of human disturbance on wintering tropical shorebirds,2008,Data,included,-,incompatible units (energy/time)
+yasueEffectsHumanPresence2005,"The effects of human presence, flock size and prey density on shorebird foraging rates",2005,Data,included,uncertainty not reported,-
+yasueEnvironmentalFactorsSpatial2006,Environmental factors and spatial scale influence shorebirds' responses to human disturbance,2006,Data,exclude,-,wrong study design
+yasuePotentialImpactTourism2006,The potential impact of tourism development on habitat availability and productivity of Malaysian plovers Charadrius peronii,2006,Data,exclude,-,wrong outcome
+yovovichPumasFearHumans2021,Pumas' fear of humans precipitates changes in plant architecture,2021,Data,exclude,#example non-hunting disturbance causing a human sheild effect,wrong outcome
+zamanIncreasedFlightInitiation2019,Increased Flight Initiation Distance (FID) in Golden Marmots (Marmota caudata aurea) Responding to Domestic Dogs in A Landscape of Human Disturbance,2019,"Data,Other NCB",exclude,-,wrong outcome
+zanetteEcologyNeurobiologyFear2020,Ecology and Neurobiology of Fear in Free-Living Wildlife,2020,"Review,review,theory, #data",included,-,-
+zhengDeterminantsVigilanceReintroduced2013,Determinants of vigilance in a reintroduced population of Pere David's deer,2013,Data,included,-,-
+zugmeyerAvianRiskAssessment,Avian risk assessment Effects of perching height and detectability,NA,Data,exclude,-,wrong exposure
+,,,,,,
+

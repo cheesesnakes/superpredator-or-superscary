@@ -71,8 +71,6 @@ for (i in unique(data_size$outcome)) {
 
     k <- k + 1
 
-    bubble(reg, studylab = TRUE, file = paste0("size_reg_", i, ".png"), main = i)
-
     j <- j + 1
 }
 

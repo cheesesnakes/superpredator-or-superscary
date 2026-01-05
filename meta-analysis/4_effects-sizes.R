@@ -563,8 +563,6 @@ table7_ft <- table7 %>%
     bg(i = ~ smd > 1 | abs(lower) > 1 | abs(upper) > 1, bg = "#fb5053") %>%
     set_caption("Raw effect sizes across studies (in ascending order of absolute value). Red cells indicate effect size intervals which exceed 1.0 in absolute value.")
 
-print(table7_ft)
-
 save_as_docx(table7_ft, path = here::here("meta-analysis/output/table-7.docx"))
 
 # Species with multiple treatments
@@ -596,8 +594,6 @@ table8_ft <- table8 %>%
     theme_box() %>%
     set_table_properties(layout = "fixed", width = 0.95)
 
-print(table8_ft)
-
 save_as_docx(table8_ft, path = here::here("meta-analysis/output/table-8.docx"))
 
 # Studies with multiple outcomes
@@ -628,7 +624,5 @@ table9_ft <- table9 %>%
     merge_v(j = c("cite", "outcome")) %>%
     theme_box() %>%
     set_table_properties(layout = "fixed", width = 0.95)
-
-print(table9_ft)
 
 save_as_docx(table9_ft, path = here::here("meta-analysis/output/table-9.docx"))

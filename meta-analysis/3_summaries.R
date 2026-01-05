@@ -187,6 +187,19 @@ print("Inclusion rate")
 
 print(nrow(fts_all[fts_all$status == "include" | fts_all$status == "included", ]) / nrow(fts_all))
 
+# number of studies by reason for exclusion
+
+print("Number of studies by reason for exclusion")
+excluded <- fts_all %>%
+    filter(status == "exclude") %>%
+    separate_rows(reason, sep = ";") %>%
+    mutate(reason = str_replace_all(reason, "[[:punct:]]", " ")) %>%
+    mutate(reason = str_trim(reason)) %>%
+    group_by(reason) %>%
+    summarise(n = n()) %>%
+    arrange(desc(n))
+
+print(excluded)
 # number of studies where labels contains "data"
 
 fts_included <- fts_all[fts_all$status == "included", ]
@@ -220,6 +233,8 @@ data %>%
 # number of studies across outcomes
 
 data %>%
+    filter(outcome != "latency") %>%
+    mutate(outcome = ifelse(str_trim(outcome) %in% c("displacement", "home range", " movement rate"), "movement", outcome)) %>%
     group_by(outcome) %>%
     summarise(n = length(unique(cite.key))) %>%
     print(.)
@@ -227,6 +242,8 @@ data %>%
 print(paste(
     "Number of studies with more than one type of outcome:",
     (data %>%
+        filter(outcome != "latency") %>%
+        mutate(outcome = ifelse(str_trim(outcome) %in% c("displacement", "home range", " movement rate"), "movement", outcome)) %>%
         group_by(cite.key) %>%
         summarise(n = length(unique(outcome))) %>%
         filter(n > 1) %>%
@@ -308,27 +325,38 @@ save_as_docx(table_a1_ft, path = here::here("meta-analysis/output/table_a1.docx"
 tablea2 <- data %>%
     # add cite as a column
     left_join(authors, by = "cite.key") %>%
-    select(cite, contrast_type, exposure_category, outcome, outcomes, treatment) %>%
+    select(
+        cite, pop_cn, pop_sn, trophic_level, functional_group,
+        contrast_type, exposure_category, outcome, outcomes, treatment
+    ) %>%
     distinct() %>%
     group_by(cite) %>%
     summarise(
+        pop_cn = paste(unique(pop_cn), collapse = ", "),
+        pop_sn = paste(unique(pop_sn), collapse = ", "),
+        trophic_level = paste(unique(trophic_level), collapse = ", "),
+        functional_group = paste(unique(functional_group), collapse = ", "),
         contrast_type = paste(unique(contrast_type), collapse = ", "),
         exposure_category = paste(unique(exposure_category), collapse = ", "),
         outcome = paste(unique(outcome), collapse = ", "),
         outcomes = paste(unique(outcomes), collapse = ", "),
         treatment = paste(unique(treatment), collapse = ", ")
-    )%>%
+    ) %>%
     # remove + from outcomes
     mutate(outcomes = str_replace_all(outcomes, "\\+ ", ", ")) %>%
     # Format all as sentence case
     mutate(across(everything(), str_to_sentence)) %>%
-    select(cite, contrast_type, exposure_category, treatment, outcome, outcomes) %>%
+    select(cite, pop_cn, pop_sn, trophic_level, functional_group, contrast_type, exposure_category, treatment, outcome, outcomes) %>%
     distinct()
 
 tablea2_ft <- tablea2 %>%
     flextable() %>%
     set_header_labels(
         cite = "Citations",
+        pop_cn = "Common Name",
+        pop_sn = "Specific Epithet",
+        trophic_level = "Trophic Level",
+        functional_group = "Functional Group",
         contrast_type = "Contrast Type",
         exposure_category = "Exposure Category",
         treatment = "Treatment",
